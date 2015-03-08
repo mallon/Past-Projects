@@ -1,0 +1,418 @@
+<map version="freeplane 1.2.0">
+<!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
+<node TEXT="Website" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1386164191067" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="18" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#808080" WIDTH="thin"/>
+<hook NAME="MapStyle">
+    <properties show_icon_for_attributes="true" show_note_icons="true"/>
+
+<map_styles>
+<stylenode LOCALIZED_TEXT="styles.root_node" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<stylenode LOCALIZED_TEXT="styles.predefined" POSITION="right" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<stylenode LOCALIZED_TEXT="default" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="defaultstyle.details" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="defaultstyle.note" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="defaultstyle.floating" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<cloud COLOR="#f0f0f0" SHAPE="ROUND_RECT"/>
+</stylenode>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.user-defined" POSITION="right" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<stylenode LOCALIZED_TEXT="styles.topic" COLOR="#18898b" STYLE="fork" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="Dialog" SIZE="10" BOLD="true" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.subtopic" COLOR="#cc3300" STYLE="fork" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="Dialog" SIZE="10" BOLD="true" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.subsubtopic" COLOR="#669900" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="Dialog" SIZE="10" BOLD="true" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.important" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<icon BUILTIN="yes"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</stylenode>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.AutomaticLayout" POSITION="right" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level.root" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="18" BOLD="false" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,1" COLOR="#0033ff" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="16" BOLD="false" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,2" COLOR="#00b439" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="14" BOLD="false" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,3" COLOR="#990000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="12" BOLD="false" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,4" COLOR="#111111" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</stylenode>
+</stylenode>
+</stylenode>
+</map_styles>
+</hook>
+<hook NAME="AutomaticEdgeColor" COUNTER="5"/>
+<attribute_layout NAME_WIDTH="86" VALUE_WIDTH="174"/>
+<attribute NAME="title" VALUE="titleEndUser"/>
+<attribute NAME="tagLine" VALUE="tagLineEndUser"/>
+<attribute NAME="address" VALUE="http://localhost/wordpress/"/>
+<attribute NAME="adminPassword" VALUE="Luf59Ger;"/>
+<attribute NAME="adminLogin" VALUE="admin"/>
+<node TEXT="User" POSITION="right" ID="ID_638219365" CREATED="1382981424559" MODIFIED="1386160522152" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c0000" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="65" VALUE_WIDTH="123"/>
+<attribute NAME="userName" VALUE="userOne"/>
+<attribute NAME="firstName" VALUE="userOneFirstName"/>
+<attribute NAME="lastName" VALUE="userOneLastName"/>
+<attribute NAME="nickName" VALUE="userOneNickName"/>
+<attribute NAME="publicName" VALUE="userOnePublicName"/>
+<attribute NAME="email" VALUE="userOne@mail.com"/>
+<attribute NAME="website" VALUE="userOneWebSite.com"/>
+<attribute NAME="biography" VALUE="userOneBiog"/>
+<attribute NAME="password" VALUE="userOnePassword"/>
+<node TEXT="Role" ID="ID_1537427466" CREATED="1383057386512" MODIFIED="1386160334207" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c0000" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+<node TEXT="author" ID="ID_1318867602" CREATED="1383065485412" MODIFIED="1386669991972" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c0000" WIDTH="thin"/>
+</node>
+</node>
+</node>
+<node TEXT="Appearance" POSITION="left" ID="ID_1190070596" CREATED="1382979894113" MODIFIED="1386160587875" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<node TEXT="Menu" ID="ID_1953581499" CREATED="1383038305854" MODIFIED="1386160845358" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="33" VALUE_WIDTH="88"/>
+<attribute NAME="name" VALUE="menuNameOne"/>
+</node>
+<node TEXT="Theme" ID="ID_1280257357" CREATED="1383038321220" MODIFIED="1386863911590" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="33" VALUE_WIDTH="286"/>
+<attribute NAME="url" VALUE="http://wordpress.org/themes/download/pilot-fish.0.3.4.zip"/>
+<attribute NAME="name" VALUE="pilot-fish"/>
+</node>
+<node TEXT="Widget" ID="ID_1268934995" CREATED="1383572253880" MODIFIED="1386161814617" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="69" VALUE_WIDTH="69"/>
+<node TEXT="Calendars" ID="ID_1092008377" CREATED="1383572295996" MODIFIED="1386161737138" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="33" VALUE_WIDTH="89"/>
+<attribute NAME="title" VALUE="widgCalendTitle"/>
+</node>
+<node TEXT="WidgetCategory" ID="ID_790451251" CREATED="1383572298221" MODIFIED="1386950794364" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="137" VALUE_WIDTH="137"/>
+<attribute NAME="title" VALUE="widgCatTitle"/>
+<attribute NAME="numberOfDisplayedPosts" VALUE="8"/>
+<node TEXT="isDisplayingSubCat" ID="ID_583213063" CREATED="1383572295996" MODIFIED="1386950811828" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<node TEXT="Value" ID="ID_1586988057" CREATED="1383057386512" MODIFIED="1386161351359" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+<node TEXT="yes" ID="ID_790277694" CREATED="1383057386512" MODIFIED="1386161149721" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+</node>
+</node>
+<node TEXT="isDropDownList" ID="ID_644821880" CREATED="1383572295996" MODIFIED="1386950823994" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<node TEXT="Value" ID="ID_1084910113" CREATED="1383057386512" MODIFIED="1386161351356" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+<node TEXT="no" ID="ID_311425670" CREATED="1383057386512" MODIFIED="1386161149718" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="WidgetMenu" ID="ID_1866993432" CREATED="1383572300476" MODIFIED="1386161744928" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="33" VALUE_WIDTH="83"/>
+<attribute NAME="title" VALUE="widgMenuTitle"/>
+<node TEXT="Menu" ID="ID_1560612645" CREATED="1383572713513" MODIFIED="1386161783506" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="33" VALUE_WIDTH="88"/>
+<attribute NAME="name" VALUE="menuNameOne"/>
+</node>
+</node>
+<node TEXT="Meta" ID="ID_597849898" CREATED="1383572302063" MODIFIED="1386161748263" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="33" VALUE_WIDTH="55"/>
+<attribute NAME="title" VALUE="metaTitle"/>
+</node>
+<node TEXT="WidgetPage" ID="ID_554428373" CREATED="1383572303756" MODIFIED="1386161749695" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="33" VALUE_WIDTH="113"/>
+<attribute NAME="title" VALUE="anotherWidgetPage"/>
+<node TEXT="PageExcluded" ID="ID_1444013954" CREATED="1383572983176" MODIFIED="1386161751388" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="33" VALUE_WIDTH="77"/>
+<attribute NAME="title" VALUE="pageTitleOne"/>
+</node>
+<node TEXT="PageSorter" ID="ID_720842222" CREATED="1383573046279" MODIFIED="1386161595307" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<node TEXT="page_title" ID="ID_306069504" CREATED="1383573074791" MODIFIED="1386161516458" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+</node>
+</node>
+</node>
+<node TEXT="WidgetPlacement" ID="ID_793412500" CREATED="1383572294076" MODIFIED="1386160768494" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="133" VALUE_WIDTH="133"/>
+<node TEXT="mainArea" ID="ID_1387936408" CREATED="1383572294076" MODIFIED="1386670299762" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="133" VALUE_WIDTH="133"/>
+</node>
+</node>
+<node TEXT="Archives" ID="ID_1193398" CREATED="1383572294076" MODIFIED="1386161754981" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="33" VALUE_WIDTH="90"/>
+<attribute NAME="title" VALUE="archiveTitleTest"/>
+<node TEXT="isDisplayingAsDropDown" ID="ID_1333060473" CREATED="1383572295996" MODIFIED="1386161058284" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<node TEXT="Value" ID="ID_1593768799" CREATED="1383057386512" MODIFIED="1386161430229" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+<node TEXT="yes" ID="ID_452860959" CREATED="1383057386512" MODIFIED="1386161149721" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+</node>
+</node>
+<node TEXT="isShowingPostsCount" ID="ID_1043735637" CREATED="1383572295996" MODIFIED="1386161059972" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<node TEXT="Value" ID="ID_586631429" CREATED="1383057386512" MODIFIED="1386161351362" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+<node TEXT="yes" ID="ID_1003956331" CREATED="1383057386512" MODIFIED="1386161149721" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="WidgetPost" ID="ID_905916498" CREATED="1383572306044" MODIFIED="1386161413155" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="137" VALUE_WIDTH="137"/>
+<attribute NAME="title" VALUE="I am a new widget post"/>
+<attribute NAME="numberOfDisplayedPosts" VALUE="8"/>
+<node TEXT="isDisplayingPostDate" ID="ID_1559140992" CREATED="1383572295996" MODIFIED="1386161188693" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<node TEXT="Value" ID="ID_823130404" CREATED="1383057386512" MODIFIED="1386161351361" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+<node TEXT="yes" ID="ID_193922764" CREATED="1383057386512" MODIFIED="1386161149721" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="WidgetFeed" ID="ID_252197031" CREATED="1383572307009" MODIFIED="1386945476545" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="33" VALUE_WIDTH="223"/>
+<attribute NAME="url" VALUE="http://blog.humancoders.com/feed/"/>
+<node TEXT="isDisplayingItemContent" ID="ID_16007821" CREATED="1383572295996" MODIFIED="1386161212301" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<node TEXT="Value" ID="ID_1297847194" CREATED="1383057386512" MODIFIED="1386161351359" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+<node TEXT="yes" ID="ID_966549553" CREATED="1383057386512" MODIFIED="1386161149721" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+</node>
+</node>
+<node TEXT="isDisplayingItemAuthor" ID="ID_930296005" CREATED="1383572295996" MODIFIED="1386161226557" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<node TEXT="Value" ID="ID_649507775" CREATED="1383057386512" MODIFIED="1386161351356" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+<node TEXT="no" ID="ID_1429519887" CREATED="1383057386512" MODIFIED="1386161149718" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+</node>
+</node>
+<node TEXT="isDisplayingItemDate" ID="ID_691933804" CREATED="1383572295996" MODIFIED="1386161241709" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<node TEXT="Value" ID="ID_1928940697" CREATED="1383057386512" MODIFIED="1386161351360" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+<node TEXT="no" ID="ID_1997858361" CREATED="1383057386512" MODIFIED="1386161149718" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="Text" ID="ID_446199468" CREATED="1383572310732" MODIFIED="1386161385137" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="47"/>
+<attribute NAME="title" VALUE="textTitleTest"/>
+<attribute NAME="content" VALUE="I am a text"/>
+<node TEXT="isAutoParagraphs" ID="ID_1053736102" CREATED="1383572295996" MODIFIED="1386161267724" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<node TEXT="Value" ID="ID_76361399" CREATED="1383057386512" MODIFIED="1386161351361" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+<node TEXT="yes" ID="ID_928531955" CREATED="1383057386512" MODIFIED="1386161149721" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+</node>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="Page" POSITION="right" ID="ID_1822327479" CREATED="1382979972148" MODIFIED="1386163711164" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="47" VALUE_WIDTH="106"/>
+<attribute NAME="title" VALUE="pageTitleOne"/>
+<attribute NAME="content" VALUE="I am the page one"/>
+<attribute NAME="order" VALUE="1"/>
+<node TEXT="Visibility" ID="ID_1705257380" CREATED="1383056700595" MODIFIED="1386163819613" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="109" VALUE_WIDTH="109"/>
+<node TEXT="public" ID="ID_1489844347" CREATED="1383066274819" MODIFIED="1391429481181" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+</node>
+</node>
+<node TEXT="PageParent" ID="ID_618116739" CREATED="1382979972148" MODIFIED="1386164069256" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="33" VALUE_WIDTH="79"/>
+<attribute NAME="title" VALUE="pageTitleTwo"/>
+</node>
+</node>
+<node TEXT="Page" POSITION="right" ID="ID_1080907196" CREATED="1382979972148" MODIFIED="1386684343386" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="47" VALUE_WIDTH="107"/>
+<attribute NAME="title" VALUE="pageTitleTwo"/>
+<attribute NAME="content" VALUE="I am the page two"/>
+<attribute NAME="order" VALUE="0"/>
+<node TEXT="Visibility" ID="ID_68659482" CREATED="1383056700595" MODIFIED="1386163800707" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="109" VALUE_WIDTH="109"/>
+<node TEXT="publish" ID="ID_1315683631" CREATED="1383066274819" MODIFIED="1386941047309" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+</node>
+</node>
+</node>
+<node TEXT="Tag" POSITION="right" ID="ID_663767406" CREATED="1383038508684" MODIFIED="1386163992484" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="62" VALUE_WIDTH="90"/>
+<attribute NAME="name" VALUE="tagOneName"/>
+<attribute NAME="description" VALUE="I am tag one !!!"/>
+</node>
+<node TEXT="Category" POSITION="right" ID="ID_1431559005" CREATED="1383126593579" MODIFIED="1386163991065" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#00ffff" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="62" VALUE_WIDTH="101"/>
+<attribute NAME="name" VALUE="catOneName"/>
+<attribute NAME="description" VALUE="I am cat one ????"/>
+</node>
+<node TEXT="Functionality" POSITION="left" ID="ID_452464518" CREATED="1382979943411" MODIFIED="1386754609340" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+<node TEXT="SocialNetwork" ID="ID_1888027557" CREATED="1383066500503" MODIFIED="1383066540040" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+<node TEXT="facebook" ID="ID_562424018" CREATED="1383066497293" MODIFIED="1386754029689" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+</node>
+</node>
+</node>
+<node TEXT="Post" POSITION="left" ID="ID_784583661" CREATED="1382979981267" MODIFIED="1386164060734" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#00ffff" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="47" VALUE_WIDTH="92"/>
+<attribute NAME="title" VALUE="postOneTitle"/>
+<attribute NAME="content" VALUE="I am post one..."/>
+<node TEXT="Tag" ID="ID_851574217" CREATED="1383038508684" MODIFIED="1391429542258" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<icon BUILTIN="forward"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#00ffff" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="33"/>
+<attribute NAME="name" VALUE="tagOneName"/>
+</node>
+<node TEXT="Category" ID="ID_789984732" CREATED="1383126593579" MODIFIED="1391429544817" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<icon BUILTIN="forward"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<edge STYLE="bezier" COLOR="#00ffff" WIDTH="thin"/>
+<attribute_layout NAME_WIDTH="33" VALUE_WIDTH="74"/>
+<attribute NAME="name" VALUE="catOneName"/>
+</node>
+</node>
+</node>
+</map>

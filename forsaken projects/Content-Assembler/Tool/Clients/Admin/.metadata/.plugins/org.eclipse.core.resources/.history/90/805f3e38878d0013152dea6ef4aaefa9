@@ -1,0 +1,194 @@
+/**
+ */
+package org.inria.wordpress.wdpdsl.wdpDsl.impl;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.inria.wordpress.wdpdsl.wdpDsl.Avatar;
+import org.inria.wordpress.wdpdsl.wdpDsl.Url;
+import org.inria.wordpress.wdpdsl.wdpDsl.WdpDslPackage;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Avatar</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * <ul>
+ *   <li>{@link org.inria.wordpress.wdpdsl.wdpDsl.impl.AvatarImpl#getContentPicture <em>Content Picture</em>}</li>
+ * </ul>
+ * </p>
+ *
+ * @generated
+ */
+public class AvatarImpl extends MinimalEObjectImpl.Container implements Avatar
+{
+  /**
+   * The cached value of the '{@link #getContentPicture() <em>Content Picture</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getContentPicture()
+   * @generated
+   * @ordered
+   */
+  protected Url contentPicture;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected AvatarImpl()
+  {
+    super();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass()
+  {
+    return WdpDslPackage.Literals.AVATAR;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Url getContentPicture()
+  {
+    return contentPicture;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetContentPicture(Url newContentPicture, NotificationChain msgs)
+  {
+    Url oldContentPicture = contentPicture;
+    contentPicture = newContentPicture;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WdpDslPackage.AVATAR__CONTENT_PICTURE, oldContentPicture, newContentPicture);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setContentPicture(Url newContentPicture)
+  {
+    if (newContentPicture != contentPicture)
+    {
+      NotificationChain msgs = null;
+      if (contentPicture != null)
+        msgs = ((InternalEObject)contentPicture).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WdpDslPackage.AVATAR__CONTENT_PICTURE, null, msgs);
+      if (newContentPicture != null)
+        msgs = ((InternalEObject)newContentPicture).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WdpDslPackage.AVATAR__CONTENT_PICTURE, null, msgs);
+      msgs = basicSetContentPicture(newContentPicture, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, WdpDslPackage.AVATAR__CONTENT_PICTURE, newContentPicture, newContentPicture));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case WdpDslPackage.AVATAR__CONTENT_PICTURE:
+        return basicSetContentPicture(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
+  {
+    switch (featureID)
+    {
+      case WdpDslPackage.AVATAR__CONTENT_PICTURE:
+        return getContentPicture();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eSet(int featureID, Object newValue)
+  {
+    switch (featureID)
+    {
+      case WdpDslPackage.AVATAR__CONTENT_PICTURE:
+        setContentPicture((Url)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID)
+  {
+    switch (featureID)
+    {
+      case WdpDslPackage.AVATAR__CONTENT_PICTURE:
+        setContentPicture((Url)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID)
+  {
+    switch (featureID)
+    {
+      case WdpDslPackage.AVATAR__CONTENT_PICTURE:
+        return contentPicture != null;
+    }
+    return super.eIsSet(featureID);
+  }
+
+} //AvatarImpl

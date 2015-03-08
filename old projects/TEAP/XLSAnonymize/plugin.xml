@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="fr.inria.teap.dcnsXlsAnonymize"
+         name="dcnsXlsAnonymizeCoreDiscoverer"
+         point="org.eclipse.modisco.infra.discovery.core.discoverer">
+      <discoverer
+            class="fr.inria.teap.dcnsXlsAnonymize.main.XlsAnonymize"
+            id="fr.inria.teap.dcnsXlsAnonymize">
+      </discoverer>
+   </extension>
+   <extension
+         id="fr.inria.teap.dcnsXlsAnonymize"
+         name="dcnsXlsAnonymizeUiDiscoverer"
+         point="org.eclipse.modisco.infra.discovery.ui.discoverer">
+      <discoverer
+            discovererID="fr.inria.teap.dcnsXlsAnonymize"
+            label="Anonymize Excel file">
+      </discoverer>
+   </extension>
+
+</plugin>

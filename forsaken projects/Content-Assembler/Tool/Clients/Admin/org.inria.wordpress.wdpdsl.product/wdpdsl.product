@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="WdpDSL" uid="wdpdsl.product" id="org.inria.wordpress.wdpdsl.product.product" application="org.eclipse.ui.ide.workbench" useFeatures="true" includeLaunchers="false">
+
+   <configIni use="">
+   </configIni>
+
+   <launcherArgs>
+   </launcherArgs>
+
+   <launcher name="WordPressConstruct">
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="org.inria.wordpress.wdpdsl.featureDsl" version="1.0.0.qualifier"/>
+      <feature id="org.inria.wordpress.wdpdsl.featureRuntime" version="1.0.0.qualifier"/>
+   </features>
+
+
+</product>

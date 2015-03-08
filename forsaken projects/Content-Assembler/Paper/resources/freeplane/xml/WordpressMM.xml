@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="UTF-8"?><map version="freeplane 1.2.0">
+<!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
+<node TEXT="Website" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" LOCALIZED_STYLE_REF="AutomaticLayout.level.root" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1386160478235">
+<edge STYLE="bezier" COLOR="#808080" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#808080" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="18" BOLD="false" ITALIC="false"/>
+<hook NAME="MapStyle">
+    <properties show_icon_for_attributes="true" show_note_icons="true"/>
+
+<map_styles>
+<stylenode LOCALIZED_TEXT="styles.root_node" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<stylenode LOCALIZED_TEXT="styles.predefined" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" POSITION="right">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<stylenode LOCALIZED_TEXT="default" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="defaultstyle.details" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="defaultstyle.note" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="defaultstyle.floating" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<cloud COLOR="#f0f0f0" SHAPE="ROUND_RECT"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</stylenode>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.user-defined" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" POSITION="right">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<stylenode LOCALIZED_TEXT="styles.topic" COLOR="#18898b" STYLE="fork" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="Dialog" SIZE="10" BOLD="true" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.subtopic" COLOR="#cc3300" STYLE="fork" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="Dialog" SIZE="10" BOLD="true" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.subsubtopic" COLOR="#669900" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="Dialog" SIZE="10" BOLD="true" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.important" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<icon BUILTIN="yes"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</stylenode>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.AutomaticLayout" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" POSITION="right">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level.root" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="18" BOLD="false" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,1" COLOR="#0033ff" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="16" BOLD="false" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,2" COLOR="#00b439" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="14" BOLD="false" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,3" COLOR="#990000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="12" BOLD="false" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,4" COLOR="#111111" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</stylenode>
+</stylenode>
+</stylenode>
+</map_styles>
+</hook>
+<attribute_layout NAME_WIDTH="86" VALUE_WIDTH="86"/>
+<attribute NAME="title" VALUE=""/>
+<attribute NAME="tagLine" VALUE=""/>
+<attribute NAME="adress" VALUE=""/>
+<attribute NAME="adminPassword" VALUE=""/>
+<attribute NAME="adminLogin" VALUE=""/>
+<node TEXT="User" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" POSITION="left" ID="ID_638219365" CREATED="1382981424559" MODIFIED="1386162166111">
+<edge STYLE="bezier" COLOR="#7c0000" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c0000" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="65" VALUE_WIDTH="65"/>
+<attribute NAME="userName" VALUE=""/>
+<attribute NAME="firstName" VALUE=""/>
+<attribute NAME="lastName" VALUE=""/>
+<attribute NAME="nickName" VALUE=""/>
+<attribute NAME="publicName" VALUE=""/>
+<attribute NAME="email" VALUE=""/>
+<attribute NAME="website" VALUE=""/>
+<attribute NAME="biography" VALUE=""/>
+<attribute NAME="password" VALUE=""/>
+<node TEXT="Role" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1537427466" CREATED="1383057386512" MODIFIED="1386162175969">
+<edge STYLE="bezier" COLOR="#7c0000" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c0000" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+<node TEXT="Editor" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1972832259" CREATED="1383065476976" MODIFIED="1386162191218">
+<edge STYLE="bezier" COLOR="#7c0000" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c0000" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<richcontent TYPE="NOTE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Restriction :
+    </p>
+    <p>
+      - Users with a 'editor' role can only read and write all pages, media, comments, posts, categories and tags.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="Author" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1318867602" CREATED="1383065485412" MODIFIED="1386162191215">
+<edge STYLE="bezier" COLOR="#7c0000" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c0000" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<richcontent TYPE="NOTE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Restriction :
+    </p>
+    <p>
+      - Users with a 'author' role can read and write their own posts, medias and comments, but only read the other posts, medias and comments.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="Contributor" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1939870758" CREATED="1383065491465" MODIFIED="1386162191217">
+<edge STYLE="bezier" COLOR="#7c0000" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c0000" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<richcontent TYPE="NOTE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Restriction :
+    </p>
+    <p>
+      - Users with a 'author' role can read and write their own posts and comments, but only read the other posts and comments.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="Administrator" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1977355329" CREATED="1383065499227" MODIFIED="1386162191217">
+<edge STYLE="bezier" COLOR="#7c0000" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c0000" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<richcontent TYPE="NOTE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Restriction :
+    </p>
+    <p>
+      - Users with a 'administrator' role can read and write all things.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="Media" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" POSITION="right" ID="ID_393719406" CREATED="1383061369204" MODIFIED="1386162152174">
+<edge STYLE="bezier" COLOR="#808080" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#808080" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="33" VALUE_WIDTH="33"/>
+<attribute NAME="url" VALUE=""/>
+<node TEXT="Post" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_306840110" CREATED="1382979981267" MODIFIED="1386153129078">
+<icon BUILTIN="forward"/>
+<edge STYLE="bezier" COLOR="#00ffff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#00ffff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="87" VALUE_WIDTH="87"/>
+<attribute NAME="title" VALUE=""/>
+</node>
+<node TEXT="Page" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1119331703" CREATED="1382979972148" MODIFIED="1386153133325">
+<icon BUILTIN="forward"/>
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="87" VALUE_WIDTH="87"/>
+<attribute NAME="title" VALUE=""/>
+</node>
+</node>
+<node TEXT="Page" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" POSITION="right" ID="ID_1822327479" CREATED="1382979972148" MODIFIED="1386163592412">
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="87" VALUE_WIDTH="87"/>
+<attribute NAME="title" VALUE=""/>
+<attribute NAME="content" VALUE=""/>
+<attribute NAME="order" VALUE=""/>
+<node TEXT="Visibility" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1705257380" CREATED="1383056700595" MODIFIED="1383067183608">
+<icon BUILTIN="multiplication"/>
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="109" VALUE_WIDTH="109"/>
+<node TEXT="Publish" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1489844347" CREATED="1383066274819" MODIFIED="1386940997452">
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</node>
+<node TEXT="Private" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_160657732" CREATED="1383066289051" MODIFIED="1383066293076">
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</node>
+</node>
+<node TEXT="PageParent" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_618116739" CREATED="1382979972148" MODIFIED="1386163616955">
+<icon BUILTIN="forward"/>
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="87" VALUE_WIDTH="87"/>
+<attribute NAME="title" VALUE=""/>
+</node>
+</node>
+<node TEXT="Appearance" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" POSITION="right" ID="ID_1190070596" CREATED="1382979894113" MODIFIED="1386162152169">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<node TEXT="Menu" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" ID="ID_1953581499" CREATED="1383038305854" MODIFIED="1383063443663">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="33" VALUE_WIDTH="33"/>
+<attribute NAME="name" VALUE=""/>
+<node TEXT="Category" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1094786130" CREATED="1383042837652" MODIFIED="1386156923946">
+<icon BUILTIN="forward"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="62" VALUE_WIDTH="62"/>
+<attribute NAME="name" VALUE=""/>
+</node>
+<node TEXT="Link" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_655579692" CREATED="1383045263414" MODIFIED="1383063442033">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="33" VALUE_WIDTH="33"/>
+<attribute NAME="text" VALUE=""/>
+<attribute NAME="url" VALUE=""/>
+</node>
+<node TEXT="Page" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1986560929" CREATED="1382979972148" MODIFIED="1386156927834">
+<icon BUILTIN="forward"/>
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="87" VALUE_WIDTH="87"/>
+<attribute NAME="title" VALUE=""/>
+</node>
+</node>
+<node TEXT="Header" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1036811186" CREATED="1383038312945" MODIFIED="1383063451055">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="53" VALUE_WIDTH="53"/>
+<attribute NAME="url" VALUE=""/>
+<attribute NAME="textColor" VALUE=""/>
+<attribute NAME="text" VALUE=""/>
+</node>
+<node TEXT="Theme" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1280257357" CREATED="1383038321220" MODIFIED="1386160920925">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute NAME="url" VALUE=""/>
+<attribute NAME="name" VALUE=""/>
+</node>
+<node TEXT="Widget" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1268934995" CREATED="1383572253880" MODIFIED="1386161803395">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="69" VALUE_WIDTH="69"/>
+<node TEXT="Archives" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_491648381" CREATED="1383572294076" MODIFIED="1386161163806">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="133" VALUE_WIDTH="133"/>
+<attribute NAME="title" VALUE=""/>
+<node TEXT="isDisplayingAsDropDown" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1333060473" CREATED="1383572295996" MODIFIED="1386161058284">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<node TEXT="Value" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1593768799" CREATED="1383057386512" MODIFIED="1386161111422">
+<icon BUILTIN="multiplication"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+<node TEXT="yes" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_452860959" CREATED="1383057386512" MODIFIED="1386161149721">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+<node TEXT="no" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_121334422" CREATED="1383057386512" MODIFIED="1386161149718">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+</node>
+</node>
+<node TEXT="isShowingPostsCount" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" ID="ID_1043735637" CREATED="1383572295996" MODIFIED="1386161059972">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<node TEXT="Value" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" ID="ID_586631429" CREATED="1383057386512" MODIFIED="1386161111422">
+<icon BUILTIN="multiplication"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+<node TEXT="yes" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1003956331" CREATED="1383057386512" MODIFIED="1386161149721">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+<node TEXT="no" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1684424849" CREATED="1383057386512" MODIFIED="1386161149718">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="Calendars" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1092008377" CREATED="1383572295996" MODIFIED="1383572692565">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute NAME="title" VALUE=""/>
+</node>
+<node TEXT="WidgetCategory" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_790451251" CREATED="1383572298221" MODIFIED="1386950955642">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="137" VALUE_WIDTH="137"/>
+<attribute NAME="title" VALUE=""/>
+<attribute NAME="numberOfDisplayedPosts" VALUE=""/>
+<node TEXT="isDisplayingSubCat" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_643525442" CREATED="1383573046279" MODIFIED="1386951002951">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<node TEXT="Value" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1139317208" CREATED="1383057386512" MODIFIED="1386161111422">
+<icon BUILTIN="multiplication"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+<node TEXT="yes" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1288261837" CREATED="1383057386512" MODIFIED="1386161149721">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+<node TEXT="no" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_315071743" CREATED="1383057386512" MODIFIED="1386161149718">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+</node>
+</node>
+<node TEXT="isDropDownList" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1225950428" CREATED="1383573046279" MODIFIED="1386951017939">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<node TEXT="Value" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1492417597" CREATED="1383057386512" MODIFIED="1386161111422">
+<icon BUILTIN="multiplication"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+<node TEXT="yes" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_563583777" CREATED="1383057386512" MODIFIED="1386161149721">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+<node TEXT="no" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1465372399" CREATED="1383057386512" MODIFIED="1386161149718">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="WidgetMenu" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1866993432" CREATED="1383572300476" MODIFIED="1383572711918">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute NAME="title" VALUE=""/>
+<node TEXT="Menu" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1560612645" CREATED="1383572713513" MODIFIED="1386156818731">
+<icon BUILTIN="forward"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute NAME="name" VALUE=""/>
+</node>
+</node>
+<node TEXT="Meta" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_597849898" CREATED="1383572302063" MODIFIED="1383572820764">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute NAME="title" VALUE=""/>
+</node>
+<node TEXT="WidgetPage" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_554428373" CREATED="1383572303756" MODIFIED="1383572860524">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute NAME="title" VALUE=""/>
+<node TEXT="PageExcluded" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1444013954" CREATED="1383572983176" MODIFIED="1386156859162">
+<icon BUILTIN="forward"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute NAME="title" VALUE=""/>
+</node>
+<node TEXT="PageSorter" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_720842222" CREATED="1383573046279" MODIFIED="1383573061354">
+<icon BUILTIN="multiplication"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<node TEXT="page_title" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_306069504" CREATED="1383573074791" MODIFIED="1386161516458">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</node>
+<node TEXT="page_order" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_116900112" CREATED="1383573075863" MODIFIED="1386161520627">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</node>
+<node TEXT="page_id" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1834205106" CREATED="1383573077094" MODIFIED="1386161525267">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</node>
+</node>
+</node>
+<node TEXT="WidgetComment" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1276529952" CREATED="1383572304896" MODIFIED="1386162045431">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="166" VALUE_WIDTH="166"/>
+<attribute NAME="title" VALUE=""/>
+<attribute NAME="numberOfDisplayedComments" VALUE=""/>
+</node>
+<node TEXT="WidgetPost" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" ID="ID_1352992565" CREATED="1383572306044" MODIFIED="1386161191076">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="137" VALUE_WIDTH="137"/>
+<attribute NAME="title" VALUE=""/>
+<attribute NAME="numberOfDisplayedPosts" VALUE=""/>
+<node TEXT="isDisplayingPostDate" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" ID="ID_1559140992" CREATED="1383572295996" MODIFIED="1386161188693">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<node TEXT="Value" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" ID="ID_823130404" CREATED="1383057386512" MODIFIED="1386161111422">
+<icon BUILTIN="multiplication"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+<node TEXT="yes" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_193922764" CREATED="1383057386512" MODIFIED="1386161149721">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+<node TEXT="no" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_33604365" CREATED="1383057386512" MODIFIED="1386161149718">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="WidgetFeed" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" ID="ID_109883073" CREATED="1383572307009" MODIFIED="1386945402287">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="133" VALUE_WIDTH="133"/>
+<attribute NAME="url" VALUE=""/>
+<node TEXT="isDisplayingItemContent" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" ID="ID_16007821" CREATED="1383572295996" MODIFIED="1386161212301">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<node TEXT="Value" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" ID="ID_1297847194" CREATED="1383057386512" MODIFIED="1386161111422">
+<icon BUILTIN="multiplication"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+<node TEXT="yes" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_966549553" CREATED="1383057386512" MODIFIED="1386161149721">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+<node TEXT="no" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_282304754" CREATED="1383057386512" MODIFIED="1386161149718">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+</node>
+</node>
+<node TEXT="isDisplayingItemAuthor" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" ID="ID_930296005" CREATED="1383572295996" MODIFIED="1386161226557">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<node TEXT="Value" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" ID="ID_649507775" CREATED="1383057386512" MODIFIED="1386161111422">
+<icon BUILTIN="multiplication"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+<node TEXT="yes" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1359211317" CREATED="1383057386512" MODIFIED="1386161149721">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+<node TEXT="no" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1429519887" CREATED="1383057386512" MODIFIED="1386161149718">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+</node>
+</node>
+<node TEXT="isDisplayingItemDate" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" ID="ID_691933804" CREATED="1383572295996" MODIFIED="1386161241709">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<node TEXT="Value" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" ID="ID_1928940697" CREATED="1383057386512" MODIFIED="1386161111422">
+<icon BUILTIN="multiplication"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+<node TEXT="yes" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_376257835" CREATED="1383057386512" MODIFIED="1386161149721">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+<node TEXT="no" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1997858361" CREATED="1383057386512" MODIFIED="1386161149718">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="Search" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1336188762" CREATED="1383572308268" MODIFIED="1383573247653">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute NAME="title" VALUE=""/>
+</node>
+<node TEXT="TagCloud" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" ID="ID_948574355" CREATED="1383572309250" MODIFIED="1383573261356">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute NAME="title" VALUE=""/>
+<node TEXT="Elements" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" ID="ID_769252473" CREATED="1383038508684" MODIFIED="1386164338151">
+<icon BUILTIN="multiplication"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="62" VALUE_WIDTH="62"/>
+<node TEXT="Tag" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_439702774" CREATED="1383038508684" MODIFIED="1386164350906">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="62" VALUE_WIDTH="62"/>
+</node>
+<node TEXT="Category" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_371561125" CREATED="1383038508684" MODIFIED="1386164350904">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="62" VALUE_WIDTH="62"/>
+</node>
+</node>
+</node>
+<node TEXT="Text" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" ID="ID_1206879954" CREATED="1383572310732" MODIFIED="1386161269842">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="96" VALUE_WIDTH="96"/>
+<attribute NAME="title" VALUE=""/>
+<attribute NAME="content" VALUE=""/>
+<node TEXT="isAutoParagraphs" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" ID="ID_1053736102" CREATED="1383572295996" MODIFIED="1386161267724">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<node TEXT="Value" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" ID="ID_76361399" CREATED="1383057386512" MODIFIED="1386161111422">
+<icon BUILTIN="multiplication"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+<node TEXT="yes" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_928531955" CREATED="1383057386512" MODIFIED="1386161149721">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+<node TEXT="no" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1471454740" CREATED="1383057386512" MODIFIED="1386161149718">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="WidgetPlacement" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" ID="ID_793412500" CREATED="1383572294076" MODIFIED="1386160768494">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="133" VALUE_WIDTH="133"/>
+<node TEXT="MainArea" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1387936408" CREATED="1383572294076" MODIFIED="1386160802352">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="133" VALUE_WIDTH="133"/>
+</node>
+<node TEXT="SecondaryArea" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_514887204" CREATED="1383572294076" MODIFIED="1386160811064">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="133" VALUE_WIDTH="133"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="Functionnality" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" POSITION="right" ID="ID_268537327" CREATED="1382979943411" MODIFIED="1386760997490">
+<icon BUILTIN="multiplication"/>
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<node TEXT="multiLanguage" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_598047808" CREATED="1383066491920" MODIFIED="1386761625090">
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</node>
+<node TEXT="pictures" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1713170040" CREATED="1383066497293" MODIFIED="1386760952360">
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</node>
+<node TEXT="seo" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_319397414" CREATED="1383066498694" MODIFIED="1386760958144">
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</node>
+<node TEXT="socialNetwork" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" ID="ID_697299302" CREATED="1383066500503" MODIFIED="1386761619610">
+<icon BUILTIN="multiplication"/>
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<node TEXT="facebook" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1448286789" CREATED="1383066497293" MODIFIED="1386760985167">
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</node>
+<node TEXT="twitter" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1508622030" CREATED="1383066497293" MODIFIED="1386760987666">
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</node>
+</node>
+<node TEXT="hamSpam" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_518525984" CREATED="1383066502495" MODIFIED="1386761615338">
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</node>
+<node TEXT="forms" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1695170218" CREATED="1383066503821" MODIFIED="1386760970734">
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</node>
+<node TEXT="indexing" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1070844551" CREATED="1383066505197" MODIFIED="1386760974684">
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</node>
+<node TEXT="eCommerce" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1084311438" CREATED="1383066506375" MODIFIED="1386761628201">
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#0000ff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</node>
+</node>
+<node TEXT="Tag" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" POSITION="right" ID="ID_663767406" CREATED="1383038508684" MODIFIED="1386162152177">
+<edge STYLE="bezier" COLOR="#808080" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#808080" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="62" VALUE_WIDTH="62"/>
+<attribute NAME="name" VALUE=""/>
+<attribute NAME="description" VALUE=""/>
+</node>
+<node TEXT="Category" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" POSITION="right" ID="ID_1431559005" CREATED="1383126593579" MODIFIED="1386162152179">
+<edge STYLE="bezier" COLOR="#808080" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#808080" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute NAME="name" VALUE=""/>
+<attribute NAME="description" VALUE=""/>
+</node>
+<node TEXT="Post" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" POSITION="right" ID="ID_784583661" CREATED="1382979981267" MODIFIED="1386162152182">
+<edge STYLE="bezier" COLOR="#00ffff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#00ffff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="87" VALUE_WIDTH="87"/>
+<attribute NAME="title" VALUE=""/>
+<attribute NAME="content" VALUE=""/>
+<node TEXT="Tag" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_851574217" CREATED="1383038508684" MODIFIED="1386156760068">
+<icon BUILTIN="forward"/>
+<edge STYLE="bezier" COLOR="#00ffff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#00ffff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="62" VALUE_WIDTH="62"/>
+<attribute NAME="name" VALUE=""/>
+</node>
+<node TEXT="Category" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_789984732" CREATED="1383126593579" MODIFIED="1386156763900">
+<icon BUILTIN="forward"/>
+<edge STYLE="bezier" COLOR="#00ffff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#00ffff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute NAME="name" VALUE=""/>
+</node>
+</node>
+</node>
+</map>

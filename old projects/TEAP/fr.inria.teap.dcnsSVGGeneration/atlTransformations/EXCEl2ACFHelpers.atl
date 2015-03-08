@@ -1,0 +1,1118 @@
+-- @nsURI ACF=http://www.obeonetwork.org/dsl/togaf/contentfwk/9.0.0
+-- @nsURI EXCEL=xls
+-- @nsURI IMPORT=http://www.obeo.fr/smartea/import/1.0
+
+-- ******************************************************************************
+-- Copyright (c) 2013 INRIA. 
+-- All rights reserved. This program and the accompanying materials 
+-- are made available under the terms of the Eclipse Public License v1.0 
+-- which accompanies this distribution, and is available at
+-- http://www.eclipse.org/legal/epl-v10.html
+-- 
+-- Contributors: 
+-- 	INRIA - Initial implementation
+--  
+-- ******************************************************************************
+
+--@name EXCEL2ACFHelpers
+--@author Matthieu Allon (matthieu.allon <at> gmail.com)
+
+--@description EXCEL to TOGAF (ACF) helpers library
+
+library EXCEL2ACFHelpers;
+
+---Sequency of cells to manage multi_valued cells
+---in corresponding lazy rules (Actor, Organization units, P.A.C., Process)
+---@return : Sequence(String)
+helper def : cellsCreated : Sequence(String) = 
+	Sequence{}
+;
+
+---Sequency of acf elements to manage multi_valued cells
+---in corresponding lazy rules (Actor, Organization units, P.A.C., Process)
+---@return : Sequence(ACF!Element)
+helper def : elementsCreated : Sequence(ACF!Element) = 
+	Sequence{}
+;
+
+---Sequency of acf labels to in put in Enterprise Architecture
+---@return : Sequence(ACF!Label)
+helper def : labelsInEA : Sequence(ACF!Label) = 
+	Sequence{}
+;
+
+---Get an element in the sequency of elements already created
+---@param String
+---@return : ACF!Element
+helper def : getElementsCreated(name : String) : ACF!Element = 
+	thisModule.elementsCreated -> select(element | element.name = name).first()
+;
+
+---Get a cell in the sequency of cells already created
+---@param String
+---@return : EXCEL!Cell
+helper def : getCellsCreated(name : String) : EXCEL!Cell = 
+	thisModule.cellsCreated -> select(cell | cell.getCellValueToString = name).first()
+;
+
+--***************String manipulation***************
+---Because some users add caracters on some values (e.g. put the enter key after 'O' 'for lifeCycleStatus')
+---@context String
+---@return : String
+helper context String def: deleteFinishLineKeys : String =	
+	if (self.endsWith('\r') or self.endsWith('\n')) then
+		self.substring(1, self.size()-1).deleteFinishLineKeys
+	else
+		if (self.endsWith('.0')) then
+			self.substring(1, self.size()-2)
+		else
+			self
+		endif	
+	endif
+	;
+
+---Get the string value of a cell without finishing line keys
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getCellValueToString : String =
+	self.getCellValue.toString().deleteFinishLineKeys
+	;			
+
+
+---To test if a cell containing several values separated by a carriage-return
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Cell def: isMultiValued : Boolean =
+	not self.getCellValueToString.oclIsUndefined() 
+	and
+	(self.getCellValueToString.indexOf('\r') > -1 or self.getCellValueToString.indexOf('\n') > -1)
+	;
+
+---To test if an element name containing several values separated by a carriage-return
+---@context ACF!Element
+---@return : Boolean
+helper context ACF!Element def: isElementNameMultiValued : Boolean =
+	self.name.toString().getListOfElements.size() > 1
+	;
+
+---To get the list of values on multi-valued cells
+---@context String
+---@return : Sequence(String)
+helper context String def: getListOfElements : Sequence(String) =
+	self.split('[\r\n]')
+		-> select(iter | iter <> '')
+	;
+
+---To get the list of values on multi-valued cells
+---@context String
+---@param Integer
+---@return : Sequence(String)
+helper context String def: getListOfElementsWithIndex(index : Integer) : Sequence(String) =
+	self.getListOfElements
+		-> collect(string | index.toString() + '_' + string)
+	;
+
+---To test if a cell containing a space
+---@context String
+---@return : Boolean
+helper context String def: isContainingBlank : Boolean =
+	self.split(' ').size() > 1
+	;
+
+---To test if a cell finish with a finish line keys
+---@context String
+---@return : Boolean
+helper context String def: isContainingFinishLineKeys : Boolean =
+	self.split('[\r\t\n]').size() > 1
+	;
+
+--***************Selection***************
+---Get the row index of a cell
+---@context EXCEL!Cell
+---@return : Integer
+helper context EXCEL!Cell def: getRowIndex : Integer =
+	self.c_row.r_table.t_rows -> indexOf(self.getRow)
+	;
+
+---Get the row of a cell
+---@context EXCEL!Cell
+---@return : EXCEL!Table
+helper context EXCEL!Cell def: getRow: EXCEL!Table =
+	self.c_row
+	;
+		
+---Get the worksheet of a cell
+---@context EXCEL!Cell
+---@return : EXCEL!Worksheet
+helper context EXCEL!Cell def: getWorksheet : EXCEL!Worksheet =
+	self.c_row.r_table.t_worksheet
+	;
+
+---Column selection of a table ('ws_table') without dupplicates	
+---@context EXCEL!Table
+---@param Integer
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Table def: selectColumnWithoutDupplicates(columnIndex : Integer) : Sequence(EXCEL!Cell) =
+let seqUniqueCells : Sequence(EXCEL!Cell) = 
+	Sequence{}
+in
+	let lastColumn : Sequence(EXCEL!Cell) =
+		self.selectColumn(columnIndex)
+	in 	
+		let seqValues : Sequence(String) =
+			lastColumn
+				-> collect(cell | cell.getCellValueToString)
+				-> flatten()
+		in seqValues
+			-> asOrderedSet()
+			-> collect(value | 	seqUniqueCells
+									-> append(
+												lastColumn
+													-> at(seqValues.indexOf(value))
+									)	
+			)
+			-> flatten()
+	;
+
+---Get the cells of a column
+---@context EXCEL!Table
+---@param Integer
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Table def: selectColumn(columnIndex : Integer) : Sequence(EXCEL!Cell) =
+	self.t_rows -> subSequence(2, self.t_rows.size())
+				-> select(row | row.r_cells.at(columnIndex).getCellValueToString <> '')
+				-> collect(row | row.r_cells -> at(columnIndex))
+				-> flatten()
+	;
+
+---Column selection of a WSTable	
+---@context EXCEL!Table
+---@param Integer
+---@param Integer
+---@return : Excel!Cell
+helper context EXCEL!Table def: selectCell(rowIndex : Integer, columnIndex : Integer) : Excel!Cell =
+		if (rowIndex = 1) then
+			self.t_rows.at(2).r_cells.at(columnIndex)
+		else 
+			self.t_rows.at(rowIndex).r_cells.at(columnIndex)
+		endif
+	;
+
+---Get one cell of the first row ==> Titles
+---@context EXCEL!Table
+---@param Sequence(Integer)
+---@return : Sequence(String)
+helper context EXCEL!Table def: selectTitle(seqColumnIndex : Sequence(Integer)) : Sequence(String) =
+	seqColumnIndex 
+		-> collect(iter | self.t_rows.at(1).r_cells.at(iter).getCellValueToString)		
+	;
+
+---Get the value of a cell
+---@context EXCEL!Cell
+---@return : EXCEL!ValueType
+helper context EXCEL!Cell def: getCellValue : EXCEL!ValueType =
+	if (not self.c_data.oclIsUndefined()) then
+		self.c_data.value.value
+	else
+		OclUndefined
+	endif	
+	;	
+
+---Get an other cell on the same row of self (cell)
+---@context EXCEL!Cell
+---@param Integer
+---@return : EXCEL!ValueType
+helper context EXCEL!Cell def: getAnotherCellOnSameRow(columnIndex : Integer) : EXCEL!ValueType =
+	self.c_row.r_table.selectCell(self.getRowIndex, columnIndex)
+	;
+
+---Get the value of an other cell on the same row of self (cell)
+---@context EXCEL!Cell
+---@param Integer
+---@return : EXCEL!ValueType
+helper context EXCEL!Cell def: getAnotherCellValueOnSameRow(columnIndex : Integer) : EXCEL!ValueType =
+	self.getAnotherCellOnSameRow(columnIndex).getCellValue
+	;
+
+---Get the string value of an other cell on the same row of self (cell)
+---@context EXCEL!Cell
+---@param Integer
+---@return : String
+helper context EXCEL!Cell def: getAnotherCellStringValueOnSameRow(columnIndex : Integer) : String =
+	self.c_row.r_table.selectCell(self.getRowIndex, columnIndex).getCellValueToString
+	;
+
+--***************Type's elements testing***************
+---Test if the cell is in a sequence
+---@context EXCEL!Cell
+---@param Sequence(EXCEL!Cell)
+---@return : Boolean
+helper context EXCEL!Cell def: isInSequence(seqElements : Sequence(EXCEL!Cell)) : Boolean =
+	seqElements -> includes(self)
+	;
+
+---Test if the cell is a physical application component as applicative systems
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Cell def: isPhysicalApplicationComponentAsApplicativeSystems : Boolean =
+	self.isInSequence(self.getWorksheet.getAllPhysicalApplicationComponentsAsApplicativeSystems)
+	;
+
+---Test if the cell is a logical application component as applicative service
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Cell def: isLogicalApplicationComponentAsApplicativeService : Boolean =
+	self.isInSequence(self.getWorksheet.getAllLogicalApplicationComponents)
+	;
+
+---Test if the cell is a physical application component as an external INPUT app. system
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Cell def: isPhysicalApplicationComponentExternalInput : Boolean =
+	self.isInSequence(self.getWorksheet.getAllPhysicalApplicationComponentsAsExternalInputApplicativeSystems)
+	;
+
+---Test if the cell is a physical application component as an external OUTPUT app. system
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Cell def: isPhysicalApplicationComponentExternalOutput : Boolean =
+	self.isInSequence(self.getWorksheet.getAllPhysicalApplicationComponentsAsExternalOutputApplicativeSystems)
+	;
+
+---Test if the cell is a physical application component as a module
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Cell def: isPhysicalApplicationComponentModule : Boolean =
+	self.isInSequence(self.getWorksheet.getAllPhysicalApplicationComponentModules)
+	;
+
+---Test if the cell is a physical technology component
+---for an application instance
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Cell def: isPhysicalTechnologyComponentForAnApplicationInstance : Boolean =
+	self.isInSequence(self.getWorksheet.getAllPhysicalTechnologyComponentsApplicationInstance)
+	;
+
+---Test if the cell is a physical technology component as a server
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Cell def: isPhysicalTechnologyComponentServer : Boolean =
+	self.isInSequence(self.getWorksheet.getAllPhysicalTechnologyComponentsAsServer)
+	;
+
+---Test if the cell is a physical technology component as an os server
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Cell def: isPhysicalTechnologyComponentOSServer : Boolean =
+	self.isInSequence(self.getWorksheet.getAllPhysicalTechnologyComponentsAsOsServer)
+	;
+
+---Test if the cell is an organization unit as Pole DSI
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Cell def: isOrganizationUnitActorCorrespondant : Boolean =
+	self.isInSequence(self.getWorksheet.getOrganizationUnitsCorrespondant)
+	;
+
+---Test if the cell is an organization unit as Entite 'Pole DSI'
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Cell def: isOrganizationUnitDSI : Boolean =
+	self.isInSequence(self.getWorksheet.getOrganizationUnitsDSI)
+	;
+
+---Test if the cell is an organization unit as Entite 'Entite'
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Cell def: isOrganizationUnitBusiness : Boolean =
+	self.isInSequence(self.getWorksheet.getOrganizationUnitsBusiness)
+	;
+
+---Test if the cell is a correspondingDSI actor
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Cell def: isDSICorrespondingActor : Boolean =
+	self.isInSequence(self.getWorksheet.getAllCorrespondingDSIActors)
+	;
+
+---Test if the cell is an actor using an applicative system
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Cell def: isActorUsingApplicativeSystem : Boolean =
+	self.isInSequence(self.getWorksheet.getAllUsingApplicativeSystemActors)
+	;
+
+---Test if the cell is the service container
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Cell def: isServiceContainer : Boolean =
+	self.isInSequence(self.getWorksheet.getAllServicesContainers)
+	;
+
+---Test if the cell is a service
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Cell def: isService : Boolean =
+	self.isInSequence(self.getWorksheet.getAllServices)
+	;
+
+---Test if the cell is a process
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Cell def: isProcess : Boolean =
+	self.isInSequence(self.getWorksheet.getAllProcesses)
+	;
+
+--***************Physcical technology component***************
+---Get all physical technology components in a worksheet (EXCEL file : OS Serveur, Nom Serveur and Progiciel)
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Worksheet def: getAllPhysicalTechnologyComponents : Sequence(EXCEL!Cell) =
+	self.getAllPhysicalTechnologyComponentsServerInstance
+		-> union(self.getAllPhysicalTechnologyComponentsApplicationInstance)
+	;
+
+---Get all physical technology components for ALL server instances in a worksheet (EXCEL file : OS Serveur, Nom Serveur)
+
+---(Used by other helpers, not in rules)
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Worksheet def: getAllPhysicalTechnologyComponentsServerInstance : Sequence(EXCEL!Cell) =
+	self.getAllPhysicalTechnologyComponentsAsServer
+		-> union(self.getAllPhysicalTechnologyComponentsAsOsServer)
+	;
+
+---Get all physical technology components for ALL application instances in a worksheet
+---For the moment, we have only one technology component (EXCEL file : Progiciel)
+---(Used by other helpers, not in rules)
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Worksheet def: getAllPhysicalTechnologyComponentsApplicationInstance: Sequence(EXCEL!Cell) =
+	self.ws_table.selectColumnWithoutDupplicates(26)
+		-- When we will have other technologies components : 		.append(self.c_row.r_table.selectColumnWithoutDupplicates(XX))
+																--	.flatten()
+	;
+
+---Get all physical technology components as a server (EXCEL file : Nom serveur)
+---(Used by other helpers, not in rules)
+---@context EXCEL!Worksheet
+---@return : String
+helper context EXCEL!Worksheet def: getAllPhysicalTechnologyComponentsAsServer : String =
+	self.ws_table.selectColumnWithoutDupplicates(31)
+	;
+
+---Get all physical technology components as an os server (EXCEL file : OS serveur)
+---(Used by other helpers, not in rules)
+---@context EXCEL!Worksheet
+---@return : String
+helper context EXCEL!Worksheet def: getAllPhysicalTechnologyComponentsAsOsServer : String =
+	self.ws_table.selectColumnWithoutDupplicates(34)
+	;
+
+---Get all applications instances for ONE app.system
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getAllApplicationsInstancesForAnApplicativeSystem : Sequence(EXCEL!Cell) =
+	self.c_row.r_table.t_worksheet.getAllPhysicalTechnologyComponentsApplicationInstance
+		-> select(appInstance | appInstance.getPhysicalApplicationComponentAppSystemName = self.getPhysicalApplicationComponentAppSystemName)
+	;	
+
+---Get all servers instances for ONE application instance
+---The index corresponding to the application instance index in the list of application instances of an applicative system
+---@context EXCEL!Cell
+---@param Integer
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getAllServersInstancesForAnApplicationInstance(indexOfApplicationInstance : Integer) : Sequence(EXCEL!Cell) =
+	Sequence{self.c_row.r_table.t_worksheet.getAllPhysicalTechnologyComponentsServerInstance
+				-> select(serverInstance | serverInstance.getPhysicalApplicationComponentAppSystemName = self.getPhysicalApplicationComponentAppSystemName)
+				-> at(indexOfApplicationInstance)
+	}
+	;
+	
+---Get all physical technology components for ONE server instance in a worksheet (EXCEL file : OS Serveur, Nom Serveur)
+---for a server instance
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getPhysicalTechnoComponentsServerInstance : Sequence(EXCEL!Cell) =
+	self.c_row.r_table.t_worksheet.getAllPhysicalTechnologyComponentsServerInstance
+		-> select(physicTechnoCompo | physicTechnoCompo.getPhysicalApplicationComponentAppSystemName = self.getPhysicalApplicationComponentAppSystemName)
+	;
+
+---Get all physical technology components for ONE application instance in a worksheet (EXCEL file : Progiciel)
+---for a server instance
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getPhysicalTechnoComponentsApplicationInstance : Sequence(EXCEL!Cell) =
+	self.c_row.r_table.t_worksheet.getAllPhysicalTechnologyComponentsApplicationInstance
+		-> select(physicTechnoCompo | physicTechnoCompo.getPhysicalApplicationComponentAppSystemName = self.getPhysicalApplicationComponentAppSystemName)
+	;
+
+---Get the vendor name of a physical technology component (EXCEL file : Editeur du progiciel) 
+---on the same row of a cell
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getPhysicalTechnologyComponentVendorNameSoftPack : String =
+	self.getAnotherCellStringValueOnSameRow(27)
+	;
+
+---Get the product name of a physical technology component (EXCEL file : Nom du progiciel)
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getPhysicalTechnologyComponentProductNameSoftPack : String =
+	self.getProductOrVersion(1)
+	;
+
+---Get the version of the physical technology component (EXCEL file : Version)
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getPhysicalTechnologyComponentVersionSoftPack : String =
+	if (self.getPhysicalTechnologyComponentProductNameVersion.split(' ').size() > 1) then
+		self.getProductOrVersion(2)
+	else
+		OclUndefined
+	endif
+	;
+
+---Get the product name OR the version (splitting) of a physical technology component (EXCEL file : Nom du progiciel et version)
+---on the same row of a cell
+---@context EXCEL!Cell
+---@param Integer
+---@return : String
+helper context EXCEL!Cell def: getProductOrVersion(productOrVersionIndex : Integer) : String =
+	if (self.getPhysicalTechnologyComponentProductNameVersion.isContainingBlank) then
+		self.getPhysicalTechnologyComponentProductNameVersion.split(' ').at(productOrVersionIndex)
+	else
+		OclUndefined
+	endif
+	;
+
+---Get the product name AND the version (to split) of a physical technology component (EXCEL file : Nom du progiciel et version)
+---on the same row of a cell
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getPhysicalTechnologyComponentProductNameVersion : String =
+	self.getAnotherCellStringValueOnSameRow(26)
+	;
+
+---Get the manufacturer of a physical technology component as a server(EXCEL file : Fabriquant du serveur)
+---on the same row of a cell
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getPhysicalTechnologyComponentServerManufacturer : String =
+	self.getAnotherCellStringValueOnSameRow(32)
+	;
+
+---Get the model of a physical technology component as a server model(EXCEL file : Modèle du serveur)
+---on the same row of a cell
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getPhysicalTechnologyComponentServerModel : String =
+	self.getAnotherCellStringValueOnSameRow(33)
+	;
+
+--***************Logical application component***************
+---Get all the logical application components as an applicative service in a worksheet (EXCEL file : Type d'application)
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Worksheet def: getAllLogicalApplicationComponents : Sequence(EXCEL!Cell) =	
+	self.ws_table.selectColumnWithoutDupplicates(6)
+	;
+
+--***************Physcical application component***************
+---Get all the physical application components as an applicative system in a worksheet (EXCEL file : Application)
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Worksheet def: getAllPhysicalApplicationComponents: Sequence(EXCEL!Cell) =
+	self.getAllPhysicalApplicationComponentsAsApplicativeSystems
+		-> union (self.getAllPhysicalApplicationComponentsAsExternalApplicativeSystems)
+		-> union (self.getAllPhysicalApplicationComponentModules)
+	;
+
+---Get all the physical application components as an applicative system in a worksheet (EXCEL file : Application)
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Worksheet def: getAllPhysicalApplicationComponentsAsApplicativeSystems : Sequence(EXCEL!Cell) =
+	self.ws_table.selectColumnWithoutDupplicates(1)
+	;
+
+---Get all the physical application components as an applicative system in a worksheet (EXCEL file : Application)
+---for a logical application component (EXCEL : Type d'application)
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getPhysicalApplicationComponentsForOneLogicalApplicationComponent: Sequence(EXCEL!Cell) =
+	self.c_row.r_table.t_worksheet.getAllPhysicalApplicationComponentsAsApplicativeSystems
+			-> select(appSys | appSys.getNameOfOneApplicativeService = self.getNameOfOneApplicativeService)
+	;
+
+---Get all the external applicative systems  in a worksheet (EXCEL file : Flux entrant / sortant nom de l'application)
+---(Used by other helpers, not in rules)
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Worksheet def: getAllPhysicalApplicationComponentsAsExternalApplicativeSystems : Sequence(EXCEL!Cell) =
+	self.getAllPhysicalApplicationComponentsAsExternalInputApplicativeSystems
+		-> union (self.getAllPhysicalApplicationComponentsAsExternalOutputApplicativeSystems)
+	;
+
+---Get all the modules in a worksheet (EXCEL file : Modules)
+---(Used by other helpers, not in rules)
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Worksheet def: getAllPhysicalApplicationComponentModules : Sequence(EXCEL!Cell) =
+	self.ws_table.selectColumnWithoutDupplicates(4) 
+	;
+
+---Get all the INPUT external applicative systems  in a worksheet (EXCEL file : Flux entrant nom de l'application)
+---(Used by other helpers, not in rules)
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Worksheet def: getAllPhysicalApplicationComponentsAsExternalInputApplicativeSystems : Sequence(EXCEL!Cell) =
+	self.ws_table.selectColumnWithoutDupplicates(36)
+	;
+
+---Get all the OUTPUT external applicative systems  in a worksheet (EXCEL file : Flux sortant nom de l'application)
+---(Used by other helpers, not in rules)
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Worksheet def: getAllPhysicalApplicationComponentsAsExternalOutputApplicativeSystems : Sequence(EXCEL!Cell) =
+	self.ws_table.selectColumnWithoutDupplicates(40)
+	;
+
+---Get the process corresponding to an applicative system
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getProcessForApplicaSystem : Sequence(EXCEL!Cell) =
+	self.c_row.r_table.t_worksheet.getAllProcesses
+		-> select(process | process.getProcesseName = self.getProcesseName)
+	;
+
+---Get external applicative systems for an applicative system
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getPhysicalApplicationComponentExternalApplicativeSystems : Sequence(EXCEL!Cell) =
+	self.c_row.r_table.t_worksheet.getAllPhysicalApplicationComponentsAsExternalApplicativeSystems
+		-> select(applicaSys | applicaSys.getPhysicalApplicationComponentAppSystemName = self.getPhysicalApplicationComponentAppSystemName)
+	;
+
+---Get modules for an applicative system
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getPhysicalApplicationComponentModules : Sequence(EXCEL!Cell) =
+	self.c_row.r_table.t_worksheet.getAllPhysicalApplicationComponentModules
+		-> select(applicaSys | applicaSys.getPhysicalApplicationComponentAppSystemName = self.getPhysicalApplicationComponentAppSystemName)
+	;
+
+---Get applicative system(s) for an actor which is a correspondant
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getApplicativeSystemsForAnActorCorrespondant : Sequence(EXCEL!Cell) =
+	self.c_row.r_table.t_worksheet.getAllPhysicalApplicationComponentsAsApplicativeSystems
+		-> select(applicaSys | applicaSys.getNameOfDSICorrespondentActors = self.getNameOfDSICorrespondentActors
+								or applicaSys.getNameOfBusinessCorrespondentActors = self.getNameOfBusinessCorrespondentActors
+		)
+	;
+
+---Get applicative system(s) for an actor use an app. system
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getApplicativeSystemsForAnActorUsingAppSystem : Sequence(EXCEL!Cell) =	
+	self.c_row.r_table.t_worksheet.getAllPhysicalApplicationComponentsAsApplicativeSystems
+	;	
+
+---Get the physical application components as an app. system (EXCEL file : Application)
+---corresponding to the same logical application component
+---on the same row of a cell
+---(Used by other helpers, not in rules)
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getPhysicalApplicationComponentAppSystemName : String =
+	self.getAnotherCellStringValueOnSameRow(1)
+	;
+
+---Get the physical application component description (EXCEL file : Libelle) 
+---on the same row of a cell
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getPhysicalApplicationComponentWording : String =
+	self.getAnotherCellStringValueOnSameRow(2)
+	;
+
+---Get the physical application component identifiant (EXCEL file : Numero de nomenclature) 
+---on the same row of a cell
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getPhysicalApplicationComponentNomenclatureNumber : String =
+	self.getAnotherCellStringValueOnSameRow(24)
+	;
+
+---Get the credibility characteristics of a physical application component (EXCEL file : Intéréts stratégiques) 
+---on the same row of a cell
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getPhysicalApplicationComponentStrategicInterest : String =
+	self.getAnotherCellStringValueOnSameRow(12)
+	;
+
+---Get the capacity characteristics of a physical application component (EXCEL file : Nombre d'utilisateurs)
+---on the same row of a cell
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getPhysicalApplicationComponentNumberOfUsers : String =
+	self.getAnotherCellStringValueOnSameRow(15)
+	;
+
+ ---Get the intial live date of a physical application component (EXCEL file : Date de mise en exploitation)
+ ---on the same row of a cell
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getPhysicalApplicationComponentInitialLiveDate : String =	
+	self.getAnotherCellStringValueOnSameRow(16)
+	;
+
+---Get the lowery life cycle status of a physical application component (EXCEL file : Statut application)
+---on the same row of a cell
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getPhysicAppliCompoLifeCycleStatusToLower : String =
+	self.getAnotherCellStringValueOnSameRow(20).toLower()
+	;
+
+---Get the life cycle status of the physical application component (EXCEL file : Statut application) 
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getPhysicalApplicationComponentKindOfApplication : String =
+	if (self.getPhysicAppliCompoLifeCycleStatusToLower = 'o') then
+		'Live'
+	else	
+		if (self.getPhysicAppliCompoLifeCycleStatusToLower = 's') then
+			'Retired'
+		else
+			if (self.getPhysicAppliCompoLifeCycleStatusToLower = 'p') then
+				'Proposed'
+			else
+				if (self.getPhysicAppliCompoLifeCycleStatusToLower = 'a') then
+					'PhasingOut'
+				else
+					if (self.getPhysicAppliCompoLifeCycleStatusToLower = 'c') then
+						'InDevelopment'
+					else
+						'InDevelopment'
+					endif	
+				endif	
+			endif	
+		endif	
+	endif
+	;
+
+---Get the privacy characteristics of the physical application component (EXCEL file : Confidentialité des données)
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getPhysicalApplicationComponentDataConfidentiality : String =
+	self.getAnotherCellStringValueOnSameRow(21)
+	;
+
+---Get the date of the last release of the physical application component (EXCEL file : Date de mise �  jour)
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getPhysicalApplicationComponentDateOfLastRelease : String =
+	self.getAnotherCellStringValueOnSameRow(25)
+	;
+
+---Get applicative system attributes
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getAllApplicativeSystemAttributes : Sequence(EXCEL!Cell) =
+	Sequence{self.getAnotherCellStringValueOnSameRow(28), self.getAnotherCellStringValueOnSameRow(29)
+			,self.getAnotherCellStringValueOnSameRow(30),self.getAnotherCellStringValueOnSameRow(35)
+	}
+	;
+
+---Get the titles (==> first row) of the app.system attributes
+---@context EXCEL!Cell
+---@return : Sequence(String)
+helper context EXCEL!Cell def: getApplicativeSystemColumnTitle : Sequence(String) =
+	self.c_row.r_table.selectTitle(Sequence{28,29,30,35})
+	;	
+
+---Get external input system attributes
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getAllExternalInputApplicativeSystemAttributes : Sequence(EXCEL!Cell) =
+	Sequence{self.getAnotherCellStringValueOnSameRow(37), self.getAnotherCellStringValueOnSameRow(38)
+			,self.getAnotherCellStringValueOnSameRow(39)
+	}
+	;
+
+---Get the titles (==> first row) of the external input app.system attributes
+---@context EXCEL!Cell
+---@return : Sequence(String)
+helper context EXCEL!Cell def: getExternalInputApplicativeSystemColumnTitle : Sequence(String) =
+	self.c_row.r_table.selectTitle(Sequence{37,38,39})
+	;	
+	
+---Get external output system attributes
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getAllExternalOututApplicativeSystemAttributes : Sequence(EXCEL!Cell) =
+	Sequence{self.getAnotherCellStringValueOnSameRow(41), self.getAnotherCellStringValueOnSameRow(42)
+			,self.getAnotherCellStringValueOnSameRow(43)
+	}
+	;
+
+---Get the titles (==> first row) of the external output app.system attributes
+---@context EXCEL!Cell
+---@return : Sequence(String)
+helper context EXCEL!Cell def: getExternalOutputApplicativeSystemColumnTitle : Sequence(String) =
+	self.c_row.r_table.selectTitle(Sequence{41,42,43})
+	;	
+
+--***************Organization units***************
+---Get organization units (EXCEL file : Entités concernées + Pole DSI)
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Worksheet def: getAllOrganizationUnitsEntite: Sequence(EXCEL!Cell) =
+	self.getOrganizationUnitsBusiness
+		-> union(self.getOrganizationUnitsDSI)
+	;
+
+---Get organization units correspondants (EXCEL file : Pôles DSI)
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Worksheet def: getOrganizationUnitsDSI : Sequence(EXCEL!Cell) =
+	self.ws_table.selectColumnWithoutDupplicates(8)
+	;
+
+---Get organization units correspondants (EXCEL file : Entités concernées)
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Worksheet def: getOrganizationUnitsBusiness : Sequence(EXCEL!Cell) =
+	self.ws_table.selectColumnWithoutDupplicates(10)
+	;
+
+---Get organization units DSI entity (EXCEL file : Pôles DSI) for a service
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getOrganizationUnitsDSIForAService : Sequence(EXCEL!Cell) =
+	self.c_row.r_table.t_worksheet.getOrganizationUnitsDSI
+		-> select(orgUnitDSI | orgUnitDSI.getServiceName = self.getServiceName)
+	;
+
+---Get organization units Business entity (EXCEL file : Entités concernées) for a service
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getOrganizationUnitsBusinessForAService : Sequence(EXCEL!Cell) =
+	self.c_row.r_table.t_worksheet.getOrganizationUnitsBusiness
+		-> select(orgUnitBusiness | orgUnitBusiness.getServiceName = self.getServiceName)
+	;
+
+---Get the name of ONE of the organization units as Entite (EXCEL file : Entités concernées)
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getNameOfOneOrganizationUnitEntite : String =
+	self.getAnotherCellStringValueOnSameRow(10)
+	;
+
+---Get the name of ONE of the organization units as correspondant DSI (EXCEL file : Pôle DSI)
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getNameOfOrganizationUnitPoleDSI: String =
+	self.getAnotherCellStringValueOnSameRow(8)
+	;
+
+--***************Services***************
+---Get all services in a worksheet (EXCEL file : Fonctions)
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Worksheet def: getAllServices : Sequence(EXCEL!Cell) =
+	self.ws_table.selectColumnWithoutDupplicates(5)
+	;
+
+---Get all services in a worksheet (EXCEL file : Fonctions)
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Worksheet def: getAllServicesWithDupplicates : Sequence(EXCEL!Cell) =
+	self.ws_table.selectColumn(5)
+	;
+
+---Get all services containers in a worksheet (EXCEL file : Domaine fonctionnel)
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Worksheet def: getAllServicesContainers : Sequence(EXCEL!Cell) =
+	self.ws_table.selectColumnWithoutDupplicates(3)
+	;
+
+---Get logical application components in a worksheet (EXCEL file : Service applicatifs) for one containing service
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getApplicativeServicesForOneContainerService : Sequence(EXCEL!Cell) =
+	self.c_row.r_table.t_worksheet.getAllLogicalApplicationComponents --all 'Type'
+				-> select (applicativeService | 
+								applicativeService.getServiceContainerName = self.getCellValueToString									
+				)
+	;
+
+---Get services (EXCEL file : Fonctions) from any cell for one process
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getServicesForProcess : Sequence(EXCEL!Cell) =
+	self.c_row.r_table.t_worksheet.getAllServicesWithDupplicates
+		-> select(service | service.getProcesseName = self.getProcesseName
+		)
+	;
+
+---Get the corresponding process orchestrating the service (EXCEL file : Fonctions) from any cell for one service
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getOrchestratingProcess : Sequence(EXCEL!Cell) =
+	--Selection of all processes
+	self.c_row.r_table.t_worksheet.getAllProcesses
+		--selection of all services for one process
+		-> select(process | process.getServicesForProcess
+							--selection of the process with a service with the same name of self (service)
+		                    -> select(serviceOfProcess | serviceOfProcess.getCellValueToString = self.getCellValueToString) -> notEmpty()
+		)
+		-> flatten()
+	;
+
+---Get services (EXCEL file : Fonctions) from any cell for one service container
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getServicesForServiceContainer : Sequence(EXCEL!Cell) =
+	self.c_row.r_table.t_worksheet.getAllServices
+		-> select(service | service.getServiceContainerName.deleteFinishLineKeys = self.getServiceContainerName.deleteFinishLineKeys)
+	;
+
+---Get services containers (EXCEL file : Domaines fonctionnel) from any cell for one service
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getServiceContainerForAService : Sequence(EXCEL!Cell) =
+	self.c_row.r_table.t_worksheet.getAllServicesContainers
+		-> select(serviceContainer | serviceContainer.getServiceContainerName.deleteFinishLineKeys = self.getServiceContainerName.deleteFinishLineKeys)
+	;
+
+---Get services (EXCEL file : Fonctions) for Organization Units as Entite
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getServicesForOrganUnitBusiness: Sequence(EXCEL!Cell) =
+	self.c_row.r_table.t_worksheet.getAllServices
+		-> select(service | service.getNameOfOneOrganizationUnitEntite = self.getNameOfOneOrganizationUnitEntite)
+	;
+
+---Get services (EXCEL file : Fonctions) for Organization Units as Pole DSI
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getServicesForOrganUnitDSI: Sequence(EXCEL!Cell) =
+	self.c_row.r_table.t_worksheet.getAllServices
+		-> select(service | service.getNameOfOrganizationUnitPoleDSI = self.getNameOfOrganizationUnitPoleDSI)
+	;
+
+---Get service attributes
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getAllServiceAttributes : Sequence(EXCEL!Cell) =
+	Sequence{self.getAnotherCellStringValueOnSameRow(22), self.getAnotherCellStringValueOnSameRow(23)}
+	;
+
+---Get the titles (==> first row) of the service attributes
+---@context EXCEL!Cell
+---@return : Sequence(String)
+helper context EXCEL!Cell def: getServiceColumnTitle : Sequence(String) =
+	self.c_row.r_table.selectTitle(Sequence{22,23})
+	;	
+
+---Get service name (EXCEL file : Fonction)
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getServiceName : String =
+	self.getAnotherCellStringValueOnSameRow(5)
+	;
+
+---Get service container name (EXCEL file : Domaine fonctionnel) from any cell
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getServiceContainerName : String =
+	self.getAnotherCellStringValueOnSameRow(3)
+	;
+
+---Get applicative service name (EXCEL file : type d'application) from any cell
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getNameOfOneApplicativeService : String =
+	self.getAnotherCellStringValueOnSameRow(6)
+	;
+
+--***************Processes***************
+---Get all processes in a worksheet
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Worksheet def: getAllProcesses : Sequence(EXCEL!Cell) =
+	self.ws_table.selectColumnWithoutDupplicates(7)
+	;
+
+---Get all processes for a service
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getProcessesForAService : Sequence(EXCEL!Cell) =
+	self.c_row.r_table.t_worksheet.getAllProcesses
+		-> select(process | process.getServiceName = self.getServiceName)
+	;
+
+---Get all processes for an actor
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getProcessesForAnActor : Sequence(EXCEL!Cell) =
+	self.c_row.r_table.t_worksheet.getAllProcesses
+		-> select(process | (process.getNameOfDSICorrespondentActors = self.getNameOfDSICorrespondentActors)
+							or
+							(process.getNameOfBusinessCorrespondentActors = self.getNameOfBusinessCorrespondentActors)
+		)	
+	;
+
+---Get all processes for a DSI actor
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getProcessesForADSIActor : Sequence(EXCEL!Cell) =
+	self.c_row.r_table.t_worksheet.getAllProcesses
+		-> select(process | process.getNameOfDSICorrespondentActors = self.getNameOfDSICorrespondentActors)	
+	;
+
+---Get all processes for a Business actor
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getProcessesForABusinessActor : Sequence(EXCEL!Cell) =
+	self.c_row.r_table.t_worksheet.getAllProcesses
+		-> select(process | process.getNameOfBusinessCorrespondentActors = self.getNameOfBusinessCorrespondentActors)	
+	;
+
+---Get process name (EXCEL file : Num�ro du processus) from any cell
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getProcesseName : String =
+	self.getAnotherCellStringValueOnSameRow(7)
+	;
+
+--***************Actors***************
+---Get all actors in a worksheet (EXCEL file : Correspondant métiers, Correspondant DSI,
+---								  Liste des sites utilisant l'application)
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Worksheet def: getAllActors : Sequence(EXCEL!Cell) =
+	self.getAllUsingApplicativeSystemActors
+		-> union (self.getAllCorrespondantActors)
+	;
+
+---Get all correspondant actors in a worksheet (EXCEL file : Correspondant métiers, Correspondant DSI)
+
+---(Used by other helpers, not in rules)
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Worksheet def: getAllCorrespondantActors : Sequence(EXCEL!Cell) =
+	self.ws_table.selectColumnWithoutDupplicates(11)
+		-> union (self.ws_table.selectColumn(9))
+	;
+
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Worksheet def: getAllCorrespondingBusinessActors : Sequence(EXCEL!Cell) =
+	self.ws_table.selectColumn(11)
+	;
+
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Worksheet def: getAllCorrespondingDSIActors : Sequence(EXCEL!Cell) =
+	self.ws_table.selectColumn(9)
+	;
+
+---Get all actors using application in a worksheet (EXCEL file : Liste des sites utilisant l'application)
+
+---(Used by other helpers, not in rules)
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Worksheet def: getAllUsingApplicativeSystemActors : Sequence(EXCEL!Cell) =
+	self.ws_table.selectColumn(14)
+	;
+
+ ---Get actors as Entite (EXCEL file : Correspondant métiers)
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getOrganizationUnitsActorConcernedEntity : Sequence(EXCEL!Cell) =
+	self.c_row.r_table.selectColumnWithoutDupplicates(11)
+		-> select(actor | actor.getNameOfOneOrganizationUnitEntite = self.getNameOfOneOrganizationUnitEntite)
+	;
+
+---Get actors as DSI correspondant (EXCEL file : Correspondant DSI) 
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getOrganizationUnitsActorDSICorrespondant : Sequence(EXCEL!Cell) =
+	self.c_row.r_table.selectColumnWithoutDupplicates(9)
+		-> select(actor | actor.getNameOfOrganizationUnitPoleDSI = self.getNameOfOrganizationUnitPoleDSI)
+	;
+
+---Get all actors for an applicative system from any cell
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getActorsForAnApplicativeSystems : Sequence(EXCEL!Cell) =
+	self.c_row.r_table.t_worksheet.getAllActors
+		-> select(actor | actor.getPhysicalApplicationComponentAppSystemName = self.getPhysicalApplicationComponentAppSystemName)
+	;
+
+---Get all actors using an applicative system for an applicative system from any cell
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getActorsUsingAppSysForAnApplicativeSystems : Sequence(EXCEL!Cell) =
+	self.c_row.r_table.t_worksheet.getAllUsingApplicativeSystemActors
+		--Several physic. applic. compo. could have the same users
+		-> select(actor | 	actor.getPhysicalApplicationComponentAppSystemName = self.getPhysicalApplicationComponentAppSystemName)		
+	;
+
+---Get all corresponding actors for an applicative system from any cell
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getCorrespondantActorsForAnApplicativeSystems : Sequence(EXCEL!Cell) =
+	self.c_row.r_table.t_worksheet.getAllCorrespondantActors
+		-> select(actor | actor.getPhysicalApplicationComponentAppSystemName = self.getPhysicalApplicationComponentAppSystemName)
+	;
+
+---Get all Business corresponding actors for an applicative system from any cell
+---@context EXCEL!Cell
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Cell def: getBusinessCorrespondingActorForAnApplicativeSystems : Sequence(EXCEL!Cell) =
+	self.c_row.r_table.t_worksheet.getAllCorrespondingBusinessActors
+		-> select(actor | actor.getPhysicalApplicationComponentAppSystemName = self.getPhysicalApplicationComponentAppSystemName)
+	;
+
+---Get name of actors which are DSI correspondent (EXCEL file : Correspondant DSI) from any cell
+
+---(Used by other helpers, not in rules)
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getNameOfDSICorrespondentActors : String =
+	self.getAnotherCellStringValueOnSameRow(9)
+	;
+
+---Get name of actors which are business correspondent (EXCEL file : Correspondant Metiers) from any cell
+
+---(Used by other helpers, not in rules)
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getNameOfBusinessCorrespondentActors : String =
+	self.getAnotherCellStringValueOnSameRow(11)
+	;
+
+---Get name of actors which using applicative systems (EXCEL file : Liste des sites utilisant l'application) from any cell
+
+---(Used by other helpers, not in rules)
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getNameOfUsingApplicativeSystemActors : String =
+	self.getAnotherCellStringValueOnSameRow(14)
+	;
+
+---Get name of actors which are correspondant (EXCEL file : Liste des sites utilisant l'application) from any cell
+
+---(Used by other helpers, not in rules)
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getNameOfCorrespondantActors : String =
+	self.getAnotherCellStringValueOnSameRow(9)
+	;

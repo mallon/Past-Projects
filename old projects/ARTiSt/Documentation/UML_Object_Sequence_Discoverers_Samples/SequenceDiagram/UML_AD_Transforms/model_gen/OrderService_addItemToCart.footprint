@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<footprint:Footprint xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:footprint="http://footprint/1.0" activity="OrderService::addItemToCart">
+  <classes name="OrderService"/>
+  <classes name="Customer"/>
+  <classes name="Item"/>
+  <classes name="CartItem"/>
+  <classes name="CartItem"/>
+  <classes name="petstore"/>
+  <classes name="OrderService"/>
+  <properties name="CartItem.quantity"/>
+  <properties name="CartItem.quantity"/>
+  <properties name="OrderService.entityManager"/>
+  <operations name="OrderService.addItemToCart()"/>
+  <operations name="petstore.add()"/>
+</footprint:Footprint>

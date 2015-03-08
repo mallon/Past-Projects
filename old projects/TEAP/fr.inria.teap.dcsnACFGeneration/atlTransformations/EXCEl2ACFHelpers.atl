@@ -1,0 +1,674 @@
+-- @nsURI ACFEXTENDED=http://www.inria.org/atlanmod/contentfwkextended
+-- @nsURI ACF=http://www.obeonetwork.org/dsl/togaf/contentfwk/9.0.0
+-- @nsURI EXCEL=xls
+
+-- ******************************************************************************
+-- Copyright (c) 2013 INRIA. 
+-- All rights reserved. This program and the accompanying materials 
+-- are made available under the terms of the Eclipse Public License v1.0 
+-- which accompanies this distribution, and is available at
+-- http://www.eclipse.org/legal/epl-v10.html
+-- 
+-- Contributors: 
+-- 	INRIA - Initial implementation
+--  
+-- ******************************************************************************
+
+--@name EXCEL2ACFHelpers
+--@author Matthieu Allon (matthieu.allon <at> gmail.com)
+
+--@description EXCEL to TOGAF (ACF) helpers library
+
+library EXCEL2ACFHelpers;
+
+helper def : PhysicalTechnologyComponents : Sequence(ACFEXTENDED!TranslatedElement) = 
+	Sequence{}
+;
+
+helper def : LogicalApplicationComponents : Sequence(EXCEL!Cell) = 
+	Sequence{}
+;
+
+helper def : PhysicalApplicationComponents : Sequence(EXCEL!Cell) = 
+	Sequence{}
+;
+
+helper def : Domains : Sequence(EXCEL!Cell) = 
+	Sequence{}
+;
+
+---Sequence of acf labels to in put in the container of Enterprise Architecture
+---@return : Sequence(ACFEXTENDED!LabelExtended)
+helper def : Services : Sequence(EXCEL!Cell) = 
+	Sequence{}
+;
+
+helper def : DataEntities : Sequence(EXCEL!Cell) = 
+	Sequence{}
+;
+
+helper def : Functions : Sequence(EXCEL!Cell) = 
+	Sequence{}
+;
+
+---Sequence of acf labels to in put in the container of Enterprise Architecture
+---@return : Sequence(ACFEXTENDED!LabelExtended)
+helper def : Roles : Sequence(EXCEL!Cell) = 
+	Sequence{}
+;
+
+---Sequence of acf labels to in put in the container of Enterprise Architecture
+---@return : Sequence(ACFEXTENDED!LabelExtended)
+helper def : Processes : Sequence(EXCEL!Cell) = 
+	Sequence{}
+;
+
+---Sequence of acf labels to in put in the container of Enterprise Architecture
+---@return : Sequence(ACFEXTENDED!LabelExtended)
+helper def : Actors : Sequence(EXCEL!Cell) = 
+	Sequence{}
+;
+
+---Sequence of acf labels to in put in the container of Enterprise Architecture
+---@return : Sequence(ACFEXTENDED!LabelExtended)
+helper def : Documents : Sequence(ACFEXTENDED!TranslatedElement) = 
+	Sequence{}
+;
+
+---Get the string value of a cell without finishing line keys
+---@context EXCEL!Cell
+---@return : String
+helper context EXCEL!Cell def: getCellValueToString : String =
+	self.getCellValue.toString().deleteFinishLineKeys
+	;			
+
+---Because some users add caracters on some values (e.g. put the enter key after 'O' 'for lifeCycleStatus')
+---@context String
+---@return : String
+helper context String def: deleteFinishLineKeys : String =	
+	if (self.endsWith('\r') or self.endsWith('\n')) then
+		self.substring(1, self.size()-1).deleteFinishLineKeys
+	else
+		if (self.endsWith('.0')) then
+			self.substring(1, self.size()-2)
+		else
+			self
+		endif	
+	endif
+	;
+
+---Get the value of a cell
+---@context EXCEL!Cell
+---@return : EXCEL!ValueType
+helper context EXCEL!Cell def: getCellValue : EXCEL!ValueType =
+	if (not self.c_data.oclIsUndefined()) then
+		self.c_data.value.value
+	else
+		OclUndefined
+	endif	
+	;	
+
+---Column selection of a WSTable	
+---@context EXCEL!Table
+---@param Integer
+---@param Integer
+---@return : Excel!Cell
+helper context EXCEL!Table def: selectCell(rowIndex : Integer, columnIndex : Integer) : Excel!Cell =
+		if (rowIndex = 1) then
+			self.t_rows.at(2).r_cells.at(columnIndex)
+		else 
+			self.t_rows.at(rowIndex).r_cells.at(columnIndex)
+		endif
+	;
+
+---Get one cell of the first row ==> Titles
+---@context EXCEL!Table
+---@param Sequence(Integer)
+---@return : Sequence(String)
+helper context EXCEL!Table def: selectTitle(seqColumnIndex : Sequence(Integer)) : Sequence(String) =
+	seqColumnIndex 
+		-> collect(iter | self.t_rows.at(1).r_cells.at(iter).getCellValueToString)		
+	;
+
+---Get the row index of a cell
+---@context EXCEL!Cell
+---@return : Integer
+helper context EXCEL!Cell def: getRowIndex : Integer =
+	self.c_row.r_table.t_rows -> indexOf(self.getRow)
+	;
+
+---Get the row of a cell
+---@context EXCEL!Cell
+---@return : EXCEL!Table
+helper context EXCEL!Cell def: getRow: EXCEL!Table =
+	self.c_row
+	;
+
+---Get all physical technology components in a worksheet for DI
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Worksheet def: getAllPhysicalTechnologyComponents : Sequence(EXCEL!Cell) =
+	self.ws_table.selectColumn(4)
+		-> select(cell | cell.isPhysicalTechnologyComponentCOTEC
+						 or
+						 cell.isPhysicalTechnologyComponentBDDAPP
+						 or
+						cell. isPhysicalTechnologyComponentSAT
+						 or
+						 cell.isPhysicalTechnologyComponentNIST
+						 or
+						 cell.isPhysicalTechnologyComponentZMLDSS
+		)
+;
+
+---Get all ISS
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Worksheet def: getAllInformationSystemServices : Sequence(EXCEL!Cell) =
+	let seqLogAppCompoContext : Sequence(ACFEXTENDED!InformationSystemService) = Sequence{}
+	in 	
+		self.ws_table
+		  .t_rows
+		  -> collect(row | 	if (row.isInfoSystemService) then
+		  						seqLogAppCompoContext -> append(row)
+		  					else OclUndefined endif
+		  )		
+;
+
+
+---Get the cells of a column
+---@context EXCEL!Table
+---@param Integer
+---@return : Sequence(EXCEL!Cell)
+helper context EXCEL!Table def: selectColumn(columnIndex : Integer) : Sequence(EXCEL!Cell) =
+	self.t_rows -> subSequence(2, self.t_rows.size())
+				-> select(row | row.r_cells.at(columnIndex).getCellValueToString <> '')
+				-> collect(row | row.r_cells -> at(columnIndex))
+				-> flatten()
+	;
+
+---Test if the cell is a physical technology component
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Cell def: isPhysicalTechnologyComponent : Boolean =
+	self.c_row.r_cells.at(4).isPhysicalTechnologyComponentCOTEC
+	 or
+	 	self.c_row.r_cells.at(4).isPhysicalTechnologyComponentBDDAPP
+	 or
+		self.c_row.r_cells.at(4). isPhysicalTechnologyComponentSAT
+	 or
+	 	self.c_row.r_cells.at(4).isPhysicalTechnologyComponentNIST
+	 or
+	 	self.c_row.r_cells.at(4).isPhysicalTechnologyComponentZMLDSS
+;
+
+---Test if the cell is a physical technology component as 'COTEC'
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Cell def: isPhysicalTechnologyComponentCOTEC : Boolean =
+	self.getCellValueToString = 'COTEC'
+;
+
+---Test if the cell is a physical technology component as 'BDD' or 'APP'
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Cell def: isPhysicalTechnologyComponentBDDAPP : Boolean =
+	self.getCellValueToString = 'BDD'
+	or
+	self.getCellValueToString = 'APP'
+;
+
+---Test if the cell is a physical technology component as 'SAT'
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Cell def: isPhysicalTechnologyComponentSAT : Boolean =
+	self.getCellValueToString = 'SAT'
+;
+
+---Test if the cell is a physical technology component as 'NIST'
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Cell def: isPhysicalTechnologyComponentNIST : Boolean =
+	self.getCellValueToString = 'NIST'
+;
+
+---Test if the cell is a physical technology component as ZONE' / 'MACHINE' / 'LDOM' / 'DC' /
+--- 'SWITCH' / 'SERVEUR'
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Cell def: isPhysicalTechnologyComponentZMLDSS : Boolean =
+	self.getCellValueToString = 'ZONE'
+	or
+	self.getCellValueToString = 'MACHINE'
+	or
+	self.getCellValueToString = 'LDOM'
+	or
+	self.getCellValueToString = 'DC'
+	or
+	self.getCellValueToString = 'SWITCH'
+	or
+	self.getCellValueToString = 'SERVEUR'
+;
+
+---Get all the logical application components
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Row)
+helper context EXCEL!Worksheet def: getAllLogicalApplicationComponents : Sequence(EXCEL!Row) =	
+	let seqLogAppCompoContext : Sequence(ACFEXTENDED!LogicalApplicationComponent) = Sequence{}
+	in 	
+		self.ws_table
+		  .t_rows
+		  -> collect(row | 	if (row.isLogicalApplicationComponent) then
+		  						seqLogAppCompoContext -> append(row)
+		  					else OclUndefined endif
+		  )					
+	;
+
+---Get all the physical application components
+---@context EXCEL!Worksheet
+---@return : Sequence(EXCEL!Row)
+helper context EXCEL!Worksheet def: getAllPhysicalApplicationComponents : Sequence(EXCEL!Row) =	
+	let seqLogAppCompoContext : Sequence(ACFEXTENDED!ExtendedPhysicalApplicationComponent) = Sequence{}
+	in 	
+		self.ws_table
+		  .t_rows
+		  -> collect(row | 	if (row.isPhysicalApplicationComponent) then
+		  						seqLogAppCompoContext -> append(row)
+		  					else OclUndefined endif
+		  )					
+	;
+
+helper context EXCEL!Cell def : getPhysicalTechnologyComponents : Sequence(ACFEXTENDED!TranslatedElement) = 
+	thisModule.PhysicalTechnologyComponents
+		-> select(elementPTC | elementPTC.name <> 
+								self.getWorksheet.ws_table.selectCell(self.getRowIndex, 4)
+														  .getCellValueToString
+		)
+;
+
+helper context EXCEL!Cell def : refInvokeCellContextHelpers(helperName : String) : Boolean = 
+	if (helperName = 'isPhysicalTechnologyComponent') then
+		self.isPhysicalTechnologyComponent
+	else
+		if (helperName = 'isPhysicalTechnologyComponentCOTEC') then
+			self.isPhysicalTechnologyComponentCOTEC
+		else
+			if (helperName = 'isPhysicalTechnologyComponentBDDAPP') then
+				self.isPhysicalTechnologyComponentBDDAPP
+			else
+				if (helperName = 'isPhysicalTechnologyComponentNIST') then
+					self.isPhysicalTechnologyComponentNIST
+				else
+					if (helperName = 'isPhysicalTechnologyComponentSAT') then
+						self.isPhysicalTechnologyComponentSAT
+					else
+						if (helperName = 'isPhysicalTechnologyComponentZMLDSS') then
+							self.isPhysicalTechnologyComponentZMLDSS
+						else
+							false
+						endif
+					endif
+				endif
+			endif
+		endif	
+	endif	
+;	
+
+helper context EXCEL!Row def : refInvokeRowContextHelpers(helperName : String) : Boolean = 
+	if (helperName = 'isPhysicalApplicationComponent') then
+		self.isPhysicalApplicationComponent
+	else
+		if (helperName = 'isLogicalApplicationComponent') then
+			self.isLogicalApplicationComponent
+		else
+			if (helperName = 'isInfoSystemService') then
+				self.isInfoSystemService
+			else
+				if (helperName = 'isDataEntity') then
+					self.isDataEntity
+				else
+					if (helperName = 'isDomain') then
+						self.isDomain
+					else
+						if (helperName = 'isService') then
+							self.isService
+						else
+							if (helperName = 'isFunction') then
+								self.isFunction
+							else
+								if (helperName = 'isProcess') then
+									self.isProcess
+								else
+									if (helperName = 'isDocument') then
+										self.isDocument
+									else
+										if (helperName = 'isRole') then
+											self.isRole
+										else
+											false
+										endif
+									endif
+								endif
+							endif
+						endif
+					endif
+				endif
+			endif
+		endif	
+	endif	
+;
+
+helper context String def: getComponentXA2B(helperToTestCellType : String, conceptualLevelColumn : Integer, 
+																		classificationColumn : Integer) : Sequence(EXCEL!Cell) =
+	let seqCellsLinked : Sequence(EXCEL!Cell) = Sequence{}
+	 in	 	
+		self.searchObjectIDInLinkWorksheetA2B
+				-> collect(row | 
+							let currentCellRoleA : EXCEL!Cell = 
+								let correspRow : EXCEL!Row =
+									row.r_cells.at(conceptualLevelColumn).getCellValueToString
+									.searchObjectIDInConceptualLevelWorksheet
+									 -> first() 	
+								in		
+									if (not correspRow.oclIsUndefined()) then
+										correspRow.r_cells.at(classificationColumn)
+									else OclUndefined endif
+							in	
+							if (not currentCellRoleA.oclIsUndefined()) then 																					
+								if (currentCellRoleA
+										.c_row.r_cells.at(classificationColumn)
+										.refInvokeCellContextHelpers(helperToTestCellType))then
+									seqCellsLinked -> append(currentCellRoleA)
+								else OclUndefined endif
+							else OclUndefined endif		
+			)
+			-> flatten()
+;	
+
+helper context String def: getComponentXB2A(helperToTestRowType : String, conceptualLevelColumn : Integer, 
+																		classificationColumn : Integer) : Sequence(EXCEL!Cell) =
+	let seqCellsLinked : Sequence(EXCEL!Row) = Sequence{}
+		 in
+			self.searchObjectIDInLinkWorksheetB2A
+					-> collect(row | 
+								let currentCellRoleA : EXCEL!Cell = 
+									let correspRow : EXCEL!Row =
+										row.r_cells.at(conceptualLevelColumn).getCellValueToString.
+															searchObjectIDInConceptualLevelWorksheet
+										 -> first() 	
+									in		
+										if (not correspRow.oclIsUndefined()) then
+											correspRow.r_cells.at(classificationColumn)
+										else OclUndefined endif	
+								in	
+								if (not currentCellRoleA.oclIsUndefined()) then 																					
+									if (currentCellRoleA.c_row.refInvokeRowContextHelpers(helperToTestRowType))then
+										if (not currentCellRoleA.c_row.isInSequenceRow(seqCellsLinked)) then
+											seqCellsLinked -> append(currentCellRoleA.c_row)
+										else OclUndefined endif	
+									else OclUndefined endif
+								else OclUndefined endif		
+				)
+				-> flatten()	
+;			
+	 
+helper context String def: getPhysicTechnicCompoCOTEC : Sequence(EXCEL!Cell) =
+	self.getComponentXA2B('isPhysicalTechnologyComponentCOTEC', 6, 4)
+;	
+
+
+helper context String def: getPhysicTechnicCompoBDDAPP : Sequence(EXCEL!Cell) =
+	self.getComponentXA2B('isPhysicalTechnologyComponentBDDAPP', 6, 4)
+;
+
+helper context String def: getPhysicTechnicCompoNIST : Sequence(EXCEL!Cell) =
+	self.getComponentXA2B('isPhysicalTechnologyComponentNIST', 6, 4)
+;	 
+	 
+helper context String def: getPhysicTechnicCompoSAT : Sequence(EXCEL!Cell) =
+	self.getComponentXA2B('isPhysicalTechnologyComponentSAT', 6, 4)
+;	
+	 
+helper context String def: getPhysicTechnicCompoZMLDSS : Sequence(EXCEL!Cell) =
+	self.getComponentXA2B('isPhysicalTechnologyComponentZMLDSS', 6, 4)
+;		
+
+helper context EXCEL!Cell def : getLogicalApplicationComponents : Sequence(ACFEXTENDED!TranslatedElement) = 
+	--thisModule.LogicalApplicationComponents 
+	self.getWorksheet.getAllLogicalApplicationComponents
+		-> select(element | element.name = 
+								self.c_row.r_cells.at(6).getCellValueToString
+		)
+;	 
+
+helper context String def: getApplicationComponentsRealized : Sequence(EXCEL!Row) =
+	self.getComponentXB2A('isPhysicalApplicationComponent', 4, 5)
+;	 	
+
+helper context String def: getLogicalApplicationComponentsCommunicate : Sequence(EXCEL!Cell) =
+	self.getComponentXA2B('isLogicalApplicationComponent', 6, 5)
+;	 
+
+helper context String def: getInformationSystemServicesImplements : Sequence(EXCEL!Row) =
+	self.getComponentXB2A('isInfoSystemService', 4, 5)
+;	
+	
+helper context String def: getPhysicalAppCompoBased : Sequence(EXCEL!Row) =
+	self.getComponentXA2B('isPhysicalApplicationComponent', 6, 5)
+;		 
+
+helper context String def: getDataEntitiesOperates : Sequence(EXCEL!Row) =
+	self.getComponentXB2A('isDataEntity', 4, 5)
+;		 
+
+helper context String def: getPhysicalTechnoComponentsRealized : Sequence(EXCEL!Row) =
+	self.getComponentXA2B('isPhysicalTechnologyComponent', 6, 5)
+;		 
+
+helper context String def: getServicesConsumesAsDomains : Sequence(EXCEL!Cell) =
+	self.getComponentXB2A('isDomain', 4, 5)
+;	 	 
+
+helper context String def: getFunctionsForDomainsCommunicate : Sequence(EXCEL!Row) =
+	self.getComponentXA2B('isDomain', 6, 5)
+;	 	 
+
+helper context String def: getServicesConsumesAsServices : Sequence(EXCEL!Row) =
+	self.getComponentXA2B('isService', 6, 5)
+;	 
+
+helper context String def: getFunctionsDecompose : Sequence(EXCEL!Row) =
+	self.getComponentXA2B('isFunction', 6, 5)
+;		 
+
+--***************Worksheet***************
+---@context String
+---@return : String
+helper context String def: searchObjectIDInLinkWorksheetB2A : EXCEL!Row =	
+	EXCEL!Worksheet.allInstancesFrom('IN')
+		-> select(worksheet | worksheet.name.startsWith('Lien') or worksheet.name.startsWith('LIEN'))
+		-> collect(worksheet | worksheet.ws_table.t_rows)
+		-> flatten()
+		-> select(row | row.r_cells.at(6).getCellValueToString = self)
+	;
+
+---@context String
+---@return : String
+helper context String def: searchObjectIDInLinkWorksheetA2B : EXCEL!Row =	
+	EXCEL!Worksheet.allInstancesFrom('IN')
+		-> select(worksheet | worksheet.name.startsWith('Lien') or worksheet.name.startsWith('LIEN'))
+		-> collect(worksheet | worksheet.ws_table.t_rows)
+		-> flatten()
+		-> select(row | row.r_cells.at(4).getCellValueToString = self)
+	;
+
+---@context String
+---@return : String
+helper context String def: searchObjectIDInConceptualLevelWorksheet : EXCEL!Row =	
+	EXCEL!Worksheet.allInstancesFrom('IN')
+		-> select(worksheet | worksheet.name.startsWith('Couche') or worksheet.name.startsWith('DOCUMENT'))
+		-> collect(worksheet | worksheet.ws_table.t_rows)
+		-> flatten()
+		-> select(row | row.r_cells.at(5).getCellValueToString = self)
+	;	 
+	 
+	 
+helper context EXCEL!Row def : getServicesAsDomains : Sequence(ACFEXTENDED!TranslatedElement)  = 
+	thisModule.Domains
+		-> select(element | element.name <> 
+								self.r_cells.at(4).getCellValueToString
+		)
+;
+
+helper context String def: getDomainsForFunctions : Sequence(EXCEL!Row) =
+	self.getComponentXA2B('isDomain', 6, 5)
+;	
+	 
+helper context String def: getProcessesFollow : Sequence(EXCEL!Row) =
+	self.getComponentXA2B('isProcess', 6, 5)
+;	 	 
+
+helper context String def: getDocumentProcess : Sequence(EXCEL!Row) =
+	self.getComponentXB2A('isDocument', 4, 5)
+;		 
+	
+helper context String def: getRoles : Sequence(EXCEL!Row) =
+	self.getComponentXA2B('isRole', 6, 5)
+;	
+	
+helper context String def: getLogicalApplicationProcess : Sequence(EXCEL!Row) =
+	self.getComponentXA2B('isLogicalApplicationComponent', 6, 5)
+;	 	 
+	 
+---To test if a cell is an Actor
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Row def: isActor : Boolean =
+	self.r_cells.at(4).getCellValueToString = 'ACTEUR'
+;
+
+---To test if a cell is a domain
+---@context EXCEL!Row
+---@return : Boolean
+helper context EXCEL!Row def: isDomain : Boolean =
+	self.r_cells.at(4).getCellValueToString = 'DOMAINE'
+;
+
+---To test if a cell is a function
+---@context EXCEL!Row
+---@return : Boolean
+helper context EXCEL!Row def: isFunction : Boolean =
+	self.r_cells.at(4).getCellValueToString = 'FONCTION'
+;
+
+---Test if the cell is a logical application component
+---@context EXCEL!Row
+---@return : Boolean
+helper context EXCEL!Row def: isLogicalApplicationComponent : Boolean =
+	self.isLogicalApplicationComponentSA
+	or
+	self.isLogicalApplicationComponentINAPP
+	or
+	self.isLogicalApplicationComponentINTEINTF
+	;
+
+---Test if the cell is a logical application component 
+---@context EXCEL!Row
+---@return : Boolean
+helper context EXCEL!Row def: isLogicalApplicationComponentINTEINTF : Boolean =
+	self.r_cells.at(4).getCellValueToString = 'INTEINTF'
+;
+
+
+---Test if the cell is a logical application component
+---@context EXCEL!Row
+---@return : Boolean
+helper context EXCEL!Row def: isLogicalApplicationComponentINAPP : Boolean =
+	self.r_cells.at(4).getCellValueToString = 'INAPP'
+;
+
+---Test if the cell is a logical application component as applicative service
+---@context EXCEL!Row
+---@return : Boolean
+helper context EXCEL!Row def: isLogicalApplicationComponentSA : Boolean =
+	self.r_cells.at(4).getCellValueToString = 'SA'
+;
+
+---To test if a cell is an information system service
+---@context EXCEL!Row
+---@return : Boolean
+helper context EXCEL!Row def: isInfoSystemService : Boolean =
+	self.r_cells.at(4).getCellValueToString = 'SERAPP'
+;
+
+---Test if the cell is a physical application component
+---@context EXCEL!Row
+---@return : Boolean
+helper context EXCEL!Row def: isPhysicalApplicationComponent : Boolean =
+	self.r_cells.at(4).getCellValueToString = 'ISA'	
+	or
+	self.r_cells.at(4).getCellValueToString = 'INTE'
+	or
+	self.r_cells.at(4).getCellValueToString = 'PROD'
+	or
+	self.r_cells.at(4).getCellValueToString = 'QUA'
+	or
+	self.r_cells.at(4).getCellValueToString = 'PREPR'
+;
+
+---To test if a cell is a process
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Row def: isProcess : Boolean =
+	self.r_cells.at(4).getCellValueToString = 'ACTIVITE'
+;
+
+---To test if a cell is a product
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Row def: isProduct : Boolean =
+	self.r_cells.at(4).getCellValueToString = 'CONTEXTE'
+;
+
+---To test if a cell is a role
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Row def: isRole : Boolean =
+	self.r_cells.at(4).getCellValueToString = 'ROLE'
+;
+
+---To test if a cell is a service
+---@context EXCEL!Row
+---@return : Boolean
+helper context EXCEL!Row def: isService : Boolean =
+	self.r_cells.at(4).getCellValueToString = 'SERVICE'
+;
+
+---To test if a cell is a document
+---@context EXCEL!Cell
+---@return : Boolean
+helper context EXCEL!Row def: isDocument : Boolean =
+	self.r_cells.at(4).getCellValueToString = 'DOCUMENT'
+;
+
+---Test if the cell is a data entity
+---@context EXCEL!Row
+---@return : Boolean
+helper context EXCEL!Row def: isDataEntity : Boolean =
+	self.r_cells.at(4).getCellValueToString = 'DONNEE'
+;
+
+---Get the worksheet of a cell
+---@context EXCEL!Cell
+---@return : EXCEL!Worksheet
+helper context EXCEL!Cell def: getWorksheet : EXCEL!Worksheet =
+	self.c_row.r_table.t_worksheet
+	;
+
+---Test if the row is in a sequence
+---@context EXCEL!Row
+---@param Sequence(EXCEL!Row)
+---@return : Boolean
+helper context EXCEL!Row def: isInSequenceRow(seqElements : Sequence(EXCEL!Row)) : Boolean =
+	seqElements -> includes(self)
+;

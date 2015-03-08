@@ -1,0 +1,654 @@
+-- @nsURI ACF=http://www.obeonetwork.org/dsl/togaf/contentfwk/9.0.0
+-- @nsURI IMPORT=http://www.obeo.fr/smartea/import/1.0
+-- @nsURI SVG=SVG
+
+-- ******************************************************************************
+-- Copyright (c) 2013 INRIA. 
+-- All rights reserved. This program and the accompanying materials 
+-- are made available under the terms of the Eclipse Public License v1.0 
+-- which accompanies this distribution, and is available at
+-- http://www.eclipse.org/legal/epl-v10.html
+-- 
+-- Contributors: 
+-- 	INRIA - Initial implementation
+--  
+-- ******************************************************************************
+
+--@name ACFImport2SVGHelpers
+--@author Matthieu Allon (matthieu.allon <at> gmail.com)
+
+--@description ACF-IMPORT (Import for SmartEA) to SVG helpers library
+
+library ACFImport2SVGHelpers;
+
+--***************SVG elements***************
+---------------------------------
+--- Creates the SVG file with one
+---svg tag
+---------------------------------
+---@return : SVG!SvgFile
+helper def: svgFile : SVG!SvgFile = OclUndefined;
+
+---------------------------------
+--- Get last SVG text element
+---created
+---------------------------------
+---@return : SVG!Text
+helper def: lastSVGTextElement : SVG!Text = OclUndefined;
+
+--***************Collections manipulation***************
+------------------------------------------------------------------
+---To replace a value in a sequence
+------------------------------------------------------------------
+---@param Sequence(OclAny) : manipulated sequence
+---@param Integer : index of value to replace
+---@param String : new value
+---@return Sequence(OclAny)
+helper def: replace(seqAny : Sequence(OclAny), index : Integer, value : String) : Sequence(OclAny) =	
+	seqAny 	-> excluding(seqAny -> at(index))
+			-> insertAt(index, value)
+	;
+
+------------------------------------------------------------------
+---Equivalent 'intersection' of 'Set' but for all collection types
+------------------------------------------------------------------
+---@param Collection(ACF!Element) : first collection to control
+---@param Collection(ACF!Element) : second collection to control
+---@return Collection(ACF!Element)
+helper def: getObjectsNotInBoth(collOne : Collection(ACF!Element), collTwo : Collection(ACF!Element)) : Collection(ACF!Element) =
+	collOne
+		-> select(elementOne | collTwo -> includes(elementOne))	
+;	
+
+--***************String manipulation***************
+---------------------------------
+---To delete '.0' on some real 
+---numbers
+---------------------------------
+---@context String
+---@return : String
+helper context String def: deleteDotZero : String =	
+	self.regexReplaceAll('[.0]*', '')
+;
+
+---------------------------------
+---To determine if a number
+---finish with a zero
+---------------------------------
+---@context String
+---@return : Boolean
+helper context String def: isEndZero : Boolean =
+	self.endsWith('0')
+;
+
+------------------------------------------------------------------
+---To split a string with defined indices
+------------------------------------------------------------------
+---@context String
+---@param Integer : first indice where splitting started
+---@param Integer : second indice where splitting ended
+---@return : Sequence(String)
+helper context String def: splitWithIndices(beginIndice : Integer, endIndice : Integer) : Sequence(String) =	
+		if (self.size() > endIndice) then
+			let seqString : Sequence(String) = 
+					Sequence{self.substring(beginIndice, endIndice)}
+			in 					
+				if (self.substring(endIndice + 1, self.size()).size() <= 3) then
+					thisModule.replace(seqString, seqString.size(), seqString -> last().concat(self.substring(endIndice + 1, self.size())))
+				else
+					seqString
+						-> union(
+							if (self.substring(endIndice + 1, self.size()) <> '') then 
+								let secondPart : String = self.substring(endIndice + 1, self.size())
+								in secondPart.splitWithIndices(1, endIndice)
+							else 
+									Sequence{} 
+							endif
+						)
+				endif
+		else
+			Sequence{self}
+		endif	
+;
+
+--**************************************************************
+--Coordonnates and positions of elements
+--**************************************************************
+---------------------------------
+---Stock ordinate - 'y' of the 
+---different SVG elements
+---------------------------------
+---@return : Map(String, Real)
+helper def: mapY : Map(String, Real) = 
+	Map{}
+;
+
+---------------------------------
+---Stock abscissa - 'x' of 
+---the different SVG elements
+---------------------------------
+---@return : Map(String, Real)
+helper def: mapX : Map(String, Real) = 
+	Map{}
+;
+
+---------------------------------
+---Ordinate of SVG element
+---------------------------------
+---@return : Real
+helper def: yPosition : Real = 0;
+
+---------------------------------
+---Increment y of user placement
+---when there is other ones
+---------------------------------
+---@context Real
+---@param Integer : number of current user
+---@return : Real
+helper context Real def : userYFrame(nbUser : Integer) : Real =
+	if ((nbUser/2).oclIsTypeOf(Real) and nbUser > 1) then
+		-20
+	else
+		0
+	endif	
+;
+
+---------------------------------
+---Increment x of user placement
+---when there is other ones
+---------------------------------
+---@context Real
+---@param Integer : number of current user
+---@return : Real
+helper context Real def : userXFrame(nbUser : Integer) : Real =
+	if ((nbUser/2).oclIsTypeOf(Real) and nbUser > 1) then
+		20
+	else
+		0
+	endif	
+;
+
+------------------------------------------------------------------
+---Get the correct X or Y (Because 'y' or 'x' is stocked after 
+---first functionnal domain : on the positionning of the
+---first func. domain, lastRealStocked is 'OclUndefined')
+------------------------------------------------------------------
+---@param Real : number of current user
+---@param Real : number of current user
+---@return : Real
+helper def : getXOrY (lastRealStocked : Real, firstY : Real) : Real =
+	if (lastRealStocked.oclIsUndefined() or lastRealStocked = 0) then
+		firstY
+	else
+		lastRealStocked
+	endif	
+;
+
+------------------------------------------------------------------
+--- Determinate coordonnates / size of SVG 'rect' with number of 
+---its own app. systems
+------------------------------------------------------------------
+---@context ACF!Process
+---@param Real
+---@param ACF!BusinessService
+---@return : String
+helper context ACF!Process def: rectSizeCoordOfSVGElement (defaultNumber : Real, functionDomain : ACF!BusinessService) : String = 
+	let appSystems : ACF!PhysicalApplicationComponent = self.getAllAppSystemsForOneProcessAndOneFunctionnalDomain(functionDomain)
+	
+	in (defaultNumber*appSystems.size() + (30*(	if (appSystems.size() > 2) then
+													appSystems.size()-2
+												else
+													appSystems.size()-1
+												endif	
+												)
+											)
+	).toString()				
+;		
+
+---------------------------------
+---Determinate x or y, 
+---considering a gap or not
+---------------------------------
+---@param Real
+---@param Real
+---@param Real
+---@return : Real
+helper def: manageXYAndGap (gap : Real, xY : Real, xyMapValue : Real): Real =
+	if (not xyMapValue.oclIsUndefined()) then
+		xyMapValue + gap
+	else
+		xY
+	endif	
+;
+
+---------------------------------
+---Determinate y, considering a 
+---default gap or not
+---------------------------------
+---@param Real
+---@param Real
+---@return : Real
+helper def: manageYWithoutGap (y : Real, yMapValue : Real): Real =
+	thisModule.manageXYAndGap(150, y, yMapValue)
+;
+
+---------------------------------
+---Determinate x, considering a
+---default gap or not
+---------------------------------
+---@param Real
+---@param Real
+---@return : Real
+helper def: manageXWithoutGap (x : Real, xMapValue : Real): Real =
+	thisModule.manageXYAndGap(110, x, xMapValue)	
+;
+
+--**************************************************************
+--Process
+--**************************************************************
+---------------------------------
+---Number of all processes
+---------------------------------
+---@return : Integer
+helper def : nbProcesses : Integer =
+	0
+;
+
+---------------------------------
+---Get all functionnal domains
+---of a process
+---------------------------------
+---@context ACF!Process
+---@return : Sequence(ACF!BusinessService)
+helper context ACF!Process def : getFunctionnalDomains : Sequence(ACF!BusinessService) =	
+		
+	let seqUniqueDomain : Sequence(ACF!BusinessService) = 
+	Sequence{}
+	in
+		let domains : Sequence(ACF!BusinessService) =
+			self.getAllFunctionsOfOneProcess
+				-> collect(function | function.decomposesServices		
+				)
+				-> flatten()				
+		in 	
+			let seqValues : Sequence(String) =
+				domains	
+					-> collect(domain | domain.name)
+					-> flatten()
+			in seqValues
+				-> asOrderedSet()
+				-> collect(value | 	seqUniqueDomain
+										-> append(
+													domains
+														-> at(seqValues.indexOf(value))
+										)	
+				)
+				-> flatten()
+;	
+
+---------------------------------------------------------------------------------------------------				
+---Test if a process have an applicative system for a functionnal domain ('Business service')
+---------------------------------------------------------------------------------------------------
+---@context ACF!Process
+---@param ACF!BusinessService
+---@return : Boolean
+helper context ACF!Process  def : haveAppSys(functionnalDomain : ACF!BusinessService) : Boolean =
+	self.getAllAppSystemsForOneProcessAndOneFunctionnalDomain(functionnalDomain) -> notEmpty()	
+;
+
+---------------------------------------------------------------------------------------------------	
+---Get all 'entité' ('Organization Unit') for one process ('Process') and one functionnal domain 
+---('Business service')
+---------------------------------------------------------------------------------------------------	
+---@context ACF!Process
+---@param ACF!BusinessService
+---@return : Sequence(ACF!OrganizationUnit)
+helper context ACF!Process def : getAllOrganUnitsForOneFunctionDomainAndOneProcess(functionnalDomain : ACF!BusinessService) : Sequence(ACF!OrganizationUnit) =	
+	thisModule.deleteMultipleFunctions(self.getAllFunctionsOfOneProcessAndOneDomain(functionnalDomain))
+		-> collect(function | function.isOwnedAndGovernedByOrganizationUnits)
+		-> flatten()
+;			
+
+---------------------------------------------------------------------------------------------------	
+---Get all the functions corresponding to one process ('Process') and one functionnal domain 
+---('Business service')
+---------------------------------------------------------------------------------------------------	
+---@context ACF!Process
+---@param ACF!BusinessService
+---@return : Sequence(ACF!BusinessService)
+helper context ACF!Process def : getAllFunctionsOfOneProcessAndOneDomain(functionnalDomain : ACF!BusinessService) : Sequence(ACF!BusinessService) =	
+	thisModule.getObjectsNotInBoth(functionnalDomain.getAllFunctionsOfOneFunctionnalDomain, self.getAllFunctionsOfOneProcess)
+;
+
+---------------------------------------------------------------------------------------------------	
+---Get all the applicative systems ('Physical Application Component') for one process ('Process') 
+---and one functionnal domain ('Business service')
+---------------------------------------------------------------------------------------------------	
+---@context ACF!Process
+---@param ACF!BusinessService
+---@return : Sequence(ACF!PhysicalApplicationComponent)
+helper context ACF!Process def : getAllAppSystemsForOneProcessAndOneFunctionnalDomain(functionnalDomain : ACF!BusinessService) : Sequence(ACF!PhysicalApplicationComponent) =	
+	let seqAppSysForOneDom  : Sequence(ACF!PhysicalApplicationComponent) = 
+		functionnalDomain.getAllApplicativeServicesForOneDomain	
+				-> collect(applicativeService | applicativeService.isExtendedByPhysicalApplicationComponents	
+				)
+				-> flatten()		
+	in self.getAllAppSystemsForOneProcess
+				-> asSet()
+				-> intersection(seqAppSysForOneDom)	
+;
+---------------------------------------------------------------------------------------------------	
+--- Get all the logical application components as 'Applicative services', corresponding to a 
+---business service
+---------------------------------------------------------------------------------------------------	
+---@context ACF!BusinessService
+---@return : Sequence(ACF!LogicalApplicationComponent)
+helper context ACF!BusinessService def : getAllApplicativeServicesForOneDomain : Sequence(ACF!LogicalApplicationComponent) =	
+	self.isRealizedThroughLogicalApplicationComponent
+;
+
+---------------------------------------------------------------------------------------------------	
+--- Get all the physical application components as 'Applicative systems', corresponding to a
+---process
+---------------------------------------------------------------------------------------------------	
+---@context ACF!Process
+---@return : Sequence(ACF!PhysicalApplicationComponent)
+helper context ACF!Process def : getAllAppSystemsForOneProcess : Sequence(ACF!PhysicalApplicationComponent) =	
+	self.category
+		-> select(label | label.name = 'Systeme applicatif')
+			-> collect( label | label.ownedElements) -> flatten()
+				-> select(elem | elem.oclIsTypeOf(ACF!PhysicalApplicationComponent))
+;
+
+---------------------------------------------
+---Internal using lib.
+---Get all the functions of a process
+---------------------------------------------
+---@context ACF!Process
+---@return : Sequence(ACF!BusinessService)
+helper context ACF!Process def : getAllFunctionsOfOneProcess : Sequence(ACF!BusinessService) =
+	self.orchestratesServices
+	;
+
+------------------------------------------------------------------------
+---Get the name of the 'Pole DSI' (CSM Pole) corresponding to a process
+------------------------------------------------------------------------
+---@context ACF!Process
+---@param ACF!BusinessService
+---@param Integer
+---@return : String
+helper context ACF!Process def : getCSMPoleTitle(functionnalDomain : ACF!BusinessService, currentAppSys : Integer) : String =
+			let allOrgaUnit : Sequence(ACF!OrganizationUnit) = 
+				self.getAllOrganUnitsForOneFunctionDomainAndOneProcess(functionnalDomain)
+			in 
+				if (allOrgaUnit
+						-> select(organUnit | organUnit.category -> notEmpty())
+						-> notEmpty() 
+				)then
+					allOrgaUnit
+						-> select(organUnit | 	let organUnitIndex : Integer =
+													allOrgaUnit
+														-> indexOf(organUnit)
+												in		
+												organUnit.category -> notEmpty()and 
+												if (organUnitIndex > 1		
+												) then
+													allOrgaUnit
+														-> at(organUnitIndex - 1)
+													<> organUnit	
+												else
+													true
+												endif	
+													
+						)
+						-> at(currentAppSys + 1).name
+				else
+					''
+				endif				
+	;
+
+--**************************************************************
+--Business service
+--**************************************************************
+----------------------------------------------
+---Stock functionnal domains and their colors
+----------------------------------------------
+---@return : Map(String, String)
+helper def: mapFunctionnalDomains : Map(String, String) = 
+	Map{
+		('décisionnel','#c9efec'),('finance','#aaaaff'),
+		('commerce','#e0e0f9'),('ressources humaines','#8686f9'),
+		('achats','#baf2f2'),('maîtrise des données du produit et des services sur le cycle de vie','#7cf9b9'),
+		('gestion des programmes','#c7d6d6'),('pilotage des flux industriels','#cdbce0'),
+		('capitalisation des connaissances - KM','#989bb5'),('socle','#8dd3cd'),
+		('sécurité','#b7a3d1')
+	}
+;
+
+-------------------------------------------------
+---Internal using lib.
+---Get all the functions in a functionnal domain
+--------------------------------------------------
+---@context ACF!BusinessService
+---@return : Sequence(ACF!BusinessService)
+helper context ACF!BusinessService def : getAllFunctionsOfOneFunctionnalDomain : Sequence(ACF!BusinessService) =
+	self.consumesServices
+	;
+
+-------------------------------------------------
+---Get the color corresponding to a functionnal 
+---domain
+-------------------------------------------------
+---@context ACF!BusinessService
+---@return : String
+helper context ACF!BusinessService def : getFunctionnalDomainColor : String =
+	let keys : Sequence(OclAny) = thisModule.mapFunctionnalDomains.getKeys()
+						-> select(functionnalDomainNameKey | self.name.toLower().regexReplaceAll('[^a-zA-Z]','') 
+																= functionnalDomainNameKey.regexReplaceAll('[^a-zA-Z]','') 
+						)	
+	in 	
+		let functionnalDomColor :  Map(String, String) = 
+			thisModule.mapFunctionnalDomains.get(keys -> at(1))
+		in 				
+			if (keys -> notEmpty()) then	
+				if (not functionnalDomColor.oclIsUndefined()) then
+					functionnalDomColor	
+				else
+					'#7c7ac9'
+				endif	
+			else
+				'#7c7ac9'
+			endif	
+	
+	;
+--------------------------------------------------------------------------------------------------
+---Determine if the size of the func. domain is bigger than the original size of the dom.rectangle
+--------------------------------------------------------------------------------------------------
+---@context ACF!BusinessService
+---@param Integer : original size of this dom. rectangle
+---@return : Boolean : to determine name is bigger or not
+helper context ACF!BusinessService def : isDomainNameBiggerOriginalRectDom(sizeOfRectDomain : Integer)  : Boolean =
+	((self.name.size()*4)+20) > sizeOfRectDomain
+	;
+
+--------------------------------------------------------------------------------------------------
+---Add a carriage return if the size of the domain name is bigger than the domain rectangle width
+--------------------------------------------------------------------------------------------------
+---@context ACF!BusinessService
+---@param Integer : size of this dom. rectangle
+---@return : Sequence(String) : modified (or not) domain name
+helper context ACF!BusinessService def : manageDomainName(sizeOfRectDomain : Integer) : Sequence(String) =
+	if (self.isDomainNameBiggerOriginalRectDom(sizeOfRectDomain)) then
+		let seqDomPart : Sequence(String) =
+			self.name.splitWithIndices(1, (sizeOfRectDomain div 4))
+		in seqDomPart
+				-> collect(domainXPartName | if (seqDomPart.indexOf(domainXPartName) <> seqDomPart.size()) then
+												domainXPartName + ' -'
+											else
+												domainXPartName
+											endif	
+				)
+	else
+		Sequence{self.name}
+	endif	
+	;
+
+---------------------------------------------------------------------------------
+---Allow to have only the first function for the cases we have several functions
+---for one applicative systems
+---------------------------------------------------------------------------------
+---@param Sequence(ACF!BusinessService)
+---@return : Sequence(ACF!BusinessService)
+helper def : deleteMultipleFunctions(seqfunctions : Sequence(ACF!BusinessService)) : Sequence(ACF!BusinessService) =
+	seqfunctions
+		-> select(element | element.category
+								-> select(label | label.name = 'Fonction')
+								-> collect(label |label.ownedElements)
+									-> flatten()
+								-> select(ownedElement | ownedElement.oclIsTypeOf(ACF!BusinessService))
+								-> indexOf(element) = 1
+		)
+;
+	
+--**************************************************************
+--Actor
+--**************************************************************
+-------------------------------------
+---Stock the current displayed users 
+-------------------------------------
+---@return : Sequence(ACF!Actor)
+helper def : siteUsingAppSys : Sequence(ACF!Actor) =
+	Sequence{}
+;
+
+-------------------------------------
+---Stock the current displayed users 
+-------------------------------------
+---@return : Integer
+helper def : nbUserDisplayed : Integer =
+	0	
+;
+
+---------------------------------------------
+---Stock the last max. y for displayed users 
+---------------------------------------------
+---@return : Integer
+helper def : lastUserMaxY : Integer =
+	0	
+;
+
+--**************************************************************
+--Organization units
+--**************************************************************
+---------------------------------------------------------
+---Internal using lib.
+---Get all the organization units of an actors sequency
+---------------------------------------------------------
+---@param Sequence(ACF!Actor)
+---@return : Sequence(ACF!OrganizationUnit)
+helper def : getOrganUnitsOfActors(actorsSequence : Sequence(ACF!Actor)): Sequence(ACF!OrganizationUnit) =
+	actorsSequence -> collect(actor | actor.belongsTo) -> flatten() -> asSet()
+	;
+
+--**************************************************************
+--Physical application components
+--**************************************************************
+-------------------------------------------------------------------
+---Stock the current displayed applicative systems for one process 
+-------------------------------------------------------------------
+---@return : Integer
+helper def : nbAppSysDisplayedProcess : Integer =
+	0	
+;
+
+-----------------------------------------------------------------
+---Stock the current displayed applicative systems for one domain
+-----------------------------------------------------------------
+---@return : Integer
+helper def : nbAppSysDisplayedDomain : Integer =
+	0	
+;
+
+-------------------------------------------------------------
+---Get the name of the actors corresponding to an app.system
+-------------------------------------------------------------
+---@context ACF!PhysicalApplicationComponent
+---@return : Sequence(String)
+helper context ACF!PhysicalApplicationComponent def : getAppSysUsersTitle : Sequence(String) =
+		self.category
+				-> select(label | label.name = 'Systeme applicatif')
+				-> collect(label | label.ownedElements) -> flatten()
+				-> select(elem | elem.oclIsTypeOf(ACF!Actor))
+				-> collect(actor | actor.name)
+	;
+
+-------------------------------------------------------------
+---Return value corresponding to enum literal in enum
+---'LifeCycleStatus'
+-------------------------------------------------------------
+---@context String
+---@return : Real
+helper context String def : lifeCycleStatusValue : Real =
+	if (self = 'Live') then
+		2
+	else if (self = 'PhasingOut') then
+			3
+		else
+			if (self = 'Retired') then
+				4
+			else
+				0
+			endif
+		endif
+	endif	
+;	
+
+----------------------------------------------------
+---Determinate color and number of scale components
+----------------------------------------------------
+---@param Real
+---@param Real
+---@param Real
+---@return : String
+helper def : createColor(lifeCycleStatus : Real, manageableCharac : Real, scaleCompoPosition : Real) : String =
+		if (lifeCycleStatus = 2) then
+			if (manageableCharac >= scaleCompoPosition) then
+				'#007f00'
+			else
+				'#999999'
+			endif	
+		else if (lifeCycleStatus = 3) then
+				if (manageableCharac >= scaleCompoPosition) then
+					'#ffff00'
+				else
+					'#999999'
+				endif	
+			else if (lifeCycleStatus = 4) then
+					if (manageableCharac >= scaleCompoPosition) then
+						'#ff0000'
+					else
+						'#999999'
+					endif		
+				else
+					if (lifeCycleStatus = 5) then --Only for the legend in the title ('Importance(2)')						
+						if (manageableCharac >= scaleCompoPosition) then
+							'#4c4c4c'
+						else
+							'#999999'
+						endif
+					else
+						'#999999'
+					endif	
+				endif	
+			endif
+		endif
+	;
+
+---------------------------------------------------------
+---Determinate if the app.system is in production shortly
+---------------------------------------------------------
+---@context ACF!PhysicalApplicationComponent
+---@return : Boolean
+helper context ACF!PhysicalApplicationComponent def : isInProductionShortly : Boolean =
+	self.lifeCycleStatus = #Proposed or self.lifeCycleStatus = #InDevelopment
+;	

@@ -1,0 +1,101 @@
+\begin{thebibliography}{10}
+
+\bibitem{cmsRepartition}
+W3Techs:
+\newblock Cms repartition,
+  \url{http://w3techs.com/technologies/overview/content_management/all}.
+
+\bibitem{cmsAdvDraw}
+TheWebShoppe:
+\newblock Pros and cons of a content management system (cms),
+  \url{http://thewebshoppe.net/pros-and-cons-of-a-content-management-system-cms/}.
+
+\bibitem{dslDefine}
+{A.Van Deursen}, P.Klint, J.Visser:
+\newblock Domain-specific languages : An annotated bibliography.
+\newblock Acm Sigplan Notices Journal, Volume 35, pp. 26-36. Amsterdam (2000)
+
+\bibitem{metaExplanation}
+G.Genova:
+\newblock Modeling and metamodeling in model driven development.
+\newblock In: Doctorate Seminar, Department of Electrical Engineering, Warsaw
+  University of Technology, May 14-15 2009. Varsaw (2009)
+
+\bibitem{topTheme}
+Wordpress.org:
+\newblock Themes directory, \url{http://wordpress.org/themes/browse/popular/}.
+
+\bibitem{freeplane}
+J.Mueller, D.Polansky, P.Novak, C.Foltin, D.Polivaev, P.Cuklin, V.Boerchers,
+  R.Wesley:
+\newblock Free mind mapping and knowledge management software,
+  \url{http://freeplane.sourceforge.net/wiki/index.php/Main_Page}.
+
+\bibitem{xmlPresent}
+W3C:
+\newblock Extensible markup language(xml), \url{http://www.w3.org/XML/}.
+
+\bibitem{emfPresent}
+{Eclipse Foundation}:
+\newblock Eclipse modeling framework project (emf),
+  \url{http://eclipse.org/modeling/emf/}.
+
+\bibitem{jsonRpc}
+{JSON-RPC Working Group}:
+\newblock Json-rpc, \url{http://json-rpc.org/}.
+
+\bibitem{xtext}
+{Eclipse Foundation}:
+\newblock Xtext, \url{http://eclipse.org/Xtext/}.
+
+\bibitem{eclipseProduct}
+{Eclipse Foundation}:
+\newblock What is an eclipse product ?,
+  \url{http://wiki.eclipse.org/FAQ_What_is_an_Eclipse_product\%3F}.
+
+\bibitem{wikiScafolding}
+O.Diaz, G.Puente:
+\newblock Wiki scaffolding: Aligning wikis with the corporate strategy.
+\newblock In: Elsevier, Volume 37, Issue 8, December 2012, pp. 737-752. San
+  Sebastian (2012)
+
+\bibitem{conceptMod}
+{O.De Troyer}, T.Decruyenaere:
+\newblock Conceptual modelling of web sites for end-users.
+\newblock World Wide Web journal, Volume 3, Issue 1 , pp. 27-42. Springer,
+  Belgium (2000)
+
+\bibitem{livelyFabrik}
+J.Lincke, R.Krahn, D.Ingalls, R.Hirschfeld:
+\newblock Lively fabrik a web-based end-user programming environment.
+\newblock Creating, Connecting and Collaborating through Computing, 2009. C5
+  '09. Seventh International Conference on, 19-22 Jan. 2009, pp.11-19.
+  IEEEXplore, Kyoto (2009)
+
+\bibitem{lively}
+{Hasso Plattner Institut}:
+\newblock Lively kernel, \url{http://www.lively-kernel.org/}.
+
+\bibitem{wsol}
+V.Tosic, B.Pagurek, K.Patel, B.Esfandiari, W.Ma:
+\newblock Management applications of the web service offerings language (wsol).
+\newblock 15th International Conference, CAiSE 2003 Klagenfurt/Velden, Austria,
+  June 16–20, 2003 Proceedings, pp. 468-484. Springer, Klagenfurt (2003)
+
+\bibitem{dslMashups}
+E.Maximilien, H.Wilkinson, N.Desai, S.Tai:
+\newblock A domain-specific language for web apis and services mashups.
+\newblock Fifth International Conference, September 17-20, 2007. Proceedings,
+  pp. 13-26. Springer, Vienna (2007)
+
+\bibitem{dictator}
+D.Bachhuber, J.Martinez, M.Haines-Young, R.Swain, U.Pogson:
+\newblock Dictator, \url{http://github.com/danielbachhuber/dictator}.
+
+\bibitem{webRatio}
+R.Acerbis, A.Bongio, M.Brambilla, S.Butti, S.Ceri, P.Fraternali:
+\newblock Web applications design and development with webml and webratio 5.0.
+\newblock In: 46th International Conference, TOOLS EUROPE 2008.Springer, Zurich
+  (2008)
+
+\end{thebibliography}

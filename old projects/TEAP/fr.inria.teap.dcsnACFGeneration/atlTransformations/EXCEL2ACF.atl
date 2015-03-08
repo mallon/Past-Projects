@@ -1,0 +1,621 @@
+-- @nsURI ACFEXTENDED=http://inria/atlanmod/extendedcontentfwk
+-- @nsURI EXCEL=xls
+
+-- ******************************************************************************
+-- Copyright (c) 2013 INRIA. 
+-- All rights reserved. This program and the accompanying materials 
+-- are made available under the terms of the Eclipse Public License v1.0 
+-- which accompanies this distribution, and is available at
+-- http://www.eclipse.org/legal/epl-v10.html
+-- 
+-- Contributors: 
+-- 	INRIA - Initial implementation
+--  
+-- ******************************************************************************
+
+--@name EXCEL2ACF
+--@author Matthieu Allon (matthieu.allon <at> gmail.com)
+--@description EXCEL to TOGAF(ACFEXTENDED) 
+
+module EXCEL2ACF;
+
+create OUT : ACF, OUTEXTENDED: ACFEXTENDED from IN: EXCEL;
+
+uses EXCEL2ACFHelpers;
+
+--***************Workbook / Architecture***************
+rule excelWorkbookToACFArchitecture{
+	from 
+		eWorkbook : EXCEL!Workbook
+	to 	
+		acfExtendedEnterpriseArchitecture : ACFEXTENDED!EnterpriseArchitecture (			
+			architectures <- Sequence{
+										  thisModule.getApplicationArchitecture(Sequence{eWorkbook.wb_worksheets -> at(2),
+										  												eWorkbook.wb_worksheets -> at(6)}
+										  ),
+										  thisModule.getTechnologyArchitecture(Sequence{eWorkbook.wb_worksheets -> at(2),
+																			 		  eWorkbook.wb_worksheets -> at(4)}
+										  ),
+										  thisModule.getBusinessArchitecture(Sequence{eWorkbook.wb_worksheets -> at(4),
+																			 		  eWorkbook.wb_worksheets -> at(8)
+										  									 }		  
+										 ),
+										 thisModule.getDataArchitecture(Sequence{eWorkbook.wb_worksheets -> at(6)})
+									}
+		)
+}
+
+
+--- Common rule for all architectures ---
+
+abstract rule createElementX {
+	from 
+		eRow : EXCEL!Row
+	to 
+		element : ACFEXTENDED!TranslatedElement(			
+			name <- eRow.r_cells.at(6).getCellValueToString,
+			description <- eRow.r_cells.at(4).getCellValueToString,
+			ID <- eRow.r_cells.at(5).getCellValueToString,
+			category <- eRow.r_cells.at(1).getCellValueToString,
+			designation_EN <- eRow.r_cells.at(7).getCellValueToString
+		)
+}	
+
+--- Technology Architecture ---
+
+--- Convert excel worksheets part to a technology architecture
+---@sourcePattern Sequence(EXCEL!Worksheet)
+---@targetPattern ACFEXTENDED!TechnologyArchitecture
+unique lazy rule getTechnologyArchitecture {
+	from 
+		eWorksheetSeq : Sequence(EXCEL!Worksheet)
+	to 
+		acfTechnoArchi : ACFEXTENDED!TechnologyArchitecture (
+			physicalComponents<- eWorksheetSeq 
+											-> at(1).getAllPhysicalTechnologyComponents
+		)
+}
+
+abstract rule abstractExcelCellsToPhysicalTechnologyComponents{
+	from 
+		eCell : EXCEL!Cell(
+			eCell.isPhysicalTechnologyComponent	
+		)
+	to 
+		element : ACFEXTENDED!ExtendedPhysicalTechnologyComponent(	
+			name <- eCell.getWorksheet.ws_table.selectCell(eCell.getRowIndex, 9).getCellValueToString,
+			ID <- eCell.getWorksheet.ws_table.selectCell(eCell.getRowIndex, 5).getCellValueToString,
+			category <- eCell.getWorksheet.ws_table.selectCell(eCell.getRowIndex, 1).getCellValueToString,
+			version <- eCell.getWorksheet.ws_table.selectCell(eCell.getRowIndex, 8).getCellValueToString,
+			hostName <- eCell.getWorksheet.ws_table.selectCell(eCell.getRowIndex, 6).getCellValueToString,
+			ip <- eCell.getWorksheet.ws_table.selectCell(eCell.getRowIndex, 7).getCellValueToString,
+			designation_EN <- eCell.getWorksheet.ws_table.selectCell(eCell.getRowIndex, 10).getCellValueToString
+		)
+}
+
+--- Convert an excel cell to a physical technology component as 'COTEC'
+---@sourcePattern EXCEL!Cell
+---@targetPattern ACFEXTENDED!PhysicalTechnologyComponent
+rule excelCellsToPhysicalTechnologyComponentsCOTEC extends abstractExcelCellsToPhysicalTechnologyComponents{
+	from 
+		eCell : EXCEL!Cell(			
+				eCell.isPhysicalTechnologyComponentCOTEC
+		)
+	to 
+		element : ACFEXTENDED!ExtendedPhysicalTechnologyComponent (	
+			isDependentOnPhysicalTechnologyComponents <- eCell.c_row.r_cells.at(5).getCellValueToString.getPhysicTechnicCompoBDDAPP
+															-> union(
+																eCell.c_row.r_cells.at(5).getCellValueToString.
+																getPhysicTechnicCompoCOTEC
+																-> collect(cell | if (not cell.oclIsUndefined()) then
+																					if (cell.getPhysicalTechnologyComponents
+																							-> isEmpty()
+																					) then
+																						thisModule.createPhysicalPhisycalTechnoComponents
+																									(cell)
+																					else
+																						cell.getPhysicalTechnologyComponents
+																					endif
+																				  else OclUndefined endif	
+																)
+															)	
+		)
+	do{
+		thisModule.PhysicalTechnologyComponents <- thisModule.PhysicalTechnologyComponents -> append(element);
+	}
+}
+
+unique lazy rule createPhysicalPhisycalTechnoComponents{
+	from 
+		eCell : EXCEL!Cell
+	to 
+		element : ACFEXTENDED!ExtendedPhysicalTechnologyComponent (	
+			name <- eCell.getWorksheet.ws_table.selectCell(eCell.getRowIndex, 9).getCellValueToString,
+			ID <- eCell.getWorksheet.ws_table.selectCell(eCell.getRowIndex, 5).getCellValueToString,
+			category <- eCell.getWorksheet.ws_table.selectCell(eCell.getRowIndex, 1).getCellValueToString,
+			version <- eCell.getWorksheet.ws_table.selectCell(eCell.getRowIndex, 8).getCellValueToString,
+			isDependentOnPhysicalTechnologyComponents <- element.ID.getPhysicTechnicCompoBDDAPP,
+			realizesApplicationComponents <- element.ID.getApplicationComponentsRealized,
+			designation_EN <- eCell.getWorksheet.ws_table.selectCell(eCell.getRowIndex, 10).getCellValueToString
+		)
+	do{
+		thisModule.PhysicalTechnologyComponents <- thisModule.PhysicalTechnologyComponents -> append(element);
+	}
+}
+
+--- Convert an excel cell to a physical technology component as 'BDD' or 'APP'
+---@sourcePattern EXCEL!Cell
+---@targetPattern ACFEXTENDED!PhysicalTechnologyComponent
+rule excelCellsToPhysicalTechnologyComponentsBDDAPP extends abstractExcelCellsToPhysicalTechnologyComponents{
+	from 
+		eCell : EXCEL!Cell(
+			eCell.isPhysicalTechnologyComponentBDDAPP	
+		)
+	to 
+		element : ACFEXTENDED!ExtendedPhysicalTechnologyComponent (	
+			isDependentOnPhysicalTechnologyComponents <- eCell.c_row.r_cells.at(5).getCellValueToString.getPhysicTechnicCompoNIST
+															-> union(
+																eCell.c_row.r_cells.at(5).getCellValueToString.getPhysicTechnicCompoBDDAPP	
+															)
+															-> union(
+																eCell.c_row.r_cells.at(5).getCellValueToString.getPhysicTechnicCompoZMLDSS	
+															)
+		)
+	do{
+		thisModule.PhysicalTechnologyComponents <- thisModule.PhysicalTechnologyComponents -> append(element);
+	}	
+}
+
+--- Convert an excel cell to a physical technology component as 'NIST'
+---@sourcePattern EXCEL!Cell
+---@targetPattern ACFEXTENDED!PhysicalTechnologyComponent
+rule excelCellsToPhysicalTechnologyComponentsNIST extends abstractExcelCellsToPhysicalTechnologyComponents{
+	from 
+		eCell : EXCEL!Cell(
+			eCell.isPhysicalTechnologyComponentNIST	
+		)
+	to 
+		element : ACFEXTENDED!ExtendedPhysicalTechnologyComponent (	
+			isDependentOnPhysicalTechnologyComponents <- eCell.c_row.r_cells.at(5).getCellValueToString.getPhysicTechnicCompoSAT
+		)
+	do{
+		thisModule.PhysicalTechnologyComponents <- thisModule.PhysicalTechnologyComponents -> append(element);
+	}	
+}
+
+--- Convert an excel cell to a physical technology component as 'SAT'
+---@sourcePattern EXCEL!Cell
+---@targetPattern ACFEXTENDED!PhysicalTechnologyComponent
+rule excelCellsToPhysicalTechnologyComponentsSAT extends abstractExcelCellsToPhysicalTechnologyComponents{
+	from 
+		eCell : EXCEL!Cell(
+			eCell.isPhysicalTechnologyComponentSAT
+		)
+	to 
+		element : ACFEXTENDED!ExtendedPhysicalTechnologyComponent (	
+			isDependentOnPhysicalTechnologyComponents <- eCell.c_row.r_cells.at(5).getCellValueToString.getPhysicTechnicCompoZMLDSS
+		)
+	do{
+		thisModule.PhysicalTechnologyComponents <- thisModule.PhysicalTechnologyComponents -> append(element);
+	}	
+}
+
+
+--- Convert an excel cell to a physical technology component as 'ZONE' / 'MACHINE' / 'LDOM' / 'DC' /
+--- 'SWITCH' / 'SERVEUR'
+---@sourcePattern EXCEL!Cell
+---@targetPattern ACFEXTENDED!PhysicalTechnologyComponent
+rule excelCellsToPhysicalTechnologyComponentsZMLDSS extends abstractExcelCellsToPhysicalTechnologyComponents{
+	from 
+		eCell : EXCEL!Cell(
+			eCell.isPhysicalTechnologyComponentZMLDSS
+		)
+	to 
+		element : ACFEXTENDED!ExtendedPhysicalTechnologyComponent (
+			isDependentOnPhysicalTechnologyComponents <- eCell.c_row.r_cells.at(5).getCellValueToString.getPhysicTechnicCompoZMLDSS
+		)
+	do{
+		thisModule.PhysicalTechnologyComponents <- thisModule.PhysicalTechnologyComponents -> append(element);
+	}	
+}
+
+
+--- Application architecture ---
+
+--- Convert excel worksheets part to an application architecture
+---@sourcePattern Sequence(EXCEL!Worksheet)
+---@targetPattern ACFEXTENDED!ApplicationArchitecture
+unique lazy rule getApplicationArchitecture {
+	from 
+		eWorksheetSeq : Sequence(EXCEL!Worksheet)
+	to 
+		acfApplicationArchi : ACFEXTENDED!ApplicationArchitecture (	
+			logicalApplicationComponents <- eWorksheetSeq 
+													-> at(2).getAllLogicalApplicationComponents,	
+			physicalApplicationComponents <- eWorksheetSeq 
+													-> at(1).getAllPhysicalApplicationComponents,
+			informationSystemServices <- eWorksheetSeq 
+													-> at(2).getAllInformationSystemServices							
+		)
+}
+
+--- Convert an excel cell to a logical application component as 'SA' / 'INAPP'
+---@sourcePattern EXCEL!Cell
+---@targetPattern ACFEXTENDED!LogicalApplicationComponent
+rule excelRowToLogicalApplicationComponentsSAINAPP extends createElementX{
+	from 
+		eRow : EXCEL!Row(
+			eRow.isLogicalApplicationComponent
+		)
+	to 
+		element : ACFEXTENDED!ExtendedLogicalApplicationComponent(
+			communicatesWith <- eRow.r_cells.at(5).getCellValueToString.getLogicalApplicationComponentsCommunicate
+									-> collect(cell | if (not cell.oclIsUndefined()) then
+														if (cell.getLogicalApplicationComponents
+																-> isEmpty()
+														) then
+															thisModule.createLogicalApplicationComponents(cell.c_row)
+														else
+															cell.getLogicalApplicationComponents
+														endif
+													  else OclUndefined endif	
+									),
+			implementsServices <- eRow.r_cells.at(5).getCellValueToString.getInformationSystemServicesImplements,
+			isExtendedByPhysicalApplicationComponents <- if (eRow.isLogicalApplicationComponentSA) then
+															eRow.r_cells.at(5).getCellValueToString.getPhysicalAppCompoBased
+														 else OclUndefined endif	
+		)
+	do{
+		thisModule.LogicalApplicationComponents <- 	thisModule.LogicalApplicationComponents -> append(element);
+	}	
+}	
+
+--- Convert an excel cell to a logical application component as 'INTEINTF'
+---@sourcePattern EXCEL!Cell
+---@targetPattern ACFEXTENDED!LogicalApplicationComponent
+unique lazy rule createLogicalApplicationComponents {
+	from 
+		eRow : EXCEL!Row
+	to 
+		element : ACFEXTENDED!ExtendedLogicalApplicationComponent(
+			name <- eRow.r_cells.at(6).getCellValueToString,
+			description <- eRow.r_cells.at(4).getCellValueToString,
+			ID <- eRow.r_cells.at(5).getCellValueToString,
+			category <- eRow.r_cells.at(1).getCellValueToString,
+			designation_EN <- eRow.r_cells.at(7).getCellValueToString,
+			communicatesWith <- eRow.r_cells.at(5).getCellValueToString.getLogicalApplicationComponentsCommunicate
+									-> collect(cell | if (not cell.oclIsUndefined()) then
+														if (cell.getLogicalApplicationComponents
+																-> isEmpty()
+														) then
+															thisModule.createLogicalApplicationComponents(cell.c_row)
+														else
+															cell.getLogicalApplicationComponents
+														endif
+													  else OclUndefined endif	
+									),
+			implementsServices <- 	if (eRow.isLogicalApplicationComponentSA) then
+										eRow.r_cells.at(5).getCellValueToString.getInformationSystemServicesImplements
+									else OclUndefined endif,
+			isExtendedByPhysicalApplicationComponents <- if (eRow.isLogicalApplicationComponentSA) then
+															eRow.r_cells.at(5).getCellValueToString.getPhysicalAppCompoBased
+														 else OclUndefined endif	
+		)
+	do{
+		thisModule.LogicalApplicationComponents <- 	thisModule.LogicalApplicationComponents -> append(element);
+	}		
+}
+
+unique lazy rule getDataArchitecture {
+	from 
+		eWorksheetSeq : Sequence(EXCEL!Worksheet)
+	to 
+		acfTechnoArchi : ACFEXTENDED!DataArchitecture (
+			entities <- let seqDE : Sequence(ACFEXTENDED!ExtendedDataEntity) = Sequence{}
+								 in 
+								  eWorksheetSeq 
+								  -> at(1).ws_table
+										  .t_rows
+										  -> collect(row | 	if (row.isDataEntity) then
+										  						seqDE -> append(row)
+										  					else OclUndefined endif
+										  )
+		)
+}
+
+--- Convert an excel row to a data entity
+---@sourcePattern EXCEL!Row
+---@targetPattern ACFEXTENDED!DataEntity
+rule excelRowToDataEntity extends createElementX{
+	from 
+		eRow : EXCEL!Row(
+			eRow.isDataEntity
+		)
+	to 
+		element : ACFEXTENDED!ExtendedDataEntity(
+			isProcessesByLogicalApplicationComponents <- eRow.r_cells.at(5).getCellValueToString.getLogicalApplicationProcess
+		)
+	do{
+		thisModule.DataEntities <- 	thisModule.DataEntities -> append(element);
+	}	
+}	
+
+--- Convert an excel row to an information system service
+---@sourcePattern EXCEL!Row
+---@targetPattern ACFEXTENDED!ISS
+rule excelRowToISS extends createElementX{
+	from 
+		eRow : EXCEL!Row(
+			eRow.isInfoSystemService
+		)
+	to 
+		element : ACFEXTENDED!ExtendedInformationSystemService(
+			consumesDataEntities <- eRow.r_cells.at(5).getCellValueToString.getDataEntitiesOperates
+		)
+}	
+
+--- Convert an excel cell to a physical application component
+---@sourcePattern EXCEL!Cell
+---@targetPattern ACFEXTENDED!PhysicalApplicationComponent
+rule excelRowToPhysicalApplicationComponents extends createElementX{
+	from 
+		eRow : EXCEL!Row(
+				eRow.isPhysicalApplicationComponent
+		)
+	to 
+		element : ACFEXTENDED!ExtendedPhysicalApplicationComponent(
+			isRealizedByPhysicalTechnologyComponents <- eRow.r_cells.at(5).getCellValueToString.getPhysicalTechnoComponentsRealized
+															-> select(cell | not cell.oclIsUndefined())
+															-> collect(cell | cell.c_row.r_cells.at(4))
+			,
+			name <- eRow.r_cells.at(9).getCellValueToString,
+			designation_EN <- eRow.r_cells.at(10).getCellValueToString
+		)
+	do{
+		thisModule.PhysicalApplicationComponents <- thisModule.PhysicalApplicationComponents -> append(element);
+	}	
+}
+
+--- Business Architecture ---
+
+----- Convert excel worksheets part to a business architecture
+-----@sourcePattern Sequence(EXCEL!Worksheet)
+-----@targetPattern ACFEXTENDED!BusinessArchitecture (
+unique lazy rule getBusinessArchitecture {
+	from 
+		eWorksheetSeq : Sequence(EXCEL!Worksheet)
+	to 
+		acfBusinessArchi : ACFEXTENDED!BusinessArchitecture (		
+			processes <- let seqProc : Sequence(ACFEXTENDED!ExtendedProcess) = Sequence{}
+						 in 
+						  eWorksheetSeq 
+						  -> at(1).ws_table
+								  .t_rows
+								  -> collect(row | 	if (row.isProcess) then
+								  						seqProc -> append(row)
+								  					else OclUndefined endif
+								  )
+								  ,
+			products <- let seqProc : Sequence(ACFEXTENDED!ProductExtended) = Sequence{}
+								 in 
+								  eWorksheetSeq 
+								  -> at(1).ws_table
+										  .t_rows
+										  -> collect(row | 	if (row.isProduct) then
+										  						seqProc -> append(row)
+										  					else OclUndefined endif
+										  )
+										  ,				  
+			actors <- let seqActor : Sequence(ACFEXTENDED!ExtendedActor) = Sequence{}
+							 in 
+							  eWorksheetSeq 
+							  -> at(1).ws_table
+									  .t_rows
+									  -> collect(row | 	if (row.isActor) then
+									  						seqActor -> append(row)
+									  					else OclUndefined endif
+									  )
+									  ,
+			roles <- let seqRole : Sequence(ACFEXTENDED!ExtendedRole) = Sequence{}
+							 in 
+							  eWorksheetSeq 
+							  -> at(2).ws_table
+									  .t_rows
+									  -> collect(row | 	if (row.isRole) then
+									  						seqRole -> append(row)
+									  					else OclUndefined endif
+									  )
+									  ,						  
+			services <- let seqProc : Sequence(ACFEXTENDED!ExtendedBusinessService) = Sequence{}
+								 in 
+								  eWorksheetSeq 
+								  -> at(2).ws_table
+										  .t_rows
+										  -> collect(row | 	if (row.isService) then
+										  						seqProc -> append(row)
+										  					else OclUndefined endif
+										  )
+										  ,
+			functions <- let seqProc : Sequence(ACFEXTENDED!ExtendedFunction) = Sequence{}
+								 in 		
+							  		eWorksheetSeq 
+									  -> at(2).ws_table
+											  .t_rows
+											  -> collect(row | 	if (row.isFunction) then
+											  						seqProc -> append(row)
+											  					else OclUndefined endif
+											  )	
+								  -> union(
+								  		eWorksheetSeq 
+										  -> at(2).ws_table
+												  .t_rows
+												  -> collect(row | 	if (row.isDomain) then
+												  						seqProc -> append(row)
+												  					else OclUndefined endif
+												  )					
+								  )	
+		)				  
+}
+
+rule excelRowToDomain extends createElementX{
+	from 
+		eRow : EXCEL!Row(
+			eRow.isDomain	
+		)
+	to 
+		element : ACFEXTENDED!ExtendedFunction(
+			decomposesFunction <- eRow.r_cells.at(5).getCellValueToString.getServicesConsumesAsDomains
+											-> collect(cell | if (not cell.oclIsUndefined()) then
+																if (cell.getServicesAsDomains
+																		-> isEmpty()
+																) then
+																	thisModule.createServiceAsDomain(cell)
+																else
+																	cell.getServicesAsDomains
+																endif
+															  else OclUndefined endif	
+											)
+											-> flatten()
+											->first()
+											,
+			communicatesWithFunctions <- eRow.r_cells.at(5).getCellValueToString.getFunctionsForDomainsCommunicate
+		)
+	do{
+		thisModule.Domains <- thisModule.Domains -> append(element);
+	}		
+}
+
+rule excelRowToProduct extends createElementX{
+	from 
+		eRow : EXCEL!Row(
+				eRow.isProduct
+		)
+	to element : ACFEXTENDED!ExtendedProduct(
+		isBasedOn <- eRow.r_cells.at(5).getCellValueToString.getPhysicalAppCompoBased
+	)
+}
+
+unique lazy rule createServiceAsDomain {
+	from 
+		eRow : EXCEL!Row
+	to 
+		element : ACFEXTENDED!ExtendedFunction(
+			name <- eRow.r_cells.at(6).getCellValueToString,
+			description <- eRow.r_cells.at(4).getCellValueToString,
+			ID <- eRow.r_cells.at(5).getCellValueToString,
+			category <- eRow.r_cells.at(1).getCellValueToString,
+			decomposesFunction <- eRow.r_cells.at(5).getCellValueToString.getServicesConsumesAsDomains
+											-> collect(cell | if (not cell.oclIsUndefined()) then
+																if (cell.getServicesAsDomains
+																		-> isEmpty()
+																) then
+																	thisModule.createServiceAsDomain(cell)
+																else
+																	cell.getServicesAsDomains
+																endif
+															  else OclUndefined endif	
+											)
+											-> flatten()
+											->first()
+											,
+			communicatedWithFunctions <- eRow.r_cells.at(5).getCellValueToString.getFunctionsForDomainsCommunicate,
+			designation_EN <- eRow.r_cells.at(7).getCellValueToString
+		)
+	do{
+		thisModule.Domains <- thisModule.Domains -> append(element);
+	}		
+}
+
+rule excelRowToService extends createElementX{
+	from 
+		eRow : EXCEL!Row(
+			eRow.isService
+		)
+	to 
+		element : ACFEXTENDED!ExtendedBusinessService(
+			consumesServices <- eRow.r_cells.at(5).getCellValueToString.getServicesConsumesAsServices,
+			providesGovernedInterfaceToAccessFunctions <- eRow.r_cells.at(5).getCellValueToString.getFunctionsForDomainsCommunicate
+		)
+	do{
+		thisModule.Services <- thisModule.Services -> append(element);
+	}	
+}
+
+rule excelRowToFunction extends createElementX{
+	from 
+		eRow : EXCEL!Row(
+			eRow.isFunction	
+		)
+	to 
+		element : ACFEXTENDED!ExtendedFunction(
+			communicatesWithFunctions <- eRow.r_cells.at(5).getCellValueToString.getFunctionsDecompose
+											-> union(
+												eRow.r_cells.at(5).getCellValueToString.getDomainsForFunctions
+											)
+		)
+	do{
+		thisModule.Functions <- thisModule.Functions -> append(element);
+	}
+}
+
+rule excelRowToRole extends createElementX{
+	from 
+		eRow : EXCEL!Row(
+			eRow.isRole
+		)
+	to 
+		element : ACFEXTENDED!ExtendedRole(
+			accessesFunctions <- eRow.r_cells.at(5).getCellValueToString.getFunctionsDecompose
+		)
+	do{
+		thisModule.Roles <- thisModule.Roles -> append(element);
+	}
+}
+
+rule excelRowToProcess  extends createElementX{
+	from 
+		eRow : EXCEL!Row(
+			eRow.isProcess	
+		)
+	to 
+		element : ACFEXTENDED!ExtendedProcess(
+			decomposesFunctions <- eRow.r_cells.at(5).getCellValueToString.getFunctionsDecompose,
+			followsProcesses <- eRow.r_cells.at(5).getCellValueToString.getProcessesFollow,
+			isDocumentedBy <- eRow.r_cells.at(5).getCellValueToString.getDocumentProcess
+									-> select(row | not row .oclIsUndefined())
+									-> first()
+		)
+	do{
+		thisModule.Processes <- thisModule.Processes -> append(element);
+	}
+}
+
+rule excelRowToActor  extends createElementX{
+	from 
+		eRow : EXCEL!Row(
+			eRow.isActor 
+		)
+	to 
+		element : ACFEXTENDED!ExtendedActor(
+			performsTaskInRoles <- eRow.r_cells.at(5).getCellValueToString.getRoles
+		)
+	do{
+		thisModule.Actors <- thisModule.Actors -> append(element);
+	}
+}
+
+rule excelRowDocumentToElement extends createElementX{
+	from 
+		eRow : EXCEL!Row(
+			eRow.isDocument	
+		)
+	to 
+		element : ACFEXTENDED!Document(
+			source <- eRow.r_cells.at(8).getCellValueToString,
+			lien_FR <- eRow.r_cells.at(9).getCellValueToString,
+			lien_EN <- eRow.r_cells.at(10).getCellValueToString
+		)
+	do{
+		thisModule.Documents <- thisModule.Documents -> append(element);
+	}
+}	

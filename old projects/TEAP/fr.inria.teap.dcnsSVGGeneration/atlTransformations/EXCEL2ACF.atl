@@ -1,0 +1,928 @@
+-- @nsURI ACF=http://www.obeonetwork.org/dsl/togaf/contentfwk/9.0.0
+-- @nsURI EXCEL=xls
+-- @nsURI IMPORT=http://www.obeo.fr/smartea/import/1.0
+
+-- ******************************************************************************
+-- Copyright (c) 2013 INRIA. 
+-- All rights reserved. This program and the accompanying materials 
+-- are made available under the terms of the Eclipse Public License v1.0 
+-- which accompanies this distribution, and is available at
+-- http://www.eclipse.org/legal/epl-v10.html
+-- 
+-- Contributors: 
+-- 	INRIA - Initial implementation
+--  
+-- ******************************************************************************
+
+--@name EXCEL2ACF
+--@author Matthieu Allon (matthieu.allon <at> gmail.com)
+--@description EXCEL to TOGAF(ACF) 
+
+module EXCEL2ACF;
+
+create OUT: ACF, OUTIMPORT : IMPORT from IN: EXCEL;
+
+uses EXCEL2ACFHelpers;
+
+--***************Elements creation - LAZY***************
+---Creation of attributes for categorized elements
+---@sourcePattern String
+---@sourcePattern String
+---@targetPattern ACF!Label
+lazy rule createAttributes {
+	from 
+		title : String, value : String
+	to 
+		element : ACF!Label (
+			name <- title,
+			description <- value
+		)
+	do{
+		thisModule.labelsInEA <- thisModule.labelsInEA -> append(element);		
+	}		
+}
+
+--***************Worksheet / Architecture***************
+---Convert an Excel worksheet (= xls file) to an application architecture
+---@sourcePattern EXCEL!Worksheet
+---@targetPattern IMPORT!Import
+---@targetPattern ACF!EnterpriseArchitecture
+rule excelWorksheetToACFArchitecture{
+	from 
+		eWorksheet : EXCEL!Worksheet
+	to 		
+		import : IMPORT!Import (
+				sourceID <- eWorksheet.name,
+				label <- eWorksheet.name,
+				root <- acfEnterpriseArchitecture				
+			),
+		acfEnterpriseArchitecture : ACF!EnterpriseArchitecture (
+			architectures <- Sequence{thisModule.getApplicationArchitecture(eWorksheet),
+									  thisModule.getTechnologyArchitecture(eWorksheet),
+									  thisModule.getBusinessArchitecture(eWorksheet)},
+			labels <- thisModule.labelsInEA
+		)
+}
+
+--- Convert an excel worksheet part to an application architecture
+---@sourcePattern EXCEL!Worksheet
+---@targetPattern ACF!ApplicationArchitecture (
+unique lazy rule getApplicationArchitecture {
+	from 
+		eWorksheet : EXCEL!Worksheet
+	to 
+		acfApplicationArchi : ACF!ApplicationArchitecture (	
+			logicalApplicationComponents <- eWorksheet.getAllLogicalApplicationComponents,	
+			physicalApplicationComponents <- eWorksheet.getAllPhysicalApplicationComponentModules
+												->collect(cell | cell.getCellValueToString.getListOfElements)
+												-> flatten()
+												-> collect(stringValue | 	if (not thisModule.cellsCreated -> includes(stringValue)) then
+																				thisModule.createModule(stringValue)
+																			else
+																				thisModule.getElementsCreated(stringValue)
+																			endif
+												)
+												-> union(
+													eWorksheet.getAllPhysicalApplicationComponentsAsApplicativeSystems
+														-> union(eWorksheet.getAllPhysicalApplicationComponentsAsExternalApplicativeSystems)
+												)							
+		)
+}
+
+--- Convert an excel cell to a logical application component categorized as an applicative service
+---@sourcePattern EXCEL!Cell
+---@targetPattern ACF!LogicalApplicationComponent
+rule excelCellsToLogicalApplicationComponents {
+	from 
+		eCell : EXCEL!Cell(
+				eCell.isLogicalApplicationComponentAsApplicativeService
+		)
+	to 
+		element : ACF!LogicalApplicationComponent(
+			name <- eCell.getCellValueToString,
+			isExtendedByPhysicalApplicationComponents <- eCell.getPhysicalApplicationComponentsForOneLogicalApplicationComponent
+		)
+}	
+
+--- Convert an excel worksheet part to a technology architecture
+---@sourcePattern EXCEL!Worksheet
+---@targetPattern ACF!TechnologyArchitecture
+unique lazy rule getTechnologyArchitecture {
+	from 
+		eWorksheet : EXCEL!Worksheet
+	to 
+		acfTechnoArchi : ACF!TechnologyArchitecture (
+			physicalComponents <- eWorksheet.getAllPhysicalTechnologyComponents
+		)
+}
+
+--- Convert an excel worksheet part to a business architecture
+---@sourcePattern EXCEL!Worksheet
+---@targetPattern ACF!BusinessArchitecture (
+unique lazy rule getBusinessArchitecture {
+	from 
+		eWorksheet : EXCEL!Worksheet
+	to 
+		acfBusinessArchi : ACF!BusinessArchitecture (		
+			units <- eWorksheet.getOrganizationUnitsDSI
+						-> union(let organUnitBusiness : Sequence(EXCEL!Cell) =
+									eWorksheet.getOrganizationUnitsBusiness
+								in 
+									let listOfElement : Sequence(String) =
+										organUnitBusiness
+										->collect(cell | cell.getCellValueToString.getListOfElementsWithIndex(organUnitBusiness.indexOf(cell)))
+										->flatten()
+									in listOfElement	
+											-> collect(stringValue |	if (not thisModule.cellsCreated -> includes(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																		) then																		
+																					thisModule.createOrganizationUnitsBusinessCorrespondant(
+																						organUnitBusiness
+																							-> at(stringValue.substring(1, stringValue.indexOf('_' + 
+																											  					stringValue
+																																.regexReplaceAll('^[0-9]+_', '')
+																															)
+																											  ).toInteger()
+																							),
+																						stringValue.regexReplaceAll('^[0-9]+_', '')
+																					)
+																				else
+																					thisModule.getElementsCreated(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																				endif
+											)
+						)
+						, 			
+			actors <- 	let correspActors : Sequence(EXCEL!Cell) =
+									eWorksheet.getAllCorrespondantActors
+						in 
+							let listOfElement : Sequence(String) =
+								correspActors
+								->collect(cell | cell.getCellValueToString.getListOfElementsWithIndex(correspActors.indexOf(cell)))
+								->flatten()
+							in listOfElement	
+									-> collect(stringValue |	if (not thisModule.cellsCreated -> includes(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																) then																		
+																			thisModule.createCorrespondantActor(
+																				correspActors
+																					-> at(stringValue.substring(1, stringValue.indexOf('_' + stringValue.regexReplaceAll('^[0-9]+_', '')))
+																						.toInteger()),
+																				stringValue.regexReplaceAll('^[0-9]+_', '')
+																			)
+																		else
+																			thisModule.getElementsCreated(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																		endif
+									)			
+						-> union(
+						let actorsusingSysApp : Sequence(EXCEL!Cell) =
+									eWorksheet.getAllUsingApplicativeSystemActors
+						in 
+							let listOfElement : Sequence(String) =
+								actorsusingSysApp
+								->collect(cell | cell.getCellValueToString.getListOfElementsWithIndex(actorsusingSysApp.indexOf(cell)))
+								->flatten()
+							in listOfElement	
+									-> collect(stringValue |	if (not thisModule.cellsCreated
+																		-> includes(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																) then																		
+																			thisModule.createActorUsingAppSys(
+																				actorsusingSysApp
+																					-> at(stringValue.substring(1, stringValue.indexOf('_' + stringValue.regexReplaceAll('^[0-9]+_', '')))
+																						.toInteger()),
+																				stringValue.regexReplaceAll('^[0-9]+_', '')
+																			)
+																		else
+																			thisModule.getElementsCreated(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																		endif
+									)		
+						)			,
+			services <- let services : Sequence(EXCEL!Cell) =
+									eWorksheet.getAllServices
+						in 
+							let listOfElement : Sequence(String) =
+								services
+								->collect(cell | cell.getCellValueToString.getListOfElementsWithIndex(services.indexOf(cell)))
+								->flatten()
+							in listOfElement	
+									-> collect(stringValue |	if (not thisModule.cellsCreated -> includes(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																) then																		
+																			thisModule.createService(
+																				services
+																					-> at(stringValue.substring(1, stringValue.indexOf('_' + stringValue.regexReplaceAll('^[0-9]+_', '')))
+																						.toInteger()),
+																				stringValue.regexReplaceAll('^[0-9]+_', '')
+																			)
+																		else
+																			thisModule.getElementsCreated(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																		endif
+									)
+						-> union(
+							let servicesConts : Sequence(EXCEL!Cell) =
+									eWorksheet.getAllServicesContainers
+							in 
+								let listOfElement : Sequence(String) =
+									servicesConts
+									->collect(cell | cell.getCellValueToString.getListOfElementsWithIndex(servicesConts.indexOf(cell)))
+									->flatten()
+								in listOfElement	
+										-> collect(stringValue |	if (not thisModule.cellsCreated  -> includes(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																	) then																		
+																				thisModule.createServiceContainer(
+																					servicesConts
+																						-> at(stringValue.substring(1, stringValue.indexOf('_' + stringValue.regexReplaceAll('^[0-9]+_', '')))
+																							.toInteger()),
+																					stringValue.regexReplaceAll('^[0-9]+_', '')
+																				)
+																			else
+																				thisModule.getElementsCreated(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																			endif
+										)
+						),
+			processes <- let processes : Sequence(EXCEL!Cell) =
+									eWorksheet.getAllProcesses
+						in 
+							let listOfElement : Sequence(String) =
+								processes
+								->collect(cell | cell.getCellValueToString.getListOfElementsWithIndex(processes.indexOf(cell)))
+								->flatten()
+							in listOfElement	
+									-> collect(stringValue |	if (not thisModule.cellsCreated -> includes(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																) then																		
+																			thisModule.createProcess(
+																				processes
+																					-> at(stringValue.substring(1, stringValue.indexOf('_' + stringValue.regexReplaceAll('^[0-9]+_', '')))																						
+																					.toInteger()),
+																				stringValue.regexReplaceAll('^[0-9]+_', '')
+																			)
+																		else
+																			thisModule.getElementsCreated(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																		endif
+									)
+		)
+}
+
+--***************Cells / Application Architecture***************
+
+--- Convert an excel cell to a physical application component categorized as an applicative system
+---@sourcePattern EXCEL!Cell
+---@targetPattern ACF!PhysicalApplicationComponent
+rule excelCellsToPhysicalApplicationComponents {
+	from 
+		eCell : EXCEL!Cell(	
+				eCell.isPhysicalApplicationComponentAsApplicativeSystems
+		)
+	to 
+		element : ACF!PhysicalApplicationComponent (
+			name <- eCell.getCellValueToString,
+			description <- eCell.getPhysicalApplicationComponentWording,
+			ID <- eCell.getPhysicalApplicationComponentNomenclatureNumber,
+			manageabilityCharacteristics <- eCell.getPhysicalApplicationComponentStrategicInterest,
+			capacityCharacteristics <- eCell.getPhysicalApplicationComponentNumberOfUsers,
+			lifeCycleStatus <- eCell.getPhysicalApplicationComponentKindOfApplication,
+			privacyCharacteristics <- eCell.getPhysicalApplicationComponentDataConfidentiality,		
+			
+			--TOCORRECT : matter with 'Date' format : Element of the target model is of type 'EDate'
+			--initialLiveDate <- eCell.getPhysicalApplicationComponentInitialLiveDate, 
+			--TOCORRECT : matter with 'Date' format : Element of the target model is of type 'EDate'
+			--dateOfLastRelease <- eCell.getPhysicalApplicationComponentDateOfLastRelease,		
+			
+			category <- thisModule.createPhysiAppliCompoApplicativeSystemAttributes(eCell),
+			
+			--As an application instance is created (and don't exists in the source model)
+			--we must to create app. instance for each technical components (exist in the source model)
+			--and put technic. compo. in each app. instance created (==> Lazy rule)
+			isRealizedByPhysicalTechnologyComponents <- eCell.getAllApplicationsInstancesForAnApplicativeSystem 
+															-> collect(iter | thisModule.createPhysicalTechnologyComponentApplicationInstance(eCell,
+																						eCell.getAllApplicationsInstancesForAnApplicativeSystem.indexOf(iter)
+																					)
+																	  ),	
+			--Control of the cell values (representing a module) to determine if it's a multi-valued cell (thus, if we have several modules in one cell : creation of
+			--	   several physic. app. compo (==> lazy rule))
+			communicatesWith <- eCell.getPhysicalApplicationComponentExternalApplicativeSystems
+									-> union(eCell.getPhysicalApplicationComponentModules
+												->collect(cell | cell.getCellValueToString.getListOfElements)
+												-> flatten()
+												-> collect(stringValue | 	if (not thisModule.cellsCreated -> includes(stringValue)) then
+																				thisModule.createModule(stringValue)
+																			else
+																				thisModule.getElementsCreated(stringValue)
+																			endif
+												)
+									)				
+		)
+}
+
+---Creation of a module
+---@sourcePattern String
+---@targetPattern ACF!PhysicalApplicationComponent
+unique lazy rule createModule{
+	from
+		name : String
+	to
+		element : ACF!PhysicalApplicationComponent (
+			name <- name
+		)
+	do{ 	
+		thisModule.cellsCreated <- thisModule.cellsCreated -> append(name);
+		thisModule.elementsCreated <- thisModule.elementsCreated -> append(element);
+	}	
+}
+
+---Creation of the applicative system category (Physic. appli. component)
+---@sourcePattern EXCEL!Cell
+---@targetPattern ACF!Label
+unique lazy rule createPhysiAppliCompoApplicativeSystemAttributes{
+	from
+		eCell : EXCEL!Cell		
+	to
+		element : ACF!Label (
+			name <- 'Systeme applicatif',
+			subLabels <- Sequence{thisModule.createAttributes('Date de mise en exploitation', eCell.getPhysicalApplicationComponentInitialLiveDate),
+							thisModule.createAttributes('Date de mise a jour', eCell.getPhysicalApplicationComponentDateOfLastRelease)
+						}
+			,
+			ownedElements <- 	let actorsUsingSysApss : Sequence(EXCEL!Cell) =
+									eCell.getActorsUsingAppSysForAnApplicativeSystems
+								in 
+									let listOfElement : Sequence(String) =
+										actorsUsingSysApss
+										->collect(cell | cell.getCellValueToString.getListOfElementsWithIndex(actorsUsingSysApss.indexOf(cell)))
+										->flatten()
+									in listOfElement	
+											-> collect(stringValue |	if (not thisModule.cellsCreated  -> includes(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																		) then																		
+																					thisModule.createActorUsingAppSys(
+																						actorsUsingSysApss
+																							-> at(stringValue.substring(1, stringValue.indexOf('_' + stringValue.regexReplaceAll('^[0-9]+_', '')))																						
+																								.toInteger()),
+																						stringValue.regexReplaceAll('^[0-9]+_', '')
+																					)
+																				else
+																					thisModule.getElementsCreated(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																				endif
+											)
+								-> union(let process : Sequence(EXCEL!Cell) =
+											eCell.getProcessForApplicaSystem
+										in 
+											let listOfElement : Sequence(String) =
+												process
+												->collect(cell | cell.getCellValueToString.getListOfElementsWithIndex(process.indexOf(cell)))
+												->flatten()
+											in listOfElement	
+													-> collect(stringValue |	if (not thisModule.cellsCreated -> includes(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																				) then																		
+																							thisModule.createProcess(
+																								process
+																									-> at(stringValue.substring(1, stringValue.indexOf('_' + stringValue.regexReplaceAll('^[0-9]+_', '')))																						
+																										.toInteger()),
+																								stringValue.regexReplaceAll('^[0-9]+_', '')
+																							)
+																						else
+																							thisModule.getElementsCreated(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																						endif
+													)												
+								)
+		)
+	do {
+		thisModule.labelsInEA <- thisModule.labelsInEA -> append(element);
+	}
+}
+
+
+---Creation of a correspondant actor
+---@sourcePattern EXCEL!Cell
+---@sourcePattern String
+---@targetPattern ACF!Actor
+unique lazy rule createCorrespondantActor{
+	from
+		eCell : EXCEL!Cell, name : String
+	to
+		element : ACF!Actor (
+			name <- name,
+			participatesInProcesses <- let processes : Sequence(ACF!Process) = 
+											if (eCell.isDSICorrespondingActor) then
+												eCell.getProcessesForADSIActor
+											else
+												eCell.getProcessesForABusinessActor
+											endif
+										in 
+											let listOfElement : Sequence(String) =
+												processes	
+												->collect(cell | cell.getCellValueToString.getListOfElements)
+												-> flatten()
+											in listOfElement	
+													-> collect(stringValue | 	if (not thisModule.cellsCreated -> includes(stringValue)) then
+																					thisModule.createProcess(eCell, stringValue)
+																				else
+																					thisModule.getElementsCreated(stringValue)
+																				endif
+													)
+		)	
+	do{ 	
+		thisModule.cellsCreated <- thisModule.cellsCreated -> append(name);
+		thisModule.elementsCreated <- thisModule.elementsCreated -> append(element);
+	}	
+}
+
+---Creation of an actor using an app. system
+---@sourcePattern EXCEL!Cell
+---@sourcePattern String
+---@targetPattern ACF!Actor
+unique lazy rule createActorUsingAppSys{
+	from
+		eCell : EXCEL!Cell, name : String
+	to
+		element : ACF!Actor (
+			name <- name,
+			category <- thisModule.createActorUsingApplicativeSystemCategoryAttributes(eCell)
+		)	
+	do{ 	
+		thisModule.cellsCreated <- thisModule.cellsCreated -> append(name);
+		thisModule.elementsCreated <- thisModule.elementsCreated -> append(element);
+	}		
+}
+
+
+---Creation of the application instance category (Physic. appli. component)
+---@sourcePattern EXCEL!Cell
+---@sourcePattern Integer
+---@targetPattern ACF!PhysicalTechnologyComponent
+unique lazy rule createPhysicalTechnologyComponentApplicationInstance{
+	from
+		eCell : EXCEL!Cell, indexOfTechnoComponent : Integer
+	to
+		element : ACF!PhysicalTechnologyComponent (
+			name <- 'Instance application_' + eCell.getCellValueToString + '-' + indexOfTechnoComponent.toString(),					
+			isDependentOnPhysicalTechnologyComponents <- Sequence{eCell.getPhysicalTechnoComponentsApplicationInstance.at(indexOfTechnoComponent),
+																  eCell.getAllServersInstancesForAnApplicationInstance(indexOfTechnoComponent)
+																  		-> collect(iter | thisModule.createPhysicalTechnologyComponentServerInstance(eCell, indexOfTechnoComponent))
+																 }
+		)
+	do {
+		thisModule.getTechnologyArchitecture(eCell.getWorksheet).physicalComponents
+			<- thisModule.getTechnologyArchitecture(eCell.getWorksheet).physicalComponents
+				-> append(element);	
+	}
+}
+
+---Creation of the server instance category (Physic. appli. component)
+---@targetPattern ACF!PhysicalTechnologyComponent
+unique lazy rule createPhysicalTechnologyComponentServerInstance{
+	from
+		eCell : EXCEL!Cell, indexOfTechnoComponent : Integer
+	to
+		element : ACF!PhysicalTechnologyComponent (
+			name <- 'Instance serveur',				
+			isDependentOnPhysicalTechnologyComponents <- eCell.getPhysicalTechnoComponentsServerInstance.at(indexOfTechnoComponent)
+		)
+	do {
+		thisModule.getTechnologyArchitecture(eCell.getWorksheet).physicalComponents
+			<- thisModule.getTechnologyArchitecture(eCell.getWorksheet).physicalComponents
+				-> append(element);	
+	}
+}
+
+--- Convert an excel cell to a physical application component categorized as an external input applicative system
+--- (input : input communication with applicative system)
+---@sourcePattern EXCEL!Cell
+---@targetPattern ACF!PhysicalApplicationComponent
+rule excelCellsToPhysicalApplicationComponentExternalInput {
+	from 
+		eCell : EXCEL!Cell(			
+				eCell.isPhysicalApplicationComponentExternalInput
+		)
+	to 
+		element : ACF!PhysicalApplicationComponent (
+			name <- eCell.getCellValueToString,
+			category <- thisModule.createExternalInputApplicativeSystemCategoryAttributes(eCell)
+		)
+}
+
+ ---Creation of attributes for a physical application component category : external input applicative system
+---@sourcePattern EXCEL!Cell
+---@targetPattern ACF!Label
+unique lazy rule createExternalInputApplicativeSystemCategoryAttributes {
+	from 
+		eCell : EXCEL!Cell
+	to 
+		--Input external system
+		inputSystem : ACF!Label (
+			name <- 'Entrant',
+			--Condition not in the guard, because we need category name, even if sublabels is empty
+			subLabels <- eCell.getAllExternalInputApplicativeSystemAttributes 
+							-> collect(attributeValue | if (attributeValue <> '') then
+															thisModule.createAttributes(
+																eCell.getExternalInputApplicativeSystemColumnTitle
+																.at(eCell.getAllExternalInputApplicativeSystemAttributes.indexOf(attributeValue))
+																, attributeValue
+															)
+														else OclUndefined
+														endif
+										)	
+		)
+	do {
+		thisModule.labelsInEA <- thisModule.labelsInEA 
+											-> append(inputSystem)
+											-> union(inputSystem.subLabels);	
+	}
+}
+  
+--- Convert an excel cell to a physical application component categorized as an external output applicative system
+--- (output : output communication with applicative system)
+---@sourcePattern EXCEL!Cell
+---@targetPattern ACF!PhysicalApplicationComponent
+rule excelCellsToPhysicalApplicationComponentExternalOutput {
+	from 
+		eCell : EXCEL!Cell(			
+				eCell.isPhysicalApplicationComponentExternalOutput
+		)
+	to 
+		element : ACF!PhysicalApplicationComponent (
+			name <- eCell.getCellValueToString,
+			category <- thisModule.createExternalOutputApplicativeSystemCategoryAttributes(eCell)
+		)
+}
+
+ ---Creation of attributes for a logical application component category : external output applicative system
+---@sourcePattern EXCEL!Cell
+---@targetPattern ACF!Label
+unique lazy rule createExternalOutputApplicativeSystemCategoryAttributes {
+	from 
+		eCell : EXCEL!Cell
+	to 
+		--Output external system
+		outputSystem : ACF!Label (
+			name <- 'Sortant',
+			subLabels <- eCell.getAllExternalOututApplicativeSystemAttributes 
+								-> collect(attributeValue | if (attributeValue <> '') then 
+																	thisModule.createAttributes(
+																		eCell.getExternalOutputApplicativeSystemColumnTitle
+																		.at(eCell.getAllExternalOututApplicativeSystemAttributes.indexOf(attributeValue))
+																		, attributeValue
+																	)
+															else OclUndefined
+															endif
+											)
+		)
+	do {
+		thisModule.labelsInEA <- thisModule.labelsInEA 
+											-> append(outputSystem)
+											-> union(outputSystem.subLabels);	
+	}
+}
+
+--***************Cells / Technology Architecture***************
+--- Convert an excel cell to a physical technology component composing a server instance
+---'Serveur'
+---@sourcePattern EXCEL!Cell
+---@targetPattern ACF!PhysicalTechnologyComponent
+rule excelCellsToPhysicalTechnologyComponentsServer {
+	from 
+		eCell : EXCEL!Cell(			
+				eCell.isPhysicalTechnologyComponentServer
+		)
+	to 
+		element : ACF!PhysicalTechnologyComponent (		
+			name <- eCell.getCellValueToString,
+ 			vendor <- eCell.getPhysicalTechnologyComponentServerManufacturer,	
+			version <- eCell.getPhysicalTechnologyComponentServerModel
+		)
+}
+
+--- Convert an excel cell to a physical technology component composing a server instance
+---'OS Serveur'
+---@sourcePattern EXCEL!Cell
+---@targetPattern ACF!PhysicalTechnologyComponent
+rule excelCellsToPhysicalTechnologyComponentsOSServer {
+	from 
+		eCell : EXCEL!Cell(			
+				eCell.isPhysicalTechnologyComponentOSServer
+		)
+	to 
+		element : ACF!PhysicalTechnologyComponent (		
+			name <- eCell.getCellValueToString
+		)
+}
+
+--- Convert an excel cell to a physical technology component composing an application instance
+---'Progiciel'
+---@sourcePattern EXCEL!Cell
+---@targetPattern ACF!PhysicalTechnologyComponent
+rule excelCellsToPhysicalTechnologyComponentsSoftwarePackage {
+	from 
+		eCell : EXCEL!Cell(			
+				eCell.isPhysicalTechnologyComponentForAnApplicationInstance
+		)
+	to 
+		element : ACF!PhysicalTechnologyComponent (		
+			productName <- eCell.getPhysicalTechnologyComponentProductNameSoftPack,
+			vendor <- eCell.getPhysicalTechnologyComponentVendorNameSoftPack,
+			version <- eCell.getPhysicalTechnologyComponentVersionSoftPack,
+			category <- thisModule.createPhysiTechnoCompoSoftPackAttributes(eCell)			
+		)
+}
+
+ ---Creation of the software package category (Physic. techno. component)
+---@sourcePattern EXCEL!Cell
+---@targetPattern ACF!Label
+unique lazy rule createPhysiTechnoCompoSoftPackAttributes{
+	from
+		eCell : EXCEL!Cell	
+	to
+		element : ACF!Label (
+			name <- 'Progiciel',
+			subLabels <- eCell.getAllApplicativeSystemAttributes 
+							-> collect(attributeValue | if (attributeValue <> '') then 
+															thisModule.createAttributes(
+																eCell.getApplicativeSystemColumnTitle
+																.at(eCell.getAllApplicativeSystemAttributes.indexOf(attributeValue))
+																, attributeValue
+															)
+														else OclUndefined
+														endif
+										)
+		)
+	do {
+		thisModule.labelsInEA <- thisModule.labelsInEA 
+											-> append(element)
+											-> union(element.subLabels);	
+	}	
+}
+ 
+--***************Cells / Business Architecture***************
+
+--- Convert an excel cell to an organization unit containing actors as DSI correspondant
+---@sourcePattern EXCEL!Cell
+---@targetPattern ACF!OrganizationUnit
+rule excelCellsToOrganizationUnitsActorDSICorrespondant {
+	from 
+		eCell : EXCEL!Cell(			
+				eCell.isOrganizationUnitDSI
+		)
+	to 
+		element : ACF!OrganizationUnit (
+			name <- eCell.getCellValueToString,
+			ownsAndGovernsServices <-	let services : Sequence(EXCEL!Cell) =
+											eCell.getServicesForOrganUnitDSI
+										in 
+											let listOfElement : Sequence(String) =
+												services
+												->collect(cell | cell.getCellValueToString.getListOfElementsWithIndex(services.indexOf(cell)))
+												->flatten()
+											in listOfElement	
+													-> collect(stringValue |	if (not thisModule.cellsCreated -> includes(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																				) then																		
+																							thisModule.createService(
+																								services
+																									-> at(stringValue.substring(1, stringValue.indexOf('_' + stringValue.regexReplaceAll('^[0-9]+_', '')))																						
+																										.toInteger()),
+																								stringValue.regexReplaceAll('^[0-9]+_', '')
+																							)
+																						else
+																							thisModule.getElementsCreated(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																						endif
+													),
+			containsActors <- 	let actorsCorrespondant : Sequence(EXCEL!Cell) =
+											eCell.getOrganizationUnitsActorDSICorrespondant
+								in 
+									let listOfElement : Sequence(String) =
+										actorsCorrespondant
+										->collect(cell | cell.getCellValueToString.getListOfElementsWithIndex(actorsCorrespondant.indexOf(cell)))
+										->flatten()
+									in listOfElement	
+											-> collect(stringValue |	if (not thisModule.cellsCreated -> includes(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																		) then																		
+																					thisModule.createCorrespondantActor(
+																						actorsCorrespondant
+																							-> at(stringValue.substring(1, stringValue.indexOf('_' + stringValue.regexReplaceAll('^[0-9]+_', '')))																						
+																										.toInteger()),
+																						stringValue.regexReplaceAll('^[0-9]+_', '')
+																					)
+																				else
+																					thisModule.getElementsCreated(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																				endif
+											),
+			category <- thisModule.createOrganUnitDSIAttribute(eCell)
+		)
+}
+
+---Creation of the software package category (Physic. techno. component)
+---@sourcePattern EXCEL!Cell
+---@targetPattern ACF!Label
+unique lazy rule createOrganUnitDSIAttribute{
+	from
+		eCell : EXCEL!Cell	
+	to
+		element : ACF!Label (
+			name <- 'Pole DSI'
+		)
+	do {
+		thisModule.labelsInEA <- thisModule.labelsInEA -> append(element);
+	}	
+}	
+
+--- Create a service
+---@sourcePattern EXCEL!Cell
+---@sourcePattern String
+---@targetPattern ACF!BusinessService
+unique lazy rule createService {
+	from 
+		eCell : EXCEL!Cell, name : String
+	to 
+		service : ACF!BusinessService (
+			name <- name,
+			isOwnedAndGovernedByOrganizationUnits <- eCell.getOrganizationUnitsDSIForAService
+														-> append(
+															eCell.getOrganizationUnitsBusinessForAService
+															->collect(cell | cell.getCellValueToString.getListOfElements) 
+															->flatten()
+															-> collect(stringValue | 	if (not thisModule.cellsCreated -> includes(stringValue)) then
+																							thisModule.createOrganizationUnitsBusinessCorrespondant(eCell, stringValue)
+																						else
+																							thisModule.getElementsCreated(stringValue)
+																						endif
+															)
+														),
+			category <- thisModule.createServiceExplicitGovernFunctionCategoryAttributes(eCell),
+			supportsProcesses <- eCell.getProcessesForAService
+									->collect(cell | cell.getCellValueToString.getListOfElements)
+									->flatten()
+									-> collect(stringValue | 	if (not thisModule.cellsCreated -> includes(stringValue)) then
+																	thisModule.createProcess(eCell, stringValue)
+																else
+																	thisModule.getElementsCreated(stringValue)
+																endif
+									)
+									,
+			isRealizedByProcesses <- eCell.getOrchestratingProcess
+										->collect(cell | cell.getCellValueToString.getListOfElements)
+										->flatten()
+										-> collect(stringValue | 	if (not thisModule.cellsCreated -> includes(stringValue)) then
+																		thisModule.createProcess(eCell, stringValue)
+																	else
+																		thisModule.getElementsCreated(stringValue)
+																	endif					
+										),
+			decomposesServices <-	let servicesConts : Sequence(EXCEL!Cell) =
+											eCell.getServiceContainerForAService
+									in 
+										let listOfElement : Sequence(String) =
+											servicesConts
+											->collect(cell | cell.getCellValueToString.getListOfElementsWithIndex(servicesConts.indexOf(cell)))
+											->flatten()
+										in listOfElement	
+												-> collect(stringValue |	if (not thisModule.cellsCreated -> includes(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																			) then																		
+																						thisModule.createServiceContainer(
+																							servicesConts
+																								-> at(stringValue.substring(1, stringValue.indexOf('_' + stringValue.regexReplaceAll('^[0-9]+_', '')))																						
+																									.toInteger()),
+																							stringValue.regexReplaceAll('^[0-9]+_', '')
+																						)
+																					else
+																						thisModule.getElementsCreated(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																					endif
+												)
+		)
+		
+	do{ 	
+		thisModule.cellsCreated <- thisModule.cellsCreated -> append(name);
+		thisModule.elementsCreated <- thisModule.elementsCreated -> append(service);
+	}
+}
+
+--- Create a service container
+---@sourcePattern EXCEL!Cell
+---@sourcePattern String
+---@targetPattern ACF!BusinessService
+unique lazy rule createServiceContainer {
+	from 
+		eCellService : EXCEL!Cell, name : String
+	to 
+		serviceContainer : ACF!BusinessService (
+			name <- name,
+			consumesServices <- let services : Sequence(EXCEL!Cell) =
+											eCellService.getServicesForServiceContainer
+								in 
+									let listOfElement : Sequence(String) =
+										services
+										->collect(cell | cell.getCellValueToString.getListOfElementsWithIndex(services.indexOf(cell)))
+										->flatten()
+									in listOfElement	
+											-> collect(stringValue |	if (not thisModule.cellsCreated -> includes(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																		) then																		
+																					thisModule.createService(
+																						services
+																							-> at(stringValue.substring(1, stringValue.indexOf('_' + stringValue.regexReplaceAll('^[0-9]+_', '')))																						
+																								.toInteger()),
+																						stringValue.regexReplaceAll('^[0-9]+_', '')
+																					)
+																				else
+																					thisModule.getElementsCreated(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																				endif
+											),
+			isRealizedThroughLogicalApplicationComponent <- eCellService.getApplicativeServicesForOneContainerService
+		)
+		
+	do{ 	
+		thisModule.cellsCreated <- thisModule.cellsCreated -> append(name);
+		thisModule.elementsCreated <- thisModule.elementsCreated -> append(serviceContainer);
+	}	
+}
+
+--- Create an organization unit containing actors as business correspondant
+---@sourcePattern EXCEL!Cell
+---@sourcePattern String
+---@targetPattern ACF!OrganizationUnit
+unique lazy rule createOrganizationUnitsBusinessCorrespondant {
+	from 
+		eCell : EXCEL!Cell, name : String
+	to 
+		element : ACF!OrganizationUnit (
+			name <- name, 
+			containsActors <- 	let concernedEntity : Sequence(EXCEL!Cell) =
+									eCell.getOrganizationUnitsActorConcernedEntity
+								in 
+									let listOfElement : Sequence(String) =
+										concernedEntity
+										->collect(cell | cell.getCellValueToString.getListOfElementsWithIndex(concernedEntity.indexOf(cell)))
+										->flatten()
+									in listOfElement	
+											-> collect(stringValue |	if (not thisModule.cellsCreated -> includes(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																		) then																		
+																					thisModule.createCorrespondantActor(
+																						concernedEntity
+																							-> at(stringValue.substring(1, stringValue.indexOf('_' + stringValue.regexReplaceAll('^[0-9]+_', '')))																						
+																								.toInteger()),
+																						stringValue.regexReplaceAll('^[0-9]+_', '')
+																					)
+																				else
+																					thisModule.getElementsCreated(stringValue.regexReplaceAll('^[0-9]+_', ''))
+																				endif
+											)
+		)
+		
+	do{ 	
+		thisModule.cellsCreated <- thisModule.cellsCreated -> append(name);
+		thisModule.elementsCreated <- thisModule.elementsCreated -> append(element);
+	}	
+}
+
+ ---Creation of attributes for an actor category : actor using applicative system
+---@sourcePattern EXCEL!Cell
+---@targetPattern ACF!Label
+unique lazy rule createActorUsingApplicativeSystemCategoryAttributes {
+	from 
+		eCell : EXCEL!Cell
+	to 
+		actorUsingAppSystem : ACF!Label (			
+			name <- 'Site utilisant l\'application',
+			ownedElements <- eCell.getApplicativeSystemsForAnActorUsingAppSystem
+		)
+		
+	do{
+		thisModule.labelsInEA <- thisModule.labelsInEA -> append(actorUsingAppSystem);	
+	}	
+}
+
+--- Create a process
+---@sourcePattern EXCEL!Cell
+---@sourcePattern String
+---@targetPattern ACF!Process
+unique lazy rule createProcess {
+	from 
+		eCell : EXCEL!Cell, name : String
+	to 
+		element : ACF!Process (
+			name <- name
+		)	
+		
+	do{ 	
+		thisModule.cellsCreated <- thisModule.cellsCreated -> append(name);
+		thisModule.elementsCreated <- thisModule.elementsCreated -> append(element);
+	}
+}
+
+---Creation of attributes for a service category : explicitly governed function
+---@sourcePattern EXCEL!Cell
+---@targetPattern ACF!Label
+unique lazy rule createServiceExplicitGovernFunctionCategoryAttributes {
+	from 
+		eCell : EXCEL!Cell
+	to 
+		element : ACF!Label (			
+			name <- 'Fonction',
+			subLabels <- eCell.getAllServiceAttributes
+							-> collect(attributeValue | if (attributeValue <> '') then 
+															thisModule.createAttributes(
+																eCell.getServiceColumnTitle
+																.at(eCell.getAllServiceAttributes.indexOf(attributeValue))
+																, attributeValue
+															)
+														else OclUndefined
+														endif
+										)			
+		)
+		
+	do{
+		thisModule.labelsInEA <- thisModule.labelsInEA -> append(element);
+	}	
+}

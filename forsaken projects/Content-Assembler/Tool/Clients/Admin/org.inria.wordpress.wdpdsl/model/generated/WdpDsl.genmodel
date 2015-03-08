@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.inria.wordpress.wdpdsl/src-gen" editDirectory="/org.inria.wordpress.wdpdsl.edit/src"
+    editorDirectory="/org.inria.wordpress.wdpdsl.editor/src" modelPluginID="org.inria.wordpress.wdpdsl"
+    forceOverwrite="true" modelName="WdpDsl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="org.inria.wordpress.wdpdsl.edit"
+    editorPluginID="org.inria.wordpress.wdpdsl.editor" runtimeVersion="2.9">
+  <genPackages prefix="WdpDsl" basePackage="org.inria.wordpress.wdpdsl" disposableProviderFactory="true"
+      fileExtensions="wdpdsl" ecorePackage="WdpDsl.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WdpDsl.ecore#//postFormat">
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//postFormat/standard"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//postFormat/aside"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//postFormat/audio"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//postFormat/chat"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//postFormat/gallery"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//postFormat/image"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//postFormat/link"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//postFormat/quote"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//postFormat/status"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//postFormat/video"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WdpDsl.ecore#//avatarRating">
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//avatarRating/G"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//avatarRating/PG"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//avatarRating/R"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//avatarRating/X"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WdpDsl.ecore#//dateformat">
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//dateformat/jnY"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//dateformat/FjY"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//dateformat/Ynj"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//dateformat/njY"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//dateformat/custom"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WdpDsl.ecore#//defaultAvatar">
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//defaultAvatar/mysteryMan"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//defaultAvatar/blank"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//defaultAvatar/GravatarLogo"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//defaultAvatar/identicon"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//defaultAvatar/wavatar"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//defaultAvatar/monsterId"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//defaultAvatar/retro"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WdpDsl.ecore#//functionalities">
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//functionalities/eCommerce"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//functionalities/forms"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//functionalities/hamSpam"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//functionalities/indexing"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//functionalities/multiLanguage"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//functionalities/pictures"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//functionalities/SEO"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//functionalities/socialNetwork"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WdpDsl.ecore#//themes">
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//themes/responsive"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//themes/SEO"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//themes/headerParallaxEffect"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//themes/business"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//themes/magazine"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//themes/galleries"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WdpDsl.ecore#//pagesSorter">
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//pagesSorter/pageTitle"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//pagesSorter/pageOrder"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//pagesSorter/pageId"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WdpDsl.ecore#//pageStatus">
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//pageStatus/published"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//pageStatus/pendingreview"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//pageStatus/draft"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//pageStatus/autoDraft"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//pageStatus/trash"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//pageStatus/private"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//pageStatus/new"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//pageStatus/inherit"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//pageStatus/future"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WdpDsl.ecore#//role">
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//role/author"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//role/administrator"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//role/suscriber"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//role/editor"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//role/contributor"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WdpDsl.ecore#//timeFormat">
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//timeFormat/g_i_aLower"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//timeFormat/g_i_AUpper"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//timeFormat/Gg"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//timeFormat/custom"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WdpDsl.ecore#//taxonomyType">
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//taxonomyType/categories"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//taxonomyType/tags"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WdpDsl.ecore#//urlForm">
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//urlForm/default"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//urlForm/dayAndName"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//urlForm/monthAndName"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//urlForm/numeric"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//urlForm/postName"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//urlForm/customStructure"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WdpDsl.ecore#//weeks">
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//weeks/monday"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//weeks/tuesday"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//weeks/wednesday"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//weeks/thirsday"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//weeks/friday"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//weeks/saturday"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//weeks/sunday"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WdpDsl.ecore#//widgetType">
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//widgetType/mainArea"/>
+      <genEnumLiterals ecoreEnumLiteral="WdpDsl.ecore#//widgetType/secondaryArea"/>
+    </genEnums>
+    <genClasses ecoreClass="WdpDsl.ecore#//Website">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Website/adminUser"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Website/users"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Website/posts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Website/pages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Website/appearance"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Website/mediaLibrary"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Website/functionalities"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Website/comments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Website/categories"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Website/tags"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Website/settings"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Website/deletion"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//Deletion">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Deletion/postsByTitle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Deletion/pagesByTitle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Deletion/usersByLogin"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Deletion/mediasByTitle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Deletion/functionalitiesByName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Deletion/themesByName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Deletion/categoriesByName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Deletion/tagsByName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Deletion/menusByName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Deletion/commentsByPostDateAuthor"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//PostDateAuthor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//PostDateAuthor/postTitle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//PostDateAuthor/commentAuthorName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//PostDateAuthor/commentDate"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//User">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//User/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//User/userName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//User/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//User/userRole"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//User/firstName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//User/lastName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//User/nickName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//User/publicName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//User/email"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//User/webSite"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//User/biography"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//PostPage_Impl">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//PostPage_Impl/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//PostPage_Impl/status"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//PostPage_Impl/content"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//PostPage_Impl/author"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//PostPage_Impl/featuredImage"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//PostPage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//PostPage/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//PostPage/commonAttributes"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//Post">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Post/categories"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Post/tags"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Post/format"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//Page">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Page/parent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Page/order"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Page/publicationDateGMT"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Page/publicationDate"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//Appearance">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Appearance/widgets"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Appearance/appearanceMenus"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Appearance/appearanceHeader"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Appearance/theme"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//Theme">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Theme/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Theme/themeType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Theme/defaultPlugin"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//Functionality">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Functionality/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Functionality/functionalityType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Functionality/socialNetworks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Functionality/defaultPlugin"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//Comment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Comment/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Comment/content"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Comment/authorName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Comment/commentPostPage"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//Url">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Url/pathUrl"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//WidgetFeed">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//WidgetFeed/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//WidgetFeed/isDisplayingItemContent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//WidgetFeed/isDisplayingItemAuthor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//WidgetFeed/isDisplayingItemDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//WidgetFeed/numberOfItems"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//WidgetFeed/url"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//Plugin">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Plugin/pluginName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Plugin/url"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//Media">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Media/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Media/url"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Media/date"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Media/uploadedTo"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//Image">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Image/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Image/caption"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Image/altText"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Image/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Image/url"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//Link">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Link/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Link/url"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Link/text"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//Header">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Header/randomImage"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Header/uploadImage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Header/textColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Header/isShowingHeaderText"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//Taxonomy">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Taxonomy/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Taxonomy/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Taxonomy/slug"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//Category">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Category/categoryName"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//Tag">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Tag/tagName"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//Settings">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Settings/general"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Settings/writing"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Settings/reading"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Settings/discussion"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Settings/media"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Settings/permalinks"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//GeneralSettings">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//GeneralSettings/websiteTitle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//GeneralSettings/websiteTagline"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//GeneralSettings/websiteAdress"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//GeneralSettings/adminMail"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//GeneralSettings/userDefaultRole"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//GeneralSettings/timeZone"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//GeneralSettings/gsDateFormat"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//GeneralSettings/gsTimeFormat"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//GeneralSettings/weekStartsOn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//GeneralSettings/wordPressAdress"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//GeneralSettings/isPublic"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//WritingSettings">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//WritingSettings/mailServer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//WritingSettings/port"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//WritingSettings/loginName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//WritingSettings/password"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//WritingSettings/defaultPostCategory"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//WritingSettings/defaultMailCategory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//WritingSettings/isConvertingEmoticons"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//WritingSettings/isCorrectingInvalidXHTML"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//ReadingSettings">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//ReadingSettings/maxNumberPostsForBlogPages"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//ReadingSettings/numberRecentItemForFeeds"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//ReadingSettings/staticFrontPage"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//ReadingSettings/staticPostPage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//ReadingSettings/isDisplayingLastPostInFront"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//ReadingSettings/isIndexed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//ReadingSettings/isShowingFullTextForFeed"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//DiscussionSettings">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//DiscussionSettings/numberArticleDaysForAutoCloseComments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//DiscussionSettings/nestedCommentsLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//DiscussionSettings/numberCommentsPerPageForBreakedComments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//DiscussionSettings/numberOfLinksInCommentForModeration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//DiscussionSettings/moderatedWords"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//DiscussionSettings/forbiddenWords"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//DiscussionSettings/maxAvatarRating"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//DiscussionSettings/userDefaultAvatar"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//DiscussionSettings/isNotifyingLinkedBlogs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//DiscussionSettings/isAllowingLinkNotificationsFromBlogs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//DiscussionSettings/isAllowingPublicComments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//DiscussionSettings/isAskingNameAndMailCommentAuthor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//DiscussionSettings/isAllowingAnonymousComments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//DiscussionSettings/isBreakingCommentsIntoPages"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//DiscussionSettings/isdisplayingLastPageForBreakedComments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//DiscussionSettings/isDisplayingOlderCommentForEachPage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//DiscussionSettings/isMailingAdminForEachComments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//DiscussionSettings/isHeldingCommentForModeration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//DiscussionSettings/isAskingAdminApprovement"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//DiscussionSettings/isAskingPreviousAdminApprovement"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//DiscussionSettings/isShowingAvatar"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//MediaSettings">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//MediaSettings/thumbnailWidth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//MediaSettings/thumbnailHeight"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//MediaSettings/mediumWidth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//MediaSettings/mediumHeight"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//MediaSettings/largeWidth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//MediaSettings/largeHeight"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//MediaSettings/isCroppingThumbnailToExactDims"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//MediaSettings/isOrganizeUploadsIntoFolders"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//PermalinksSettings">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//PermalinksSettings/permaUrlForm"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//PermalinksSettings/urlCategoryBase"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//PermalinksSettings/urlTagBase"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//Widget">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Widget/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Widget/widgetArchives"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Widget/calendars"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Widget/categories"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Widget/customMenus"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Widget/metas"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Widget/pages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Widget/recentComments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Widget/recentPosts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Widget/feeds"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Widget/searchs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Widget/tagClouds"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Widget/texts"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//Menu">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Menu/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Menu/menuName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Menu/pages"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Menu/categories"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Menu/links"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//Menu/currentMenuSetting"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//Archive">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Archive/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Archive/isDisplayingAsDropDown"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Archive/isShowingPostsCount"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//Calendar">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Calendar/title"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//WidgetCategorie">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//WidgetCategorie/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//WidgetCategorie/numberOfDisplayedPosts"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//WidgetCategorie/isDisplayingSubCat"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//WidgetCategorie/isDropDownList"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//WidgetMenu">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//WidgetMenu/title"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//WidgetMenu/selectedMenu"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//Meta">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Meta/title"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//WidgetPage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//WidgetPage/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//WidgetPage/widgetPagesSorter"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WdpDsl.ecore#//WidgetPage/idPageExcluded"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//WidgetComment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//WidgetComment/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//WidgetComment/numberOfDisplayedComments"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//WidgetPost">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//WidgetPost/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//WidgetPost/numberOfDisplayedPosts"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//WidgetPost/isDisplayingPostDate"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//Search">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Search/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Search/title"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//TagCloud">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//TagCloud/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//TagCloud/taxonomy"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//Text">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Text/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Text/content"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//Text/isAutoParagraphs"/>
+    </genClasses>
+    <genClasses ecoreClass="WdpDsl.ecore#//CurrentMenuSetting">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//CurrentMenuSetting/isAddingNewTopLevelPages"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WdpDsl.ecore#//CurrentMenuSetting/isNavigationMenuLocated"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

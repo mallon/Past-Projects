@@ -1,0 +1,130 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.inria.wordpress.enduser.xml2wdpconf.freePlane</groupId>
+  <artifactId>endUser</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>endUser</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+  
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+		<groupId>commons-lang</groupId>
+		<artifactId>commons-lang</artifactId>
+		<version>2.2</version>
+	</dependency>            
+                
+    <dependency>
+		<groupId>org.eclipse.core</groupId>
+		<artifactId>org.eclipse.core.runtime</artifactId>
+		<version>3.7.0</version>
+	</dependency>
+            
+    <dependency>
+		<groupId>org.eclipse.core</groupId>
+		<artifactId>org.eclipse.core.resources</artifactId>
+		<version>3.7.100</version>
+	</dependency>
+                    
+   <dependency>
+		<groupId>org.eclipse.emf</groupId>
+		<artifactId>org.eclipse.emf.common</artifactId>
+		<version>2.9.2-v20131212-0545</version>
+	</dependency>
+             
+    <dependency>
+		<groupId>org.eclipse.emf</groupId>
+		<artifactId>org.eclipse.emf.ecore</artifactId>
+		<version>2.9.2-v20131212-0545</version>
+	</dependency>
+          
+    <dependency>
+		<groupId>org.eclipse.emf</groupId>
+		<artifactId>org.eclipse.emf.ecore.xmi</artifactId>
+		<version>2.9.1-v20131212-0545</version>
+	</dependency>        
+    
+    <dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-lang3</artifactId>
+		<version>3.3.1</version>
+	</dependency>
+        
+    <dependency>
+		<groupId>org.eclipse.m2m.atl.common_3.4.0.v201305211502</groupId>
+		<artifactId>org.eclipse.m2m.atl.common_3.4.0.v201305211502</artifactId>
+		<version>3.4.0</version>
+		<scope>system</scope>
+    	<systemPath>${basedir}/dependencyJars/org.eclipse.m2m.atl.common_3.4.0.v201305211502.jar</systemPath>
+	</dependency>
+    
+    <dependency>
+		<groupId>org.eclipse.m2m.atl.core.emf_3.4.0.v201305211502</groupId>
+		<artifactId>org.eclipse.m2m.atl.core.emf_3.4.0.v201305211502</artifactId>
+		<version>3.4.0</version>
+		<scope>system</scope>
+    	<systemPath>${basedir}/dependencyJars/org.eclipse.m2m.atl.core.emf_3.4.0.v201305211502.jar</systemPath>
+	</dependency>
+    
+     <dependency>
+		<groupId>org.eclipse.m2m.atl.core_3.4.0.v201305211502</groupId>
+		<artifactId>org.eclipse.m2m.atl.core_3.4.0.v201305211502</artifactId>
+		<version>3.4.0</version>
+		<scope>system</scope>
+    	<systemPath>${basedir}/dependencyJars/org.eclipse.m2m.atl.core_3.4.0.v201305211502.jar</systemPath>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.eclipse.m2m.atl.engine.emfvm_3.4.0.v201305211502</groupId>
+		<artifactId>org.eclipse.m2m.atl.engine.emfvm_3.4.0.v201305211502</artifactId>
+		<version>3.4.0</version>
+		<scope>system</scope>
+    	<systemPath>${basedir}/dependencyJars/org.eclipse.m2m.atl.engine.emfvm_3.4.0.v201305211502.jar</systemPath>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.eclipse.m2m.atl.engine_3.4.0.v201305211502</groupId>
+		<artifactId>org.eclipse.m2m.atl.engine_3.4.0.v201305211502</artifactId>
+		<version>3.4.0</version>
+		<scope>system</scope>
+    	<systemPath>${basedir}/dependencyJars/org.eclipse.m2m.atl.engine_3.4.0.v201305211502.jar</systemPath>
+	</dependency>
+        
+  </dependencies>
+  
+  <build>
+  	<plugins>
+  	
+  		 <plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-jar-plugin</artifactId>
+			<version>2.4</version>
+			<configuration>
+				<archive>
+				  <manifest>
+					<addClasspath>true</addClasspath>
+					<mainClass>org.inria.wordpress.enduser.xml2wdpconf.freeplane.main.Launcher</mainClass>
+					<classpathPrefix>dependencyJars/</classpathPrefix>
+				  </manifest>
+				</archive>
+			</configuration>
+	  	 </plugin>		
+		
+  	</plugins>
+  </build>
+</project>

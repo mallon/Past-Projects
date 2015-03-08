@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="xText2Model.contribution"
+            nameFilter="*.wdpdsl"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               label="XText2Model discoverer"
+               path="additions"
+               id="xText2Model.menu">
+            <separator
+                  name="xText2Model.group">
+            </separator>
+         </menu>
+         <action
+               label="Apply configuration to WordPress"
+               class="org.inria.wordpress.xText2Model.actions.xText2ModelAction"
+               menubarPath="xText2Model.menu/xText2Model.group"
+               enablesFor="1"
+               id="xText2Model.action">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>

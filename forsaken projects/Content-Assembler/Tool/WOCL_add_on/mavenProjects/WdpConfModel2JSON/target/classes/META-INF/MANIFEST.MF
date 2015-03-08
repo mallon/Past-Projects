@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Class-Path: dependencyJars/org.eclipse.emf.common-2.9.2-v20131212-0545
+ .jar dependencyJars/org.eclipse.emf.ecore-2.9.2-v20131212-0545.jar de
+ pendencyJars/org.eclipse.emf.ecore.xmi-2.9.1-v20131212-0545.jar
+Build-Jdk: 1.7.0_45
+Built-By: MALLON
+Created-By: Maven Integration for Eclipse
+Main-Class: org.inria.wordpress.WdpConfModel2JSON.WdpConfModel2JSON
+

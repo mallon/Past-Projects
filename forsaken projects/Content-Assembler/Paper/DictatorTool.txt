@@ -1,0 +1,10 @@
+Indeed, 'Dictator' is close to what I am doing for WordPress, but:
+- It is valid only for WordPress (it uses' WP-CLI'), while our DSL can be
+extended to other CMS.
+- It only uses a Command Line Interface, then we have:
+* A graphical interface, which is the mind-mapping. The benefits of mind mapping is that it is
+more readable than YAML, JSON, XML or other textual data formats. It allows to have a
+faster and a more understandable vision of the different website elements to manage.
+* A textual interface (for web-designers) : they choose to use YAML, but our format is more
+specific to our DSL. So because it is more verbose, it is more understandable in the specific case
+of CMS configuration.

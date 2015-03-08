@@ -1,0 +1,8 @@
+Eclipse product :
+	==> http://kthoms.wordpress.com/2010/11/12/setting-up-a-rcp-product-for-a-dsl/
+
+--------------------------------------------------------------------------------------
+
+Plugins to add (Eclipse Kepler) : 
+org.eclipse.core.net
+org.eclipse.ui.ide.application

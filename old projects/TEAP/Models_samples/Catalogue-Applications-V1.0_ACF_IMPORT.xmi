@@ -1,0 +1,746 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<import:Import xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:contentfwk="http://www.obeonetwork.org/dsl/togaf/contentfwk/9.0.0" xmlns:import="http://www.obeo.fr/smartea/import/1.0" sourceID="Applications-tout-DCNS" label="Applications-tout-DCNS">
+  <root xsi:type="contentfwk:EnterpriseArchitecture">
+    <architectures xsi:type="contentfwk:ApplicationArchitecture">
+      <logicalApplicationComponents name="AG" implementsServices="//@root/@architectures.2/@services.0 //@root/@architectures.2/@services.1 //@root/@architectures.2/@services.2" isExtendedByPhysicalApplicationComponents="//@root/@architectures.0/@physicalApplicationComponents.30 //@root/@architectures.0/@physicalApplicationComponents.31"/>
+      <logicalApplicationComponents name="TypeAppli_01" implementsServices="//@root/@architectures.2/@services.3 //@root/@architectures.2/@services.6 //@root/@architectures.2/@services.13 //@root/@architectures.2/@services.18 //@root/@architectures.2/@services.24 //@root/@architectures.2/@services.28" isExtendedByPhysicalApplicationComponents="//@root/@architectures.0/@physicalApplicationComponents.32 //@root/@architectures.0/@physicalApplicationComponents.35 //@root/@architectures.0/@physicalApplicationComponents.36 //@root/@architectures.0/@physicalApplicationComponents.43 //@root/@architectures.0/@physicalApplicationComponents.48 //@root/@architectures.0/@physicalApplicationComponents.54 //@root/@architectures.0/@physicalApplicationComponents.58"/>
+      <logicalApplicationComponents name="TypeAppli_02" implementsServices="//@root/@architectures.2/@services.4 //@root/@architectures.2/@services.7 //@root/@architectures.2/@services.14 //@root/@architectures.2/@services.25" isExtendedByPhysicalApplicationComponents="//@root/@architectures.0/@physicalApplicationComponents.33 //@root/@architectures.0/@physicalApplicationComponents.37 //@root/@architectures.0/@physicalApplicationComponents.44 //@root/@architectures.0/@physicalApplicationComponents.55"/>
+      <logicalApplicationComponents name="TypeAppli_20" implementsServices="//@root/@architectures.2/@services.5 //@root/@architectures.2/@services.10 //@root/@architectures.2/@services.17 //@root/@architectures.2/@services.22 //@root/@architectures.2/@services.26" isExtendedByPhysicalApplicationComponents="//@root/@architectures.0/@physicalApplicationComponents.34 //@root/@architectures.0/@physicalApplicationComponents.40 //@root/@architectures.0/@physicalApplicationComponents.47 //@root/@architectures.0/@physicalApplicationComponents.52 //@root/@architectures.0/@physicalApplicationComponents.56"/>
+      <logicalApplicationComponents name="TypeAppli_18" implementsServices="//@root/@architectures.2/@services.8" isExtendedByPhysicalApplicationComponents="//@root/@architectures.0/@physicalApplicationComponents.38"/>
+      <logicalApplicationComponents name="TypeAppli_27" implementsServices="//@root/@architectures.2/@services.9 //@root/@architectures.2/@services.20 //@root/@architectures.2/@services.29" isExtendedByPhysicalApplicationComponents="//@root/@architectures.0/@physicalApplicationComponents.39 //@root/@architectures.0/@physicalApplicationComponents.50 //@root/@architectures.0/@physicalApplicationComponents.59"/>
+      <logicalApplicationComponents name="TypeAppli_21" implementsServices="//@root/@architectures.2/@services.11 //@root/@architectures.2/@services.23" isExtendedByPhysicalApplicationComponents="//@root/@architectures.0/@physicalApplicationComponents.41 //@root/@architectures.0/@physicalApplicationComponents.53"/>
+      <logicalApplicationComponents name="TypeAppli_22" implementsServices="//@root/@architectures.2/@services.12" isExtendedByPhysicalApplicationComponents="//@root/@architectures.0/@physicalApplicationComponents.42"/>
+      <logicalApplicationComponents name="TypeAppli_25" implementsServices="//@root/@architectures.2/@services.15 //@root/@architectures.2/@services.27" isExtendedByPhysicalApplicationComponents="//@root/@architectures.0/@physicalApplicationComponents.45 //@root/@architectures.0/@physicalApplicationComponents.57"/>
+      <logicalApplicationComponents name="TypeAppli_26" implementsServices="//@root/@architectures.2/@services.16" isExtendedByPhysicalApplicationComponents="//@root/@architectures.0/@physicalApplicationComponents.46"/>
+      <logicalApplicationComponents name="TypeAppli_17" implementsServices="//@root/@architectures.2/@services.19" isExtendedByPhysicalApplicationComponents="//@root/@architectures.0/@physicalApplicationComponents.49"/>
+      <logicalApplicationComponents name="TypeAppli_19" implementsServices="//@root/@architectures.2/@services.21" isExtendedByPhysicalApplicationComponents="//@root/@architectures.0/@physicalApplicationComponents.51"/>
+      <physicalApplicationComponents name="OTL"/>
+      <physicalApplicationComponents name="OTL2"/>
+      <physicalApplicationComponents name="ModuleREQU01_01"/>
+      <physicalApplicationComponents name="ModuleAPP01_00"/>
+      <physicalApplicationComponents name="ModuleAPP02_01"/>
+      <physicalApplicationComponents name="ModuleAPP03_01"/>
+      <physicalApplicationComponents name="ModuleAPP04_01"/>
+      <physicalApplicationComponents name="ModuleAPP05_01"/>
+      <physicalApplicationComponents name="ModuleAPP06_01"/>
+      <physicalApplicationComponents name="ModuleAPP07_01"/>
+      <physicalApplicationComponents name="ModuleAPP08_01"/>
+      <physicalApplicationComponents name="ModuleAPP09_01"/>
+      <physicalApplicationComponents name="ModuleAPP10_01"/>
+      <physicalApplicationComponents name="ModuleAPP11_01"/>
+      <physicalApplicationComponents name="ModuleAPP12_01"/>
+      <physicalApplicationComponents name="ModuleAPP13_01"/>
+      <physicalApplicationComponents name="ModuleAPP14_01"/>
+      <physicalApplicationComponents name="ModuleAPP15_01"/>
+      <physicalApplicationComponents name="ModuleAPP16_01"/>
+      <physicalApplicationComponents name="ModuleAPP17_01"/>
+      <physicalApplicationComponents name="ModuleAPP18_01"/>
+      <physicalApplicationComponents name="ModuleAPP19_01"/>
+      <physicalApplicationComponents name="ModuleAPP20_01"/>
+      <physicalApplicationComponents name="ModuleAPP21_01"/>
+      <physicalApplicationComponents name="ModuleAPP22_01"/>
+      <physicalApplicationComponents name="ModuleAPP23_01"/>
+      <physicalApplicationComponents name="ModuleAPP24_01"/>
+      <physicalApplicationComponents name="ModuleAPP25_01"/>
+      <physicalApplicationComponents name="ModuleAPP26_01"/>
+      <physicalApplicationComponents name="ModuleAPP27_01"/>
+      <physicalApplicationComponents name="ERP" description="ERP - Suivi d'activité" ID="ANP-1423-AA" category="//@root/@labels.0 //@root/@labels.61" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.0" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.60 //@root/@architectures.0/@physicalApplicationComponents.90 //@root/@architectures.0/@physicalApplicationComponents.0 //@root/@architectures.0/@physicalApplicationComponents.1" lifeCycleStatus="Live" manageabilityCharacteristics="0" privacyCharacteristics="NP" capacityCharacteristics="8000" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.90"/>
+      <physicalApplicationComponents name="REQU01" description="Reporting opérationnel RH" ID="ANP-0076-AA" category="//@root/@labels.1 //@root/@labels.62" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.0" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.61 //@root/@architectures.0/@physicalApplicationComponents.2" lifeCycleStatus="Live" manageabilityCharacteristics="1" privacyCharacteristics="NP" capacityCharacteristics="250" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.92"/>
+      <physicalApplicationComponents name="APP01" description="Libelle appli. 01" ID="ANP-0077-AA" category="//@root/@labels.2 //@root/@labels.63" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.1" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.62 //@root/@architectures.0/@physicalApplicationComponents.3" lifeCycleStatus="PhasingOut" manageabilityCharacteristics="2" privacyCharacteristics="SD" capacityCharacteristics="2200" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.94"/>
+      <physicalApplicationComponents name="APP02" description="Libelle appli. 02" ID="ANP-0078" category="//@root/@labels.3 //@root/@labels.64" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.2" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.63 //@root/@architectures.0/@physicalApplicationComponents.4" manageabilityCharacteristics="0" privacyCharacteristics="CD" capacityCharacteristics="602" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.96"/>
+      <physicalApplicationComponents name="APP03" description="Libelle appli. 03" ID="ANP-0079" category="//@root/@labels.4 //@root/@labels.65" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.3" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.64 //@root/@architectures.0/@physicalApplicationComponents.5" lifeCycleStatus="PhasingOut" manageabilityCharacteristics="1" privacyCharacteristics="TSD" capacityCharacteristics="603" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.98"/>
+      <physicalApplicationComponents name="APP85" description="Libelle appli. 85" ID="ANP-0080" category="//@root/@labels.1 //@root/@labels.66" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.1" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.65" lifeCycleStatus="PhasingOut" manageabilityCharacteristics="1" privacyCharacteristics="NP" capacityCharacteristics="604" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.100"/>
+      <physicalApplicationComponents name="APP04" description="Libelle appli. 04" ID="ANP-0080" category="//@root/@labels.2 //@root/@labels.67" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.1" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.66 //@root/@architectures.0/@physicalApplicationComponents.6" lifeCycleStatus="Live" manageabilityCharacteristics="1" privacyCharacteristics="NP" capacityCharacteristics="604"/>
+      <physicalApplicationComponents name="APP05" description="Libelle appli. 05" ID="ANP-0081" category="//@root/@labels.68" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.2" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.67 //@root/@architectures.0/@physicalApplicationComponents.7" lifeCycleStatus="Live" manageabilityCharacteristics="1" privacyCharacteristics="NP" capacityCharacteristics="605" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.102"/>
+      <physicalApplicationComponents name="APP06" description="Libelle appli. 06" ID="ANP-0082" category="//@root/@labels.2 //@root/@labels.69" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.4" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.68 //@root/@architectures.0/@physicalApplicationComponents.8" lifeCycleStatus="Live" manageabilityCharacteristics="2" privacyCharacteristics="NP" capacityCharacteristics="606" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.104"/>
+      <physicalApplicationComponents name="APP07" description="Libelle appli. 07" ID="ANP-0083" category="//@root/@labels.5 //@root/@labels.70" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.5" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.69 //@root/@architectures.0/@physicalApplicationComponents.9" lifeCycleStatus="Live" manageabilityCharacteristics="0" privacyCharacteristics="SD" capacityCharacteristics="607" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.106"/>
+      <physicalApplicationComponents name="APP08" description="Libelle appli. 08" ID="ANP-0084" category="//@root/@labels.1 //@root/@labels.71" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.3" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.70 //@root/@architectures.0/@physicalApplicationComponents.10" lifeCycleStatus="Retired" manageabilityCharacteristics="1" privacyCharacteristics="CD" capacityCharacteristics="2560" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.108"/>
+      <physicalApplicationComponents name="APP09" description="Libelle appli. 09" ID="ANP-0085" category="//@root/@labels.2 //@root/@labels.72" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.6" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.71 //@root/@architectures.0/@physicalApplicationComponents.11" lifeCycleStatus="Live" manageabilityCharacteristics="0" privacyCharacteristics="TSD" capacityCharacteristics="609" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.110"/>
+      <physicalApplicationComponents name="APP10" description="Libelle appli. 10" ID="ANP-0086" category="//@root/@labels.73" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.7" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.72 //@root/@architectures.0/@physicalApplicationComponents.12" lifeCycleStatus="InDevelopment" manageabilityCharacteristics="0" privacyCharacteristics="NP" capacityCharacteristics="610" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.112"/>
+      <physicalApplicationComponents name="APP11" description="Libelle appli. 11" ID="ANP-0087" category="//@root/@labels.74" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.1" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.73 //@root/@architectures.0/@physicalApplicationComponents.13" lifeCycleStatus="Live" manageabilityCharacteristics="1" privacyCharacteristics="NP" capacityCharacteristics="611" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.114"/>
+      <physicalApplicationComponents name="APP12" description="Libelle appli. 12" ID="ANP-0088" category="//@root/@labels.1 //@root/@labels.75" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.2" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.74 //@root/@architectures.0/@physicalApplicationComponents.14" lifeCycleStatus="Live" manageabilityCharacteristics="1" privacyCharacteristics="NP" capacityCharacteristics="612" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.116"/>
+      <physicalApplicationComponents name="APP13" description="Libelle appli. 13" ID="ANP-0089" category="//@root/@labels.5 //@root/@labels.76" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.8" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.75 //@root/@architectures.0/@physicalApplicationComponents.15" lifeCycleStatus="Retired" manageabilityCharacteristics="2" privacyCharacteristics="NP" capacityCharacteristics="7658" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.118"/>
+      <physicalApplicationComponents name="APP14" description="Libelle appli. 14" ID="ANP-0090" category="//@root/@labels.77" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.9" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.76 //@root/@architectures.0/@physicalApplicationComponents.16" lifeCycleStatus="PhasingOut" manageabilityCharacteristics="1" privacyCharacteristics="NP" capacityCharacteristics="614" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.120"/>
+      <physicalApplicationComponents name="APP15" description="Libelle appli. 15" ID="ANP-0091" category="//@root/@labels.78" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.3" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.77 //@root/@architectures.0/@physicalApplicationComponents.17" lifeCycleStatus="PhasingOut" manageabilityCharacteristics="1" privacyCharacteristics="NP" capacityCharacteristics="615" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.122"/>
+      <physicalApplicationComponents name="APP16" description="Libelle appli. 16" ID="ANP-0092" category="//@root/@labels.79" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.1" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.78 //@root/@architectures.0/@physicalApplicationComponents.18" manageabilityCharacteristics="2" privacyCharacteristics="NP" capacityCharacteristics="616" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.124"/>
+      <physicalApplicationComponents name="APP17" description="Libelle appli. 17" ID="ANP-0093" category="//@root/@labels.2 //@root/@labels.80" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.10" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.79 //@root/@architectures.0/@physicalApplicationComponents.19" lifeCycleStatus="Live" manageabilityCharacteristics="2" privacyCharacteristics="SD" capacityCharacteristics="617" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.126"/>
+      <physicalApplicationComponents name="APP18" description="Libelle appli. 18" ID="ANP-0094" category="//@root/@labels.2 //@root/@labels.81" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.5" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.80 //@root/@architectures.0/@physicalApplicationComponents.20" lifeCycleStatus="Retired" manageabilityCharacteristics="1" privacyCharacteristics="CD" capacityCharacteristics="618" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.128"/>
+      <physicalApplicationComponents name="APP19" description="Libelle appli. 19" ID="ANP-0095" category="//@root/@labels.5 //@root/@labels.82" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.11" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.81 //@root/@architectures.0/@physicalApplicationComponents.21" lifeCycleStatus="PhasingOut" manageabilityCharacteristics="2" privacyCharacteristics="TSD" capacityCharacteristics="619" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.130"/>
+      <physicalApplicationComponents name="APP20" description="Libelle appli. 20" ID="ANP-0096" category="//@root/@labels.5 //@root/@labels.83" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.3" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.82 //@root/@architectures.0/@physicalApplicationComponents.22" lifeCycleStatus="Live" manageabilityCharacteristics="0" privacyCharacteristics="NP" capacityCharacteristics="620" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.132"/>
+      <physicalApplicationComponents name="APP21" description="Libelle appli. 21" ID="ANP-0097" category="//@root/@labels.84" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.6" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.83 //@root/@architectures.0/@physicalApplicationComponents.23" lifeCycleStatus="Retired" manageabilityCharacteristics="1" privacyCharacteristics="NP" capacityCharacteristics="621" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.134"/>
+      <physicalApplicationComponents name="APP22" description="Libelle appli. 22" ID="ANP-0098" category="//@root/@labels.85" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.1" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.84 //@root/@architectures.0/@physicalApplicationComponents.24" lifeCycleStatus="PhasingOut" manageabilityCharacteristics="0" privacyCharacteristics="NP" capacityCharacteristics="622" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.136"/>
+      <physicalApplicationComponents name="APP23" description="Libelle appli. 23" ID="ANP-0099" category="//@root/@labels.5 //@root/@labels.86" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.2" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.85 //@root/@architectures.0/@physicalApplicationComponents.25" lifeCycleStatus="Live" manageabilityCharacteristics="2" privacyCharacteristics="NP" capacityCharacteristics="623" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.138"/>
+      <physicalApplicationComponents name="APP24" description="Libelle appli. 24" ID="ANP-0100" category="//@root/@labels.1 //@root/@labels.87" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.3" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.86 //@root/@architectures.0/@physicalApplicationComponents.26" lifeCycleStatus="Live" manageabilityCharacteristics="0" privacyCharacteristics="SD" capacityCharacteristics="252" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.140"/>
+      <physicalApplicationComponents name="APP25" description="Libelle appli. 25" ID="ANP-0101" category="//@root/@labels.5 //@root/@labels.88" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.8" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.87 //@root/@architectures.0/@physicalApplicationComponents.27" lifeCycleStatus="Live" manageabilityCharacteristics="1" privacyCharacteristics="CD" capacityCharacteristics="625" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.142"/>
+      <physicalApplicationComponents name="APP26" description="Libelle appli. 26" ID="ANP-0102" category="//@root/@labels.2 //@root/@labels.89" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.1" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.88 //@root/@architectures.0/@physicalApplicationComponents.28" lifeCycleStatus="Retired" manageabilityCharacteristics="2" privacyCharacteristics="TSD" capacityCharacteristics="321" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.144"/>
+      <physicalApplicationComponents name="APP27" description="Libelle appli. 27" ID="ANP-0103" category="//@root/@labels.1 //@root/@labels.90" extendsLogicalApplicationComponents="//@root/@architectures.0/@logicalApplicationComponents.5" communicatesWith="//@root/@architectures.0/@physicalApplicationComponents.89 //@root/@architectures.0/@physicalApplicationComponents.29" manageabilityCharacteristics="1" privacyCharacteristics="NP" capacityCharacteristics="627" isRealizedByPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.146"/>
+      <physicalApplicationComponents name="inputExternalAppSys_ERP" category="//@root/@labels.91"/>
+      <physicalApplicationComponents name="inputExternalAppSys_REQU01" category="//@root/@labels.95"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP01" category="//@root/@labels.97"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP02" category="//@root/@labels.99"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP03" category="//@root/@labels.101"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP85" category="//@root/@labels.103"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP04" category="//@root/@labels.105"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP05" category="//@root/@labels.107"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP06" category="//@root/@labels.109"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP07" category="//@root/@labels.111"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP08" category="//@root/@labels.113"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP09" category="//@root/@labels.115"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP10" category="//@root/@labels.117"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP11" category="//@root/@labels.119"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP12" category="//@root/@labels.121"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP13" category="//@root/@labels.123"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP14" category="//@root/@labels.125"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP15" category="//@root/@labels.127"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP16" category="//@root/@labels.129"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP17" category="//@root/@labels.131"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP18" category="//@root/@labels.133"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP19" category="//@root/@labels.135"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP20" category="//@root/@labels.137"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP21" category="//@root/@labels.139"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP22" category="//@root/@labels.141"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP23" category="//@root/@labels.143"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP24" category="//@root/@labels.145"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP25" category="//@root/@labels.147"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP26" category="//@root/@labels.149"/>
+      <physicalApplicationComponents name="inputExternalAppSys_APP27" category="//@root/@labels.151"/>
+      <physicalApplicationComponents name="outputExternalAppSys_ERP" category="//@root/@labels.153"/>
+    </architectures>
+    <architectures xsi:type="contentfwk:TechnologyArchitecture">
+      <physicalComponents name="nomServer_ERP_Old" vendor="fabriServer_ERP_Old" version="ModeleServer_ERP_Old"/>
+      <physicalComponents name="nomServer_REQU01" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP01" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP02" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP03" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP85" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP04" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP05" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP06" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP07" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP08" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP09" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP10" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP11" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP12" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP13" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP14" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP15" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP16" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP17" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP18" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP19" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP20" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP21" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP22" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP23" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP24" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP25" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP26" vendor="" version=""/>
+      <physicalComponents name="nomServer_APP27" vendor="" version=""/>
+      <physicalComponents name="OSServer_ERP_Old"/>
+      <physicalComponents name="OSServer_REQU01"/>
+      <physicalComponents name="OSServer_APP01"/>
+      <physicalComponents name="OSServer_APP02"/>
+      <physicalComponents name="OSServer_APP03"/>
+      <physicalComponents name="OSServer_APP85"/>
+      <physicalComponents name="OSServer_APP04"/>
+      <physicalComponents name="OSServer_APP05"/>
+      <physicalComponents name="OSServer_APP06"/>
+      <physicalComponents name="OSServer_APP07"/>
+      <physicalComponents name="OSServer_APP08"/>
+      <physicalComponents name="OSServer_APP09"/>
+      <physicalComponents name="OSServer_APP10"/>
+      <physicalComponents name="OSServer_APP11"/>
+      <physicalComponents name="OSServer_APP12"/>
+      <physicalComponents name="OSServer_APP13"/>
+      <physicalComponents name="OSServer_APP14"/>
+      <physicalComponents name="OSServer_APP15"/>
+      <physicalComponents name="OSServer_APP16"/>
+      <physicalComponents name="OSServer_APP17"/>
+      <physicalComponents name="OSServer_APP18"/>
+      <physicalComponents name="OSServer_APP19"/>
+      <physicalComponents name="OSServer_APP20"/>
+      <physicalComponents name="OSServer_APP21"/>
+      <physicalComponents name="OSServer_APP22"/>
+      <physicalComponents name="OSServer_APP23"/>
+      <physicalComponents name="OSServer_APP24"/>
+      <physicalComponents name="OSServer_APP25"/>
+      <physicalComponents name="OSServer_APP26"/>
+      <physicalComponents name="OSServer_APP27"/>
+      <physicalComponents category="//@root/@labels.157" productName="Oracle" vendor="ORACLE" version="12"/>
+      <physicalComponents category="//@root/@labels.159" productName="HR" vendor="HR ACCESS SOL" version="ACCESS"/>
+      <physicalComponents category="//@root/@labels.162" vendor="Editeur_APP01"/>
+      <physicalComponents category="//@root/@labels.165" vendor="Editeur_APP02"/>
+      <physicalComponents category="//@root/@labels.168" vendor="Editeur_APP03"/>
+      <physicalComponents category="//@root/@labels.171" vendor="Editeur_APP04"/>
+      <physicalComponents category="//@root/@labels.173" vendor="Editeur_APP05"/>
+      <physicalComponents category="//@root/@labels.176" vendor="Editeur_APP06"/>
+      <physicalComponents category="//@root/@labels.179" vendor="Editeur_APP07"/>
+      <physicalComponents category="//@root/@labels.182" vendor="Editeur_APP08"/>
+      <physicalComponents category="//@root/@labels.185" vendor="Editeur_APP09"/>
+      <physicalComponents category="//@root/@labels.187" vendor="Editeur_APP10"/>
+      <physicalComponents category="//@root/@labels.189" vendor="Editeur_APP11"/>
+      <physicalComponents category="//@root/@labels.191" vendor="Editeur_APP12"/>
+      <physicalComponents category="//@root/@labels.194" vendor="Editeur_APP13"/>
+      <physicalComponents category="//@root/@labels.197" vendor="Editeur_APP14"/>
+      <physicalComponents category="//@root/@labels.200" vendor="Editeur_APP15"/>
+      <physicalComponents category="//@root/@labels.202" vendor="Editeur_APP16"/>
+      <physicalComponents category="//@root/@labels.204" vendor="Editeur_APP17"/>
+      <physicalComponents category="//@root/@labels.206" vendor="Editeur_APP18"/>
+      <physicalComponents category="//@root/@labels.208" vendor="Editeur_APP19"/>
+      <physicalComponents category="//@root/@labels.211" vendor="Editeur_APP20"/>
+      <physicalComponents category="//@root/@labels.214" vendor="Editeur_APP21"/>
+      <physicalComponents category="//@root/@labels.217" vendor="Editeur_APP22"/>
+      <physicalComponents category="//@root/@labels.220" vendor="Editeur_APP23"/>
+      <physicalComponents category="//@root/@labels.222" vendor="Editeur_APP24"/>
+      <physicalComponents category="//@root/@labels.224" vendor="Editeur_APP25"/>
+      <physicalComponents category="//@root/@labels.227" vendor="Editeur_APP26"/>
+      <physicalComponents category="//@root/@labels.230" vendor="Editeur_APP27"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.0"/>
+      <physicalComponents name="Instance application_ERP-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.60 //@root/@architectures.1/@physicalComponents.89"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.1"/>
+      <physicalComponents name="Instance application_REQU01-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.61 //@root/@architectures.1/@physicalComponents.91"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.2"/>
+      <physicalComponents name="Instance application_APP01-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.62 //@root/@architectures.1/@physicalComponents.93"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.3"/>
+      <physicalComponents name="Instance application_APP02-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.63 //@root/@architectures.1/@physicalComponents.95"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.4"/>
+      <physicalComponents name="Instance application_APP03-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.64 //@root/@architectures.1/@physicalComponents.97"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.5"/>
+      <physicalComponents name="Instance application_APP85-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.65 //@root/@architectures.1/@physicalComponents.99"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.7"/>
+      <physicalComponents name="Instance application_APP05-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.66 //@root/@architectures.1/@physicalComponents.101"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.8"/>
+      <physicalComponents name="Instance application_APP06-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.67 //@root/@architectures.1/@physicalComponents.103"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.9"/>
+      <physicalComponents name="Instance application_APP07-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.68 //@root/@architectures.1/@physicalComponents.105"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.10"/>
+      <physicalComponents name="Instance application_APP08-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.69 //@root/@architectures.1/@physicalComponents.107"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.11"/>
+      <physicalComponents name="Instance application_APP09-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.70 //@root/@architectures.1/@physicalComponents.109"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.12"/>
+      <physicalComponents name="Instance application_APP10-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.71 //@root/@architectures.1/@physicalComponents.111"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.13"/>
+      <physicalComponents name="Instance application_APP11-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.72 //@root/@architectures.1/@physicalComponents.113"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.14"/>
+      <physicalComponents name="Instance application_APP12-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.73 //@root/@architectures.1/@physicalComponents.115"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.15"/>
+      <physicalComponents name="Instance application_APP13-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.74 //@root/@architectures.1/@physicalComponents.117"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.16"/>
+      <physicalComponents name="Instance application_APP14-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.75 //@root/@architectures.1/@physicalComponents.119"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.17"/>
+      <physicalComponents name="Instance application_APP15-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.76 //@root/@architectures.1/@physicalComponents.121"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.18"/>
+      <physicalComponents name="Instance application_APP16-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.77 //@root/@architectures.1/@physicalComponents.123"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.19"/>
+      <physicalComponents name="Instance application_APP17-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.78 //@root/@architectures.1/@physicalComponents.125"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.20"/>
+      <physicalComponents name="Instance application_APP18-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.79 //@root/@architectures.1/@physicalComponents.127"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.21"/>
+      <physicalComponents name="Instance application_APP19-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.80 //@root/@architectures.1/@physicalComponents.129"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.22"/>
+      <physicalComponents name="Instance application_APP20-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.81 //@root/@architectures.1/@physicalComponents.131"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.23"/>
+      <physicalComponents name="Instance application_APP21-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.82 //@root/@architectures.1/@physicalComponents.133"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.24"/>
+      <physicalComponents name="Instance application_APP22-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.83 //@root/@architectures.1/@physicalComponents.135"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.25"/>
+      <physicalComponents name="Instance application_APP23-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.84 //@root/@architectures.1/@physicalComponents.137"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.26"/>
+      <physicalComponents name="Instance application_APP24-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.85 //@root/@architectures.1/@physicalComponents.139"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.27"/>
+      <physicalComponents name="Instance application_APP25-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.86 //@root/@architectures.1/@physicalComponents.141"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.28"/>
+      <physicalComponents name="Instance application_APP26-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.87 //@root/@architectures.1/@physicalComponents.143"/>
+      <physicalComponents name="Instance serveur" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.29"/>
+      <physicalComponents name="Instance application_APP27-1" isDependentOnPhysicalTechnologyComponents="//@root/@architectures.1/@physicalComponents.88 //@root/@architectures.1/@physicalComponents.145"/>
+    </architectures>
+    <architectures xsi:type="contentfwk:BusinessArchitecture">
+      <units name="DEV" category="//@root/@labels.233" ownsAndGovernsServices="//@root/@architectures.2/@services.0 //@root/@architectures.2/@services.1 //@root/@architectures.2/@services.2 //@root/@architectures.2/@services.5 //@root/@architectures.2/@services.8 //@root/@architectures.2/@services.11 //@root/@architectures.2/@services.14 //@root/@architectures.2/@services.17 //@root/@architectures.2/@services.20 //@root/@architectures.2/@services.23 //@root/@architectures.2/@services.26 //@root/@architectures.2/@services.29" containsActors="//@root/@architectures.2/@actors.22 //@root/@architectures.2/@actors.23 //@root/@architectures.2/@actors.24 //@root/@architectures.2/@actors.27 //@root/@architectures.2/@actors.30 //@root/@architectures.2/@actors.33 //@root/@architectures.2/@actors.36 //@root/@architectures.2/@actors.39 //@root/@architectures.2/@actors.42 //@root/@architectures.2/@actors.45 //@root/@architectures.2/@actors.48 //@root/@architectures.2/@actors.51"/>
+      <units name="RES" category="//@root/@labels.234" ownsAndGovernsServices="//@root/@architectures.2/@services.3 //@root/@architectures.2/@services.6 //@root/@architectures.2/@services.9 //@root/@architectures.2/@services.12 //@root/@architectures.2/@services.15 //@root/@architectures.2/@services.18 //@root/@architectures.2/@services.21 //@root/@architectures.2/@services.24 //@root/@architectures.2/@services.27" containsActors="//@root/@architectures.2/@actors.25 //@root/@architectures.2/@actors.28 //@root/@architectures.2/@actors.31 //@root/@architectures.2/@actors.34 //@root/@architectures.2/@actors.37 //@root/@architectures.2/@actors.40 //@root/@architectures.2/@actors.43 //@root/@architectures.2/@actors.46 //@root/@architectures.2/@actors.49"/>
+      <units name="SYS" category="//@root/@labels.235" ownsAndGovernsServices="//@root/@architectures.2/@services.4 //@root/@architectures.2/@services.7 //@root/@architectures.2/@services.10 //@root/@architectures.2/@services.13 //@root/@architectures.2/@services.16 //@root/@architectures.2/@services.19 //@root/@architectures.2/@services.22 //@root/@architectures.2/@services.25 //@root/@architectures.2/@services.28" containsActors="//@root/@architectures.2/@actors.26 //@root/@architectures.2/@actors.29 //@root/@architectures.2/@actors.32 //@root/@architectures.2/@actors.35 //@root/@architectures.2/@actors.38 //@root/@architectures.2/@actors.41 //@root/@architectures.2/@actors.44 //@root/@architectures.2/@actors.47 //@root/@architectures.2/@actors.50"/>
+      <units name="Entite_01" ownsAndGovernsServices="//@root/@architectures.2/@services.0 //@root/@architectures.2/@services.1" containsActors="//@root/@architectures.2/@actors.0 //@root/@architectures.2/@actors.1 //@root/@architectures.2/@actors.3 //@root/@architectures.2/@actors.10"/>
+      <units name="DRH" ownsAndGovernsServices="//@root/@architectures.2/@services.2" containsActors="//@root/@architectures.2/@actors.2"/>
+      <units name="Entite_04" ownsAndGovernsServices="//@root/@architectures.2/@services.4" containsActors="//@root/@architectures.2/@actors.4"/>
+      <units name="Entite_05" ownsAndGovernsServices="//@root/@architectures.2/@services.5"/>
+      <units name="Entite_06" ownsAndGovernsServices="//@root/@architectures.2/@services.6" containsActors="//@root/@architectures.2/@actors.5"/>
+      <units name="Entite_07" ownsAndGovernsServices="//@root/@architectures.2/@services.7" containsActors="//@root/@architectures.2/@actors.6"/>
+      <units name="Entite_08" ownsAndGovernsServices="//@root/@architectures.2/@services.8" containsActors="//@root/@architectures.2/@actors.7"/>
+      <units name="Entite_09" ownsAndGovernsServices="//@root/@architectures.2/@services.9" containsActors="//@root/@architectures.2/@actors.8"/>
+      <units name="Entite_10" ownsAndGovernsServices="//@root/@architectures.2/@services.10" containsActors="//@root/@architectures.2/@actors.9"/>
+      <units name="Entite_12" ownsAndGovernsServices="//@root/@architectures.2/@services.12" containsActors="//@root/@architectures.2/@actors.11"/>
+      <units name="Entite_13" ownsAndGovernsServices="//@root/@architectures.2/@services.13" containsActors="//@root/@architectures.2/@actors.12"/>
+      <units name="Entite_14" ownsAndGovernsServices="//@root/@architectures.2/@services.14" containsActors="//@root/@architectures.2/@actors.13"/>
+      <units name="Entite_15" ownsAndGovernsServices="//@root/@architectures.2/@services.15" containsActors="//@root/@architectures.2/@actors.14"/>
+      <units name="Entite_16" ownsAndGovernsServices="//@root/@architectures.2/@services.16"/>
+      <units name="Entite_17" ownsAndGovernsServices="//@root/@architectures.2/@services.17" containsActors="//@root/@architectures.2/@actors.15"/>
+      <units name="Entite_18" ownsAndGovernsServices="//@root/@architectures.2/@services.18" containsActors="//@root/@architectures.2/@actors.16"/>
+      <units name="Entite_19" ownsAndGovernsServices="//@root/@architectures.2/@services.19" containsActors="//@root/@architectures.2/@actors.17"/>
+      <units name="Entite_20" ownsAndGovernsServices="//@root/@architectures.2/@services.20"/>
+      <units name="Entite_21" ownsAndGovernsServices="//@root/@architectures.2/@services.21"/>
+      <units name="Entite_22" ownsAndGovernsServices="//@root/@architectures.2/@services.22"/>
+      <units name="Entite_23" ownsAndGovernsServices="//@root/@architectures.2/@services.23"/>
+      <units name="Entite_24" ownsAndGovernsServices="//@root/@architectures.2/@services.24"/>
+      <units name="Entite_25" ownsAndGovernsServices="//@root/@architectures.2/@services.25" containsActors="//@root/@architectures.2/@actors.18"/>
+      <units name="Entite_26" ownsAndGovernsServices="//@root/@architectures.2/@services.26" containsActors="//@root/@architectures.2/@actors.19"/>
+      <units name="Entite_27" ownsAndGovernsServices="//@root/@architectures.2/@services.27" containsActors="//@root/@architectures.2/@actors.20"/>
+      <units name="Entite_28" ownsAndGovernsServices="//@root/@architectures.2/@services.28" containsActors="//@root/@architectures.2/@actors.21"/>
+      <units name="Entite_29" ownsAndGovernsServices="//@root/@architectures.2/@services.29"/>
+      <actors name="M.DupontMetier" belongsTo="//@root/@architectures.2/@units.3" participatesInProcesses="//@root/@architectures.2/@processes.0 //@root/@architectures.2/@processes.1"/>
+      <actors name="M.MetierDupont" belongsTo="//@root/@architectures.2/@units.3" participatesInProcesses="//@root/@architectures.2/@processes.0 //@root/@architectures.2/@processes.1"/>
+      <actors name="F.MartinMetier" belongsTo="//@root/@architectures.2/@units.4" participatesInProcesses="//@root/@architectures.2/@processes.2"/>
+      <actors name="CorrespondantMetier_APP01" belongsTo="//@root/@architectures.2/@units.3" participatesInProcesses="//@root/@architectures.2/@processes.3"/>
+      <actors name="CorrespondantMetier_APP03" belongsTo="//@root/@architectures.2/@units.5" participatesInProcesses="//@root/@architectures.2/@processes.4 //@root/@architectures.2/@processes.5"/>
+      <actors name="CorrespondantMetier_APP04" belongsTo="//@root/@architectures.2/@units.7" participatesInProcesses="//@root/@architectures.2/@processes.6 //@root/@architectures.2/@processes.7"/>
+      <actors name="CorrespondantMetier_APP05" belongsTo="//@root/@architectures.2/@units.8" participatesInProcesses="//@root/@architectures.2/@processes.8"/>
+      <actors name="CorrespondantMetier_APP06" belongsTo="//@root/@architectures.2/@units.9" participatesInProcesses="//@root/@architectures.2/@processes.9 //@root/@architectures.2/@processes.20"/>
+      <actors name="CorrespondantMetier_APP07" belongsTo="//@root/@architectures.2/@units.10" participatesInProcesses="//@root/@architectures.2/@processes.10 //@root/@architectures.2/@processes.21"/>
+      <actors name="CorrespondantMetier_APP08" belongsTo="//@root/@architectures.2/@units.11" participatesInProcesses="//@root/@architectures.2/@processes.11 //@root/@architectures.2/@processes.22"/>
+      <actors name="CorrespondantMetier_APP09" belongsTo="//@root/@architectures.2/@units.3" participatesInProcesses="//@root/@architectures.2/@processes.0 //@root/@architectures.2/@processes.23"/>
+      <actors name="CorrespondantMetier_APP10" belongsTo="//@root/@architectures.2/@units.12" participatesInProcesses="//@root/@architectures.2/@processes.12 //@root/@architectures.2/@processes.24"/>
+      <actors name="CorrespondantMetier_APP27" belongsTo="//@root/@architectures.2/@units.13" participatesInProcesses="//@root/@architectures.2/@processes.13 //@root/@architectures.2/@processes.16 //@root/@architectures.2/@processes.29"/>
+      <actors name="CorrespondantMetier_APP12" belongsTo="//@root/@architectures.2/@units.14" participatesInProcesses="//@root/@architectures.2/@processes.14"/>
+      <actors name="CorrespondantMetier_APP13" belongsTo="//@root/@architectures.2/@units.15" participatesInProcesses="//@root/@architectures.2/@processes.15"/>
+      <actors name="CorrespondantMetier_APP15" belongsTo="//@root/@architectures.2/@units.17" participatesInProcesses="//@root/@architectures.2/@processes.17"/>
+      <actors name="CorrespondantMetier_APP16" belongsTo="//@root/@architectures.2/@units.18" participatesInProcesses="//@root/@architectures.2/@processes.18"/>
+      <actors name="CorrespondantMetier_APP17" belongsTo="//@root/@architectures.2/@units.19" participatesInProcesses="//@root/@architectures.2/@processes.19"/>
+      <actors name="CorrespondantMetier_APP23" belongsTo="//@root/@architectures.2/@units.25" participatesInProcesses="//@root/@architectures.2/@processes.25"/>
+      <actors name="CorrespondantMetier_APP24" belongsTo="//@root/@architectures.2/@units.26" participatesInProcesses="//@root/@architectures.2/@processes.26"/>
+      <actors name="CorrespondantMetier_APP25" belongsTo="//@root/@architectures.2/@units.27" participatesInProcesses="//@root/@architectures.2/@processes.27"/>
+      <actors name="CorrespondantMetier_APP26" belongsTo="//@root/@architectures.2/@units.28" participatesInProcesses="//@root/@architectures.2/@processes.28"/>
+      <actors name="M.Dupont" belongsTo="//@root/@architectures.2/@units.0" participatesInProcesses="//@root/@architectures.2/@processes.0 //@root/@architectures.2/@processes.1"/>
+      <actors name="M.Pontdu" belongsTo="//@root/@architectures.2/@units.0" participatesInProcesses="//@root/@architectures.2/@processes.0 //@root/@architectures.2/@processes.1"/>
+      <actors name="F.Martin" belongsTo="//@root/@architectures.2/@units.0" participatesInProcesses="//@root/@architectures.2/@processes.2"/>
+      <actors name="CorrespondantDSI_APP01" belongsTo="//@root/@architectures.2/@units.1" participatesInProcesses="//@root/@architectures.2/@processes.3"/>
+      <actors name="CorrespondantDSI_APP02" belongsTo="//@root/@architectures.2/@units.2" participatesInProcesses="//@root/@architectures.2/@processes.4"/>
+      <actors name="CorrespondantDSI_APP03" belongsTo="//@root/@architectures.2/@units.0" participatesInProcesses="//@root/@architectures.2/@processes.5"/>
+      <actors name="CorrespondantDSI_APP04" belongsTo="//@root/@architectures.2/@units.1" participatesInProcesses="//@root/@architectures.2/@processes.6 //@root/@architectures.2/@processes.7"/>
+      <actors name="CorrespondantDSI_APP05" belongsTo="//@root/@architectures.2/@units.2" participatesInProcesses="//@root/@architectures.2/@processes.8"/>
+      <actors name="CorrespondantDSI_APP06" belongsTo="//@root/@architectures.2/@units.0" participatesInProcesses="//@root/@architectures.2/@processes.9"/>
+      <actors name="CorrespondantDSI_APP07" belongsTo="//@root/@architectures.2/@units.1" participatesInProcesses="//@root/@architectures.2/@processes.10"/>
+      <actors name="CorrespondantDSI_APP08" belongsTo="//@root/@architectures.2/@units.2" participatesInProcesses="//@root/@architectures.2/@processes.11"/>
+      <actors name="CorrespondantDSI_APP09" belongsTo="//@root/@architectures.2/@units.0" participatesInProcesses="//@root/@architectures.2/@processes.0"/>
+      <actors name="CorrespondantDSI_APP10" belongsTo="//@root/@architectures.2/@units.1" participatesInProcesses="//@root/@architectures.2/@processes.12"/>
+      <actors name="CorrespondantDSI_APP11" belongsTo="//@root/@architectures.2/@units.2" participatesInProcesses="//@root/@architectures.2/@processes.13"/>
+      <actors name="CorrespondantDSI_APP12" belongsTo="//@root/@architectures.2/@units.0" participatesInProcesses="//@root/@architectures.2/@processes.14"/>
+      <actors name="CorrespondantDSI_APP13" belongsTo="//@root/@architectures.2/@units.1" participatesInProcesses="//@root/@architectures.2/@processes.15"/>
+      <actors name="CorrespondantDSI_APP14" belongsTo="//@root/@architectures.2/@units.2" participatesInProcesses="//@root/@architectures.2/@processes.16"/>
+      <actors name="CorrespondantDSI_APP15" belongsTo="//@root/@architectures.2/@units.0" participatesInProcesses="//@root/@architectures.2/@processes.17"/>
+      <actors name="CorrespondantDSI_APP16" belongsTo="//@root/@architectures.2/@units.1" participatesInProcesses="//@root/@architectures.2/@processes.18"/>
+      <actors name="CorrespondantDSI_APP17" belongsTo="//@root/@architectures.2/@units.2" participatesInProcesses="//@root/@architectures.2/@processes.19"/>
+      <actors name="CorrespondantDSI_APP18" belongsTo="//@root/@architectures.2/@units.0" participatesInProcesses="//@root/@architectures.2/@processes.20"/>
+      <actors name="CorrespondantDSI_APP19" belongsTo="//@root/@architectures.2/@units.1" participatesInProcesses="//@root/@architectures.2/@processes.21"/>
+      <actors name="CorrespondantDSI_APP20" belongsTo="//@root/@architectures.2/@units.2" participatesInProcesses="//@root/@architectures.2/@processes.22"/>
+      <actors name="CorrespondantDSI_APP21" belongsTo="//@root/@architectures.2/@units.0" participatesInProcesses="//@root/@architectures.2/@processes.23"/>
+      <actors name="CorrespondantDSI_APP22" belongsTo="//@root/@architectures.2/@units.1" participatesInProcesses="//@root/@architectures.2/@processes.24"/>
+      <actors name="CorrespondantDSI_APP23" belongsTo="//@root/@architectures.2/@units.2" participatesInProcesses="//@root/@architectures.2/@processes.25"/>
+      <actors name="CorrespondantDSI_APP24" belongsTo="//@root/@architectures.2/@units.0" participatesInProcesses="//@root/@architectures.2/@processes.26"/>
+      <actors name="CorrespondantDSI_APP25" belongsTo="//@root/@architectures.2/@units.1" participatesInProcesses="//@root/@architectures.2/@processes.27"/>
+      <actors name="CorrespondantDSI_APP26" belongsTo="//@root/@architectures.2/@units.2" participatesInProcesses="//@root/@architectures.2/@processes.28"/>
+      <actors name="CorrespondantDSI_APP27" belongsTo="//@root/@architectures.2/@units.0" participatesInProcesses="//@root/@architectures.2/@processes.29"/>
+      <actors name="A blabla" category="//@root/@labels.0 //@root/@labels.61 //@root/@labels.68"/>
+      <actors name="B blabla" category="//@root/@labels.0 //@root/@labels.61"/>
+      <actors name="C blabla" category="//@root/@labels.0 //@root/@labels.61 //@root/@labels.73"/>
+      <actors name="D blabla" category="//@root/@labels.1 //@root/@labels.62"/>
+      <actors name="E  blabla" category="//@root/@labels.2 //@root/@labels.63"/>
+      <actors name="F blabla" category="//@root/@labels.3 //@root/@labels.64"/>
+      <actors name="G blabla" category="//@root/@labels.4 //@root/@labels.65"/>
+      <actors name="Tous" category="//@root/@labels.5 //@root/@labels.70"/>
+      <services name="Suivi d'activité" category="//@root/@labels.6" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.0" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.0 //@root/@architectures.2/@units.3" supportsProcesses="//@root/@architectures.2/@processes.0 //@root/@architectures.2/@processes.1" isRealizedByProcesses="//@root/@architectures.2/@processes.0 //@root/@architectures.2/@processes.1"/>
+      <services name="Activité de suivi" category="//@root/@labels.6" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.0" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.0 //@root/@architectures.2/@units.3" supportsProcesses="//@root/@architectures.2/@processes.0 //@root/@architectures.2/@processes.1" isRealizedByProcesses="//@root/@architectures.2/@processes.0 //@root/@architectures.2/@processes.1"/>
+      <services name="FonctionREQU01_01" category="//@root/@labels.7" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.0" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.4 //@root/@architectures.2/@units.0" supportsProcesses="//@root/@architectures.2/@processes.2" isRealizedByProcesses="//@root/@architectures.2/@processes.2"/>
+      <services name="FonctionAPP01_01" category="//@root/@labels.10" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.1" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.1" supportsProcesses="//@root/@architectures.2/@processes.3" isRealizedByProcesses="//@root/@architectures.2/@processes.3"/>
+      <services name="FonctionAPP02_01" category="//@root/@labels.11" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.2" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.2 //@root/@architectures.2/@units.5" supportsProcesses="//@root/@architectures.2/@processes.4" isRealizedByProcesses="//@root/@architectures.2/@processes.4"/>
+      <services name="FonctionAPP03_01" category="//@root/@labels.12" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.3" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.6 //@root/@architectures.2/@units.0" supportsProcesses="//@root/@architectures.2/@processes.5" isRealizedByProcesses="//@root/@architectures.2/@processes.5"/>
+      <services name="FonctionAPP04_01" category="//@root/@labels.15" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.1" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.7 //@root/@architectures.2/@units.1" supportsProcesses="//@root/@architectures.2/@processes.6 //@root/@architectures.2/@processes.7" isRealizedByProcesses="//@root/@architectures.2/@processes.6"/>
+      <services name="FonctionAPP05_01" category="//@root/@labels.16" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.2" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.8 //@root/@architectures.2/@units.2" supportsProcesses="//@root/@architectures.2/@processes.8" isRealizedByProcesses="//@root/@architectures.2/@processes.8"/>
+      <services name="FonctionAPP06_01" category="//@root/@labels.17" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.4" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.9 //@root/@architectures.2/@units.0" supportsProcesses="//@root/@architectures.2/@processes.9" isRealizedByProcesses="//@root/@architectures.2/@processes.9"/>
+      <services name="FonctionAPP07_01" category="//@root/@labels.20" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.5" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.10 //@root/@architectures.2/@units.1" supportsProcesses="//@root/@architectures.2/@processes.10" isRealizedByProcesses="//@root/@architectures.2/@processes.10"/>
+      <services name="FonctionAPP08_01" category="//@root/@labels.21" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.3" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.11 //@root/@architectures.2/@units.2" supportsProcesses="//@root/@architectures.2/@processes.11" isRealizedByProcesses="//@root/@architectures.2/@processes.11"/>
+      <services name="FonctionAPP09_01" category="//@root/@labels.22" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.6" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.0" supportsProcesses="//@root/@architectures.2/@processes.0" isRealizedByProcesses="//@root/@architectures.2/@processes.0"/>
+      <services name="FonctionAPP10_01" category="//@root/@labels.25" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.7" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.12 //@root/@architectures.2/@units.1" supportsProcesses="//@root/@architectures.2/@processes.12" isRealizedByProcesses="//@root/@architectures.2/@processes.12"/>
+      <services name="FonctionAPP11_01" category="//@root/@labels.26" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.1" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.13 //@root/@architectures.2/@units.2" supportsProcesses="//@root/@architectures.2/@processes.13" isRealizedByProcesses="//@root/@architectures.2/@processes.13"/>
+      <services name="FonctionAPP12_01" category="//@root/@labels.29" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.2" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.14 //@root/@architectures.2/@units.0" supportsProcesses="//@root/@architectures.2/@processes.14" isRealizedByProcesses="//@root/@architectures.2/@processes.14"/>
+      <services name="FonctionAPP13_01" category="//@root/@labels.30" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.8" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.15 //@root/@architectures.2/@units.1" supportsProcesses="//@root/@architectures.2/@processes.15" isRealizedByProcesses="//@root/@architectures.2/@processes.15"/>
+      <services name="FonctionAPP14_01" category="//@root/@labels.31" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.9" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.16 //@root/@architectures.2/@units.2" supportsProcesses="//@root/@architectures.2/@processes.16" isRealizedByProcesses="//@root/@architectures.2/@processes.16"/>
+      <services name="FonctionAPP15_01" category="//@root/@labels.34" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.3" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.17 //@root/@architectures.2/@units.0" supportsProcesses="//@root/@architectures.2/@processes.17" isRealizedByProcesses="//@root/@architectures.2/@processes.17"/>
+      <services name="FonctionAPP16_01" category="//@root/@labels.35" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.1" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.18 //@root/@architectures.2/@units.1" supportsProcesses="//@root/@architectures.2/@processes.18" isRealizedByProcesses="//@root/@architectures.2/@processes.18"/>
+      <services name="FonctionAPP17_01" category="//@root/@labels.38" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.10" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.19 //@root/@architectures.2/@units.2" supportsProcesses="//@root/@architectures.2/@processes.19" isRealizedByProcesses="//@root/@architectures.2/@processes.19"/>
+      <services name="FonctionAPP18_01" category="//@root/@labels.39" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.5" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.20 //@root/@architectures.2/@units.0" supportsProcesses="//@root/@architectures.2/@processes.20" isRealizedByProcesses="//@root/@architectures.2/@processes.20"/>
+      <services name="FonctionAPP19_01" category="//@root/@labels.42" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.11" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.21 //@root/@architectures.2/@units.1" supportsProcesses="//@root/@architectures.2/@processes.21" isRealizedByProcesses="//@root/@architectures.2/@processes.21"/>
+      <services name="FonctionAPP20_01" category="//@root/@labels.45" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.3" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.22 //@root/@architectures.2/@units.2" supportsProcesses="//@root/@architectures.2/@processes.22" isRealizedByProcesses="//@root/@architectures.2/@processes.22"/>
+      <services name="FonctionAPP21_01" category="//@root/@labels.48" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.6" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.23 //@root/@architectures.2/@units.0" supportsProcesses="//@root/@architectures.2/@processes.23" isRealizedByProcesses="//@root/@architectures.2/@processes.23"/>
+      <services name="FonctionAPP22_01" category="//@root/@labels.49" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.1" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.24 //@root/@architectures.2/@units.1" supportsProcesses="//@root/@architectures.2/@processes.24" isRealizedByProcesses="//@root/@architectures.2/@processes.24"/>
+      <services name="FonctionAPP23_01" category="//@root/@labels.50" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.2" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.25 //@root/@architectures.2/@units.2" supportsProcesses="//@root/@architectures.2/@processes.25" isRealizedByProcesses="//@root/@architectures.2/@processes.25"/>
+      <services name="FonctionAPP24_01" category="//@root/@labels.51" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.3" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.26 //@root/@architectures.2/@units.0" supportsProcesses="//@root/@architectures.2/@processes.26" isRealizedByProcesses="//@root/@architectures.2/@processes.26"/>
+      <services name="FonctionAPP25_01" category="//@root/@labels.54" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.8" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.27 //@root/@architectures.2/@units.1" supportsProcesses="//@root/@architectures.2/@processes.27" isRealizedByProcesses="//@root/@architectures.2/@processes.27"/>
+      <services name="FonctionAPP26_01" category="//@root/@labels.55" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.1" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.28 //@root/@architectures.2/@units.2" supportsProcesses="//@root/@architectures.2/@processes.28" isRealizedByProcesses="//@root/@architectures.2/@processes.28"/>
+      <services name="FonctionAPP27_01" category="//@root/@labels.58" isRealizedThroughLogicalApplicationComponent="//@root/@architectures.0/@logicalApplicationComponents.5" isOwnedAndGovernedByOrganizationUnits="//@root/@architectures.2/@units.29 //@root/@architectures.2/@units.0" supportsProcesses="//@root/@architectures.2/@processes.29" isRealizedByProcesses="//@root/@architectures.2/@processes.29"/>
+      <services name="02-Finance" decomposesServices="//@root/@architectures.2/@services.0 //@root/@architectures.2/@services.1 //@root/@architectures.2/@services.3 //@root/@architectures.2/@services.11 //@root/@architectures.2/@services.12 //@root/@architectures.2/@services.13"/>
+      <services name="01-Décisionnel" decomposesServices="//@root/@architectures.2/@services.2 //@root/@architectures.2/@services.6 //@root/@architectures.2/@services.20 //@root/@architectures.2/@services.23 //@root/@architectures.2/@services.24 //@root/@architectures.2/@services.29"/>
+      <services name="03-Ressources humaines" decomposesServices="//@root/@architectures.2/@services.4 //@root/@architectures.2/@services.7 //@root/@architectures.2/@services.8"/>
+      <services name="06-Maîtrise des données du produit et des services sur le cycle de vie" decomposesServices="//@root/@architectures.2/@services.5 //@root/@architectures.2/@services.9 //@root/@architectures.2/@services.28"/>
+      <services name="04-Achats" decomposesServices="//@root/@architectures.2/@services.10"/>
+      <services name="05-Commerce" decomposesServices="//@root/@architectures.2/@services.14 //@root/@architectures.2/@services.15 //@root/@architectures.2/@services.25 //@root/@architectures.2/@services.26"/>
+      <services name="06-Gestion des programmes" decomposesServices="//@root/@architectures.2/@services.16 //@root/@architectures.2/@services.21 //@root/@architectures.2/@services.22"/>
+      <services name="07-Socle" decomposesServices="//@root/@architectures.2/@services.17 //@root/@architectures.2/@services.18 //@root/@architectures.2/@services.19"/>
+      <services name="08-Sécurité" decomposesServices="//@root/@architectures.2/@services.27"/>
+      <processes name="2" category="//@root/@labels.61 //@root/@labels.72" orchestratesServices="//@root/@architectures.2/@services.0 //@root/@architectures.2/@services.1 //@root/@architectures.2/@services.11" decomposesServices="//@root/@architectures.2/@services.0 //@root/@architectures.2/@services.1 //@root/@architectures.2/@services.11" involvesActors="//@root/@architectures.2/@actors.0 //@root/@architectures.2/@actors.1 //@root/@architectures.2/@actors.10 //@root/@architectures.2/@actors.22 //@root/@architectures.2/@actors.23 //@root/@architectures.2/@actors.33"/>
+      <processes name="1" category="//@root/@labels.61" orchestratesServices="//@root/@architectures.2/@services.0 //@root/@architectures.2/@services.1" decomposesServices="//@root/@architectures.2/@services.0 //@root/@architectures.2/@services.1" involvesActors="//@root/@architectures.2/@actors.0 //@root/@architectures.2/@actors.1 //@root/@architectures.2/@actors.22 //@root/@architectures.2/@actors.23"/>
+      <processes name="10" category="//@root/@labels.62" orchestratesServices="//@root/@architectures.2/@services.2" decomposesServices="//@root/@architectures.2/@services.2" involvesActors="//@root/@architectures.2/@actors.2 //@root/@architectures.2/@actors.24"/>
+      <processes name="11" category="//@root/@labels.63" orchestratesServices="//@root/@architectures.2/@services.3" decomposesServices="//@root/@architectures.2/@services.3" involvesActors="//@root/@architectures.2/@actors.3 //@root/@architectures.2/@actors.25"/>
+      <processes name="12" category="//@root/@labels.64" orchestratesServices="//@root/@architectures.2/@services.4" decomposesServices="//@root/@architectures.2/@services.4" involvesActors="//@root/@architectures.2/@actors.4 //@root/@architectures.2/@actors.26"/>
+      <processes name="13" category="//@root/@labels.65" orchestratesServices="//@root/@architectures.2/@services.5" decomposesServices="//@root/@architectures.2/@services.5" involvesActors="//@root/@architectures.2/@actors.4 //@root/@architectures.2/@actors.27"/>
+      <processes name="82" category="//@root/@labels.66" orchestratesServices="//@root/@architectures.2/@services.6" decomposesServices="//@root/@architectures.2/@services.6" involvesActors="//@root/@architectures.2/@actors.5 //@root/@architectures.2/@actors.28"/>
+      <processes name="14" category="//@root/@labels.67" decomposesServices="//@root/@architectures.2/@services.6" involvesActors="//@root/@architectures.2/@actors.5 //@root/@architectures.2/@actors.28"/>
+      <processes name="15" category="//@root/@labels.68" orchestratesServices="//@root/@architectures.2/@services.7" decomposesServices="//@root/@architectures.2/@services.7" involvesActors="//@root/@architectures.2/@actors.6 //@root/@architectures.2/@actors.29"/>
+      <processes name="16" category="//@root/@labels.69" orchestratesServices="//@root/@architectures.2/@services.8" decomposesServices="//@root/@architectures.2/@services.8" involvesActors="//@root/@architectures.2/@actors.7 //@root/@architectures.2/@actors.30"/>
+      <processes name="17" category="//@root/@labels.70" orchestratesServices="//@root/@architectures.2/@services.9" decomposesServices="//@root/@architectures.2/@services.9" involvesActors="//@root/@architectures.2/@actors.8 //@root/@architectures.2/@actors.31"/>
+      <processes name="18" category="//@root/@labels.71" orchestratesServices="//@root/@architectures.2/@services.10" decomposesServices="//@root/@architectures.2/@services.10" involvesActors="//@root/@architectures.2/@actors.9 //@root/@architectures.2/@actors.32"/>
+      <processes name="20" category="//@root/@labels.73" orchestratesServices="//@root/@architectures.2/@services.12" decomposesServices="//@root/@architectures.2/@services.12" involvesActors="//@root/@architectures.2/@actors.11 //@root/@architectures.2/@actors.34"/>
+      <processes name="21" category="//@root/@labels.74" orchestratesServices="//@root/@architectures.2/@services.13" decomposesServices="//@root/@architectures.2/@services.13" involvesActors="//@root/@architectures.2/@actors.12 //@root/@architectures.2/@actors.35"/>
+      <processes name="22" category="//@root/@labels.75" orchestratesServices="//@root/@architectures.2/@services.14" decomposesServices="//@root/@architectures.2/@services.14" involvesActors="//@root/@architectures.2/@actors.13 //@root/@architectures.2/@actors.36"/>
+      <processes name="23" category="//@root/@labels.76" orchestratesServices="//@root/@architectures.2/@services.15" decomposesServices="//@root/@architectures.2/@services.15" involvesActors="//@root/@architectures.2/@actors.14 //@root/@architectures.2/@actors.37"/>
+      <processes name="24" category="//@root/@labels.77" orchestratesServices="//@root/@architectures.2/@services.16" decomposesServices="//@root/@architectures.2/@services.16" involvesActors="//@root/@architectures.2/@actors.12 //@root/@architectures.2/@actors.38"/>
+      <processes name="25" category="//@root/@labels.78" orchestratesServices="//@root/@architectures.2/@services.17" decomposesServices="//@root/@architectures.2/@services.17" involvesActors="//@root/@architectures.2/@actors.15 //@root/@architectures.2/@actors.39"/>
+      <processes name="26" category="//@root/@labels.79" orchestratesServices="//@root/@architectures.2/@services.18" decomposesServices="//@root/@architectures.2/@services.18" involvesActors="//@root/@architectures.2/@actors.16 //@root/@architectures.2/@actors.40"/>
+      <processes name="27" category="//@root/@labels.80" orchestratesServices="//@root/@architectures.2/@services.19" decomposesServices="//@root/@architectures.2/@services.19" involvesActors="//@root/@architectures.2/@actors.17 //@root/@architectures.2/@actors.41"/>
+      <processes name="28" category="//@root/@labels.81" orchestratesServices="//@root/@architectures.2/@services.20" decomposesServices="//@root/@architectures.2/@services.20" involvesActors="//@root/@architectures.2/@actors.7 //@root/@architectures.2/@actors.42"/>
+      <processes name="29" category="//@root/@labels.82" orchestratesServices="//@root/@architectures.2/@services.21" decomposesServices="//@root/@architectures.2/@services.21" involvesActors="//@root/@architectures.2/@actors.8 //@root/@architectures.2/@actors.43"/>
+      <processes name="30" category="//@root/@labels.83" orchestratesServices="//@root/@architectures.2/@services.22" decomposesServices="//@root/@architectures.2/@services.22" involvesActors="//@root/@architectures.2/@actors.9 //@root/@architectures.2/@actors.44"/>
+      <processes name="31" category="//@root/@labels.84" orchestratesServices="//@root/@architectures.2/@services.23" decomposesServices="//@root/@architectures.2/@services.23" involvesActors="//@root/@architectures.2/@actors.10 //@root/@architectures.2/@actors.45"/>
+      <processes name="32" category="//@root/@labels.85" orchestratesServices="//@root/@architectures.2/@services.24" decomposesServices="//@root/@architectures.2/@services.24" involvesActors="//@root/@architectures.2/@actors.11 //@root/@architectures.2/@actors.46"/>
+      <processes name="33" category="//@root/@labels.86" orchestratesServices="//@root/@architectures.2/@services.25" decomposesServices="//@root/@architectures.2/@services.25" involvesActors="//@root/@architectures.2/@actors.18 //@root/@architectures.2/@actors.47"/>
+      <processes name="34" category="//@root/@labels.87" orchestratesServices="//@root/@architectures.2/@services.26" decomposesServices="//@root/@architectures.2/@services.26" involvesActors="//@root/@architectures.2/@actors.19 //@root/@architectures.2/@actors.48"/>
+      <processes name="35" category="//@root/@labels.88" orchestratesServices="//@root/@architectures.2/@services.27" decomposesServices="//@root/@architectures.2/@services.27" involvesActors="//@root/@architectures.2/@actors.20 //@root/@architectures.2/@actors.49"/>
+      <processes name="36" category="//@root/@labels.89" orchestratesServices="//@root/@architectures.2/@services.28" decomposesServices="//@root/@architectures.2/@services.28" involvesActors="//@root/@architectures.2/@actors.21 //@root/@architectures.2/@actors.50"/>
+      <processes name="37" category="//@root/@labels.90" orchestratesServices="//@root/@architectures.2/@services.29" decomposesServices="//@root/@architectures.2/@services.29" involvesActors="//@root/@architectures.2/@actors.12 //@root/@architectures.2/@actors.51"/>
+    </architectures>
+    <labels name="Site utilisant l'application" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.30 //@root/@architectures.2/@actors.52 //@root/@architectures.2/@actors.53 //@root/@architectures.2/@actors.54"/>
+    <labels name="Site utilisant l'application" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.31 //@root/@architectures.0/@physicalApplicationComponents.35 //@root/@architectures.0/@physicalApplicationComponents.40 //@root/@architectures.0/@physicalApplicationComponents.44 //@root/@architectures.0/@physicalApplicationComponents.56 //@root/@architectures.0/@physicalApplicationComponents.59 //@root/@architectures.2/@actors.55"/>
+    <labels name="Site utilisant l'application" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.32 //@root/@architectures.0/@physicalApplicationComponents.36 //@root/@architectures.0/@physicalApplicationComponents.38 //@root/@architectures.0/@physicalApplicationComponents.41 //@root/@architectures.0/@physicalApplicationComponents.49 //@root/@architectures.0/@physicalApplicationComponents.50 //@root/@architectures.0/@physicalApplicationComponents.58 //@root/@architectures.2/@actors.56"/>
+    <labels name="Site utilisant l'application" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.33 //@root/@architectures.2/@actors.57"/>
+    <labels name="Site utilisant l'application" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.34 //@root/@architectures.2/@actors.58"/>
+    <labels name="Site utilisant l'application" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.39 //@root/@architectures.0/@physicalApplicationComponents.45 //@root/@architectures.0/@physicalApplicationComponents.51 //@root/@architectures.0/@physicalApplicationComponents.52 //@root/@architectures.0/@physicalApplicationComponents.55 //@root/@architectures.0/@physicalApplicationComponents.57 //@root/@architectures.2/@actors.59"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.0 //@root/@architectures.2/@services.1"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.2"/>
+    <labels name="Convention de service" description="Oui"/>
+    <labels name="Nom de la convention de service" description="RH-001"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.3"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.4"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.5"/>
+    <labels name="Convention de service" description="Oui"/>
+    <labels name="Nom de la convention de service" description="Convention_Appli_03"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.6"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.7"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.8"/>
+    <labels name="Convention de service" description="Oui"/>
+    <labels name="Nom de la convention de service" description="Convention_Appli_04"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.9"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.10"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.11"/>
+    <labels name="Convention de service" description="Oui"/>
+    <labels name="Nom de la convention de service" description="Convention_Appli_05"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.12"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.13"/>
+    <labels name="Convention de service" description="Oui"/>
+    <labels name="Nom de la convention de service" description="Convention_Appli_06"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.14"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.15"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.16"/>
+    <labels name="Convention de service" description="Oui"/>
+    <labels name="Nom de la convention de service" description="Convention_Appli_07"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.17"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.18"/>
+    <labels name="Convention de service" description="Oui"/>
+    <labels name="Nom de la convention de service" description="Convention_Appli_08"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.19"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.20"/>
+    <labels name="Convention de service" description="Oui"/>
+    <labels name="Nom de la convention de service" description="Convention_Appli_09"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.21"/>
+    <labels name="Convention de service" description="Oui"/>
+    <labels name="Nom de la convention de service" description="Convention_Appli_10"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.22"/>
+    <labels name="Convention de service" description="Oui"/>
+    <labels name="Nom de la convention de service" description="Convention_Appli_11"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.23"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.24"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.25"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.26"/>
+    <labels name="Convention de service" description="Oui"/>
+    <labels name="Nom de la convention de service" description="Convention_Appli_12"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.27"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.28"/>
+    <labels name="Convention de service" description="Oui"/>
+    <labels name="Nom de la convention de service" description="Convention_Appli_13"/>
+    <labels name="Fonction" ownedElements="//@root/@architectures.2/@services.29"/>
+    <labels name="Convention de service" description="Oui"/>
+    <labels name="Nom de la convention de service" description="Convention_Appli_14"/>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@actors.52 //@root/@architectures.2/@actors.53 //@root/@architectures.2/@actors.54 //@root/@architectures.2/@processes.0 //@root/@architectures.2/@processes.1 //@root/@architectures.0/@physicalApplicationComponents.30">
+      <subLabels name="Date de mise en exploitation" description="2012"/>
+      <subLabels name="Date de mise a jour" description="14/11/2012"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@actors.55 //@root/@architectures.2/@processes.2 //@root/@architectures.0/@physicalApplicationComponents.31">
+      <subLabels name="Date de mise en exploitation" description="2010"/>
+      <subLabels name="Date de mise a jour" description="08/10/2012"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@actors.56 //@root/@architectures.2/@processes.3 //@root/@architectures.0/@physicalApplicationComponents.32">
+      <subLabels name="Date de mise en exploitation" description="2008"/>
+      <subLabels name="Date de mise a jour" description="41190"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@actors.57 //@root/@architectures.2/@processes.4 //@root/@architectures.0/@physicalApplicationComponents.33">
+      <subLabels name="Date de mise en exploitation" description="2009"/>
+      <subLabels name="Date de mise a jour" description="41191"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@actors.58 //@root/@architectures.2/@processes.5 //@root/@architectures.0/@physicalApplicationComponents.34">
+      <subLabels name="Date de mise en exploitation" description="2010"/>
+      <subLabels name="Date de mise a jour" description="41192"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@processes.6 //@root/@architectures.0/@physicalApplicationComponents.35">
+      <subLabels name="Date de mise en exploitation" description="2011"/>
+      <subLabels name="Date de mise a jour" description="41193"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@processes.7 //@root/@architectures.0/@physicalApplicationComponents.36">
+      <subLabels name="Date de mise en exploitation" description="2011"/>
+      <subLabels name="Date de mise a jour" description="41193"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@actors.52 //@root/@architectures.2/@processes.8 //@root/@architectures.0/@physicalApplicationComponents.37">
+      <subLabels name="Date de mise en exploitation" description="2012"/>
+      <subLabels name="Date de mise a jour" description="41194"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@processes.9 //@root/@architectures.0/@physicalApplicationComponents.38">
+      <subLabels name="Date de mise en exploitation" description="2013"/>
+      <subLabels name="Date de mise a jour" description="41195"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@actors.59 //@root/@architectures.2/@processes.10 //@root/@architectures.0/@physicalApplicationComponents.39">
+      <subLabels name="Date de mise en exploitation" description="2006"/>
+      <subLabels name="Date de mise a jour" description="41196"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@processes.11 //@root/@architectures.0/@physicalApplicationComponents.40">
+      <subLabels name="Date de mise en exploitation" description="2007"/>
+      <subLabels name="Date de mise a jour" description="41197"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@processes.0 //@root/@architectures.0/@physicalApplicationComponents.41">
+      <subLabels name="Date de mise en exploitation" description="2008"/>
+      <subLabels name="Date de mise a jour" description="41198"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@actors.54 //@root/@architectures.2/@processes.12 //@root/@architectures.0/@physicalApplicationComponents.42">
+      <subLabels name="Date de mise en exploitation" description="2009"/>
+      <subLabels name="Date de mise a jour" description="41199"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@processes.13 //@root/@architectures.0/@physicalApplicationComponents.43">
+      <subLabels name="Date de mise en exploitation" description="2010"/>
+      <subLabels name="Date de mise a jour" description="41200"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@processes.14 //@root/@architectures.0/@physicalApplicationComponents.44">
+      <subLabels name="Date de mise en exploitation" description="2011"/>
+      <subLabels name="Date de mise a jour" description="41201"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@processes.15 //@root/@architectures.0/@physicalApplicationComponents.45">
+      <subLabels name="Date de mise en exploitation" description="2012"/>
+      <subLabels name="Date de mise a jour" description="41202"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@processes.16 //@root/@architectures.0/@physicalApplicationComponents.46">
+      <subLabels name="Date de mise en exploitation" description="2013"/>
+      <subLabels name="Date de mise a jour" description="41203"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@processes.17 //@root/@architectures.0/@physicalApplicationComponents.47">
+      <subLabels name="Date de mise en exploitation" description="2000"/>
+      <subLabels name="Date de mise a jour" description="41204"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@processes.18 //@root/@architectures.0/@physicalApplicationComponents.48">
+      <subLabels name="Date de mise en exploitation" description="2001"/>
+      <subLabels name="Date de mise a jour" description="41205"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@processes.19 //@root/@architectures.0/@physicalApplicationComponents.49">
+      <subLabels name="Date de mise en exploitation" description="2002"/>
+      <subLabels name="Date de mise a jour" description="41206"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@processes.20 //@root/@architectures.0/@physicalApplicationComponents.50">
+      <subLabels name="Date de mise en exploitation" description="2003"/>
+      <subLabels name="Date de mise a jour" description="41207"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@processes.21 //@root/@architectures.0/@physicalApplicationComponents.51">
+      <subLabels name="Date de mise en exploitation" description="2004"/>
+      <subLabels name="Date de mise a jour" description="41208"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@processes.22 //@root/@architectures.0/@physicalApplicationComponents.52">
+      <subLabels name="Date de mise en exploitation" description="2005"/>
+      <subLabels name="Date de mise a jour" description="41209"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@processes.23 //@root/@architectures.0/@physicalApplicationComponents.53">
+      <subLabels name="Date de mise en exploitation" description="2006"/>
+      <subLabels name="Date de mise a jour" description="41210"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@processes.24 //@root/@architectures.0/@physicalApplicationComponents.54">
+      <subLabels name="Date de mise en exploitation" description="2007"/>
+      <subLabels name="Date de mise a jour" description="41211"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@processes.25 //@root/@architectures.0/@physicalApplicationComponents.55">
+      <subLabels name="Date de mise en exploitation" description="2008"/>
+      <subLabels name="Date de mise a jour" description="41212"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@processes.26 //@root/@architectures.0/@physicalApplicationComponents.56">
+      <subLabels name="Date de mise en exploitation" description="2009"/>
+      <subLabels name="Date de mise a jour" description="41213"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@processes.27 //@root/@architectures.0/@physicalApplicationComponents.57">
+      <subLabels name="Date de mise en exploitation" description="2010"/>
+      <subLabels name="Date de mise a jour" description="41214"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@processes.28 //@root/@architectures.0/@physicalApplicationComponents.58">
+      <subLabels name="Date de mise en exploitation" description="2011"/>
+      <subLabels name="Date de mise a jour" description="41215"/>
+    </labels>
+    <labels name="Systeme applicatif" ownedElements="//@root/@architectures.2/@processes.29 //@root/@architectures.0/@physicalApplicationComponents.59">
+      <subLabels name="Date de mise en exploitation" description="2012"/>
+      <subLabels name="Date de mise a jour" description="41216"/>
+    </labels>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.60"/>
+    <labels name="Flux entrant&#xA;Informations MAJ" description="inputFlow_ERP"/>
+    <labels name="Flux entrant&#xA;Fréquence MAJ" description="inputFlowFrequency_ERP"/>
+    <labels name="Flux entrant&#xA;Traitement" description="inputFlowProcessing_ERP"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.61"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_REQU01"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.62"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP01"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.63"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP02"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.64"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP03"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.65"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP85"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.66"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP04"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.67"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP05"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.68"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP06"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.69"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP07"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.70"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP08"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.71"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP09"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.72"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP10"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.73"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP11"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.74"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP12"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.75"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP13"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.76"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP14"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.77"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP15"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.78"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP16"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.79"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP17"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.80"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP18"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.81"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP19"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.82"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP20"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.83"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP21"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.84"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP22"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.85"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP23"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.86"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP24"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.87"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP25"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.88"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP26"/>
+    <labels name="Entrant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.89"/>
+    <labels name="Flux entrant&#xA;Traitement" description="outputExternalAppSys_APP27"/>
+    <labels name="Sortant" ownedElements="//@root/@architectures.0/@physicalApplicationComponents.90"/>
+    <labels name="Flux sortant&#xA;Informations MAJ" description="outputFlow_ERP"/>
+    <labels name="Flux sortant&#xA;Fréquence MAJ" description="outputFlowFrequency_ERP"/>
+    <labels name="Flux sortant&#xA;Traitement" description="outputFlowProcessing_ERP"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.60"/>
+    <labels name="Langage de développement et version" description="JAVA"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.61"/>
+    <labels name="Langage de développement et version" description="C"/>
+    <labels name="Base de données et version" description="ORACLE"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.62"/>
+    <labels name="Langage de développement et version" description="Cobol"/>
+    <labels name="Base de données et version" description="MySQL"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.63"/>
+    <labels name="Langage de développement et version" description="C++"/>
+    <labels name="Base de données et version" description="CouchDB"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.64"/>
+    <labels name="Langage de développement et version" description="Pascal"/>
+    <labels name="Base de données et version" description="SQL Server"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.65"/>
+    <labels name="Langage de développement et version" description="JAVA"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.66"/>
+    <labels name="Langage de développement et version" description="JAVA"/>
+    <labels name="Base de données et version" description="ORACLE"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.67"/>
+    <labels name="Langage de développement et version" description="JAVA"/>
+    <labels name="Base de données et version" description="MySQL"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.68"/>
+    <labels name="Langage de développement et version" description="JAVA"/>
+    <labels name="Base de données et version" description="CouchDB"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.69"/>
+    <labels name="Langage de développement et version" description="JAVA"/>
+    <labels name="Base de données et version" description="SQL Server"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.70"/>
+    <labels name="Langage de développement et version" description="JAVA"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.71"/>
+    <labels name="Langage de développement et version" description="C++"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.72"/>
+    <labels name="Langage de développement et version" description="C++"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.73"/>
+    <labels name="Langage de développement et version" description="C++"/>
+    <labels name="Base de données et version" description="ORACLE"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.74"/>
+    <labels name="Langage de développement et version" description="C++"/>
+    <labels name="Base de données et version" description="MySQL"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.75"/>
+    <labels name="Langage de développement et version" description="C++"/>
+    <labels name="Base de données et version" description="ORACLE"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.76"/>
+    <labels name="Langage de développement et version" description="C++"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.77"/>
+    <labels name="Langage de développement et version" description="C++"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.78"/>
+    <labels name="Langage de développement et version" description="C++"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.79"/>
+    <labels name="Langage de développement et version" description="C++"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.80"/>
+    <labels name="Langage de développement et version" description="Cobol"/>
+    <labels name="Base de données et version" description="SQL Server"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.81"/>
+    <labels name="Langage de développement et version" description="Cobol"/>
+    <labels name="Base de données et version" description="SQL Server"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.82"/>
+    <labels name="Langage de développement et version" description="Cobol"/>
+    <labels name="Base de données et version" description="SQL Server"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.83"/>
+    <labels name="Langage de développement et version" description="Cobol"/>
+    <labels name="Base de données et version" description="SQL Server"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.84"/>
+    <labels name="Langage de développement et version" description="Cobol"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.85"/>
+    <labels name="Langage de développement et version" description="Cobol"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.86"/>
+    <labels name="Langage de développement et version" description="C"/>
+    <labels name="Base de données et version" description="MySQL"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.87"/>
+    <labels name="Langage de développement et version" description="C"/>
+    <labels name="Base de données et version" description="MySQL"/>
+    <labels name="Progiciel" ownedElements="//@root/@architectures.1/@physicalComponents.88"/>
+    <labels name="Langage de développement et version" description="C"/>
+    <labels name="Base de données et version" description="MySQL"/>
+    <labels name="Pole DSI" ownedElements="//@root/@architectures.2/@units.0"/>
+    <labels name="Pole DSI" ownedElements="//@root/@architectures.2/@units.1"/>
+    <labels name="Pole DSI" ownedElements="//@root/@architectures.2/@units.2"/>
+  </root>
+</import:Import>

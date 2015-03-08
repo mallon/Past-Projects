@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.modisco.infra.discovery.core.discoverer">
+      <discoverer
+            class="org.inria.wordpress.enduser.xml2wdpconf.main.Launcher"
+            id="org.inria.wordpress.enduser.xml2wdpconf">
+      </discoverer>
+   </extension>
+   <extension
+         point="org.eclipse.modisco.infra.discovery.ui.discoverer">
+      <discoverer
+            discovererID="org.inria.wordpress.enduser.xml2wdpconf"
+            label="Website Creation">
+      </discoverer>
+   </extension>
+
+</plugin>

@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Class-Path: dependencyJars/commons-lang-2.2.jar dependencyJars/org.ecl
+ ipse.core.runtime-3.7.0.jar dependencyJars/org.eclipse.osgi-3.7.1.jar
+  dependencyJars/org.eclipse.equinox.common-3.6.0.jar dependencyJars/o
+ rg.eclipse.core.jobs-3.5.100.jar dependencyJars/org.eclipse.equinox.r
+ egistry-3.5.101.jar dependencyJars/org.eclipse.equinox.preferences-3.
+ 4.1.jar dependencyJars/org.eclipse.core.contenttype-3.4.100.jar depen
+ dencyJars/org.eclipse.equinox.app-1.3.100.jar dependencyJars/org.ecli
+ pse.core.resources-3.7.100.jar dependencyJars/org.eclipse.core.expres
+ sions-3.4.300.jar dependencyJars/org.eclipse.core.filesystem-1.3.100.
+ jar dependencyJars/org.eclipse.emf.common-2.9.2-v20131212-0545.jar de
+ pendencyJars/org.eclipse.emf.ecore-2.9.2-v20131212-0545.jar dependenc
+ yJars/org.eclipse.emf.ecore.xmi-2.9.1-v20131212-0545.jar dependencyJa
+ rs/commons-lang3-3.3.1.jar
+Build-Jdk: 1.7.0_45
+Built-By: MALLON
+Created-By: Maven Integration for Eclipse
+Main-Class: org.inria.wordpress.enduser.xml2wdpconf.freeplane.main.Lau
+ ncher
+

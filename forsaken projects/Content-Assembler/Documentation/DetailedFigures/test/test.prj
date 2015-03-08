@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?PowerDesigner AppLocale="UTF16" ID="{6EDFE561-8DD8-421F-BFF7-7FE8D2E9A399}" Label="" LastModificationDate="1395837741" Name="test" Objects="3" Symbols="0" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" signature="PRJ_MODEL_XML" version="15.1.0.2850"?>
+<!-- Veuillez ne pas modifier ce fichier -->
+
+<Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
+
+<o:RootObject Id="o1">
+<c:Children>
+<o:Project Id="o2">
+<a:ObjectID>6EDFE561-8DD8-421F-BFF7-7FE8D2E9A399</a:ObjectID>
+<a:Name>test</a:Name>
+<a:Code>test</a:Code>
+<a:CreationDate>1395837706</a:CreationDate>
+<a:Creator>MALLON</a:Creator>
+<a:ModificationDate>1395837735</a:ModificationDate>
+<a:Modifier>MALLON</a:Modifier>
+<a:ModelOptionsText>[ModelOptions]
+
+[ModelOptions\Prj options]
+CaseSensitive=No
+DisplayName=Yes
+EnableTrans=No
+EnableRequirements=No
+
+[ModelOptions\Prj options\NamingOptionsTemplates]
+
+[ModelOptions\Prj options\ClssNamingOptions]
+
+[ModelOptions\Prj options\ClssNamingOptions\PRJPCKG]
+
+[ModelOptions\Prj options\ClssNamingOptions\PRJPCKG\Name]
+Template=
+MaxLen=254
+Case=M
+ValidChar=
+InvldChar=
+AllValid=Yes
+NoAccent=No
+DefaultChar=_
+Script=.convert_name(%Name%,&quot;_&quot;)
+ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion
+
+[ModelOptions\Prj options\ClssNamingOptions\PRJPCKG\Code]
+Template=
+MaxLen=254
+Case=M
+ValidChar=
+InvldChar=
+AllValid=Yes
+NoAccent=No
+DefaultChar=_
+Script=.convert_code(%Code%,&quot; &quot;)
+ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion
+
+[ModelOptions\Prj options\ClssNamingOptions\FILO]
+
+[ModelOptions\Prj options\ClssNamingOptions\FILO\Name]
+Template=
+MaxLen=254
+Case=M
+ValidChar=
+InvldChar=
+AllValid=Yes
+NoAccent=No
+DefaultChar=_
+Script=.convert_name(%Name%,&quot;_&quot;)
+ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion
+
+[ModelOptions\Prj options\ClssNamingOptions\FILO\Code]
+Template=
+MaxLen=254
+Case=M
+ValidChar=
+InvldChar=
+AllValid=Yes
+NoAccent=No
+DefaultChar=_
+Script=.convert_code(%Code%,&quot; &quot;)
+ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion
+
+[ModelOptions\Prj options\ClssNamingOptions\FRMEOBJ]
+
+[ModelOptions\Prj options\ClssNamingOptions\FRMEOBJ\Name]
+Template=
+MaxLen=254
+Case=M
+ValidChar=
+InvldChar=
+AllValid=Yes
+NoAccent=No
+DefaultChar=_
+Script=.convert_name(%Name%,&quot;_&quot;)
+ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion
+
+[ModelOptions\Prj options\ClssNamingOptions\FRMEOBJ\Code]
+Template=
+MaxLen=254
+Case=M
+ValidChar=
+InvldChar=
+AllValid=Yes
+NoAccent=No
+DefaultChar=_
+Script=.convert_code(%Code%,&quot; &quot;)
+ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion
+
+[ModelOptions\Prj options\ClssNamingOptions\FRMELNK]
+
+[ModelOptions\Prj options\ClssNamingOptions\FRMELNK\Name]
+Template=
+MaxLen=254
+Case=M
+ValidChar=
+InvldChar=
+AllValid=Yes
+NoAccent=No
+DefaultChar=_
+Script=.convert_name(%Name%,&quot;_&quot;)
+ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion
+
+[ModelOptions\Prj options\ClssNamingOptions\FRMELNK\Code]
+Template=
+MaxLen=254
+Case=M
+ValidChar=
+InvldChar=
+AllValid=Yes
+NoAccent=No
+DefaultChar=_
+Script=.convert_code(%Code%,&quot; &quot;)
+ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion
+
+[ModelOptions\Prj options\ClssNamingOptions\DefaultClass]
+
+[ModelOptions\Prj options\ClssNamingOptions\DefaultClass\Name]
+Template=
+MaxLen=254
+Case=M
+ValidChar=
+InvldChar=
+AllValid=Yes
+NoAccent=No
+DefaultChar=_
+Script=.convert_name(%Name%,&quot;_&quot;)
+ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion
+
+[ModelOptions\Prj options\ClssNamingOptions\DefaultClass\Code]
+Template=
+MaxLen=254
+Case=M
+ValidChar=
+InvldChar=
+AllValid=Yes
+NoAccent=No
+DefaultChar=_
+Script=.convert_code(%Code%,&quot; &quot;)
+ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion</a:ModelOptionsText>
+<a:Project.Template>1</a:Project.Template>
+<c:ModelsAndFiles>
+<o:ModelDocument Id="o3">
+<a:ObjectID>6D0996FD-D4B7-46DA-8812-DDF7459BE13D</a:ObjectID>
+<a:Name>Diagramme de classes UML_1</a:Name>
+<a:Code>Diagramme_de_classes_UML_1</a:Code>
+<a:CreationDate>1395837729</a:CreationDate>
+<a:Creator>MALLON</a:Creator>
+<a:ModificationDate>1395837741</a:ModificationDate>
+<a:Modifier>MALLON</a:Modifier>
+<a:Location>file:///%[PRJ_ROOT_DIR]%/Diagramme de classes UML_1.moo</a:Location>
+<a:Extension>moo</a:Extension>
+<a:ModelDocument.ModelID>82764616-8713-448B-87AA-D9FC51F9FF50</a:ModelDocument.ModelID>
+<a:ModelClassID>18112060-1A4B-11D1-83D9-444553540000</a:ModelClassID>
+</o:ModelDocument>
+</c:ModelsAndFiles>
+</o:Project>
+</c:Children>
+</o:RootObject>
+
+</Model>

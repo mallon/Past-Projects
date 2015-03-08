@@ -1,0 +1,13 @@
+\section{Introduction}
+Nowadays, many tools are available on the market to simplify and speed-up the development of websites. Such tools can provide support for static (e.g. the DreamWeaver, WebExpert, ... editors) or dynamic (e.g. the Drupal, Joomla, ... CMS) websites. The most widely used tools are CMS (Content Management System - about 60\% of the current websites use a CMS \cite{cmsRepartition}): it brings clear adavantages\cite{cmsAdvDraw}, with respect to other methods and tools.
+
+%CMS drawbacks
+Unfortunately, CMS have drawbacks for end-users: the technical knowledge (e.g. plugins, theme, ...) to use it, the lack of default functionalities (e.g. for Search Engine Optimization, ECommerce, Social Networks ...), the concepts scattering and the lack of participation of end-users in website creation.
+
+Hence, we have created a DSL\cite{dslDefine} (named 'CMS-CL': CMS Configuration Language) which has all concepts present in WordPress, with some default functionalites (e.g. Search Engine Optimization, anti-spam, multi-language, ...). With this DSL, users focus only on the conceptual side (e.g. relations between a post and a page, ...).
+
+We have decided to use a specific representation with our DSL: the mind-mapping. It is a way to represent concepts: each one is symbolized as a node (the root/central node being the main concept), and the various relations between these concepts are represented through edges. The mind-mapping allows to easily manipulate the different DSL concepts, to have all of it in one view and to enable end-users to be less partisan of a wait-and-see by participating more in the website creation, and therefore exchanging more with web designers and other members of a website project.
+
+We have implemented a prototype using our DSL with a mind-mapping based notation. Then, we made an experiment of this tool with end users, to validate its interest.
+
+This paper presents the design and how to use the DSL through the following sections : the approach overwiew (Section \ref{approachOverview}), a presentation of our DSL and its syntax (Section \ref{CMS-CL}), a presentation of the implementation (Section \ref{techUse}), the CMS-CL prototype validation (Section \ref{validation}), CMS-CL and the web designers (Section \ref{webDesigners}), the related work (Section \ref{relatedWorks}) and a conclusion about this approach.

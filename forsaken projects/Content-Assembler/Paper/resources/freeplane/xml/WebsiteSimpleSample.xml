@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><map version="freeplane 1.2.0">
+<!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
+<node TEXT="Website" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1386164191067">
+<edge STYLE="bezier" COLOR="#808080" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#808080" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="18" BOLD="false" ITALIC="false"/>
+<hook NAME="MapStyle">
+    <properties show_icon_for_attributes="true" show_note_icons="true"/>
+
+<map_styles>
+<stylenode LOCALIZED_TEXT="styles.root_node" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<stylenode LOCALIZED_TEXT="styles.predefined" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" POSITION="right">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<stylenode LOCALIZED_TEXT="default" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="defaultstyle.details" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="defaultstyle.note" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="defaultstyle.floating" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<cloud COLOR="#f0f0f0" SHAPE="ROUND_RECT"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</stylenode>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.user-defined" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" POSITION="right">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<stylenode LOCALIZED_TEXT="styles.topic" COLOR="#18898b" STYLE="fork" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="Dialog" SIZE="10" BOLD="true" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.subtopic" COLOR="#cc3300" STYLE="fork" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="Dialog" SIZE="10" BOLD="true" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.subsubtopic" COLOR="#669900" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="Dialog" SIZE="10" BOLD="true" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.important" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<icon BUILTIN="yes"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</stylenode>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.AutomaticLayout" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" POSITION="right">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level.root" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="18" BOLD="false" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,1" COLOR="#0033ff" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="16" BOLD="false" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,2" COLOR="#00b439" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="14" BOLD="false" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,3" COLOR="#990000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="12" BOLD="false" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,4" COLOR="#111111" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</stylenode>
+</stylenode>
+</stylenode>
+</map_styles>
+</hook>
+<hook NAME="AutomaticEdgeColor" COUNTER="5"/>
+<attribute_layout NAME_WIDTH="86" VALUE_WIDTH="174"/>
+<attribute NAME="title" VALUE="titleEndUser"/>
+<attribute NAME="tagLine" VALUE="tagLineEndUser"/>
+<attribute NAME="address" VALUE="http://localhost/wordpress/"/>
+<attribute NAME="adminPassword" VALUE="Luf59Ger;"/>
+<attribute NAME="adminLogin" VALUE="admin"/>
+<node TEXT="User" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" POSITION="right" ID="ID_638219365" CREATED="1382981424559" MODIFIED="1386160522152">
+<edge STYLE="bezier" COLOR="#7c0000" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c0000" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="65" VALUE_WIDTH="123"/>
+<attribute NAME="userName" VALUE="userOne"/>
+<attribute NAME="firstName" VALUE="userOneFirstName"/>
+<attribute NAME="lastName" VALUE="userOneLastName"/>
+<attribute NAME="nickName" VALUE="userOneNickName"/>
+<attribute NAME="publicName" VALUE="userOnePublicName"/>
+<attribute NAME="email" VALUE="userOne@mail.com"/>
+<attribute NAME="website" VALUE="userOneWebSite.com"/>
+<attribute NAME="biography" VALUE="userOneBiog"/>
+<attribute NAME="password" VALUE="userOnePassword"/>
+<node TEXT="Role" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1537427466" CREATED="1383057386512" MODIFIED="1386160334207">
+<edge STYLE="bezier" COLOR="#7c0000" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c0000" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="73" VALUE_WIDTH="73"/>
+<node TEXT="author" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1318867602" CREATED="1383065485412" MODIFIED="1386669991972">
+<edge STYLE="bezier" COLOR="#7c0000" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c0000" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</node>
+</node>
+</node>
+<node TEXT="Appearance" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" POSITION="left" ID="ID_1190070596" CREATED="1382979894113" MODIFIED="1386160587875">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<node TEXT="Menu" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1953581499" CREATED="1383038305854" MODIFIED="1386160845358">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="33" VALUE_WIDTH="88"/>
+<attribute NAME="name" VALUE="menuNameOne"/>
+</node>
+<node TEXT="Theme" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1280257357" CREATED="1383038321220" MODIFIED="1386863911590">
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#7c7c00" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="33" VALUE_WIDTH="286"/>
+<attribute NAME="url" VALUE="http://wordpress.org/themes/download/pilot-fish.0.3.4.zip"/>
+<attribute NAME="name" VALUE="pilot-fish"/>
+</node>
+</node>
+<node TEXT="Page" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" POSITION="right" ID="ID_1822327479" CREATED="1382979972148" MODIFIED="1386163711164">
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="47" VALUE_WIDTH="106"/>
+<attribute NAME="title" VALUE="pageTitleOne"/>
+<attribute NAME="content" VALUE="I am the page one"/>
+<attribute NAME="order" VALUE="1"/>
+<node TEXT="Visibility" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" ID="ID_1705257380" CREATED="1383056700595" MODIFIED="1386163819613">
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="109" VALUE_WIDTH="109"/>
+<node TEXT="publish" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_1489844347" CREATED="1383066274819" MODIFIED="1386941050636">
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</node>
+</node>
+<node TEXT="PageParent" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_618116739" CREATED="1382979972148" MODIFIED="1386164069256">
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="33" VALUE_WIDTH="79"/>
+<attribute NAME="title" VALUE="pageTitleTwo"/>
+</node>
+</node>
+<node TEXT="Post" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" FOLDED="true" POSITION="right" ID="ID_784583661" CREATED="1382979981267" MODIFIED="1386164060734">
+<edge STYLE="bezier" COLOR="#00ffff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#00ffff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="47" VALUE_WIDTH="92"/>
+<attribute NAME="title" VALUE="postOneTitle"/>
+<attribute NAME="content" VALUE="I am post one..."/>
+<node TEXT="Tag" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_851574217" CREATED="1383038508684" MODIFIED="1386164136713">
+<edge STYLE="bezier" COLOR="#00ffff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#00ffff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="33"/>
+<attribute NAME="name" VALUE="tagOneName"/>
+</node>
+<node TEXT="Category" COLOR="#000000" STYLE="as_parent" MAX_WIDTH="600" MIN_WIDTH="1" ID="ID_789984732" CREATED="1383126593579" MODIFIED="1386164136714">
+<edge STYLE="bezier" COLOR="#00ffff" WIDTH="thin"/>
+<edge STYLE="bezier" COLOR="#00ffff" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+<attribute_layout NAME_WIDTH="33" VALUE_WIDTH="74"/>
+<attribute NAME="name" VALUE="catOneName"/>
+</node>
+</node>
+</node>
+</map>

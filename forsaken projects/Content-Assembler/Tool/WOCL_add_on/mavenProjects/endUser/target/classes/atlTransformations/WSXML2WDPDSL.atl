@@ -1,0 +1,429 @@
+-- @path WDPDSL=/org.inria.wordpress.enduser.xml2wdpconf/metamodels/wdpDsl.ecore
+-- @path XML=/org.inria.wordpress.enduser.xml2wdpconf/metamodels/XML.ecore
+
+-- ******************************************************************************
+-- Copyright (c) 2013 INRIA.
+-- All rights reserved. This program and the accompanying materials
+-- are made available under the terms of the Eclipse Public License v1.0
+-- which accompanies this distribution, and is available at
+-- http://www.eclipse.org/legal/epl-v10.html
+-- 
+-- Contributors:
+--         INRIA - Initial implementation
+-- 
+-- ******************************************************************************
+
+--@name WSXML2WDPDSL
+--@author Matthieu Allon (matthieu.allon <at> gmail.com)
+--@description WSXML (Website elements representation) to WDPDSL (WordPress configuration DSL)
+
+module WSXML2WDPDSL;
+create OUT : WDPDSL from IN : XML;
+
+uses WSXML2WDPDSLHelpers;
+
+rule createWebsite {
+        from
+                websiteElement : XML!Element(
+                	websiteElement.isNodeElement and 
+					not websiteElement.getNode('Website').oclIsUndefined()
+                )
+        to
+                website : WDPDSL!Website(
+                	adminUser <- websiteElement.getParentNodeChild('adminPassword', true),
+					appearance <- websiteElement.getParentNodeChild('Appearance', false),
+					categories <- websiteElement.getParentNodeChild('Category', false),
+					functionalities <- websiteElement.getParentNodeChild('Functionality', false),
+					mediaLibrary <- websiteElement.getParentNodeChild('Media', false),
+					pages <-if (not websiteElement.getPageReferencedInWidgetPages.oclIsUndefined())then 
+								let seqObj : OclAny = 
+									websiteElement.getParentNodeChild('Page', false)
+									-> union(websiteElement.getPageReferencedInWidgetPages)
+								in 
+									if (not websiteElement.getPageReferencedInPageParent.oclIsUndefined())then
+										seqObj -> union(websiteElement.getPageReferencedInPageParent)
+									else OclUndefined endif
+							else
+								websiteElement.getParentNodeChild('Page', false)
+							endif,
+					posts <- websiteElement.getParentNodeChild('Post', false),	
+					tags <- websiteElement.getParentNodeChild('Tag', false),
+					users <- websiteElement.getParentNodeChild('User', false),
+					settings <- wsSettings
+				),
+				wsSettings : WDPDSL!Settings (
+					general <- genSettings	
+				),
+				genSettings : WDPDSL!GeneralSettings (
+					wordPressAdress <- wdpUrl,
+					websiteTitle <- websiteElement.getAttributeVALUEForNodeElement('title'),
+					websiteTagline <- websiteElement.getAttributeVALUEForNodeElement('tagLine')
+				),
+				wdpUrl : WDPDSL!Url (
+					pathUrl <- websiteElement.getAttributeVALUEForNodeElement('address')
+				)
+}
+
+rule createUsers{
+        from
+               	userElement : XML!Element(
+               		userElement.getNodeExcludingRef('User')
+                )
+        to
+                user : WDPDSL!User (
+					userName <- userElement.getAttributeVALUEForNodeElement('userName'),
+					firstName <- userElement.getAttributeVALUEForNodeElement('firstName'),
+					lastName <- userElement.getAttributeVALUEForNodeElement('lastName'),
+					nickName <- userElement.getAttributeVALUEForNodeElement('nickName'),
+					publicName <- userElement.getAttributeVALUEForNodeElement('publicName'),
+					email <- userElement.getAttributeVALUEForNodeElement('email'),
+					webSite <- userElement.getAttributeVALUEForNodeElement('website'),
+					biography <- userElement.getAttributeVALUEForNodeElement('biography'),
+					password <- userElement.getAttributeVALUEForNodeElement('password'),
+					userRole <- userElement.getLiteralValue('Role', Sequence{'author', 'administrator', 'contributor', 'suscriber', 'editor'})
+				)
+}
+
+rule createFunctionalities {
+        from
+               	functionalityElement : XML!Element(
+               		not functionalityElement.getNode('Functionality').oclIsUndefined()
+                )
+        to
+                functionality : WDPDSL!Functionality (
+                	functionalityType <-if (not functionalityElement.getParentNodeChild('socialNetwork', false) ->first().oclIsUndefined())then
+											'socialNetwork'
+										else
+											functionalityElement.getLiteralValueOnFirstChildNode(Sequence{'seo', 'eCommerce', 'hamSpam', 'indexing', 'multiLanguage', 'pictures', 'socialNetwork'})
+										endif,
+					socialNetworks <- 	let socialNetwork : XML!Element =
+											functionalityElement.getParentNodeChild('socialNetwork', false) ->first()
+										in	
+											if (not socialNetwork.oclIsUndefined())then
+												socialNetwork.getValueOnFirstChildNode
+											else OclUndefined endif
+				)
+}
+
+abstract rule taxonomy {
+	from
+               	taxoElement : XML!Element(
+               		taxoElement.isNodeElement	
+               	)
+        to
+                taxo : WDPDSL!Taxonomy (
+                	name <- taxoElement.getAttributeVALUEForNodeElement('name'),
+					description <- taxoElement.getAttributeVALUEForNodeElement('description')
+				)
+}
+
+rule createTags extends taxonomy{
+        from
+               	taxoElement : XML!Element(
+               		taxoElement.getNodeExcludingRef('Tag')
+                )
+        to
+                taxo : WDPDSL!Tag (
+                	tagName <- taxoElement.getAttributeVALUEForNodeElement('name')
+                )
+}
+
+rule createCategories extends taxonomy{
+        from
+               	taxoElement : XML!Element(
+               		taxoElement.getNodeExcludingRef('Category')
+                )
+        to
+                taxo : WDPDSL!Category (
+                	categoryName <- taxoElement.getAttributeVALUEForNodeElement('name')	
+                )
+}
+
+rule createAdminUser {
+        from
+               	adminUserAttribute : XML!Element(
+               		adminUserAttribute.isAttributeElement and 
+               		not adminUserAttribute.getNameAndValueOfChildAttributeNode('adminPassword')
+										  .oclIsUndefined()
+                )
+        to
+                adminUser : WDPDSL!User (
+                	userRole <- 'administrator',
+                	userName <- adminUserAttribute.getNameAndValueOfChildAttributeNode('adminPassword')
+												  .getSiblingElementValue('adminLogin'),
+					password <- adminUserAttribute.getValueOfChildAttributeNode
+				)
+}
+
+rule createAppearance {
+        from
+               	appearanceElement : XML!Element(
+               		appearanceElement.isNodeElement and 
+					not appearanceElement.getNode('Appearance').oclIsUndefined()
+                )
+        to
+                appearance : WDPDSL!Appearance (
+                	theme <- appearanceElement.getParentNodeChild('Theme', false),
+					appearanceMenus <- appearanceElement.getParentNodeChild('Menu', false),
+					widgets <- appearanceElement.getParentNodeChild('Widget', false)
+				)
+}
+
+rule createWidget {
+        from
+               	widgetElement : XML!Element(
+               		widgetElement.isNodeElement and
+                	not widgetElement.getNode('Widget').oclIsUndefined()
+                )
+        to
+                wudget : WDPDSL!Widget (
+                	calendars <- widgetElement.getParentNodeChild('Calendars', false),
+					categories <- widgetElement.getParentNodeChild('WidgetCategory', false),
+					customMenus <- widgetElement.getParentNodeChild('WidgetMenu', false),
+					feeds <- widgetElement.getParentNodeChild('WidgetFeed', false),
+					metas <- widgetElement.getParentNodeChild('Meta', false),
+					pages <- widgetElement.getParentNodeChild('WidgetPage', false),
+					recentComments <- widgetElement.getParentNodeChild('WidgetComment', false),
+					recentPosts <- widgetElement.getParentNodeChild('WidgetPost', false),
+					searchs <- widgetElement.getParentNodeChild('Search', false),
+					tagClouds <- widgetElement.getParentNodeChild('TagCloud', false),
+					texts <- widgetElement.getParentNodeChild('Text', false),
+					type <- widgetElement.getParentNodeChild('WidgetPlacement', false)
+										 -> first()
+										 .getLiteralValueOnFirstChildNode(Sequence{'mainArea', 'secondaryArea'}),
+					widgetArchives <- widgetElement.getParentNodeChild('Archives', false)
+				)
+}
+
+abstract rule elementTitled {
+		from
+			wsElement : XML!Element(
+				wsElement.isNodeElement
+			)
+		to
+			element : WDPDSL!TitledElement(
+					title <- wsElement.getAttributeVALUEForNodeElement('title')
+			)
+}
+
+rule createArchives extends elementTitled{
+        from
+               	wsElement : XML!Element(
+                	not wsElement.getNode('Archives').oclIsUndefined()
+                )
+        to
+                element : WDPDSL!Archive (
+                	isDisplayingAsDropDown <- wsElement.getBooleanValue('isDisplayingAsDropDown'),
+					isShowingPostsCount <- wsElement.getBooleanValue('isShowingPostsCount')
+                )
+}
+
+rule createTexts extends elementTitled{
+        from
+               	wsElement : XML!Element(
+                	not wsElement.getNode('Text').oclIsUndefined()
+                )
+        to
+                element : WDPDSL!Text (
+                	content <- wsElement.getAttributeVALUEForNodeElement('content'),
+					isAutoParagraphs <- wsElement.getBooleanValue('isAutoParagraphs')
+                )
+}
+
+rule createTagClouds extends elementTitled{
+        from
+               	wsElement : XML!Element(
+                	not wsElement.getNode('TagCloud').oclIsUndefined()
+                )
+        to
+                element : WDPDSL!TagCloud (
+                	taxonomy <- wsElement.getLiteralValue('Elements', Sequence{'tag', 'category'})
+                )
+}
+
+rule createSearch extends elementTitled{
+        from
+               	wsElement : XML!Element(
+                	not wsElement.getNode('Search').oclIsUndefined()
+                )
+        to
+                element : WDPDSL!Search ()
+}
+
+rule createWidgetPosts extends elementTitled{
+        from
+               	wsElement : XML!Element(
+                	not wsElement.getNode('WidgetPost').oclIsUndefined()
+                )
+        to
+                element : WDPDSL!WidgetPost (
+                	numberOfDisplayedPosts <- wsElement.getAttributeVALUEForNodeElement('numberOfDisplayedPosts').toInteger(),
+					isDisplayingPostDate <- wsElement.getBooleanValue('isDisplayingPostDate')
+                )
+}
+
+
+rule createWidgetComments extends elementTitled{
+        from
+               	wsElement : XML!Element(
+                	not wsElement.getNode('WidgetComment').oclIsUndefined()
+                )
+        to
+                element : WDPDSL!WidgetComment (
+                	numberOfDisplayedComments <- wsElement.getAttributeVALUEForNodeElement('numberOfDisplayedComments').toInteger()
+                )
+}
+
+rule createCalendars extends elementTitled{
+        from
+               	wsElement : XML!Element(
+                	not wsElement.getNode('Calendars').oclIsUndefined()
+                )
+        to
+                element : WDPDSL!Calendar ()
+}
+
+rule createWidgetCategories extends elementTitled{
+        from
+               	wsElement : XML!Element(
+                	not wsElement.getNode('WidgetCategory').oclIsUndefined()
+                )
+        to
+                element : WDPDSL!WidgetCategorie ()
+}
+
+rule createCustomMenus extends elementTitled{
+        from
+               	wsElement : XML!Element(
+                	not wsElement.getNode('WidgetMenu').oclIsUndefined()
+                )
+        to
+                element : WDPDSL!WidgetMenu (
+                selectedMenu <- wsElement.getReferencedMenu('Menu')
+                )
+}
+
+rule createFeeds {
+        from
+               	feedsElement : XML!Element(
+               		feedsElement.isNodeElement and
+                	not feedsElement.getNode('WidgetFeed').oclIsUndefined()
+                )
+        to
+                widgetFeed : WDPDSL!WidgetFeed ( 
+					isDisplayingItemContent <- feedsElement.getBooleanValue('isDisplayingItemContent'),
+					isDisplayingItemAuthor <- feedsElement.getBooleanValue('isDisplayingItemAuthor'),
+					isDisplayingItemDate <- feedsElement.getBooleanValue('isDisplayingItemDate')					
+				)
+}
+
+rule createMetas extends elementTitled{
+        from
+               	wsElement : XML!Element(
+                	not wsElement.getNode('Meta').oclIsUndefined()
+                )
+        to
+                element : WDPDSL!Meta ()
+}
+
+rule createWidgetPages extends elementTitled{
+        from
+               	wsElement : XML!Element(
+                	not wsElement.getNode('WidgetPage').oclIsUndefined()
+               )
+        to
+                element : WDPDSL!WidgetPage (
+					widgetPagesSorter <- wsElement.getLiteralValue('PageSorter', Sequence{'page_title', 'page_order', 'page_id'}),
+					idPageExcluded <- wsElement.getReferencedPage('PageExcluded')
+                )
+}
+
+rule createPage{
+        from
+               	pageElement : XML!Element(
+					pageElement.getNodeExcludingRef('Page')
+                )
+        to
+                page : WDPDSL!Page(
+                	name <- pageElement.getAttributeVALUEForNodeElement('title'), --Necessary for the stub component, but 
+																					--not present in the end-user GUI : so, 
+																					--we use also title as an ID
+                	parent <- pageElement.getReferencedPage('PageParent'),
+					commonAttributes <- pageAttributes,
+					order <- pageElement.getAttributeVALUEForNodeElement('order').toInteger()				
+				),
+				pageAttributes : WDPDSL!PostPage_Impl (
+					content <- pageElement.getAttributeVALUEForNodeElement('content'),
+					title <- pageElement.getAttributeVALUEForNodeElement('title'),
+					status <- pageElement.getLiteralValue('Visibility', Sequence{'publish', 'pending', 'draft', 'public', 'private', 
+																					'new', 'inherit', 'trash', 'future', 'auto-draft'})--,
+					--TODO
+					--featuredImage <- pageElement.getParentNodeChild('Image', false)
+				)
+}
+
+rule createPosts{
+        from
+               	postElement : XML!Element(
+               		postElement.getNodeExcludingRef('Post')
+                )
+        to
+                post : WDPDSL!Post ( 
+                	name <- postElement.getAttributeVALUEForNodeElement('title'), --Necessary for the stub component, but 
+																					--not present in the end-user GUI : so, 
+																					--we use also title as an ID
+					categories <- postElement.findCorrespondingCategories,
+					tags <- postElement.findCorrespondingTags,
+					commonAttributes <- postAttributes
+				),
+				postAttributes : WDPDSL!PostPage_Impl (
+					content <- postElement.getAttributeVALUEForNodeElement('content'),
+					title <- postElement.getAttributeVALUEForNodeElement('title')--,
+					--TODO
+					--featuredImage <- postElement.getParentNodeChild('Image', false)
+				)
+}
+
+rule createMedias {
+        from
+               	mediaElement : XML!Element(
+               		mediaElement.getNodeExcludingRef('Media')
+                )
+        to
+                media : WDPDSL!Media (  
+                	name <- mediaElement.getAttributeVALUEForNodeElement('url'), --Necessary for the stub component, but 
+																				--not present in the end-user GUI : so, 
+																				--we use also the url as an ID
+					url <- pathMedia,
+					uploadedTo <- 	if (mediaElement.getParentNodeChild('Post', false) -> first().findCorrespondingPost.oclIsUndefined()) then
+										mediaElement.getParentNodeChild('Page', false) -> first().findCorrespondingPage
+									else mediaElement.getParentNodeChild('Post', false) -> first().findCorrespondingPost endif
+				),
+				pathMedia : WDPDSL!Url (
+					pathUrl <- mediaElement.getAttributeVALUEForNodeElement('url')
+				)
+}
+
+rule createAppearanceMenu {
+        from
+               	appearanceMenuElement : XML!Element(
+               		appearanceMenuElement.isNodeElement and
+                	not appearanceMenuElement.getNode('Menu').oclIsUndefined()
+                )
+        to
+                menu : WDPDSL!Menu (
+                	name <- appearanceMenuElement.getAttributeVALUEForNodeElement('name')
+				)
+}
+
+rule createTheme {
+        from
+               	themeElement : XML!Element(
+               		themeElement.isNodeElement and
+                	not themeElement.getNode('Theme').oclIsUndefined()
+                )
+        to
+                theme : WDPDSL!Theme (
+					themeType <- themeElement.getLiteralValueOnFirstChildNode(Sequence{'responsive', 'seo', 'headerParallaxEffect', 'business', 'magazine', 'galleries'})
+				)
+}

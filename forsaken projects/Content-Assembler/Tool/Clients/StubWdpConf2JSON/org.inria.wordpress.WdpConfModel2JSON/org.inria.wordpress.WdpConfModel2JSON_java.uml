@@ -1,0 +1,989 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_R7VGoJoVEeOKSuMukkWEWw" name="root model">
+  <packagedElement xmi:type="uml:Model" xmi:id="_R7VGoZoVEeOKSuMukkWEWw" name="org.inria.wordpress.WdpConfModel2JSON">
+    <packagedElement xmi:type="uml:Package" xmi:id="_R7VGopoVEeOKSuMukkWEWw" name="Common java data types">
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_R7VGo5oVEeOKSuMukkWEWw" name="int"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_R7VGpJoVEeOKSuMukkWEWw" name="long"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_R7VGpZoVEeOKSuMukkWEWw" name="float"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_R7VGppoVEeOKSuMukkWEWw" name="double"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_R7VGp5oVEeOKSuMukkWEWw" name="boolean"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_R7VGqJoVEeOKSuMukkWEWw" name="void"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_R7VGqZoVEeOKSuMukkWEWw" name="char"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_R7VGqpoVEeOKSuMukkWEWw" name="short"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_R7VGq5oVEeOKSuMukkWEWw" name="byte"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_R7VGrJoVEeOKSuMukkWEWw" name="Project data types">
+      <packagedElement xmi:type="uml:DataType" xmi:id="_R7VGrZoVEeOKSuMukkWEWw" name="org.eclipse.emf.common.util.EList&lt;org.inria.wordpress.wdpdsl.wdpDsl.User>"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_R7VGrpoVEeOKSuMukkWEWw" name="java.util.List&lt;java.lang.String>"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_R7VGr5oVEeOKSuMukkWEWw" name="java.util.List&lt;java.util.List&lt;java.lang.String>>"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_R7VGsJoVEeOKSuMukkWEWw" name="org.eclipse.emf.common.util.EList&lt;org.inria.wordpress.wdpdsl.wdpDsl.Post>"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_R7VGsZoVEeOKSuMukkWEWw" name="org.eclipse.emf.common.util.EList&lt;org.inria.wordpress.wdpdsl.wdpDsl.Page>"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_R7VGspoVEeOKSuMukkWEWw" name="org.eclipse.emf.common.util.EList&lt;org.inria.wordpress.wdpdsl.wdpDsl.Category>"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_R7VGs5oVEeOKSuMukkWEWw" name="org.eclipse.emf.common.util.EList&lt;org.inria.wordpress.wdpdsl.wdpDsl.Tag>"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_R7VGtJoVEeOKSuMukkWEWw" name="org.eclipse.emf.common.util.EList&lt;org.inria.wordpress.wdpdsl.wdpDsl.Media>"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_R7VGtZoVEeOKSuMukkWEWw" name="org.eclipse.emf.common.util.EList&lt;org.inria.wordpress.wdpdsl.wdpDsl.Functionality>"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_R7VGtpoVEeOKSuMukkWEWw" name="org.eclipse.emf.common.util.EList&lt;org.inria.wordpress.wdpdsl.wdpDsl.Comment>"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_R7VGt5oVEeOKSuMukkWEWw" name="org.eclipse.emf.common.util.EList&lt;java.lang.String>"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_R7VGuJoVEeOKSuMukkWEWw" name="org.eclipse.emf.common.util.EList&lt;org.inria.wordpress.wdpdsl.wdpDsl.functionalities>"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_R7VGuZoVEeOKSuMukkWEWw" name="org.eclipse.emf.common.util.EList&lt;org.inria.wordpress.wdpdsl.wdpDsl.PostDateAuthor>"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_R7VGupoVEeOKSuMukkWEWw" name="java.util.List&lt;org.apache.http.NameValuePair>"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_R7VGu5oVEeOKSuMukkWEWw" name="java.util.ArrayList&lt;org.apache.http.NameValuePair>"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_R7VGvJoVEeOKSuMukkWEWw" name="org.eclipse.emf.common.util.EList&lt;org.eclipse.emf.ecore.EStructuralFeature>"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_R7VGvZoVEeOKSuMukkWEWw" name="java.util.LinkedList&lt;java.lang.String>"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_R7VGvpoVEeOKSuMukkWEWw" name="java.util.ArrayList&lt;java.util.List&lt;java.lang.String>>"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_R7VGv5oVEeOKSuMukkWEWw" name="java.util.ArrayList&lt;java.lang.String>"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_R7VGwJoVEeOKSuMukkWEWw" name="java.util.Iterator&lt;java.lang.String>"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_R7VGwZoVEeOKSuMukkWEWw" name="org">
+      <packagedElement xmi:type="uml:Package" xmi:id="_R7VGwpoVEeOKSuMukkWEWw" name="inria">
+        <packagedElement xmi:type="uml:Package" xmi:id="_R7VGw5oVEeOKSuMukkWEWw" name="wordpress">
+          <packagedElement xmi:type="uml:Package" xmi:id="_R7VGxJoVEeOKSuMukkWEWw" name="WdpConfModel2JSON">
+            <packagedElement xmi:type="uml:Package" xmi:id="_R7VGxZoVEeOKSuMukkWEWw" name="tools">
+              <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VGxpoVEeOKSuMukkWEWw" name="ByteArrayOutputStream" client="_R7VG0poVEeOKSuMukkWEWw" supplier="_R7W77JoVEeOKSuMukkWEWw"/>
+              <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VGx5oVEeOKSuMukkWEWw" name="URLEncoder" client="_R7VG0poVEeOKSuMukkWEWw" supplier="_R7W8VpoVEeOKSuMukkWEWw"/>
+              <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VGyJoVEeOKSuMukkWEWw" name="ArrayList" client="_R7VG0poVEeOKSuMukkWEWw" supplier="_R7W8KJoVEeOKSuMukkWEWw"/>
+              <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VGyZoVEeOKSuMukkWEWw" name="Iterator" client="_R7VG0poVEeOKSuMukkWEWw" supplier="_R7W8TpoVEeOKSuMukkWEWw"/>
+              <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VGypoVEeOKSuMukkWEWw" name="LinkedList" client="_R7VG0poVEeOKSuMukkWEWw" supplier="_R7W8NJoVEeOKSuMukkWEWw"/>
+              <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VGy5oVEeOKSuMukkWEWw" name="List" client="_R7VG0poVEeOKSuMukkWEWw" supplier="_R7W8QZoVEeOKSuMukkWEWw"/>
+              <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VGzJoVEeOKSuMukkWEWw" name="DeflaterOutputStream" client="_R7VG0poVEeOKSuMukkWEWw" supplier="_R7W8JZoVEeOKSuMukkWEWw"/>
+              <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VGzZoVEeOKSuMukkWEWw" name="StringEscapeUtils" client="_R7VG0poVEeOKSuMukkWEWw" supplier="_R7WVKpoVEeOKSuMukkWEWw"/>
+              <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VGzpoVEeOKSuMukkWEWw" name="StringUtils" client="_R7VG0poVEeOKSuMukkWEWw" supplier="_R7WVJ5oVEeOKSuMukkWEWw"/>
+              <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VGz5oVEeOKSuMukkWEWw" name="EList" client="_R7VG0poVEeOKSuMukkWEWw" supplier="_R7WVdpoVEeOKSuMukkWEWw"/>
+              <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VG0JoVEeOKSuMukkWEWw" name="EObject" client="_R7VG0poVEeOKSuMukkWEWw" supplier="_R7WVmpoVEeOKSuMukkWEWw"/>
+              <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VG0ZoVEeOKSuMukkWEWw" name="EStructuralFeature" client="_R7VG0poVEeOKSuMukkWEWw" supplier="_R7WVn5oVEeOKSuMukkWEWw"/>
+              <packagedElement xmi:type="uml:Class" xmi:id="_R7VG0poVEeOKSuMukkWEWw" clientDependency="_R7VGxpoVEeOKSuMukkWEWw _R7VGx5oVEeOKSuMukkWEWw _R7VGyJoVEeOKSuMukkWEWw _R7VGyZoVEeOKSuMukkWEWw _R7VGypoVEeOKSuMukkWEWw _R7VGy5oVEeOKSuMukkWEWw _R7VGzJoVEeOKSuMukkWEWw _R7VGzZoVEeOKSuMukkWEWw _R7VGzpoVEeOKSuMukkWEWw _R7VGz5oVEeOKSuMukkWEWw _R7VG0JoVEeOKSuMukkWEWw _R7VG0ZoVEeOKSuMukkWEWw" name="WdpConfModel2JSONTools">
+                <ownedOperation xmi:id="_R7VG05oVEeOKSuMukkWEWw" name="getStructFeatureEList" visibility="public" isStatic="true">
+                  <ownedParameter xmi:id="_R7VG1JoVEeOKSuMukkWEWw" type="_R7VGvJoVEeOKSuMukkWEWw" direction="return"/>
+                  <ownedParameter xmi:id="_R7VG1ZoVEeOKSuMukkWEWw" name="eObject" type="_R7WVmpoVEeOKSuMukkWEWw"/>
+                </ownedOperation>
+                <ownedOperation xmi:id="_R7VG1poVEeOKSuMukkWEWw" name="getStructFeatureAttribute" visibility="public" isStatic="true">
+                  <ownedParameter xmi:id="_R7VG15oVEeOKSuMukkWEWw" type="_R7WVn5oVEeOKSuMukkWEWw" direction="return"/>
+                  <ownedParameter xmi:id="_R7VG2JoVEeOKSuMukkWEWw" name="attributes" type="_R7VGvJoVEeOKSuMukkWEWw"/>
+                  <ownedParameter xmi:id="_R7VG2ZoVEeOKSuMukkWEWw" name="name" type="_R7W7-ZoVEeOKSuMukkWEWw"/>
+                </ownedOperation>
+                <ownedOperation xmi:id="_R7VG2poVEeOKSuMukkWEWw" name="removeQuote" visibility="public" isStatic="true">
+                  <ownedParameter xmi:id="_R7VG25oVEeOKSuMukkWEWw" type="_R7W7-ZoVEeOKSuMukkWEWw" direction="return"/>
+                  <ownedParameter xmi:id="_R7VG3JoVEeOKSuMukkWEWw" name="characters" type="_R7W7-ZoVEeOKSuMukkWEWw"/>
+                </ownedOperation>
+                <ownedOperation xmi:id="_R7VG3ZoVEeOKSuMukkWEWw" name="removeNull" visibility="public" isStatic="true">
+                  <ownedParameter xmi:id="_R7VG3poVEeOKSuMukkWEWw" type="_R7W7-ZoVEeOKSuMukkWEWw" direction="return"/>
+                  <ownedParameter xmi:id="_R7VG35oVEeOKSuMukkWEWw" name="characters" type="_R7W7-ZoVEeOKSuMukkWEWw"/>
+                </ownedOperation>
+                <ownedOperation xmi:id="_R7VG4JoVEeOKSuMukkWEWw" name="isNotLastValue" visibility="public" isStatic="true">
+                  <ownedParameter xmi:id="_R7VG4ZoVEeOKSuMukkWEWw" type="_R7W8EJoVEeOKSuMukkWEWw" direction="return"/>
+                  <ownedParameter xmi:id="_R7VG4poVEeOKSuMukkWEWw" name="value" type="_R7W8FZoVEeOKSuMukkWEWw"/>
+                  <ownedParameter xmi:id="_R7VG45oVEeOKSuMukkWEWw" name="values" type="_R7W8H5oVEeOKSuMukkWEWw"/>
+                </ownedOperation>
+                <ownedOperation xmi:id="_R7VG5JoVEeOKSuMukkWEWw" name="toJsonObjectListGenKey" visibility="public" isStatic="true">
+                  <ownedParameter xmi:id="_R7VG5ZoVEeOKSuMukkWEWw" type="_R7W7-ZoVEeOKSuMukkWEWw" direction="return"/>
+                  <ownedParameter xmi:id="_R7VG5poVEeOKSuMukkWEWw" name="commonName" type="_R7W8FZoVEeOKSuMukkWEWw"/>
+                  <ownedParameter xmi:id="_R7VG55oVEeOKSuMukkWEWw" name="values" type="_R7W8H5oVEeOKSuMukkWEWw"/>
+                </ownedOperation>
+                <ownedOperation xmi:id="_R7VG6JoVEeOKSuMukkWEWw" name="toJsonObjectList" visibility="public" isStatic="true">
+                  <ownedParameter xmi:id="_R7VG6ZoVEeOKSuMukkWEWw" type="_R7W7-ZoVEeOKSuMukkWEWw" direction="return"/>
+                  <ownedParameter xmi:id="_R7VG6poVEeOKSuMukkWEWw" name="keys" type="_R7VGrpoVEeOKSuMukkWEWw"/>
+                  <ownedParameter xmi:id="_R7VG65oVEeOKSuMukkWEWw" name="values" type="_R7VGrpoVEeOKSuMukkWEWw"/>
+                </ownedOperation>
+                <ownedOperation xmi:id="_R7VG7JoVEeOKSuMukkWEWw" name="toJsonObject" visibility="public" isStatic="true">
+                  <ownedParameter xmi:id="_R7VG7ZoVEeOKSuMukkWEWw" type="_R7W7-ZoVEeOKSuMukkWEWw" direction="return"/>
+                  <ownedParameter xmi:id="_R7VG7poVEeOKSuMukkWEWw" name="key" type="_R7W7-ZoVEeOKSuMukkWEWw"/>
+                  <ownedParameter xmi:id="_R7VG75oVEeOKSuMukkWEWw" name="value" type="_R7W7-ZoVEeOKSuMukkWEWw"/>
+                  <ownedParameter xmi:id="_R7VG8JoVEeOKSuMukkWEWw" name="comma" type="_R7W8EJoVEeOKSuMukkWEWw"/>
+                </ownedOperation>
+                <ownedOperation xmi:id="_R7VG8ZoVEeOKSuMukkWEWw" name="getNotBlankValues" visibility="private" isStatic="true">
+                  <ownedParameter xmi:id="_R7VG8poVEeOKSuMukkWEWw" type="_R7VGvZoVEeOKSuMukkWEWw" direction="return"/>
+                  <ownedParameter xmi:id="_R7VG85oVEeOKSuMukkWEWw" name="values" type="_R7W8IZoVEeOKSuMukkWEWw"/>
+                </ownedOperation>
+                <ownedOperation xmi:id="_R7VG9JoVEeOKSuMukkWEWw" name="getNotEmptyValuesAndKeys" visibility="public" isStatic="true">
+                  <ownedParameter xmi:id="_R7VG9ZoVEeOKSuMukkWEWw" type="_R7VGr5oVEeOKSuMukkWEWw" direction="return"/>
+                  <ownedParameter xmi:id="_R7VG9poVEeOKSuMukkWEWw" name="keys" type="_R7W8IZoVEeOKSuMukkWEWw"/>
+                  <ownedParameter xmi:id="_R7VG95oVEeOKSuMukkWEWw" name="values" type="_R7W8IZoVEeOKSuMukkWEWw"/>
+                </ownedOperation>
+                <ownedOperation xmi:id="_R7VG-JoVEeOKSuMukkWEWw" name="toMultiJsonElement" visibility="public" isStatic="true">
+                  <ownedParameter xmi:id="_R7VG-ZoVEeOKSuMukkWEWw" type="_R7W7-ZoVEeOKSuMukkWEWw" direction="return"/>
+                  <ownedParameter xmi:id="_R7VG-poVEeOKSuMukkWEWw" name="values" type="_R7W8IZoVEeOKSuMukkWEWw"/>
+                </ownedOperation>
+                <ownedOperation xmi:id="_R7VG-5oVEeOKSuMukkWEWw" name="toJsonArrayObject" visibility="public" isStatic="true">
+                  <ownedParameter xmi:id="_R7VG_JoVEeOKSuMukkWEWw" type="_R7W7-ZoVEeOKSuMukkWEWw" direction="return"/>
+                  <ownedParameter xmi:id="_R7VG_ZoVEeOKSuMukkWEWw" name="key" type="_R7W7-ZoVEeOKSuMukkWEWw"/>
+                  <ownedParameter xmi:id="_R7VG_poVEeOKSuMukkWEWw" name="values" type="_R7W7-ZoVEeOKSuMukkWEWw"/>
+                </ownedOperation>
+                <ownedOperation xmi:id="_R7VG_5oVEeOKSuMukkWEWw" name="compressAndUTF8Encode" visibility="public" isStatic="true">
+                  <ownedParameter xmi:id="_R7VHAJoVEeOKSuMukkWEWw" type="_R7W7-ZoVEeOKSuMukkWEWw" direction="return"/>
+                  <ownedParameter xmi:id="_R7VHAZoVEeOKSuMukkWEWw" name="input" type="_R7W7-ZoVEeOKSuMukkWEWw"/>
+                </ownedOperation>
+                <ownedOperation xmi:id="_R7VHApoVEeOKSuMukkWEWw" name="manageComma" visibility="public" isStatic="true">
+                  <ownedParameter xmi:id="_R7VHA5oVEeOKSuMukkWEWw" type="_R7W7-ZoVEeOKSuMukkWEWw" direction="return"/>
+                  <ownedParameter xmi:id="_R7VHBJoVEeOKSuMukkWEWw" name="values" type="_R7W7-ZoVEeOKSuMukkWEWw"/>
+                  <ownedParameter xmi:id="_R7VHBZoVEeOKSuMukkWEWw" name="befAfter" type="_R7W7-ZoVEeOKSuMukkWEWw"/>
+                </ownedOperation>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VHBpoVEeOKSuMukkWEWw" name="IOException" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7W75poVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VHB5oVEeOKSuMukkWEWw" name="ArrayList" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7W8KJoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VHCJoVEeOKSuMukkWEWw" name="List" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7W8QZoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VHCZoVEeOKSuMukkWEWw" name="StringUtils" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WVJ5oVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VHCpoVEeOKSuMukkWEWw" name="HttpResponse" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WVZ5oVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VHC5oVEeOKSuMukkWEWw" name="NameValuePair" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WVa5oVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VHDJoVEeOKSuMukkWEWw" name="UrlEncodedFormEntity" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WVMJoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VHDZoVEeOKSuMukkWEWw" name="HttpPost" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WVQ5oVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VHDpoVEeOKSuMukkWEWw" name="CloseableHttpClient" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WVWpoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VHD5oVEeOKSuMukkWEWw" name="DefaultHttpClient" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WVX5oVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VHEJoVEeOKSuMukkWEWw" name="BasicNameValuePair" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WVVJoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VHEZoVEeOKSuMukkWEWw" name="EntityUtils" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WVZJoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VHEpoVEeOKSuMukkWEWw" name="EList" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WVdpoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VHE5oVEeOKSuMukkWEWw" name="URI" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WVdZoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VHFJoVEeOKSuMukkWEWw" name="EObject" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WVmpoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VHFZoVEeOKSuMukkWEWw" name="Resource" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WViJoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VHFpoVEeOKSuMukkWEWw" name="ResourceSet" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WVkJoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VHF5oVEeOKSuMukkWEWw" name="ResourceSetImpl" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WVg5oVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VHGJoVEeOKSuMukkWEWw" name="XMIResourceFactoryImpl" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WVmJoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VHGZoVEeOKSuMukkWEWw" name="WdpConfModel2JSONTools" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7VG0poVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VtsJoVEeOKSuMukkWEWw" name="Appearance" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7VuHpoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VtsZoVEeOKSuMukkWEWw" name="Archive" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7VuJJoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VtspoVEeOKSuMukkWEWw" name="Calendar" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7VuKZoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7Vts5oVEeOKSuMukkWEWw" name="Category" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7VuLJoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VttJoVEeOKSuMukkWEWw" name="Comment" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7VuNJoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VttZoVEeOKSuMukkWEWw" name="Deletion" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7VuOpoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VttpoVEeOKSuMukkWEWw" name="DiscussionSettings" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7VuRZoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7Vtt5oVEeOKSuMukkWEWw" name="Functionality" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7VuXJoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VtuJoVEeOKSuMukkWEWw" name="GeneralSettings" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7VuYpoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VtuZoVEeOKSuMukkWEWw" name="Link" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7Vub5oVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VtupoVEeOKSuMukkWEWw" name="Media" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7VudJoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7Vtu5oVEeOKSuMukkWEWw" name="MediaSettings" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7VuepoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VtvJoVEeOKSuMukkWEWw" name="Menu" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7VuhJoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VtvZoVEeOKSuMukkWEWw" name="Meta" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7Vui5oVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VtvpoVEeOKSuMukkWEWw" name="Page" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7VujpoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7Vtv5oVEeOKSuMukkWEWw" name="PermalinksSettings" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7VulpoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VtwJoVEeOKSuMukkWEWw" name="Plugin" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7Vum5oVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VtwZoVEeOKSuMukkWEWw" name="Post" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7Vun5oVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VtwpoVEeOKSuMukkWEWw" name="PostDateAuthor" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7VupJoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7Vtw5oVEeOKSuMukkWEWw" name="PostPage" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7VukpoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VtxJoVEeOKSuMukkWEWw" name="PostPage_Impl" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7VuqZoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VtxZoVEeOKSuMukkWEWw" name="ReadingSettings" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7VusJoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VtxpoVEeOKSuMukkWEWw" name="Search" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7VuuZoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7Vtx5oVEeOKSuMukkWEWw" name="Settings" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7VuvJoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VtyJoVEeOKSuMukkWEWw" name="Tag" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7VuxJoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VtyZoVEeOKSuMukkWEWw" name="TagCloud" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7Vux5oVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VtypoVEeOKSuMukkWEWw" name="Text" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WUwJoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7Vty5oVEeOKSuMukkWEWw" name="User" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WUxZoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VtzJoVEeOKSuMukkWEWw" name="Website" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WU0poVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VtzZoVEeOKSuMukkWEWw" name="Widget" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WU4JoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7VtzpoVEeOKSuMukkWEWw" name="WidgetCategorie" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WU75oVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7Vtz5oVEeOKSuMukkWEWw" name="WidgetComment" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WU9ZoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7Vt0JoVEeOKSuMukkWEWw" name="WidgetFeed" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WU-ZoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7Vt0ZoVEeOKSuMukkWEWw" name="WidgetMenu" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WVAZoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7Vt0poVEeOKSuMukkWEWw" name="WidgetPage" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WVBZoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7Vt05oVEeOKSuMukkWEWw" name="WidgetPost" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WVCpoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7Vt1JoVEeOKSuMukkWEWw" name="WritingSettings" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7WVD5oVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_R7Vt1ZoVEeOKSuMukkWEWw" name="functionalities" client="_R7Vt1poVEeOKSuMukkWEWw" supplier="_R7VuBpoVEeOKSuMukkWEWw"/>
+            <packagedElement xmi:type="uml:Class" xmi:id="_R7Vt1poVEeOKSuMukkWEWw" clientDependency="_R7VHBpoVEeOKSuMukkWEWw _R7VHB5oVEeOKSuMukkWEWw _R7VHCJoVEeOKSuMukkWEWw _R7VHCZoVEeOKSuMukkWEWw _R7VHCpoVEeOKSuMukkWEWw _R7VHC5oVEeOKSuMukkWEWw _R7VHDJoVEeOKSuMukkWEWw _R7VHDZoVEeOKSuMukkWEWw _R7VHDpoVEeOKSuMukkWEWw _R7VHD5oVEeOKSuMukkWEWw _R7VHEJoVEeOKSuMukkWEWw _R7VHEZoVEeOKSuMukkWEWw _R7VHEpoVEeOKSuMukkWEWw _R7VHE5oVEeOKSuMukkWEWw _R7VHFJoVEeOKSuMukkWEWw _R7VHFZoVEeOKSuMukkWEWw _R7VHFpoVEeOKSuMukkWEWw _R7VHF5oVEeOKSuMukkWEWw _R7VHGJoVEeOKSuMukkWEWw _R7VHGZoVEeOKSuMukkWEWw _R7VtsJoVEeOKSuMukkWEWw _R7VtsZoVEeOKSuMukkWEWw _R7VtspoVEeOKSuMukkWEWw _R7Vts5oVEeOKSuMukkWEWw _R7VttJoVEeOKSuMukkWEWw _R7VttZoVEeOKSuMukkWEWw _R7VttpoVEeOKSuMukkWEWw _R7Vtt5oVEeOKSuMukkWEWw _R7VtuJoVEeOKSuMukkWEWw _R7VtuZoVEeOKSuMukkWEWw _R7VtupoVEeOKSuMukkWEWw _R7Vtu5oVEeOKSuMukkWEWw _R7VtvJoVEeOKSuMukkWEWw _R7VtvZoVEeOKSuMukkWEWw _R7VtvpoVEeOKSuMukkWEWw _R7Vtv5oVEeOKSuMukkWEWw _R7VtwJoVEeOKSuMukkWEWw _R7VtwZoVEeOKSuMukkWEWw _R7VtwpoVEeOKSuMukkWEWw _R7Vtw5oVEeOKSuMukkWEWw _R7VtxJoVEeOKSuMukkWEWw _R7VtxZoVEeOKSuMukkWEWw _R7VtxpoVEeOKSuMukkWEWw _R7Vtx5oVEeOKSuMukkWEWw _R7VtyJoVEeOKSuMukkWEWw _R7VtyZoVEeOKSuMukkWEWw _R7VtypoVEeOKSuMukkWEWw _R7Vty5oVEeOKSuMukkWEWw _R7VtzJoVEeOKSuMukkWEWw _R7VtzZoVEeOKSuMukkWEWw _R7VtzpoVEeOKSuMukkWEWw _R7Vtz5oVEeOKSuMukkWEWw _R7Vt0JoVEeOKSuMukkWEWw _R7Vt0ZoVEeOKSuMukkWEWw _R7Vt0poVEeOKSuMukkWEWw _R7Vt05oVEeOKSuMukkWEWw _R7Vt1JoVEeOKSuMukkWEWw _R7Vt1ZoVEeOKSuMukkWEWw" name="WdpConfModel2JSON">
+              <ownedOperation xmi:id="_R7Vt15oVEeOKSuMukkWEWw" name="buildWebsiteJSON" visibility="private">
+                <ownedParameter xmi:id="_R7Vt2JoVEeOKSuMukkWEWw" type="_R7VGqJoVEeOKSuMukkWEWw" direction="return"/>
+                <ownedParameter xmi:id="_R7Vt2ZoVEeOKSuMukkWEWw" name="webSite" type="_R7WU0poVEeOKSuMukkWEWw"/>
+                <ownedParameter xmi:id="_R7Vt2poVEeOKSuMukkWEWw" name="wordPressUrl" type="_R7W7-ZoVEeOKSuMukkWEWw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_R7Vt25oVEeOKSuMukkWEWw" name="buildUsersJSON" visibility="private">
+                <ownedParameter xmi:id="_R7Vt3JoVEeOKSuMukkWEWw" type="_R7W7-ZoVEeOKSuMukkWEWw" direction="return"/>
+                <ownedParameter xmi:id="_R7Vt3ZoVEeOKSuMukkWEWw" name="webSite" type="_R7WU0poVEeOKSuMukkWEWw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_R7Vt3poVEeOKSuMukkWEWw" name="buildPostsJSON" visibility="private">
+                <ownedParameter xmi:id="_R7Vt35oVEeOKSuMukkWEWw" type="_R7W7-ZoVEeOKSuMukkWEWw" direction="return"/>
+                <ownedParameter xmi:id="_R7Vt4JoVEeOKSuMukkWEWw" name="webSite" type="_R7WU0poVEeOKSuMukkWEWw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_R7Vt4ZoVEeOKSuMukkWEWw" name="buildPagesJSON" visibility="private">
+                <ownedParameter xmi:id="_R7Vt4poVEeOKSuMukkWEWw" type="_R7W7-ZoVEeOKSuMukkWEWw" direction="return"/>
+                <ownedParameter xmi:id="_R7Vt45oVEeOKSuMukkWEWw" name="webSite" type="_R7WU0poVEeOKSuMukkWEWw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_R7Vt5JoVEeOKSuMukkWEWw" name="buildAppearanceJSON" visibility="private">
+                <ownedParameter xmi:id="_R7Vt5ZoVEeOKSuMukkWEWw" type="_R7W7-ZoVEeOKSuMukkWEWw" direction="return"/>
+                <ownedParameter xmi:id="_R7Vt5poVEeOKSuMukkWEWw" name="webSite" type="_R7WU0poVEeOKSuMukkWEWw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_R7Vt55oVEeOKSuMukkWEWw" name="buildSettingsJSON" visibility="private">
+                <ownedParameter xmi:id="_R7Vt6JoVEeOKSuMukkWEWw" type="_R7W7-ZoVEeOKSuMukkWEWw" direction="return"/>
+                <ownedParameter xmi:id="_R7Vt6ZoVEeOKSuMukkWEWw" name="webSite" type="_R7WU0poVEeOKSuMukkWEWw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_R7Vt6poVEeOKSuMukkWEWw" name="buildCategoryJSON" visibility="private">
+                <ownedParameter xmi:id="_R7Vt65oVEeOKSuMukkWEWw" type="_R7W7-ZoVEeOKSuMukkWEWw" direction="return"/>
+                <ownedParameter xmi:id="_R7Vt7JoVEeOKSuMukkWEWw" name="webSite" type="_R7WU0poVEeOKSuMukkWEWw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_R7Vt7ZoVEeOKSuMukkWEWw" name="buildTagJSON" visibility="private">
+                <ownedParameter xmi:id="_R7Vt7poVEeOKSuMukkWEWw" type="_R7W7-ZoVEeOKSuMukkWEWw" direction="return"/>
+                <ownedParameter xmi:id="_R7Vt75oVEeOKSuMukkWEWw" name="webSite" type="_R7WU0poVEeOKSuMukkWEWw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_R7Vt8JoVEeOKSuMukkWEWw" name="buildMediaJSON" visibility="private">
+                <ownedParameter xmi:id="_R7Vt8ZoVEeOKSuMukkWEWw" type="_R7W7-ZoVEeOKSuMukkWEWw" direction="return"/>
+                <ownedParameter xmi:id="_R7Vt8poVEeOKSuMukkWEWw" name="webSite" type="_R7WU0poVEeOKSuMukkWEWw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_R7Vt85oVEeOKSuMukkWEWw" name="buildFunctionnalitiesJSON" visibility="private">
+                <ownedParameter xmi:id="_R7Vt9JoVEeOKSuMukkWEWw" type="_R7W7-ZoVEeOKSuMukkWEWw" direction="return"/>
+                <ownedParameter xmi:id="_R7Vt9ZoVEeOKSuMukkWEWw" name="webSite" type="_R7WU0poVEeOKSuMukkWEWw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_R7Vt9poVEeOKSuMukkWEWw" name="buildComments" visibility="private">
+                <ownedParameter xmi:id="_R7Vt95oVEeOKSuMukkWEWw" type="_R7W7-ZoVEeOKSuMukkWEWw" direction="return"/>
+                <ownedParameter xmi:id="_R7Vt-JoVEeOKSuMukkWEWw" name="webSite" type="_R7WU0poVEeOKSuMukkWEWw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_R7Vt-ZoVEeOKSuMukkWEWw" name="buildDeletion" visibility="private">
+                <ownedParameter xmi:id="_R7Vt-poVEeOKSuMukkWEWw" type="_R7W7-ZoVEeOKSuMukkWEWw" direction="return"/>
+                <ownedParameter xmi:id="_R7Vt-5oVEeOKSuMukkWEWw" name="webSite" type="_R7WU0poVEeOKSuMukkWEWw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_R7Vt_JoVEeOKSuMukkWEWw" name="getCommonAttributes" visibility="private">
+                <ownedParameter xmi:id="_R7Vt_ZoVEeOKSuMukkWEWw" type="_R7W7-ZoVEeOKSuMukkWEWw" direction="return"/>
+                <ownedParameter xmi:id="_R7Vt_poVEeOKSuMukkWEWw" name="postOrPage" type="_R7VukpoVEeOKSuMukkWEWw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_R7Vt_5oVEeOKSuMukkWEWw" name="executePHP" visibility="private">
+                <ownedParameter xmi:id="_R7VuAJoVEeOKSuMukkWEWw" type="_R7VGqJoVEeOKSuMukkWEWw" direction="return"/>
+                <ownedParameter xmi:id="_R7VuAZoVEeOKSuMukkWEWw" name="pathWebsiteUrl" type="_R7W7-ZoVEeOKSuMukkWEWw"/>
+                <ownedParameter xmi:id="_R7VuApoVEeOKSuMukkWEWw" name="postValues" type="_R7W7-ZoVEeOKSuMukkWEWw"/>
+                <ownedParameter xmi:id="_R7VuA5oVEeOKSuMukkWEWw" name="phpFile" type="_R7W7-ZoVEeOKSuMukkWEWw"/>
+              </ownedOperation>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_R7VuBJoVEeOKSuMukkWEWw" name="wdpdsl">
+            <packagedElement xmi:type="uml:Package" xmi:id="_R7VuBZoVEeOKSuMukkWEWw" name="wdpDsl">
+              <packagedElement xmi:type="uml:Enumeration" xmi:id="_R7VuBpoVEeOKSuMukkWEWw" name="functionalities" visibility="package">
+                <ownedOperation xmi:id="_R7VuB5oVEeOKSuMukkWEWw" name="getLiteral" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Enumeration" xmi:id="_R7VuCJoVEeOKSuMukkWEWw" name="role" visibility="package">
+                <ownedOperation xmi:id="_R7VuCZoVEeOKSuMukkWEWw" name="getLiteral" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Enumeration" xmi:id="_R7VuCpoVEeOKSuMukkWEWw" name="postFormat" visibility="package">
+                <ownedOperation xmi:id="_R7VuC5oVEeOKSuMukkWEWw" name="getLiteral" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Enumeration" xmi:id="_R7VuDJoVEeOKSuMukkWEWw" name="widgetType" visibility="package">
+                <ownedOperation xmi:id="_R7VuDZoVEeOKSuMukkWEWw" name="getLiteral" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Enumeration" xmi:id="_R7VuDpoVEeOKSuMukkWEWw" name="pagesSorter" visibility="package">
+                <ownedOperation xmi:id="_R7VuD5oVEeOKSuMukkWEWw" name="getLiteral" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Enumeration" xmi:id="_R7VuEJoVEeOKSuMukkWEWw" name="dateformat" visibility="package">
+                <ownedOperation xmi:id="_R7VuEZoVEeOKSuMukkWEWw" name="getLiteral" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Enumeration" xmi:id="_R7VuEpoVEeOKSuMukkWEWw" name="timeFormat" visibility="package">
+                <ownedOperation xmi:id="_R7VuE5oVEeOKSuMukkWEWw" name="getLiteral" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Enumeration" xmi:id="_R7VuFJoVEeOKSuMukkWEWw" name="weeks" visibility="package">
+                <ownedOperation xmi:id="_R7VuFZoVEeOKSuMukkWEWw" name="getLiteral" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Enumeration" xmi:id="_R7VuFpoVEeOKSuMukkWEWw" name="avatarRating" visibility="package">
+                <ownedOperation xmi:id="_R7VuF5oVEeOKSuMukkWEWw" name="getLiteral" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Enumeration" xmi:id="_R7VuGJoVEeOKSuMukkWEWw" name="defaultAvatar" visibility="package">
+                <ownedOperation xmi:id="_R7VuGZoVEeOKSuMukkWEWw" name="getLiteral" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Enumeration" xmi:id="_R7VuGpoVEeOKSuMukkWEWw" name="urlForm" visibility="package">
+                <ownedOperation xmi:id="_R7VuG5oVEeOKSuMukkWEWw" name="getLiteral" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Enumeration" xmi:id="_R7VuHJoVEeOKSuMukkWEWw" name="pageStatus" visibility="package">
+                <ownedOperation xmi:id="_R7VuHZoVEeOKSuMukkWEWw" name="getLiteral" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7VuHpoVEeOKSuMukkWEWw" name="Appearance" visibility="package">
+                <generalization xmi:id="_R7VuH5oVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VuIJoVEeOKSuMukkWEWw" name="getTheme" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuIZoVEeOKSuMukkWEWw" name="getAppearanceHeader" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuIpoVEeOKSuMukkWEWw" name="getAppearanceMenus" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuI5oVEeOKSuMukkWEWw" name="getWidgets" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7VuJJoVEeOKSuMukkWEWw" name="Archive" visibility="package">
+                <generalization xmi:id="_R7VuJZoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VuJpoVEeOKSuMukkWEWw" name="getTitle" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuJ5oVEeOKSuMukkWEWw" name="isIsDisplayingAsDropDown" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuKJoVEeOKSuMukkWEWw" name="isIsShowingPostsCount" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7VuKZoVEeOKSuMukkWEWw" name="Calendar" visibility="package">
+                <generalization xmi:id="_R7VuKpoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VuK5oVEeOKSuMukkWEWw" name="getTitle" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7VuLJoVEeOKSuMukkWEWw" name="Category" visibility="package">
+                <generalization xmi:id="_R7VuLZoVEeOKSuMukkWEWw" general="_R7VuL5oVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VuLpoVEeOKSuMukkWEWw" name="getCategoryName" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7VuL5oVEeOKSuMukkWEWw" name="Taxonomy" visibility="package">
+                <generalization xmi:id="_R7VuMJoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VuMZoVEeOKSuMukkWEWw" name="getName" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuMpoVEeOKSuMukkWEWw" name="getDescription" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuM5oVEeOKSuMukkWEWw" name="getSlug" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7VuNJoVEeOKSuMukkWEWw" name="Comment" visibility="package">
+                <generalization xmi:id="_R7VuNZoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VuNpoVEeOKSuMukkWEWw" name="getName" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuN5oVEeOKSuMukkWEWw" name="getContent" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuOJoVEeOKSuMukkWEWw" name="getAuthorName" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuOZoVEeOKSuMukkWEWw" name="getCommentPostPage" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7VuOpoVEeOKSuMukkWEWw" name="Deletion" visibility="package">
+                <generalization xmi:id="_R7VuO5oVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VuPJoVEeOKSuMukkWEWw" name="getPagesByTitle" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuPZoVEeOKSuMukkWEWw" name="getUsersByLogin" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuPpoVEeOKSuMukkWEWw" name="getMediasByTitle" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuP5oVEeOKSuMukkWEWw" name="getPluginsByFileName" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuQJoVEeOKSuMukkWEWw" name="getCategoriesByName" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuQZoVEeOKSuMukkWEWw" name="getTagsByName" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuQpoVEeOKSuMukkWEWw" name="getMenusByName" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuQ5oVEeOKSuMukkWEWw" name="getFunctionalitiesByName" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuRJoVEeOKSuMukkWEWw" name="getCommentsByPostDateAuthor" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7VuRZoVEeOKSuMukkWEWw" name="DiscussionSettings" visibility="package">
+                <generalization xmi:id="_R7VuRpoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VuR5oVEeOKSuMukkWEWw" name="getNumberArticleDaysForAutoCloseComments" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuSJoVEeOKSuMukkWEWw" name="getNestedCommentsLevel" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuSZoVEeOKSuMukkWEWw" name="getNumberCommentsPerPageForBreakedComments" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuSpoVEeOKSuMukkWEWw" name="getNumberOfLinksInCommentForModeration" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuS5oVEeOKSuMukkWEWw" name="getModeratedWords" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuTJoVEeOKSuMukkWEWw" name="getForbiddenWords" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuTZoVEeOKSuMukkWEWw" name="getMaxAvatarRating" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuTpoVEeOKSuMukkWEWw" name="getUserDefaultAvatar" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuT5oVEeOKSuMukkWEWw" name="isIsNotifyingLinkedBlogs" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuUJoVEeOKSuMukkWEWw" name="isIsAllowingLinkNotificationsFromBlogs" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuUZoVEeOKSuMukkWEWw" name="isIsAllowingPublicComments" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuUpoVEeOKSuMukkWEWw" name="isIsAskingNameAndMailCommentAuthor" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuU5oVEeOKSuMukkWEWw" name="isIsAllowingAnonymousComments" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuVJoVEeOKSuMukkWEWw" name="isIsBreakingCommentsIntoPages" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuVZoVEeOKSuMukkWEWw" name="isIsdisplayingLastPageForBreakedComments" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuVpoVEeOKSuMukkWEWw" name="isIsDisplayingOlderCommentForEachPage" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuV5oVEeOKSuMukkWEWw" name="isIsMailingAdminForEachComments" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuWJoVEeOKSuMukkWEWw" name="isIsHeldingCommentForModeration" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuWZoVEeOKSuMukkWEWw" name="isIsAskingAdminApprovement" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuWpoVEeOKSuMukkWEWw" name="isIsAskingPreviousAdminApprovement" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuW5oVEeOKSuMukkWEWw" name="isIsShowingAvatar" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7VuXJoVEeOKSuMukkWEWw" name="Functionality" visibility="package">
+                <generalization xmi:id="_R7VuXZoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VuXpoVEeOKSuMukkWEWw" name="getName" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuX5oVEeOKSuMukkWEWw" name="getFunctionalityType" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuYJoVEeOKSuMukkWEWw" name="getSocialNetworks" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuYZoVEeOKSuMukkWEWw" name="getDefaultPlugin" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7VuYpoVEeOKSuMukkWEWw" name="GeneralSettings" visibility="package">
+                <generalization xmi:id="_R7VuY5oVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VuZJoVEeOKSuMukkWEWw" name="getWordPressAdress" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuZZoVEeOKSuMukkWEWw" name="getWebsiteTitle" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuZpoVEeOKSuMukkWEWw" name="getWebsiteTagline" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuZ5oVEeOKSuMukkWEWw" name="getWebsiteAdress" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuaJoVEeOKSuMukkWEWw" name="getAdminMail" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuaZoVEeOKSuMukkWEWw" name="getUserDefaultRole" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuapoVEeOKSuMukkWEWw" name="getTimeZone" visibility="package"/>
+                <ownedOperation xmi:id="_R7Vua5oVEeOKSuMukkWEWw" name="getGsDateFormat" visibility="package"/>
+                <ownedOperation xmi:id="_R7VubJoVEeOKSuMukkWEWw" name="getGsTimeFormat" visibility="package"/>
+                <ownedOperation xmi:id="_R7VubZoVEeOKSuMukkWEWw" name="getWeekStartsOn" visibility="package"/>
+                <ownedOperation xmi:id="_R7VubpoVEeOKSuMukkWEWw" name="isIsPublic" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7Vub5oVEeOKSuMukkWEWw" name="Link" visibility="package">
+                <generalization xmi:id="_R7VucJoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VucZoVEeOKSuMukkWEWw" name="getName" visibility="package"/>
+                <ownedOperation xmi:id="_R7VucpoVEeOKSuMukkWEWw" name="getUrl" visibility="package"/>
+                <ownedOperation xmi:id="_R7Vuc5oVEeOKSuMukkWEWw" name="getText" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7VudJoVEeOKSuMukkWEWw" name="Media" visibility="package">
+                <generalization xmi:id="_R7VudZoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VudpoVEeOKSuMukkWEWw" name="getUploadedTo" visibility="package"/>
+                <ownedOperation xmi:id="_R7Vud5oVEeOKSuMukkWEWw" name="getName" visibility="package"/>
+                <ownedOperation xmi:id="_R7VueJoVEeOKSuMukkWEWw" name="getUrl" visibility="package"/>
+                <ownedOperation xmi:id="_R7VueZoVEeOKSuMukkWEWw" name="getDate" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7VuepoVEeOKSuMukkWEWw" name="MediaSettings" visibility="package">
+                <generalization xmi:id="_R7Vue5oVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VufJoVEeOKSuMukkWEWw" name="getThumbnailWidth" visibility="package"/>
+                <ownedOperation xmi:id="_R7VufZoVEeOKSuMukkWEWw" name="getThumbnailHeight" visibility="package"/>
+                <ownedOperation xmi:id="_R7VufpoVEeOKSuMukkWEWw" name="getMediumWidth" visibility="package"/>
+                <ownedOperation xmi:id="_R7Vuf5oVEeOKSuMukkWEWw" name="getMediumHeight" visibility="package"/>
+                <ownedOperation xmi:id="_R7VugJoVEeOKSuMukkWEWw" name="getLargeWidth" visibility="package"/>
+                <ownedOperation xmi:id="_R7VugZoVEeOKSuMukkWEWw" name="getLargeHeight" visibility="package"/>
+                <ownedOperation xmi:id="_R7VugpoVEeOKSuMukkWEWw" name="isIsCroppingThumbnailToExactDims" visibility="package"/>
+                <ownedOperation xmi:id="_R7Vug5oVEeOKSuMukkWEWw" name="isIsOrganizeUploadsIntoFolders" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7VuhJoVEeOKSuMukkWEWw" name="Menu" visibility="package">
+                <generalization xmi:id="_R7VuhZoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VuhpoVEeOKSuMukkWEWw" name="getName" visibility="package"/>
+                <ownedOperation xmi:id="_R7Vuh5oVEeOKSuMukkWEWw" name="getMenuName" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuiJoVEeOKSuMukkWEWw" name="getCategories" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuiZoVEeOKSuMukkWEWw" name="getPages" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuipoVEeOKSuMukkWEWw" name="getLinks" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7Vui5oVEeOKSuMukkWEWw" name="Meta" visibility="package">
+                <generalization xmi:id="_R7VujJoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VujZoVEeOKSuMukkWEWw" name="getTitle" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7VujpoVEeOKSuMukkWEWw" name="Page" visibility="package">
+                <generalization xmi:id="_R7Vuj5oVEeOKSuMukkWEWw" general="_R7VukpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VukJoVEeOKSuMukkWEWw" name="getParent" visibility="package"/>
+                <ownedOperation xmi:id="_R7VukZoVEeOKSuMukkWEWw" name="getOrder" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7VukpoVEeOKSuMukkWEWw" name="PostPage" visibility="package">
+                <generalization xmi:id="_R7Vuk5oVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VulJoVEeOKSuMukkWEWw" name="getName" visibility="package"/>
+                <ownedOperation xmi:id="_R7VulZoVEeOKSuMukkWEWw" name="getCommonAttributes" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7VulpoVEeOKSuMukkWEWw" name="PermalinksSettings" visibility="package">
+                <generalization xmi:id="_R7Vul5oVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VumJoVEeOKSuMukkWEWw" name="getPermaUrlForm" visibility="package"/>
+                <ownedOperation xmi:id="_R7VumZoVEeOKSuMukkWEWw" name="getUrlCategoryBase" visibility="package"/>
+                <ownedOperation xmi:id="_R7VumpoVEeOKSuMukkWEWw" name="getUrlTagBase" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7Vum5oVEeOKSuMukkWEWw" name="Plugin" visibility="package">
+                <generalization xmi:id="_R7VunJoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VunZoVEeOKSuMukkWEWw" name="getPluginName" visibility="package"/>
+                <ownedOperation xmi:id="_R7VunpoVEeOKSuMukkWEWw" name="getUrl" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7Vun5oVEeOKSuMukkWEWw" name="Post" visibility="package">
+                <generalization xmi:id="_R7VuoJoVEeOKSuMukkWEWw" general="_R7VukpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VuoZoVEeOKSuMukkWEWw" name="getCategories" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuopoVEeOKSuMukkWEWw" name="getTags" visibility="package"/>
+                <ownedOperation xmi:id="_R7Vuo5oVEeOKSuMukkWEWw" name="getFormat" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7VupJoVEeOKSuMukkWEWw" name="PostDateAuthor" visibility="package">
+                <generalization xmi:id="_R7VupZoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VuppoVEeOKSuMukkWEWw" name="getPostTitle" visibility="package"/>
+                <ownedOperation xmi:id="_R7Vup5oVEeOKSuMukkWEWw" name="getCommentDate" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuqJoVEeOKSuMukkWEWw" name="getCommentAuthorName" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7VuqZoVEeOKSuMukkWEWw" name="PostPage_Impl" visibility="package">
+                <generalization xmi:id="_R7VuqpoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7Vuq5oVEeOKSuMukkWEWw" name="getTitle" visibility="package"/>
+                <ownedOperation xmi:id="_R7VurJoVEeOKSuMukkWEWw" name="getStatus" visibility="package"/>
+                <ownedOperation xmi:id="_R7VurZoVEeOKSuMukkWEWw" name="getContent" visibility="package"/>
+                <ownedOperation xmi:id="_R7VurpoVEeOKSuMukkWEWw" name="getAuthor" visibility="package"/>
+                <ownedOperation xmi:id="_R7Vur5oVEeOKSuMukkWEWw" name="getFeaturedImage" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7VusJoVEeOKSuMukkWEWw" name="ReadingSettings" visibility="package">
+                <generalization xmi:id="_R7VusZoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VuspoVEeOKSuMukkWEWw" name="getMaxNumberPostsForBlogPages" visibility="package"/>
+                <ownedOperation xmi:id="_R7Vus5oVEeOKSuMukkWEWw" name="getNumberRecentItemForFeeds" visibility="package"/>
+                <ownedOperation xmi:id="_R7VutJoVEeOKSuMukkWEWw" name="getStaticFrontPage" visibility="package"/>
+                <ownedOperation xmi:id="_R7VutZoVEeOKSuMukkWEWw" name="getStaticPostPage" visibility="package"/>
+                <ownedOperation xmi:id="_R7VutpoVEeOKSuMukkWEWw" name="isIsDisplayingLastPostInFront" visibility="package"/>
+                <ownedOperation xmi:id="_R7Vut5oVEeOKSuMukkWEWw" name="isIsIndexed" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuuJoVEeOKSuMukkWEWw" name="isIsShowingFullTextForFeed" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7VuuZoVEeOKSuMukkWEWw" name="Search" visibility="package">
+                <generalization xmi:id="_R7VuupoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7Vuu5oVEeOKSuMukkWEWw" name="getTitle" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7VuvJoVEeOKSuMukkWEWw" name="Settings" visibility="package">
+                <generalization xmi:id="_R7VuvZoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VuvpoVEeOKSuMukkWEWw" name="getGeneral" visibility="package"/>
+                <ownedOperation xmi:id="_R7Vuv5oVEeOKSuMukkWEWw" name="getWriting" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuwJoVEeOKSuMukkWEWw" name="getReading" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuwZoVEeOKSuMukkWEWw" name="getDiscussion" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuwpoVEeOKSuMukkWEWw" name="getMedia" visibility="package"/>
+                <ownedOperation xmi:id="_R7Vuw5oVEeOKSuMukkWEWw" name="getPermalinks" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7VuxJoVEeOKSuMukkWEWw" name="Tag" visibility="package">
+                <generalization xmi:id="_R7VuxZoVEeOKSuMukkWEWw" general="_R7VuL5oVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VuxpoVEeOKSuMukkWEWw" name="getTagName" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7Vux5oVEeOKSuMukkWEWw" name="TagCloud" visibility="package">
+                <generalization xmi:id="_R7VuyJoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7VuyZoVEeOKSuMukkWEWw" name="getTitle" visibility="package"/>
+                <ownedOperation xmi:id="_R7VuypoVEeOKSuMukkWEWw" name="getTaxonomy" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7WUwJoVEeOKSuMukkWEWw" name="Text" visibility="package">
+                <generalization xmi:id="_R7WUwZoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7WUwpoVEeOKSuMukkWEWw" name="getTitle" visibility="package"/>
+                <ownedOperation xmi:id="_R7WUw5oVEeOKSuMukkWEWw" name="getContent" visibility="package"/>
+                <ownedOperation xmi:id="_R7WUxJoVEeOKSuMukkWEWw" name="isIsAutoParagraphs" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7WUxZoVEeOKSuMukkWEWw" name="User" visibility="package">
+                <generalization xmi:id="_R7WUxpoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7WUx5oVEeOKSuMukkWEWw" name="getName" visibility="package"/>
+                <ownedOperation xmi:id="_R7WUyJoVEeOKSuMukkWEWw" name="getUserName" visibility="package"/>
+                <ownedOperation xmi:id="_R7WUyZoVEeOKSuMukkWEWw" name="getPassword" visibility="package"/>
+                <ownedOperation xmi:id="_R7WUypoVEeOKSuMukkWEWw" name="getUserRole" visibility="package"/>
+                <ownedOperation xmi:id="_R7WUy5oVEeOKSuMukkWEWw" name="getFirstName" visibility="package"/>
+                <ownedOperation xmi:id="_R7WUzJoVEeOKSuMukkWEWw" name="getLastName" visibility="package"/>
+                <ownedOperation xmi:id="_R7WUzZoVEeOKSuMukkWEWw" name="getNickName" visibility="package"/>
+                <ownedOperation xmi:id="_R7WUzpoVEeOKSuMukkWEWw" name="getPublicName" visibility="package"/>
+                <ownedOperation xmi:id="_R7WUz5oVEeOKSuMukkWEWw" name="getEmail" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU0JoVEeOKSuMukkWEWw" name="getWebSite" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU0ZoVEeOKSuMukkWEWw" name="getBiography" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7WU0poVEeOKSuMukkWEWw" name="Website" visibility="package">
+                <generalization xmi:id="_R7WU05oVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7WU1JoVEeOKSuMukkWEWw" name="getUsers" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU1ZoVEeOKSuMukkWEWw" name="getPosts" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU1poVEeOKSuMukkWEWw" name="getPages" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU15oVEeOKSuMukkWEWw" name="getAppearance" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU2JoVEeOKSuMukkWEWw" name="getSettings" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU2ZoVEeOKSuMukkWEWw" name="getCategories" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU2poVEeOKSuMukkWEWw" name="getTags" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU25oVEeOKSuMukkWEWw" name="getMediaLibrary" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU3JoVEeOKSuMukkWEWw" name="getAdminUser" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU3ZoVEeOKSuMukkWEWw" name="getFunctionalities" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU3poVEeOKSuMukkWEWw" name="getComments" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU35oVEeOKSuMukkWEWw" name="getDeletion" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7WU4JoVEeOKSuMukkWEWw" name="Widget" visibility="package">
+                <generalization xmi:id="_R7WU4ZoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7WU4poVEeOKSuMukkWEWw" name="getCalendars" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU45oVEeOKSuMukkWEWw" name="getCategories" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU5JoVEeOKSuMukkWEWw" name="getCustomMenus" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU5ZoVEeOKSuMukkWEWw" name="getFeeds" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU5poVEeOKSuMukkWEWw" name="getMetas" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU55oVEeOKSuMukkWEWw" name="getWidgetArchives" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU6JoVEeOKSuMukkWEWw" name="getType" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU6ZoVEeOKSuMukkWEWw" name="getPages" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU6poVEeOKSuMukkWEWw" name="getRecentComments" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU65oVEeOKSuMukkWEWw" name="getRecentPosts" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU7JoVEeOKSuMukkWEWw" name="getTexts" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU7ZoVEeOKSuMukkWEWw" name="getSearchs" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU7poVEeOKSuMukkWEWw" name="getTagClouds" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7WU75oVEeOKSuMukkWEWw" name="WidgetCategorie" visibility="package">
+                <generalization xmi:id="_R7WU8JoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7WU8ZoVEeOKSuMukkWEWw" name="getTitle" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU8poVEeOKSuMukkWEWw" name="getNumberOfDisplayedPosts" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU85oVEeOKSuMukkWEWw" name="isIsDisplayingSubCat" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU9JoVEeOKSuMukkWEWw" name="isIsDropDownList" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7WU9ZoVEeOKSuMukkWEWw" name="WidgetComment" visibility="package">
+                <generalization xmi:id="_R7WU9poVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7WU95oVEeOKSuMukkWEWw" name="getTitle" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU-JoVEeOKSuMukkWEWw" name="getNumberOfDisplayedComments" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7WU-ZoVEeOKSuMukkWEWw" name="WidgetFeed" visibility="package">
+                <generalization xmi:id="_R7WU-poVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7WU-5oVEeOKSuMukkWEWw" name="getTitle" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU_JoVEeOKSuMukkWEWw" name="isIsDisplayingItemAuthor" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU_ZoVEeOKSuMukkWEWw" name="isIsDisplayingItemContent" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU_poVEeOKSuMukkWEWw" name="isIsDisplayingItemDate" visibility="package"/>
+                <ownedOperation xmi:id="_R7WU_5oVEeOKSuMukkWEWw" name="getNumberOfItems" visibility="package"/>
+                <ownedOperation xmi:id="_R7WVAJoVEeOKSuMukkWEWw" name="getUrl" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVAZoVEeOKSuMukkWEWw" name="WidgetMenu" visibility="package">
+                <generalization xmi:id="_R7WVApoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7WVA5oVEeOKSuMukkWEWw" name="getTitle" visibility="package"/>
+                <ownedOperation xmi:id="_R7WVBJoVEeOKSuMukkWEWw" name="getSelectedMenu" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVBZoVEeOKSuMukkWEWw" name="WidgetPage" visibility="package">
+                <generalization xmi:id="_R7WVBpoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7WVB5oVEeOKSuMukkWEWw" name="getTitle" visibility="package"/>
+                <ownedOperation xmi:id="_R7WVCJoVEeOKSuMukkWEWw" name="getWidgetPagesSorter" visibility="package"/>
+                <ownedOperation xmi:id="_R7WVCZoVEeOKSuMukkWEWw" name="getIdPageExcluded" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVCpoVEeOKSuMukkWEWw" name="WidgetPost" visibility="package">
+                <generalization xmi:id="_R7WVC5oVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7WVDJoVEeOKSuMukkWEWw" name="getTitle" visibility="package"/>
+                <ownedOperation xmi:id="_R7WVDZoVEeOKSuMukkWEWw" name="getNumberOfDisplayedPosts" visibility="package"/>
+                <ownedOperation xmi:id="_R7WVDpoVEeOKSuMukkWEWw" name="isIsDisplayingPostDate" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVD5oVEeOKSuMukkWEWw" name="WritingSettings" visibility="package">
+                <generalization xmi:id="_R7WVEJoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7WVEZoVEeOKSuMukkWEWw" name="getMailServer" visibility="package"/>
+                <ownedOperation xmi:id="_R7WVEpoVEeOKSuMukkWEWw" name="getPort" visibility="package"/>
+                <ownedOperation xmi:id="_R7WVE5oVEeOKSuMukkWEWw" name="getLoginName" visibility="package"/>
+                <ownedOperation xmi:id="_R7WVFJoVEeOKSuMukkWEWw" name="getPassword" visibility="package"/>
+                <ownedOperation xmi:id="_R7WVFZoVEeOKSuMukkWEWw" name="getDefaultPostCategory" visibility="package"/>
+                <ownedOperation xmi:id="_R7WVFpoVEeOKSuMukkWEWw" name="isIsConvertingEmoticons" visibility="package"/>
+                <ownedOperation xmi:id="_R7WVF5oVEeOKSuMukkWEWw" name="isIsCorrectingInvalidXHTML" visibility="package"/>
+                <ownedOperation xmi:id="_R7WVGJoVEeOKSuMukkWEWw" name="getDefaultMailCategory" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVGZoVEeOKSuMukkWEWw" name="Url" visibility="package">
+                <generalization xmi:id="_R7WVGpoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7WVG5oVEeOKSuMukkWEWw" name="getPathUrl" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVHJoVEeOKSuMukkWEWw" name="Header" visibility="package">
+                <generalization xmi:id="_R7WVHZoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7WVHpoVEeOKSuMukkWEWw" name="isRandomImage" visibility="package"/>
+                <ownedOperation xmi:id="_R7WVH5oVEeOKSuMukkWEWw" name="getTextColor" visibility="package"/>
+                <ownedOperation xmi:id="_R7WVIJoVEeOKSuMukkWEWw" name="isIsShowingHeaderText" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVIZoVEeOKSuMukkWEWw" name="Image" visibility="package">
+                <generalization xmi:id="_R7WVIpoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7WVI5oVEeOKSuMukkWEWw" name="getUrl" visibility="package"/>
+              </packagedElement>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_R7WVJJoVEeOKSuMukkWEWw" name="apache">
+        <packagedElement xmi:type="uml:Package" xmi:id="_R7WVJZoVEeOKSuMukkWEWw" name="commons">
+          <packagedElement xmi:type="uml:Package" xmi:id="_R7WVJpoVEeOKSuMukkWEWw" name="lang3">
+            <packagedElement xmi:type="uml:Class" xmi:id="_R7WVJ5oVEeOKSuMukkWEWw" name="StringUtils" visibility="package">
+              <ownedOperation xmi:id="_R7WVKJoVEeOKSuMukkWEWw" name="isNotBlank" visibility="package">
+                <ownedParameter xmi:id="_R7WVKZoVEeOKSuMukkWEWw" name="arg0" type="_R7W8HZoVEeOKSuMukkWEWw"/>
+              </ownedOperation>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_R7WVKpoVEeOKSuMukkWEWw" name="StringEscapeUtils" visibility="package">
+              <ownedOperation xmi:id="_R7WVK5oVEeOKSuMukkWEWw" name="escapeHtml4" visibility="package">
+                <ownedParameter xmi:id="_R7WVLJoVEeOKSuMukkWEWw" name="arg0" type="_R7W7-ZoVEeOKSuMukkWEWw"/>
+              </ownedOperation>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Package" xmi:id="_R7WVLZoVEeOKSuMukkWEWw" name="http">
+          <packagedElement xmi:type="uml:Package" xmi:id="_R7WVLpoVEeOKSuMukkWEWw" name="client">
+            <packagedElement xmi:type="uml:Package" xmi:id="_R7WVL5oVEeOKSuMukkWEWw" name="entity">
+              <packagedElement xmi:type="uml:Class" xmi:id="_R7WVMJoVEeOKSuMukkWEWw" name="UrlEncodedFormEntity" visibility="package">
+                <generalization xmi:id="_R7WVMZoVEeOKSuMukkWEWw" general="_R7WVTJoVEeOKSuMukkWEWw"/>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_R7WVMpoVEeOKSuMukkWEWw" name="methods">
+              <packagedElement xmi:type="uml:Class" xmi:id="_R7WVM5oVEeOKSuMukkWEWw" clientDependency="_R7WVNZoVEeOKSuMukkWEWw" name="HttpEntityEnclosingRequestBase" visibility="package">
+                <generalization xmi:id="_R7WVNJoVEeOKSuMukkWEWw" general="_R7WVOJoVEeOKSuMukkWEWw"/>
+                <interfaceRealization xmi:id="_R7WVNZoVEeOKSuMukkWEWw" name="HttpEntityEnclosingRequest" client="_R7WVM5oVEeOKSuMukkWEWw" supplier="_R7WVb5oVEeOKSuMukkWEWw" contract="_R7WVb5oVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7WVNpoVEeOKSuMukkWEWw" name="setEntity" visibility="package">
+                  <ownedParameter xmi:id="_R7WVN5oVEeOKSuMukkWEWw" name="arg0" type="_R7WVbJoVEeOKSuMukkWEWw"/>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_R7WVOJoVEeOKSuMukkWEWw" clientDependency="_R7WVOpoVEeOKSuMukkWEWw _R7WVO5oVEeOKSuMukkWEWw" name="HttpRequestBase" visibility="package">
+                <generalization xmi:id="_R7WVOZoVEeOKSuMukkWEWw" general="_R7WVPZoVEeOKSuMukkWEWw"/>
+                <interfaceRealization xmi:id="_R7WVOpoVEeOKSuMukkWEWw" name="HttpUriRequest" client="_R7WVOJoVEeOKSuMukkWEWw" supplier="_R7WVR5oVEeOKSuMukkWEWw" contract="_R7WVR5oVEeOKSuMukkWEWw"/>
+                <interfaceRealization xmi:id="_R7WVO5oVEeOKSuMukkWEWw" name="Configurable" client="_R7WVOJoVEeOKSuMukkWEWw" supplier="_R7WVSZoVEeOKSuMukkWEWw" contract="_R7WVSZoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7WVPJoVEeOKSuMukkWEWw" name="releaseConnection" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_R7WVPZoVEeOKSuMukkWEWw" clientDependency="_R7WVP5oVEeOKSuMukkWEWw _R7WVQJoVEeOKSuMukkWEWw _R7WVQZoVEeOKSuMukkWEWw _R7WVQpoVEeOKSuMukkWEWw" name="AbstractExecutionAwareRequest" visibility="package">
+                <generalization xmi:id="_R7WVPpoVEeOKSuMukkWEWw" general="_R7WVUpoVEeOKSuMukkWEWw"/>
+                <interfaceRealization xmi:id="_R7WVP5oVEeOKSuMukkWEWw" name="HttpExecutionAware" client="_R7WVPZoVEeOKSuMukkWEWw" supplier="_R7WVRZoVEeOKSuMukkWEWw" contract="_R7WVRZoVEeOKSuMukkWEWw"/>
+                <interfaceRealization xmi:id="_R7WVQJoVEeOKSuMukkWEWw" name="AbortableHttpRequest" client="_R7WVPZoVEeOKSuMukkWEWw" supplier="_R7WVRpoVEeOKSuMukkWEWw" contract="_R7WVRpoVEeOKSuMukkWEWw"/>
+                <interfaceRealization xmi:id="_R7WVQZoVEeOKSuMukkWEWw" name="Cloneable" client="_R7WVPZoVEeOKSuMukkWEWw" supplier="_R7W8GpoVEeOKSuMukkWEWw" contract="_R7W8GpoVEeOKSuMukkWEWw"/>
+                <interfaceRealization xmi:id="_R7WVQpoVEeOKSuMukkWEWw" name="HttpRequest" client="_R7WVPZoVEeOKSuMukkWEWw" supplier="_R7WVbZoVEeOKSuMukkWEWw" contract="_R7WVbZoVEeOKSuMukkWEWw"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_R7WVQ5oVEeOKSuMukkWEWw" name="HttpPost" visibility="package">
+                <generalization xmi:id="_R7WVRJoVEeOKSuMukkWEWw" general="_R7WVM5oVEeOKSuMukkWEWw"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVRZoVEeOKSuMukkWEWw" name="HttpExecutionAware" visibility="package"/>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVRpoVEeOKSuMukkWEWw" name="AbortableHttpRequest" visibility="package"/>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVR5oVEeOKSuMukkWEWw" name="HttpUriRequest" visibility="package">
+                <generalization xmi:id="_R7WVSJoVEeOKSuMukkWEWw" general="_R7WVbZoVEeOKSuMukkWEWw"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVSZoVEeOKSuMukkWEWw" name="Configurable" visibility="package"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVSpoVEeOKSuMukkWEWw" name="HttpClient" visibility="package"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_R7WVS5oVEeOKSuMukkWEWw" name="entity">
+            <packagedElement xmi:type="uml:Class" xmi:id="_R7WVTJoVEeOKSuMukkWEWw" clientDependency="_R7WVTpoVEeOKSuMukkWEWw" name="StringEntity" visibility="package">
+              <generalization xmi:id="_R7WVTZoVEeOKSuMukkWEWw" general="_R7WVT5oVEeOKSuMukkWEWw"/>
+              <interfaceRealization xmi:id="_R7WVTpoVEeOKSuMukkWEWw" name="Cloneable" client="_R7WVTJoVEeOKSuMukkWEWw" supplier="_R7W8GpoVEeOKSuMukkWEWw" contract="_R7W8GpoVEeOKSuMukkWEWw"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_R7WVT5oVEeOKSuMukkWEWw" clientDependency="_R7WVUJoVEeOKSuMukkWEWw" name="AbstractHttpEntity" visibility="package">
+              <interfaceRealization xmi:id="_R7WVUJoVEeOKSuMukkWEWw" name="HttpEntity" client="_R7WVT5oVEeOKSuMukkWEWw" supplier="_R7WVbJoVEeOKSuMukkWEWw" contract="_R7WVbJoVEeOKSuMukkWEWw"/>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_R7WVUZoVEeOKSuMukkWEWw" name="message">
+            <packagedElement xmi:type="uml:Class" xmi:id="_R7WVUpoVEeOKSuMukkWEWw" clientDependency="_R7WVU5oVEeOKSuMukkWEWw" name="AbstractHttpMessage" visibility="package">
+              <interfaceRealization xmi:id="_R7WVU5oVEeOKSuMukkWEWw" name="HttpMessage" client="_R7WVUpoVEeOKSuMukkWEWw" supplier="_R7WVapoVEeOKSuMukkWEWw" contract="_R7WVapoVEeOKSuMukkWEWw"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_R7WVVJoVEeOKSuMukkWEWw" clientDependency="_R7WVVZoVEeOKSuMukkWEWw _R7WVVpoVEeOKSuMukkWEWw _R7WVV5oVEeOKSuMukkWEWw" name="BasicNameValuePair" visibility="package">
+              <interfaceRealization xmi:id="_R7WVVZoVEeOKSuMukkWEWw" name="NameValuePair" client="_R7WVVJoVEeOKSuMukkWEWw" supplier="_R7WVa5oVEeOKSuMukkWEWw" contract="_R7WVa5oVEeOKSuMukkWEWw"/>
+              <interfaceRealization xmi:id="_R7WVVpoVEeOKSuMukkWEWw" name="Cloneable" client="_R7WVVJoVEeOKSuMukkWEWw" supplier="_R7W8GpoVEeOKSuMukkWEWw" contract="_R7W8GpoVEeOKSuMukkWEWw"/>
+              <interfaceRealization xmi:id="_R7WVV5oVEeOKSuMukkWEWw" name="Serializable" client="_R7WVVJoVEeOKSuMukkWEWw" supplier="_R7W78JoVEeOKSuMukkWEWw" contract="_R7W78JoVEeOKSuMukkWEWw"/>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_R7WVWJoVEeOKSuMukkWEWw" name="impl">
+            <packagedElement xmi:type="uml:Package" xmi:id="_R7WVWZoVEeOKSuMukkWEWw" name="client">
+              <packagedElement xmi:type="uml:Class" xmi:id="_R7WVWpoVEeOKSuMukkWEWw" clientDependency="_R7WVW5oVEeOKSuMukkWEWw _R7WVXJoVEeOKSuMukkWEWw" name="CloseableHttpClient" visibility="package">
+                <interfaceRealization xmi:id="_R7WVW5oVEeOKSuMukkWEWw" name="HttpClient" client="_R7WVWpoVEeOKSuMukkWEWw" supplier="_R7WVSpoVEeOKSuMukkWEWw" contract="_R7WVSpoVEeOKSuMukkWEWw"/>
+                <interfaceRealization xmi:id="_R7WVXJoVEeOKSuMukkWEWw" name="Closeable" client="_R7WVWpoVEeOKSuMukkWEWw" supplier="_R7W78ZoVEeOKSuMukkWEWw" contract="_R7W78ZoVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7WVXZoVEeOKSuMukkWEWw" name="execute" visibility="package">
+                  <ownedParameter xmi:id="_R7WVXpoVEeOKSuMukkWEWw" name="arg0" type="_R7WVR5oVEeOKSuMukkWEWw"/>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_R7WVX5oVEeOKSuMukkWEWw" name="DefaultHttpClient" visibility="package">
+                <generalization xmi:id="_R7WVYJoVEeOKSuMukkWEWw" general="_R7WVYZoVEeOKSuMukkWEWw"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_R7WVYZoVEeOKSuMukkWEWw" name="AbstractHttpClient" visibility="package">
+                <generalization xmi:id="_R7WVYpoVEeOKSuMukkWEWw" general="_R7WVWpoVEeOKSuMukkWEWw"/>
+              </packagedElement>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_R7WVY5oVEeOKSuMukkWEWw" name="util">
+            <packagedElement xmi:type="uml:Class" xmi:id="_R7WVZJoVEeOKSuMukkWEWw" name="EntityUtils" visibility="package">
+              <ownedOperation xmi:id="_R7WVZZoVEeOKSuMukkWEWw" name="toString" visibility="package">
+                <ownedParameter xmi:id="_R7WVZpoVEeOKSuMukkWEWw" name="arg0" type="_R7WVbJoVEeOKSuMukkWEWw"/>
+              </ownedOperation>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVZ5oVEeOKSuMukkWEWw" name="HttpResponse" visibility="package">
+            <generalization xmi:id="_R7WVaJoVEeOKSuMukkWEWw" general="_R7WVapoVEeOKSuMukkWEWw"/>
+            <ownedOperation xmi:id="_R7WVaZoVEeOKSuMukkWEWw" name="getEntity" visibility="package"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVapoVEeOKSuMukkWEWw" name="HttpMessage" visibility="package"/>
+          <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVa5oVEeOKSuMukkWEWw" name="NameValuePair" visibility="package"/>
+          <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVbJoVEeOKSuMukkWEWw" name="HttpEntity" visibility="package"/>
+          <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVbZoVEeOKSuMukkWEWw" name="HttpRequest" visibility="package">
+            <generalization xmi:id="_R7WVbpoVEeOKSuMukkWEWw" general="_R7WVapoVEeOKSuMukkWEWw"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVb5oVEeOKSuMukkWEWw" name="HttpEntityEnclosingRequest" visibility="package">
+            <generalization xmi:id="_R7WVcJoVEeOKSuMukkWEWw" general="_R7WVbZoVEeOKSuMukkWEWw"/>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_R7WVcZoVEeOKSuMukkWEWw" name="eclipse">
+        <packagedElement xmi:type="uml:Package" xmi:id="_R7WVcpoVEeOKSuMukkWEWw" name="emf">
+          <packagedElement xmi:type="uml:Package" xmi:id="_R7WVc5oVEeOKSuMukkWEWw" name="common">
+            <packagedElement xmi:type="uml:Package" xmi:id="_R7WVdJoVEeOKSuMukkWEWw" name="util">
+              <packagedElement xmi:type="uml:Class" xmi:id="_R7WVdZoVEeOKSuMukkWEWw" name="URI" visibility="package"/>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVdpoVEeOKSuMukkWEWw" name="EList" visibility="package">
+                <generalization xmi:id="_R7WVd5oVEeOKSuMukkWEWw" general="_R7W8QZoVEeOKSuMukkWEWw"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVeJoVEeOKSuMukkWEWw" name="Enumerator" visibility="package"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_R7WVeZoVEeOKSuMukkWEWw" name="notify">
+              <packagedElement xmi:type="uml:Package" xmi:id="_R7WVepoVEeOKSuMukkWEWw" name="impl">
+                <packagedElement xmi:type="uml:Class" xmi:id="_R7WVe5oVEeOKSuMukkWEWw" clientDependency="_R7WVfJoVEeOKSuMukkWEWw" name="BasicNotifierImpl" visibility="package">
+                  <interfaceRealization xmi:id="_R7WVfJoVEeOKSuMukkWEWw" name="Notifier" client="_R7WVe5oVEeOKSuMukkWEWw" supplier="_R7WVf5oVEeOKSuMukkWEWw" contract="_R7WVf5oVEeOKSuMukkWEWw"/>
+                </packagedElement>
+                <packagedElement xmi:type="uml:Class" xmi:id="_R7WVfZoVEeOKSuMukkWEWw" name="NotifierImpl" visibility="package">
+                  <generalization xmi:id="_R7WVfpoVEeOKSuMukkWEWw" general="_R7WVe5oVEeOKSuMukkWEWw"/>
+                </packagedElement>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVf5oVEeOKSuMukkWEWw" name="Notifier" visibility="package"/>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_R7WVgJoVEeOKSuMukkWEWw" name="ecore">
+            <packagedElement xmi:type="uml:Package" xmi:id="_R7WVgZoVEeOKSuMukkWEWw" name="resource">
+              <packagedElement xmi:type="uml:Package" xmi:id="_R7WVgpoVEeOKSuMukkWEWw" name="impl">
+                <packagedElement xmi:type="uml:Class" xmi:id="_R7WVg5oVEeOKSuMukkWEWw" clientDependency="_R7WVhZoVEeOKSuMukkWEWw" name="ResourceSetImpl" visibility="package">
+                  <generalization xmi:id="_R7WVhJoVEeOKSuMukkWEWw" general="_R7WVfZoVEeOKSuMukkWEWw"/>
+                  <interfaceRealization xmi:id="_R7WVhZoVEeOKSuMukkWEWw" name="ResourceSet" client="_R7WVg5oVEeOKSuMukkWEWw" supplier="_R7WVkJoVEeOKSuMukkWEWw" contract="_R7WVkJoVEeOKSuMukkWEWw"/>
+                </packagedElement>
+                <packagedElement xmi:type="uml:Class" xmi:id="_R7WVhpoVEeOKSuMukkWEWw" clientDependency="_R7WVh5oVEeOKSuMukkWEWw" name="ResourceFactoryImpl" visibility="package">
+                  <interfaceRealization xmi:id="_R7WVh5oVEeOKSuMukkWEWw" name="Factory" client="_R7WVhpoVEeOKSuMukkWEWw" supplier="_R7WVipoVEeOKSuMukkWEWw" contract="_R7WVipoVEeOKSuMukkWEWw"/>
+                </packagedElement>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7WViJoVEeOKSuMukkWEWw" name="Resource" visibility="package">
+                <generalization xmi:id="_R7WViZoVEeOKSuMukkWEWw" general="_R7WVf5oVEeOKSuMukkWEWw"/>
+                <nestedClassifier xmi:type="uml:Interface" xmi:id="_R7WVipoVEeOKSuMukkWEWw" name="Factory" visibility="package">
+                  <nestedClassifier xmi:type="uml:Interface" xmi:id="_R7WVi5oVEeOKSuMukkWEWw" name="Registry" visibility="package">
+                    <ownedOperation xmi:id="_R7WVjJoVEeOKSuMukkWEWw" name="getExtensionToFactoryMap" visibility="package"/>
+                  </nestedClassifier>
+                </nestedClassifier>
+                <ownedOperation xmi:id="_R7WVjZoVEeOKSuMukkWEWw" name="load" visibility="package">
+                  <ownedParameter xmi:id="_R7WVjpoVEeOKSuMukkWEWw" name="arg0" type="_R7W8SpoVEeOKSuMukkWEWw"/>
+                </ownedOperation>
+                <ownedOperation xmi:id="_R7WVj5oVEeOKSuMukkWEWw" name="getContents" visibility="package"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVkJoVEeOKSuMukkWEWw" name="ResourceSet" visibility="package">
+                <generalization xmi:id="_R7WVkZoVEeOKSuMukkWEWw" general="_R7WVf5oVEeOKSuMukkWEWw"/>
+                <ownedOperation xmi:id="_R7WVkpoVEeOKSuMukkWEWw" name="getResourceFactoryRegistry" visibility="package"/>
+                <ownedOperation xmi:id="_R7WVk5oVEeOKSuMukkWEWw" name="getResource" visibility="package">
+                  <ownedParameter xmi:id="_R7WVlJoVEeOKSuMukkWEWw" name="arg0" type="_R7WVdZoVEeOKSuMukkWEWw"/>
+                  <ownedParameter xmi:id="_R7WVlZoVEeOKSuMukkWEWw" name="arg1" type="_R7VGp5oVEeOKSuMukkWEWw"/>
+                </ownedOperation>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_R7WVlpoVEeOKSuMukkWEWw" name="xmi">
+              <packagedElement xmi:type="uml:Package" xmi:id="_R7WVl5oVEeOKSuMukkWEWw" name="impl">
+                <packagedElement xmi:type="uml:Class" xmi:id="_R7WVmJoVEeOKSuMukkWEWw" name="XMIResourceFactoryImpl" visibility="package">
+                  <generalization xmi:id="_R7WVmZoVEeOKSuMukkWEWw" general="_R7WVhpoVEeOKSuMukkWEWw"/>
+                </packagedElement>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVmpoVEeOKSuMukkWEWw" name="EObject" visibility="package">
+              <generalization xmi:id="_R7WVm5oVEeOKSuMukkWEWw" general="_R7WVf5oVEeOKSuMukkWEWw"/>
+              <ownedOperation xmi:id="_R7WVnJoVEeOKSuMukkWEWw" name="eGet" visibility="package">
+                <ownedParameter xmi:id="_R7WVnZoVEeOKSuMukkWEWw" name="arg0" type="_R7WVn5oVEeOKSuMukkWEWw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_R7WVnpoVEeOKSuMukkWEWw" name="eClass" visibility="package"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVn5oVEeOKSuMukkWEWw" name="EStructuralFeature" visibility="package">
+              <generalization xmi:id="_R7WVoJoVEeOKSuMukkWEWw" general="_R7WVoZoVEeOKSuMukkWEWw"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Interface" xmi:id="_R7WVoZoVEeOKSuMukkWEWw" name="ETypedElement" visibility="package">
+              <generalization xmi:id="_R7WVopoVEeOKSuMukkWEWw" general="_R7W70JoVEeOKSuMukkWEWw"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Interface" xmi:id="_R7W70JoVEeOKSuMukkWEWw" name="ENamedElement" visibility="package">
+              <generalization xmi:id="_R7W70ZoVEeOKSuMukkWEWw" general="_R7W705oVEeOKSuMukkWEWw"/>
+              <ownedOperation xmi:id="_R7W70poVEeOKSuMukkWEWw" name="getName" visibility="package"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Interface" xmi:id="_R7W705oVEeOKSuMukkWEWw" name="EModelElement" visibility="package">
+              <generalization xmi:id="_R7W71JoVEeOKSuMukkWEWw" general="_R7WVmpoVEeOKSuMukkWEWw"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Interface" xmi:id="_R7W71ZoVEeOKSuMukkWEWw" name="EClass" visibility="package">
+              <generalization xmi:id="_R7W71poVEeOKSuMukkWEWw" general="_R7W72JoVEeOKSuMukkWEWw"/>
+              <ownedOperation xmi:id="_R7W715oVEeOKSuMukkWEWw" name="getEAllStructuralFeatures" visibility="package"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Interface" xmi:id="_R7W72JoVEeOKSuMukkWEWw" name="EClassifier" visibility="package">
+              <generalization xmi:id="_R7W72ZoVEeOKSuMukkWEWw" general="_R7W70JoVEeOKSuMukkWEWw"/>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Model" xmi:id="_R7W72poVEeOKSuMukkWEWw" name="externals">
+    <packagedElement xmi:type="uml:Package" xmi:id="_R7W725oVEeOKSuMukkWEWw" name="java">
+      <packagedElement xmi:type="uml:Package" xmi:id="_R7W73JoVEeOKSuMukkWEWw" name="io">
+        <packagedElement xmi:type="uml:Class" xmi:id="_R7W73ZoVEeOKSuMukkWEWw" clientDependency="_R7W735oVEeOKSuMukkWEWw _R7W74JoVEeOKSuMukkWEWw" name="PrintStream" visibility="package">
+          <generalization xmi:id="_R7W73poVEeOKSuMukkWEWw" general="_R7W76JoVEeOKSuMukkWEWw"/>
+          <interfaceRealization xmi:id="_R7W735oVEeOKSuMukkWEWw" name="Appendable" client="_R7W73ZoVEeOKSuMukkWEWw" supplier="_R7W8HpoVEeOKSuMukkWEWw" contract="_R7W8HpoVEeOKSuMukkWEWw"/>
+          <interfaceRealization xmi:id="_R7W74JoVEeOKSuMukkWEWw" name="Closeable" client="_R7W73ZoVEeOKSuMukkWEWw" supplier="_R7W78ZoVEeOKSuMukkWEWw" contract="_R7W78ZoVEeOKSuMukkWEWw"/>
+          <ownedOperation xmi:id="_R7W74ZoVEeOKSuMukkWEWw" name="println" visibility="package">
+            <ownedParameter xmi:id="_R7W74poVEeOKSuMukkWEWw" name="arg0" type="_R7W7-ZoVEeOKSuMukkWEWw"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_R7W745oVEeOKSuMukkWEWw" clientDependency="_R7W75JoVEeOKSuMukkWEWw _R7W75ZoVEeOKSuMukkWEWw" name="OutputStream" visibility="package">
+          <interfaceRealization xmi:id="_R7W75JoVEeOKSuMukkWEWw" name="Closeable" client="_R7W745oVEeOKSuMukkWEWw" supplier="_R7W78ZoVEeOKSuMukkWEWw" contract="_R7W78ZoVEeOKSuMukkWEWw"/>
+          <interfaceRealization xmi:id="_R7W75ZoVEeOKSuMukkWEWw" name="Flushable" client="_R7W745oVEeOKSuMukkWEWw" supplier="_R7W79JoVEeOKSuMukkWEWw" contract="_R7W79JoVEeOKSuMukkWEWw"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_R7W75poVEeOKSuMukkWEWw" name="IOException" visibility="package">
+          <generalization xmi:id="_R7W755oVEeOKSuMukkWEWw" general="_R7W8E5oVEeOKSuMukkWEWw"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_R7W76JoVEeOKSuMukkWEWw" name="FilterOutputStream" visibility="package">
+          <generalization xmi:id="_R7W76ZoVEeOKSuMukkWEWw" general="_R7W745oVEeOKSuMukkWEWw"/>
+          <ownedOperation xmi:id="_R7W76poVEeOKSuMukkWEWw" name="write" visibility="package">
+            <ownedParameter xmi:id="_R7W765oVEeOKSuMukkWEWw" name="arg0" type="_R7W8WpoVEeOKSuMukkWEWw"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_R7W77JoVEeOKSuMukkWEWw" name="ByteArrayOutputStream" visibility="package">
+          <generalization xmi:id="_R7W77ZoVEeOKSuMukkWEWw" general="_R7W745oVEeOKSuMukkWEWw"/>
+          <ownedOperation xmi:id="_R7W77poVEeOKSuMukkWEWw" name="toString" visibility="package">
+            <ownedParameter xmi:id="_R7W775oVEeOKSuMukkWEWw" name="arg0" type="_R7W7-ZoVEeOKSuMukkWEWw"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_R7W78JoVEeOKSuMukkWEWw" name="Serializable" visibility="package"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_R7W78ZoVEeOKSuMukkWEWw" name="Closeable" visibility="package">
+          <generalization xmi:id="_R7W78poVEeOKSuMukkWEWw" general="_R7W8G5oVEeOKSuMukkWEWw"/>
+          <ownedOperation xmi:id="_R7W785oVEeOKSuMukkWEWw" name="close" visibility="package"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_R7W79JoVEeOKSuMukkWEWw" name="Flushable" visibility="package"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_R7W79ZoVEeOKSuMukkWEWw" name="lang">
+        <packagedElement xmi:type="uml:Class" xmi:id="_R7W79poVEeOKSuMukkWEWw" clientDependency="_R7W795oVEeOKSuMukkWEWw" name="Throwable" visibility="package">
+          <interfaceRealization xmi:id="_R7W795oVEeOKSuMukkWEWw" name="Serializable" client="_R7W79poVEeOKSuMukkWEWw" supplier="_R7W78JoVEeOKSuMukkWEWw" contract="_R7W78JoVEeOKSuMukkWEWw"/>
+          <ownedOperation xmi:id="_R7W7-JoVEeOKSuMukkWEWw" name="printStackTrace" visibility="package"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_R7W7-ZoVEeOKSuMukkWEWw" clientDependency="_R7W7-poVEeOKSuMukkWEWw _R7W7-5oVEeOKSuMukkWEWw _R7W7_JoVEeOKSuMukkWEWw" name="String" visibility="package">
+          <interfaceRealization xmi:id="_R7W7-poVEeOKSuMukkWEWw" name="Serializable" client="_R7W7-ZoVEeOKSuMukkWEWw" supplier="_R7W78JoVEeOKSuMukkWEWw" contract="_R7W78JoVEeOKSuMukkWEWw"/>
+          <interfaceRealization xmi:id="_R7W7-5oVEeOKSuMukkWEWw" name="Comparable" client="_R7W7-ZoVEeOKSuMukkWEWw" supplier="_R7W8HJoVEeOKSuMukkWEWw" contract="_R7W8HJoVEeOKSuMukkWEWw"/>
+          <interfaceRealization xmi:id="_R7W7_JoVEeOKSuMukkWEWw" name="CharSequence" client="_R7W7-ZoVEeOKSuMukkWEWw" supplier="_R7W8HZoVEeOKSuMukkWEWw" contract="_R7W8HZoVEeOKSuMukkWEWw"/>
+          <ownedOperation xmi:id="_R7W7_ZoVEeOKSuMukkWEWw" name="valueOf" visibility="package">
+            <ownedParameter xmi:id="_R7W7_poVEeOKSuMukkWEWw" name="arg0" type="_R7VGo5oVEeOKSuMukkWEWw"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_R7W7_5oVEeOKSuMukkWEWw" name="valueOf" visibility="package">
+            <ownedParameter xmi:id="_R7W8AJoVEeOKSuMukkWEWw" name="arg0" type="_R7VGp5oVEeOKSuMukkWEWw"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_R7W8AZoVEeOKSuMukkWEWw" name="valueOf" visibility="package">
+            <ownedParameter xmi:id="_R7W8ApoVEeOKSuMukkWEWw" name="arg0" type="_R7W8FZoVEeOKSuMukkWEWw"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_R7W8A5oVEeOKSuMukkWEWw" name="equals" visibility="package">
+            <ownedParameter xmi:id="_R7W8BJoVEeOKSuMukkWEWw" name="arg0" type="_R7W8FZoVEeOKSuMukkWEWw"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_R7W8BZoVEeOKSuMukkWEWw" name="replaceAll" visibility="package">
+            <ownedParameter xmi:id="_R7W8BpoVEeOKSuMukkWEWw" name="arg0" type="_R7W7-ZoVEeOKSuMukkWEWw"/>
+            <ownedParameter xmi:id="_R7W8B5oVEeOKSuMukkWEWw" name="arg1" type="_R7W7-ZoVEeOKSuMukkWEWw"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_R7W8CJoVEeOKSuMukkWEWw" name="getBytes" visibility="package"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_R7W8CZoVEeOKSuMukkWEWw" clientDependency="_R7W8C5oVEeOKSuMukkWEWw" name="Integer" visibility="package">
+          <generalization xmi:id="_R7W8CpoVEeOKSuMukkWEWw" general="_R7W8DpoVEeOKSuMukkWEWw"/>
+          <interfaceRealization xmi:id="_R7W8C5oVEeOKSuMukkWEWw" name="Comparable" client="_R7W8CZoVEeOKSuMukkWEWw" supplier="_R7W8HJoVEeOKSuMukkWEWw" contract="_R7W8HJoVEeOKSuMukkWEWw"/>
+          <ownedOperation xmi:id="_R7W8DJoVEeOKSuMukkWEWw" name="valueOf" visibility="package">
+            <ownedParameter xmi:id="_R7W8DZoVEeOKSuMukkWEWw" name="arg0" type="_R7VGo5oVEeOKSuMukkWEWw"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_R7W8DpoVEeOKSuMukkWEWw" clientDependency="_R7W8D5oVEeOKSuMukkWEWw" name="Number" visibility="package">
+          <interfaceRealization xmi:id="_R7W8D5oVEeOKSuMukkWEWw" name="Serializable" client="_R7W8DpoVEeOKSuMukkWEWw" supplier="_R7W78JoVEeOKSuMukkWEWw" contract="_R7W78JoVEeOKSuMukkWEWw"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_R7W8EJoVEeOKSuMukkWEWw" clientDependency="_R7W8EZoVEeOKSuMukkWEWw _R7W8EpoVEeOKSuMukkWEWw" name="Boolean" visibility="package">
+          <interfaceRealization xmi:id="_R7W8EZoVEeOKSuMukkWEWw" name="Serializable" client="_R7W8EJoVEeOKSuMukkWEWw" supplier="_R7W78JoVEeOKSuMukkWEWw" contract="_R7W78JoVEeOKSuMukkWEWw"/>
+          <interfaceRealization xmi:id="_R7W8EpoVEeOKSuMukkWEWw" name="Comparable" client="_R7W8EJoVEeOKSuMukkWEWw" supplier="_R7W8HJoVEeOKSuMukkWEWw" contract="_R7W8HJoVEeOKSuMukkWEWw"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_R7W8E5oVEeOKSuMukkWEWw" name="Exception" visibility="package">
+          <generalization xmi:id="_R7W8FJoVEeOKSuMukkWEWw" general="_R7W79poVEeOKSuMukkWEWw"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_R7W8FZoVEeOKSuMukkWEWw" name="Object" visibility="package">
+          <ownedOperation xmi:id="_R7W8FpoVEeOKSuMukkWEWw" name="toString" visibility="package"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_R7W8F5oVEeOKSuMukkWEWw" name="System" visibility="package">
+          <ownedAttribute xmi:id="_R7W8GJoVEeOKSuMukkWEWw" name="out" visibility="package"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_R7W8GZoVEeOKSuMukkWEWw" name="Iterable" visibility="package"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_R7W8GpoVEeOKSuMukkWEWw" name="Cloneable" visibility="package"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_R7W8G5oVEeOKSuMukkWEWw" name="AutoCloseable" visibility="package"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_R7W8HJoVEeOKSuMukkWEWw" name="Comparable" visibility="package"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_R7W8HZoVEeOKSuMukkWEWw" name="CharSequence" visibility="package"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_R7W8HpoVEeOKSuMukkWEWw" name="Appendable" visibility="package"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_R7W8H5oVEeOKSuMukkWEWw" name="Object[]">
+          <ownedAttribute xmi:id="_R7W8IJoVEeOKSuMukkWEWw" name="type" type="_R7W8FZoVEeOKSuMukkWEWw"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_R7W8IZoVEeOKSuMukkWEWw" name="String[]">
+          <ownedAttribute xmi:id="_R7W8IpoVEeOKSuMukkWEWw" name="type" type="_R7W7-ZoVEeOKSuMukkWEWw"/>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_R7W8I5oVEeOKSuMukkWEWw" name="util">
+        <packagedElement xmi:type="uml:Package" xmi:id="_R7W8JJoVEeOKSuMukkWEWw" name="zip">
+          <packagedElement xmi:type="uml:Class" xmi:id="_R7W8JZoVEeOKSuMukkWEWw" name="DeflaterOutputStream" visibility="package">
+            <generalization xmi:id="_R7W8JpoVEeOKSuMukkWEWw" general="_R7W76JoVEeOKSuMukkWEWw"/>
+            <ownedOperation xmi:id="_R7W8J5oVEeOKSuMukkWEWw" name="close" visibility="package"/>
+          </packagedElement>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_R7W8KJoVEeOKSuMukkWEWw" clientDependency="_R7W8KpoVEeOKSuMukkWEWw _R7W8K5oVEeOKSuMukkWEWw _R7W8LJoVEeOKSuMukkWEWw _R7W8LZoVEeOKSuMukkWEWw" name="ArrayList" visibility="package">
+          <generalization xmi:id="_R7W8KZoVEeOKSuMukkWEWw" general="_R7W8LpoVEeOKSuMukkWEWw"/>
+          <interfaceRealization xmi:id="_R7W8KpoVEeOKSuMukkWEWw" name="List" client="_R7W8KJoVEeOKSuMukkWEWw" supplier="_R7W8QZoVEeOKSuMukkWEWw" contract="_R7W8QZoVEeOKSuMukkWEWw"/>
+          <interfaceRealization xmi:id="_R7W8K5oVEeOKSuMukkWEWw" name="RandomAccess" client="_R7W8KJoVEeOKSuMukkWEWw" supplier="_R7W8SZoVEeOKSuMukkWEWw" contract="_R7W8SZoVEeOKSuMukkWEWw"/>
+          <interfaceRealization xmi:id="_R7W8LJoVEeOKSuMukkWEWw" name="Cloneable" client="_R7W8KJoVEeOKSuMukkWEWw" supplier="_R7W8GpoVEeOKSuMukkWEWw" contract="_R7W8GpoVEeOKSuMukkWEWw"/>
+          <interfaceRealization xmi:id="_R7W8LZoVEeOKSuMukkWEWw" name="Serializable" client="_R7W8KJoVEeOKSuMukkWEWw" supplier="_R7W78JoVEeOKSuMukkWEWw" contract="_R7W78JoVEeOKSuMukkWEWw"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_R7W8LpoVEeOKSuMukkWEWw" clientDependency="_R7W8MJoVEeOKSuMukkWEWw" name="AbstractList" visibility="package">
+          <generalization xmi:id="_R7W8L5oVEeOKSuMukkWEWw" general="_R7W8MpoVEeOKSuMukkWEWw"/>
+          <interfaceRealization xmi:id="_R7W8MJoVEeOKSuMukkWEWw" name="List" client="_R7W8LpoVEeOKSuMukkWEWw" supplier="_R7W8QZoVEeOKSuMukkWEWw" contract="_R7W8QZoVEeOKSuMukkWEWw"/>
+          <ownedOperation xmi:id="_R7W8MZoVEeOKSuMukkWEWw" name="listIterator" visibility="package"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_R7W8MpoVEeOKSuMukkWEWw" clientDependency="_R7W8M5oVEeOKSuMukkWEWw" name="AbstractCollection" visibility="package">
+          <interfaceRealization xmi:id="_R7W8M5oVEeOKSuMukkWEWw" name="Collection" client="_R7W8MpoVEeOKSuMukkWEWw" supplier="_R7W8P5oVEeOKSuMukkWEWw" contract="_R7W8P5oVEeOKSuMukkWEWw"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_R7W8NJoVEeOKSuMukkWEWw" clientDependency="_R7W8NpoVEeOKSuMukkWEWw _R7W8N5oVEeOKSuMukkWEWw _R7W8OJoVEeOKSuMukkWEWw _R7W8OZoVEeOKSuMukkWEWw" name="LinkedList" visibility="package">
+          <generalization xmi:id="_R7W8NZoVEeOKSuMukkWEWw" general="_R7W8PZoVEeOKSuMukkWEWw"/>
+          <interfaceRealization xmi:id="_R7W8NpoVEeOKSuMukkWEWw" name="List" client="_R7W8NJoVEeOKSuMukkWEWw" supplier="_R7W8QZoVEeOKSuMukkWEWw" contract="_R7W8QZoVEeOKSuMukkWEWw"/>
+          <interfaceRealization xmi:id="_R7W8N5oVEeOKSuMukkWEWw" name="Deque" client="_R7W8NJoVEeOKSuMukkWEWw" supplier="_R7W8UZoVEeOKSuMukkWEWw" contract="_R7W8UZoVEeOKSuMukkWEWw"/>
+          <interfaceRealization xmi:id="_R7W8OJoVEeOKSuMukkWEWw" name="Cloneable" client="_R7W8NJoVEeOKSuMukkWEWw" supplier="_R7W8GpoVEeOKSuMukkWEWw" contract="_R7W8GpoVEeOKSuMukkWEWw"/>
+          <interfaceRealization xmi:id="_R7W8OZoVEeOKSuMukkWEWw" name="Serializable" client="_R7W8NJoVEeOKSuMukkWEWw" supplier="_R7W78JoVEeOKSuMukkWEWw" contract="_R7W78JoVEeOKSuMukkWEWw"/>
+          <ownedOperation xmi:id="_R7W8OpoVEeOKSuMukkWEWw" name="add" visibility="package">
+            <ownedParameter xmi:id="_R7W8O5oVEeOKSuMukkWEWw" name="arg0" type="_R7W8FZoVEeOKSuMukkWEWw"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_R7W8PJoVEeOKSuMukkWEWw" name="getLast" visibility="package"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_R7W8PZoVEeOKSuMukkWEWw" name="AbstractSequentialList" visibility="package">
+          <generalization xmi:id="_R7W8PpoVEeOKSuMukkWEWw" general="_R7W8LpoVEeOKSuMukkWEWw"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_R7W8P5oVEeOKSuMukkWEWw" name="Collection" visibility="package">
+          <generalization xmi:id="_R7W8QJoVEeOKSuMukkWEWw" general="_R7W8GZoVEeOKSuMukkWEWw"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_R7W8QZoVEeOKSuMukkWEWw" name="List" visibility="package">
+          <generalization xmi:id="_R7W8QpoVEeOKSuMukkWEWw" general="_R7W8P5oVEeOKSuMukkWEWw"/>
+          <ownedOperation xmi:id="_R7W8Q5oVEeOKSuMukkWEWw" name="get" visibility="package">
+            <ownedParameter xmi:id="_R7W8RJoVEeOKSuMukkWEWw" name="arg0" type="_R7VGo5oVEeOKSuMukkWEWw"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_R7W8RZoVEeOKSuMukkWEWw" name="size" visibility="package"/>
+          <ownedOperation xmi:id="_R7W8RpoVEeOKSuMukkWEWw" name="toArray" visibility="package"/>
+          <ownedOperation xmi:id="_R7W8R5oVEeOKSuMukkWEWw" name="add" visibility="package">
+            <ownedParameter xmi:id="_R7W8SJoVEeOKSuMukkWEWw" name="arg0" type="_R7W8FZoVEeOKSuMukkWEWw"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_R7W8SZoVEeOKSuMukkWEWw" name="RandomAccess" visibility="package"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_R7W8SpoVEeOKSuMukkWEWw" name="Map" visibility="package">
+          <ownedOperation xmi:id="_R7W8S5oVEeOKSuMukkWEWw" name="put" visibility="package">
+            <ownedParameter xmi:id="_R7W8TJoVEeOKSuMukkWEWw" name="arg0" type="_R7W8FZoVEeOKSuMukkWEWw"/>
+            <ownedParameter xmi:id="_R7W8TZoVEeOKSuMukkWEWw" name="arg1" type="_R7W8FZoVEeOKSuMukkWEWw"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_R7W8TpoVEeOKSuMukkWEWw" name="Iterator" visibility="package">
+          <ownedOperation xmi:id="_R7W8T5oVEeOKSuMukkWEWw" name="hasNext" visibility="package"/>
+          <ownedOperation xmi:id="_R7W8UJoVEeOKSuMukkWEWw" name="next" visibility="package"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_R7W8UZoVEeOKSuMukkWEWw" name="Deque" visibility="package">
+          <generalization xmi:id="_R7W8UpoVEeOKSuMukkWEWw" general="_R7W8U5oVEeOKSuMukkWEWw"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_R7W8U5oVEeOKSuMukkWEWw" name="Queue" visibility="package">
+          <generalization xmi:id="_R7W8VJoVEeOKSuMukkWEWw" general="_R7W8P5oVEeOKSuMukkWEWw"/>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_R7W8VZoVEeOKSuMukkWEWw" name="net">
+        <packagedElement xmi:type="uml:Class" xmi:id="_R7W8VpoVEeOKSuMukkWEWw" name="URLEncoder" visibility="package">
+          <ownedOperation xmi:id="_R7W8V5oVEeOKSuMukkWEWw" name="encode" visibility="package">
+            <ownedParameter xmi:id="_R7W8WJoVEeOKSuMukkWEWw" name="arg0" type="_R7W7-ZoVEeOKSuMukkWEWw"/>
+            <ownedParameter xmi:id="_R7W8WZoVEeOKSuMukkWEWw" name="arg1" type="_R7W7-ZoVEeOKSuMukkWEWw"/>
+          </ownedOperation>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_R7W8WpoVEeOKSuMukkWEWw" name="byte[]">
+      <ownedAttribute xmi:id="_R7W8W5oVEeOKSuMukkWEWw" name="type" type="_R7VGq5oVEeOKSuMukkWEWw"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Model" xmi:id="_R7W8XJoVEeOKSuMukkWEWw" name="sourcesReferences">
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_R7W8XZoVEeOKSuMukkWEWw" name="WdpConfModel2JSON.java" fileName="C:\Users\MALLON\workspace\org.inria.wordpress.WdpConfModel2JSON\src\org\inria\wordpress\WdpConfModel2JSON\WdpConfModel2JSON.java"/>
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_R7W8XpoVEeOKSuMukkWEWw" name="WdpConfModel2JSONTools.java" fileName="C:\Users\MALLON\workspace\org.inria.wordpress.WdpConfModel2JSON\src\org\inria\wordpress\WdpConfModel2JSON\tools\WdpConfModel2JSONTools.java"/>
+  </packagedElement>
+</uml:Model>

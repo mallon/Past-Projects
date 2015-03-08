@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.modisco.infra.discovery.core.discoverer">
+      <discoverer
+            class="fr.inria.teap.dcnsacfgeneration.main.Xl2Togaf"
+            id="fr.inria.teap.dcnsACFGeneration">
+      </discoverer>
+   </extension>
+   <extension
+         point="org.eclipse.modisco.infra.discovery.ui.discoverer">
+      <discoverer
+            discovererID="fr.inria.teap.dcnsACFGeneration"
+            label="EXCELToTOGAF">
+      </discoverer>
+   </extension>
+
+</plugin>

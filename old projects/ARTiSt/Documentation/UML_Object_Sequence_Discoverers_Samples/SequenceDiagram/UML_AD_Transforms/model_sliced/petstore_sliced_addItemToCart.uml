@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_nl9VECEiEeSA_O4NKu2BgA">
+  <packagedElement xmi:type="uml:Class" xmi:id="_nl9VESEiEeSA_O4NKu2BgA" name="Customer"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_nl9VEiEiEeSA_O4NKu2BgA" name="Item"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_nl9VEyEiEeSA_O4NKu2BgA" name="CartItem">
+    <ownedAttribute xmi:id="_nl9VFCEiEeSA_O4NKu2BgA" name="quantity"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_nl9VFSEiEeSA_O4NKu2BgA" name="OrderService">
+    <ownedAttribute xmi:id="_nl9VFiEiEeSA_O4NKu2BgA" name="entityManager"/>
+    <ownedOperation xmi:id="_nl9VFyEiEeSA_O4NKu2BgA" name="addItemToCart"/>
+  </packagedElement>
+</uml:Model>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="freeplane 1.2.0">
+<!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
+	<node TEXT="Website" COLOR="#000000" STYLE="as_parent" ...>
+		<edge STYLE="bezier" COLOR="#808080" WIDTH="thin"/>
+		<edge STYLE="bezier" COLOR="#808080" WIDTH="thin"/>
+		<font NAME="SansSerif" SIZE="18" BOLD="false" ITALIC="false"/>
+		...
+		<hook NAME="AutomaticEdgeColor" COUNTER="5"/>
+		<attribute_layout NAME_WIDTH="86" VALUE_WIDTH="174"/>
+		<attribute NAME="title" VALUE="titleEndUser"/>
+		<attribute NAME="tagLine" VALUE="tagLineEndUser"/>
+		<attribute NAME="address" VALUE="http://localhost/wordpress/"/>
+		<attribute NAME="adminPassword" VALUE="Luf59Ger;"/>
+		<attribute NAME="adminLogin" VALUE="admin"/>
+		<node TEXT="Page" COLOR="#000000" STYLE="as_parent" ...>
+			<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+			<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+			<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+			<attribute_layout NAME_WIDTH="47" VALUE_WIDTH="106"/>
+			<attribute NAME="title" VALUE="pageTitleOne"/>
+			<attribute NAME="content" VALUE="I am the page one"/>
+			<attribute NAME="order" VALUE="1"/>
+			<node TEXT="Visibility" COLOR="#000000" STYLE="as_parent" ...>
+				<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+				<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+				<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+				<attribute_layout NAME_WIDTH="109" VALUE_WIDTH="109"/>
+				<node TEXT="publish" COLOR="#000000" STYLE="as_parent" ...>
+					<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+					<edge STYLE="bezier" COLOR="#ff00ff" WIDTH="thin"/>
+					<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+				</node>
+			</node>
+		</node>
+	</node>
+</map>

@@ -1,0 +1,328 @@
+-- @path WDPC=/SVG2WdpConfTransfo_TEMP/metamodels/WDPC.ecore
+-- @path XML=/SVG2WdpConfTransfo_TEMP/metamodels/XML.ecore
+
+-- ******************************************************************************
+-- Copyright (c) 2013 INRIA.
+-- All rights reserved. This program and the accompanying materials
+-- are made available under the terms of the Eclipse Public License v1.0
+-- which accompanies this distribution, and is available at
+-- http://www.eclipse.org/legal/epl-v10.html
+-- 
+-- Contributors:
+--         INRIA - Initial implementation
+-- 
+-- ******************************************************************************
+
+--@name WSXML2WDPC
+--@author Matthieu Allon (matthieu.allon <at> gmail.com)
+--@description WSXML (Website elements representation) to WDPC (WordPress configuration) helpers library
+
+library WSXML2WDPCHelpers;
+
+--*****Search in the corr. sequence of pages / posts*****
+
+helper context XML!Element def : findCorrespondingPostPage(postPage : String) : XML!Element =
+	self.getWebsiteFromNodeElement.getParentNodeChild(postPage, false)
+		-> select(postPageElement | postPageElement.getAttributeVALUEForNodeElement('title') = self.getAttributeVALUEForNodeElement('title'))
+;
+
+helper context XML!Element def : findCorrespondingPage : XML!Element =
+	self.findCorrespondingPostPage('Page')
+;
+
+helper context XML!Element def : findCorrespondingPost : XML!Element =
+	self.findCorrespondingPostPage('Post')
+;
+
+helper context XML!Element def : findCorrespondingTaxonomy(taxonomy : String) : Sequence(XML!Element) =
+	let allTags : Sequence(XML!Element) = self.getWebsiteFromNodeElement.getParentNodeChild(taxonomy, false)
+	in
+		allTags
+			-> select(webElement | 	self.getParentNodeChild(taxonomy, false)
+									-> select(element |  element.getAttributeVALUEForNodeElement('name') 
+															= webElement.getAttributeVALUEForNodeElement('name')
+									)
+									-> notEmpty()
+			)		
+;
+
+helper context XML!Element def : findCorrespondingTags : Sequence(XML!Element) =
+	self.findCorrespondingTaxonomy('Tag')		
+;
+
+helper context XML!Element def : findCorrespondingCategories : Sequence(XML!Element) =
+	self.findCorrespondingTaxonomy('Category')						
+;
+
+--*****Website element*****
+helper context XML!Element def : getWebsiteFromNodeElement : XML!Element =
+	if (self.isNodeElement)then
+		self.parent.getWebsiteFromNodeElement
+	else 
+		if (self.oclIsTypeOf(XML!Root))then
+			self.children -> select(child | child.oclIsTypeOf(XML!Element))
+						  -> first()
+		else OclUndefined endif
+	endif
+;
+
+--*****Menu element*****
+helper context XML!Element def : getWebsiteMenus : Sequence(XML!Element) =
+	self.getWebsiteFromNodeElement
+		.getParentNodeChild('Appearance', false)
+		->first()
+		.getParentNodeChild('Menu', false)
+;
+
+helper context XML!Element def : getMenuWithXName(name : String) : XML!Element =
+--	let menus : Sequence(XML!Element) = self.getWebsiteMenus
+--	in menus
+--		-> select(menu | menu.getAttributeVALUEForNodeElement('name') = name)
+--		-> first()
+	self.getElementWithXAttribute(self.getWebsiteMenus,'name', name)
+;
+
+--*****Pages elements*****
+helper context XML!Element def : getWebsitePages : Sequence(XML!Element) =
+	self.getWebsiteFromNodeElement
+		.getParentNodeChild('Page', false)
+;
+
+helper context XML!Element def : getPageWithXTitle(title : String) : XML!Element =
+--	let pages : Sequence(XML!Element) = self.getWebsitePages
+--	in pages
+--		-> select(page | page.getAttributeVALUEForNodeElement('title') = title)
+--		-> first()
+	self.getElementWithXAttribute(self.getWebsitePages, 'title', title)
+;
+
+helper context XML!Element def : getReferencedPage(nodeContainerName : String) : XML!Element =
+	let nodeChild : XML!Element = self.getParentNodeChild(nodeContainerName, false)
+							   		  ->first()
+	in 								  
+		if (not nodeChild.oclIsUndefined())then							   
+			self.getWebsiteFromNodeElement
+		  	 	.getElementWithXAttribute(self.getWebsitePages, 'title', nodeChild.getAttributeVALUEForNodeElement('title'))
+		else OclUndefined endif		
+;	
+
+helper context XML!Element def : getReferencedMenu(nodeContainerName : String) : XML!Element =
+	let nodeChild : XML!Element = self.getParentNodeChild(nodeContainerName, false)
+							   		  ->first()
+	in 								  
+		if (not nodeChild.oclIsUndefined())then							   
+			self.getWebsiteFromNodeElement
+		  	 	.getElementWithXAttribute(self.getWebsiteMenus, 'name', nodeChild.getAttributeVALUEForNodeElement('name'))
+		else OclUndefined endif		
+;
+
+helper context XML!Element def : getPageReferencedInWidgetPages : Sequence(XML!Element) =
+	if (not self.getParentNodeChild('Appearance', false)-> first().oclIsUndefined()) then
+		self.getParentNodeChild('Appearance', false)-> first()
+				  .getParentNodeChild('Widget', false)
+				  -> collect(widget | if (not self
+				  								.getWebsiteFromNodeElement
+			 									.getPageWithXTitle(																			 					 										
+			 								   		widget.getParentNodeChild('WidgetPage', false)
+													->first()
+												)	
+												.oclIsUndefined()
+														
+										)then
+											self.getWebsiteFromNodeElement
+	 					 									.getPageWithXTitle(																			 					 										
+	 					 								   		widget.getParentNodeChild('WidgetPage', false)
+																->first()
+															)	
+										else
+											OclUndefined
+										endif
+				  )	
+	else OclUndefined endif			  
+;
+
+helper context XML!Element def : getPageReferencedInPageParent : Sequence(XML!Element) =
+	self.getParentNodeChild('Appearance', false)
+				  -> first()
+				  .getParentNodeChild('Page', false)
+				  -> collect(page | if (not self
+				  								.getWebsiteFromNodeElement
+			 									.getPageWithXTitle(																			 					 										
+			 								   		page.getParentNodeChild('PageParent', false)
+													->first()
+												)	
+												.oclIsUndefined()
+														
+										)then
+											self.getWebsiteFromNodeElement
+	 					 									.getPageWithXTitle(																			 					 										
+	 					 								   		page.getParentNodeChild('PageParent', false)
+																->first()
+															)	
+										else
+											OclUndefined
+										endif
+				  )	
+;
+
+helper def : getPage(title : String) : WDPC!Page =
+	WDPC!Page.allInstancesFrom('OUT')	
+			 -> select(page | page.title = title.debug('Page content : ' + page.content + ' -- Param.title : ' + title))
+			 -> first()
+			 .debug('Size of all pages collection : ' + WDPC!Page.allInstancesFrom('OUT').size())
+;	
+
+--*****Test of elements types*****
+helper context XML!Element def : isNodeElement : Boolean =
+        self.name='node'
+;
+
+helper context XML!Element def : isAttributeElement : Boolean =
+        self.name='attribute'
+;
+
+--*****Elements*****
+helper context XML!Element def : getElementWithXAttribute(researchScope : Sequence(XML!Element), attributeName : String, attributeValue : String) : XML!Element =
+	let menus : Sequence(XML!Element) = researchScope
+	in menus
+		-> select(menu | menu.getAttributeVALUEForNodeElement(attributeName) = attributeValue)
+		-> first()
+;
+
+helper context XML!Element def : getChild(childName : String, childValue : String) : XML!Attribute =
+        self.children
+						-> select (child | child.name = childName and child.value = childValue)
+						-> first()
+;
+
+helper context XML!Element def : getChildValue(childName : String) : String =
+        let childElem : XML!Attribute = self.children
+												-> select (child | child.name = childName)
+												-> first()
+		in 
+			if (not childElem.oclIsUndefined())then
+				childElem.value
+			else OclUndefined endif 	
+;
+
+--*****Nodes elements*****
+helper context XML!Element def : getNodeExcludingRef(nodeName : String) : XML!Element =
+	self.isNodeElement and 
+	not self.getNode(nodeName).oclIsUndefined()
+	and (self.parent = self.getWebsiteFromNodeElement)
+;
+
+helper context XML!Element def : getAttribAndNodeChildrenOfNode : Sequence(XML!Element) =
+        self.children -> select (child | 	if (child.oclIsTypeOf(XML!Element)) then 
+        										(child.isAttributeElement or child.isNodeElement) 
+											else false endif
+						)
+;
+
+helper context XML!Element def : getNode(nodeName : String) : XML!Element =
+        self.getChild('TEXT', nodeName)
+;
+
+helper context XML!Element def : getNameAndValueOfChildAttributeNode(childAttributeName : String) : XML!Attribute =
+        self.getChild('NAME', childAttributeName)
+;
+
+helper context XML!Element def : getValueOfChildAttributeNode : String =
+	 self.getChildValue('VALUE')
+;
+
+helper context XML!Element def : getAttributeVALUE(attributeNAME : String) : XML!Attribute =
+        self.getChild('NAME', attributeNAME)
+			.parent.children
+					-> select(child | child.name = 'VALUE')
+					-> first().value
+;
+
+helper context XML!Element def : getBooleanValue(nodeName : String) : Boolean =
+	not self.getParentNodeChild(nodeName, false) ->first()
+			.getParentNodeChild('Value', false) ->first()
+			.getParentNodeChild('yes', false) ->first().oclIsUndefined()
+;
+
+helper context XML!Element def : getLiteralValueOnFirstChildNode(seqLiterals : Sequence(String)) : String =
+	let selectdLiter : String = 
+								seqLiterals -> select(literal | not self.getParentNodeChild(literal, false)->first()
+																		.oclIsUndefined()
+											)
+											-> first()
+	in thisModule.literalValueSpecificCase(
+			if (not self.getParentNodeChild(selectdLiter, false)
+					-> first().oclIsUndefined())then
+				self.getParentNodeChild(selectdLiter, false)
+					-> first() .getChild('TEXT', selectdLiter).value
+			else OclUndefined endif				  
+	)
+;
+
+helper context XML!Element def : getValueOnFirstChildNode : String =
+	self.children 
+			   -> select(child | child.oclIsTypeOf(XML!Element))
+			   -> select(child | child.isNodeElement)
+			   ->first().getChildValue('TEXT')
+;
+
+helper def : literalValueSpecificCase(literal : String) : String =
+	if (literal = 'tag')then
+		'post_tag'
+	else
+		literal
+	endif	
+;
+
+helper context XML!Element def : getLiteralValue(nodeName : String, seqLiterals : Sequence(String)) : String =
+	let selectdLiter : String = 
+								seqLiterals -> select(literal | not self.getParentNodeChild(nodeName, false) ->first()
+																	    .getParentNodeChild(literal, false) ->first()
+																		.oclIsUndefined()
+											)
+											-> first()
+	in thisModule.literalValueSpecificCase(
+			self.getParentNodeChild(nodeName, false) ->first()
+			    .getParentNodeChild(selectdLiter, false) ->first()										
+			    .getChild('TEXT', selectdLiter).value
+	)	   
+;
+
+helper context XML!Element def : getAttributeVALUEForNodeElement(attributeValue : String) : String =
+		self.getAttribAndNodeChildrenOfNode 
+			-> select(child | not child.getChild('NAME', attributeValue).oclIsUndefined())
+			-> first()
+			.getAttributeVALUE(attributeValue)
+;
+
+helper context XML!Element def : getParentNodeChild(childName : String, isAttribute : Boolean) : Sequence(XML!Element) =
+        self.children
+				-> select(child | 	if (child.oclIsTypeOf(XML!Element)) then
+										(
+											if (isAttribute) then
+												child.isAttributeElement 
+												and 
+	               								not child.getNameAndValueOfChildAttributeNode(childName)
+												 .oclIsUndefined()
+											else
+												child.isNodeElement
+												and 
+	               								not child.getNode(childName).oclIsUndefined()
+											endif
+										)											
+									else
+										false
+									endif	
+				)
+;
+
+--*****Attributes elements*****
+helper context XML!Attribute def : getSiblingElement(siblingName : String) : XML!Attribute =
+        self.parent.refImmediateComposite().getNameAndValueOfChildAttributeNode(siblingName)
+;
+
+helper context XML!Attribute def : getSiblingElementValue(siblingName : String) : String =
+       self.parent.refImmediateComposite().getParentNodeChild(siblingName, true)
+	   									  -> first()
+	   									  .getValueOfChildAttributeNode
+;

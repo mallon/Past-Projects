@@ -1,0 +1,917 @@
+-- @nsURI ACF=http://www.obeonetwork.org/dsl/togaf/contentfwk/9.0.0
+-- @nsURI IMPORT=http://www.obeo.fr/smartea/import/1.0
+-- @nsURI SVG=SVG
+
+-- ******************************************************************************
+-- Copyright (c) 2013 INRIA. 
+-- All rights reserved. This program and the accompanying materials 
+-- are made available under the terms of the Eclipse Public License v1.0 
+-- which accompanies this distribution, and is available at
+-- http://www.eclipse.org/legal/epl-v10.html
+-- 
+-- Contributors: 
+-- 	INRIA - Initial implementation
+--  
+-- ******************************************************************************
+
+--@name ACFImport2SVGHelpers
+--@author Matthieu Allon (matthieu.allon <at> gmail.com)
+--@description ACF-IMPORT (Import for SmartEA) to SVG
+
+module ACFImport2SVG;
+
+create OUT: SVG from IN: ACF, INIMPORT : IMPORT;
+
+uses ACFImport2SVGHelpers;
+
+---------------------------------
+--Rules factorization
+---------------------------------
+---Creation of a text element
+---@sourcePattern Sequence(String) : contains the text element parameters
+---@targetPattern SVG!Text
+---@targetPattern SVG!AbsoluteCoord
+unique lazy rule createTextElement {
+	from
+		seqTextContent : Sequence(String)
+	to	
+		text : SVG!Text (
+			position <- textCoord,
+			stroke <- seqTextContent.at(3), --Contour color of the letters
+			fontSize <- seqTextContent.at(4),
+			lengthAdjust <- seqTextContent.at(5), --Space between letters
+			content <- seqTextContent.at(6),
+			textLength <- seqTextContent.at(7), --Length of the text
+			fill <- seqTextContent.at(8), --Fill color of the letters
+			strokeWidth <- '0.4' --Width of letters
+		),
+		textCoord:SVG!AbsoluteCoord (
+			x <-	if (seqTextContent.at(1) = '') then
+						0
+					else
+						seqTextContent.at(1).toReal()
+					endif,
+			y <- 	if (seqTextContent.at(2) = '') then
+						0
+					else
+						seqTextContent.at(2).toReal()
+					endif
+		)
+	do {
+		--Use to increment y position when there is an iteration on several
+
+		--components resulting of an helper (like 'functionnal domains' in
+		--									  process group title line)
+		 thisModule.yPosition <- if (seqTextContent.at(9) = 0) then 0 else thisModule.yPosition + seqTextContent.at(9) endif
+		 .debug('SeqTextContent.at(9) : ' + seqTextContent.at(9))
+		 ;
+		 text.position.y <- text.position.y + thisModule.yPosition;
+		 thisModule.lastSVGTextElement <- text;
+	   }
+}
+
+
+---Creation of a span element (Multiple-lines for a text element)
+---+sourcePattern Sequence(String) : contains the x, y, and text of the line
+---@targetPattern SVG!Tspan
+---@targetPattern SVG!AbsoluteCoord
+unique lazy rule createTSpanElement {
+	from
+		seqTspanContent : Sequence(String)
+	to
+		companyLogo : SVG!Tspan (
+			position <- tSpanCoord,
+			content <- seqTspanContent.at(1)
+		),
+		tSpanCoord:SVG!AbsoluteCoord (
+			x <- seqTspanContent.at(2),
+			y <- seqTspanContent.at(3)
+		)
+}
+
+---Creation of a rectangle
+---@sourcePattern Sequence(String) : contains the rectangle parameters
+---@targetPattern SVG!Rect
+---@targetPattern SVG!Dimension
+---@targetPattern SVG!AbsoluteCoord
+unique lazy rule createRectElement {
+	from
+		seqRectContent : Sequence(String)
+	to
+		rect : SVG!Rect (
+			size <- rectSize,
+			position <- rectCoord,
+			fill <- seqRectContent.at(5), --Fill color of the rectangle
+			stroke <- seqRectContent.at(6) --Contour color
+		),
+		rectSize:SVG!Dimension (
+			width <-	if (seqRectContent.at(1) = '') then
+							0
+						else
+							seqRectContent.at(1).toReal()
+						endif,
+			height <-	if (seqRectContent.at(2) = '') then
+							0
+						else
+							seqRectContent.at(2).toReal()
+						endif
+		),
+		rectCoord:SVG!AbsoluteCoord (
+			x <-	if (seqRectContent.at(3) = '') then
+						0
+					else
+						seqRectContent.at(3).toReal()
+					endif,
+			y <- 	if (seqRectContent.at(4) = '') then
+						0
+					else
+						seqRectContent.at(4).toReal()
+					endif
+		)
+}
+
+---Creation of a line
+---@sourcePattern Sequence(String) : contains the line parameters
+---@targetPattern SVG!Line
+---@targetPattern SVG!Point
+---@targetPattern SVG!AbsoluteCoord
+---@targetPattern SVG!Point
+---@targetPattern SVG!AbsoluteCoord
+unique lazy rule createLineElement {
+	from
+		seqLineContent : Sequence(String)
+	to
+		processLegendLine : SVG!Line (
+		   stroke <- seqLineContent.at(5),
+		   between <- Sequence{APoint, BPoint}
+		),	
+		
+		APoint : SVG!Point (
+			position <- APointCoordinates
+		),
+		APointCoordinates : SVG!AbsoluteCoord (
+		  		x <- seqLineContent.at(1).toReal(),
+				y <- seqLineContent.at(2).toReal()
+		),
+		
+		BPoint : SVG!Point (
+			position <- BPointCoordinates
+		),
+		BPointCoordinates : SVG!AbsoluteCoord (
+		  		x <- seqLineContent.at(3).toReal(),
+				y <- seqLineContent.at(4).toReal()
+		)
+}		
+
+---Creation of a scale (Composed of three rectangle elements)
+---+sourcePattern Sequence(String) : contains the rectangle (Those composing the scale) parameters
+---@targetPattern SVG!G
+unique lazy rule createScaleElement {
+	from
+		seqRectContent : Sequence(String)
+	to	
+		scale : SVG!G (
+			groupContent <- Sequence{
+										thisModule.createRectElement(Sequence{	--widht and height
+																				'2', '10', 
+																				-- x and y
+																				seqRectContent.at(1), 
+																				(seqRectContent.at(2).toReal()-9).toString(), 
+																				--color
+																				thisModule.createColor(seqRectContent.at(3), seqRectContent.at(4), 0), 
+																				thisModule.createColor(seqRectContent.at(3), seqRectContent.at(4), 0)
+																	}
+										),
+																				
+										thisModule.createRectElement(Sequence{	--widht and height
+																				'2', '15', 
+																				-- x and y
+																				(seqRectContent.at(1).toReal()+5).toString(), 
+																				(seqRectContent.at(2).toReal()-14).toString(), 
+																				--color
+																				thisModule.createColor(seqRectContent.at(3), seqRectContent.at(4), 1),
+																				thisModule.createColor(seqRectContent.at(3), seqRectContent.at(4), 1)
+																	}
+										),
+																				
+										thisModule.createRectElement(Sequence{	--widht and height
+																				'2', '20', 
+																				-- x and y
+																				(seqRectContent.at(1).toReal()+10).toString(), 
+																				(seqRectContent.at(2).toReal()-19).toString(), 
+																				--color
+																				thisModule.createColor(seqRectContent.at(3), seqRectContent.at(4), 2),
+																				thisModule.createColor(seqRectContent.at(3), seqRectContent.at(4), 2)
+																		}
+										)
+									}	
+		)
+}
+
+---Creation of an image
+---+sourcePattern Sequence(String) : contains the image parameters
+---@targetPattern SVG!Image
+---@targetPattern SVG!SvgFile
+---@targetPattern SVG!AbsoluteCoord
+---@targetPattern SVG!Dimension
+unique lazy rule createImageElement {
+	from
+		seqImageContent : Sequence(String)
+	to
+		companyLogo : SVG!Image (
+						referee <- Sequence{refLogo},
+						position <- logoCoord,
+						size <- logoSize
+		),
+			refLogo : SVG!SvgFile (
+				name <- seqImageContent.at(1)
+			),
+			logoCoord:SVG!AbsoluteCoord (
+				x <- seqImageContent.at(2).toReal(),
+				y <- seqImageContent.at(3).toReal()
+			),
+			logoSize:SVG!Dimension (
+				width <- seqImageContent.at(4).toReal(),
+				height <- seqImageContent.at(5).toReal()
+			)
+}
+
+---------------------------------
+--SVG file creation
+---------------------------------
+---Creation of the SVG file header
+---@targetPattern SVG!SvgFile
+---@targetPattern SVG!Svg
+---@targetPattern SVG!Dimension
+entrypoint rule SvgFile() {
+	to
+		svgFile:SVG!SvgFile (
+			tag <- svg
+		),
+		svg:SVG!Svg (
+			size <- svgSize,
+			namespace <- Sequence{'http://www.w3.org/2000/svg', 'http://www.w3.org/1999/xlink'},
+			version <- '1.1',
+			children <- Sequence{}
+		),
+		svgSize:SVG!Dimension (
+			--defaultValues
+			width <- 	1052,
+			height <- 400
+		)	
+	do {					
+		thisModule.svgFile <- svgFile;
+	}
+}
+
+---------------------------------
+---Creation of the table of all
+---process and corresponding app.
+---sys.-function.domains
+---------------------------------
+---@sourcePattern ACF!Process
+---@targetPattern SVG!G
+---@targetPattern SVG!G
+rule createProcessSVG {
+	from
+		process : ACF!Process
+	to
+		processLabelContainer : SVG!G (
+			groupContent <- Sequence {
+										thisModule.createRectElement(Sequence{'1025', '135', '10', 
+																				thisModule.manageYWithoutGap(221, 
+																					thisModule.mapY.get('processGroupY')).toString(),
+																				'#e5e5e5', '#000000'
+																	}
+										),
+										processLabel
+									}
+			),
+			processLabel : SVG!G (
+				groupContent <- Sequence{
+											thisModule.createRectElement(Sequence{'98', '25', '10', 
+																					thisModule.manageYWithoutGap(221, 
+																						thisModule.mapY.get('processLabelY')).toString(),
+																					'#0000bf', '#0000bf'
+																		}
+											), 											
+											thisModule.createTextElement(Sequence{'50', 
+																					thisModule.manageYWithoutGap(238, 
+																						thisModule.mapY.get('processNameY')).toString(), 
+																					'#ffffff', '13', 'middle', process.name, '1', '#ffffff', 0
+																		}
+											),	
+											process.getFunctionnalDomains
+												-> collect(functionDomain | thisModule.createFunctionnalDomainSVG(process, functionDomain)												
+											)	
+										}
+		)
+	do{
+		--Reinitialization (default values) of the different elements constituting a process section
+		--Only ordinates (Always on the same 'y' for a process)
+		thisModule.mapY <- thisModule.mapY -> union(Map{
+															('processGroupY', thisModule.manageYWithoutGap(221, thisModule.mapY.get('processGroupY'))),
+															('processLabelY', thisModule.manageYWithoutGap(221, thisModule.mapY.get('processLabelY'))),
+															('processNameY', thisModule.manageYWithoutGap(238, thisModule.mapY.get('processNameY'))),
+															('FunctionDomainGroupY', thisModule.manageYWithoutGap(399, thisModule.mapY.get('FunctionDomainGroupY'))),
+															('FunctionDomainNameY', thisModule.manageYWithoutGap(481, thisModule.mapY.get('FunctionDomainNameY'))),
+															('AppSysGroupY', thisModule.manageYWithoutGap(401, thisModule.mapY.get('AppSysGroupY'))),
+															('AppSysNameY', thisModule.manageYWithoutGap(413, thisModule.mapY.get('AppSysNameY'))),
+															('CSMPoleNameY', thisModule.manageYWithoutGap(423, thisModule.mapY.get('CSMPoleNameY'))),
+															('UserNameY', thisModule.manageYWithoutGap(461, thisModule.mapY.get('UserNameY'))),
+															('ScaleY', thisModule.manageYWithoutGap(461, thisModule.mapY.get('ScaleY'))),
+															('nextApplicationY', thisModule.manageYWithoutGap(401, thisModule.mapY.get('nextApplicationY')))
+														}
+													);
+		
+		--Reinitialization (OclUndefined) of the asbcissas of the functionnal domain elements
+		--Their size change with the number of applications ('Applicative system') contained
+		thisModule.mapX <- thisModule.mapX -> union(Map{('FunctionDomainGroupX', OclUndefined), ('FunctionDomainNameX', OclUndefined),
+														('AppSysGroupX', OclUndefined), ('AppSysNameX', OclUndefined),
+														('CSMPoleNameX', OclUndefined), ('UserNameX', OclUndefined),
+														('ScaleX', OclUndefined), ('nextApplicationX', OclUndefined)
+													}
+											);	
+				
+		--Reinit. of the number of applications for a processus ('Process')
+		thisModule.nbAppSysDisplayedProcess <- 0;	
+		
+		thisModule.svgFile.tag.children <- thisModule.svgFile.tag.children -> append(processLabelContainer);
+		thisModule.nbProcesses <- thisModule.nbProcesses + 1;
+		thisModule.svgFile.tag.size.height <- 200 *( 	if (thisModule.nbProcesses = 1) then
+															2
+														else
+															thisModule.nbProcesses
+														endif
+													);
+	}	
+}
+
+---Creation of the title band contaning the description / legend of the elements composing the svg document
+---@sourcePattern ACF!EnterpriseArchitecture
+---@targetPattern SVG!G
+---@targetPattern SVG!G
+---@targetPattern SVG!G
+---@targetPattern SVG!G
+---@targetPattern SVG!G
+---@targetPattern SVG!G
+---@targetPattern SVG!G
+---@targetPattern SVG!G
+---@targetPattern SVG!G
+---@targetPattern SVG!G
+---@targetPattern SVG!G
+---@targetPattern SVG!G
+---@targetPattern SVG!G
+---@targetPattern SVG!G
+rule createHood {
+	from
+		enterpriseArchitecture : ACF!EnterpriseArchitecture
+	to
+		hood : SVG!G (
+			groupContent <- Sequence{
+										logoPresentation, 
+										processLegend,
+										appSysImportantScaleLegend,
+										appSysStateScaleLegend,
+										appSysUsersLegend,
+										processAppSysLabel
+							}
+		),
+			---------------------------------
+			--logoPresentation
+			---------------------------------
+			logoPresentation : SVG!G (
+				groupContent <- Sequence{												
+											thisModule.createTextElement(Sequence{'10', '100', '#333333', '19', 'left', 'Cartographie', '1', '#333333', 0}),
+											thisModule.createTextElement(Sequence{'10', '130', '#333333', '19', 'left', 'des applications majeures', '1', '#333333', 0}),
+											thisModule.createTextElement(Sequence{'10', '160', '#7f7f7f', '14', 'left', 'As is a la fin YEAR (mis a jour month YEAR)', --Modified via java subproject
+																					'1', '#7f7f7f', 0
+																		}
+											),
+											thisModule.createImageElement(Sequence{'../resources/DCNSLogo.png', '6', '8', '242', '58'})
+								}
+			),		
+			---------------------------------
+			--processLegend
+			---------------------------------	
+			processLegend : SVG!G (
+				groupContent <- Sequence{
+											
+											thisModule.createTextElement(Sequence{'320', '35', '#000000', '13', 'left', 'Processus(1)', '1', '#000000', 0}),	
+											thisModule.createLineElement(Sequence{'310', '25', '310', '200', '#000000'}),																		
+											supportProcessLabel,		
+											operationnalProcessLabel,
+											thisModule.createTextElement(Sequence{'320', '175', '#000000', '10', 'left', '1 : ', '1', '#000000', 0}),
+											thisModule.createTextElement(Sequence{'335', '175', '#7f7f7f', '10', 'left', 'Les processus', '1', '#7f7f7f', 0}),
+											thisModule.createTextElement(Sequence{'320', '185', '#7f7f7f', '10', 'left', 'concernés par', '1', '#7f7f7f', 0}),
+											thisModule.createTextElement(Sequence{'320', '195', '#7f7f7f', '10', 'left', 'l\'application', '1', '#7f7f7f', 0})
+								}
+			),		
+				supportProcessLabel : SVG!G (
+					groupContent <- Sequence{
+												thisModule.createRectElement(Sequence{'15', '25', '320', '45', '#0000bf', '#0000bf'}),
+												thisModule.createTextElement(Sequence{'340', '60', '#7f7f7f', '10', 'left', 'Processus', '1', '#7f7f7f', 0}),
+												thisModule.createTextElement(Sequence{'340', '70', '#7f7f7f', '10', 'left', 'Supports', '1', '#7f7f7f', 0})
+									}
+				),	
+				operationnalProcessLabel : SVG!G (
+					groupContent <- Sequence{												
+												thisModule.createRectElement(Sequence{'15', '25', '320', '80', '#7f7f7f', '#7f7f7f'}),
+												thisModule.createTextElement(Sequence{'340', '95', '#7f7f7f', '10', 'left', 'Processus', '1', '#7f7f7f', 0}),
+												thisModule.createTextElement(Sequence{'340', '105', '#7f7f7f', '10', 'left', 'Opérationnels', '1', '#7f7f7f', 0})
+									}
+				),
+				
+			---------------------------------
+			--appSysImportantScaleLegend
+			---------------------------------		
+			appSysImportantScaleLegend : SVG!G (
+				groupContent <- Sequence{
+											thisModule.createTextElement(Sequence{'425', '35', '#000000', '13', 'left', 'Importance(2)', '1', '#000000', 0}),	
+											thisModule.createLineElement(Sequence{'415', '25', '415', '210', '#000000'}),																				
+											appSysImportScaleLegendHightLabel,
+											appSysImportScaleLegendAverageLabel,
+											appSysImportScaleLegendLowLabel,
+											thisModule.createTextElement(Sequence{'425', '175', '#000000', '10', 'left', '2 : ', '1', '#000000', 0}),
+											thisModule.createTextElement(Sequence{'440', '175', '#7f7f7f', '10', 'left', ' L\'importance de', '1', '#7f7f7f', 0}),
+											thisModule.createTextElement(Sequence{'425', '185', '#7f7f7f', '10', 'left', 'l\'application vis-a-vis', '1', '#7f7f7f'
+																					, 0
+																		}),
+											thisModule.createTextElement(Sequence{'425', '195', '#7f7f7f', '10', 'left', 'de la stratégie de', '1', '#7f7f7f', 0}),
+											thisModule.createTextElement(Sequence{'425', '205', '#7f7f7f', '10', 'left', 'l\'entreprise', '1', '#7f7f7f', 0})
+								}
+			),
+				appSysImportScaleLegendHightLabel : SVG!G (
+					groupContent <- Sequence{
+												thisModule.createScaleElement(Sequence{'430', '70', 5, 2}),
+												thisModule.createTextElement(Sequence{'455', '70', '#7f7f7f', '10', 'left', 'Haute', '1', '#7f7f7f', 0}),
+												thisModule.createImageElement(Sequence{'../resources/plus.png', '515', '63', '7', '7'})--Modified via java subproject
+									}
+				),
+				appSysImportScaleLegendAverageLabel : SVG!G (
+					groupContent <- Sequence{
+												thisModule.createScaleElement(Sequence{'430', '105', 5, 1}),
+												thisModule.createTextElement(Sequence{'455', '105', '#7f7f7f', '10', 'left', 'Moyenne', '1', '#7f7f7f', 0}),
+												thisModule.createImageElement(Sequence{'../resources/plus.png', '515', '98', '7', '7'})--Modified via java subproject
+									}
+				),
+				appSysImportScaleLegendLowLabel : SVG!G (
+					groupContent <- Sequence{
+												thisModule.createScaleElement(Sequence{'430', '140', 5, 0}),
+												thisModule.createTextElement(Sequence{'455', '140', '#7f7f7f', '10', 'left', 'Basse', '1', '#7f7f7f', 0}),
+												thisModule.createImageElement(Sequence{'../resources/plus.png', '515', '133', '7', '7'})--Modified via java subproject
+									}
+				),
+				
+			---------------------------------
+			--appSysStateScaleLegend
+			---------------------------------		
+			appSysStateScaleLegend : SVG!G (
+				groupContent <- Sequence{
+											thisModule.createTextElement(Sequence{'545', '35', '#000000', '13', 'left', 'Etat(3)', '1', '#000000', 0}),
+											appSysStateScaleLegendUpdateLabel,
+											appSysStateScaleLegendToChangeLabel,
+											appSysStateScaleLegendObsoleteLabel,
+											thisModule.createTextElement(Sequence{'545', '175', '#000000', '10', 'left', '3 : ', '1', '#000000', 0}),
+											thisModule.createTextElement(Sequence{'560', '175', '#7f7f7f', '10', 'left', 'L\'état de \'fraicheur\'',
+																					'1', '#7f7f7f', 0
+																		}),
+											thisModule.createTextElement(Sequence{'545', '185', '#7f7f7f', '10', 'left', 'de l\'application (dans', '1', '#7f7f7f', 0}),					
+											thisModule.createTextElement(Sequence{'545', '195', '#7f7f7f', '10', 'left', 'sa technique ou vis-a-vis', '1', '#7f7f7f', 0}),
+											thisModule.createTextElement(Sequence{'545', '205', '#7f7f7f', '10', 'left', 'du service rendu)', '1', '#7f7f7f', 0})
+								}
+			),				
+				appSysStateScaleLegendUpdateLabel : SVG!G (
+					groupContent <- Sequence{
+												thisModule.createRectElement(Sequence{'15', '12', '545', '58', '#007f00', '#007f00'}),
+												thisModule.createTextElement(Sequence{'565', '70', '#7f7f7f', '10', 'left', 'A jour', '1', '#7f7f7f', 0}),
+												thisModule.createImageElement(Sequence{'../resources/equal.png', '615', '65', '7', '5'}),
+												thisModule.createScaleElement(Sequence{'635', '70', 2, 2})
+									}
+				),
+				appSysStateScaleLegendToChangeLabel : SVG!G (
+					groupContent <- Sequence{
+												thisModule.createRectElement(Sequence{'15', '12', '545', '93', '#ffff00', '#ffff00'}),
+												thisModule.createTextElement(Sequence{'565', '95', '#7f7f7f', '10', 'left', 'A changer', '1', '#7f7f7f', 0}),
+												thisModule.createTextElement(Sequence{'565', '105', '#7f7f7f', '10', 'left', 'dans les', '1', '#7f7f7f', 0}),
+												thisModule.createTextElement(Sequence{'565', '115', '#7f7f7f', '10', 'left', '4 ans', '1', '#7f7f7f', 0}),
+												thisModule.createImageElement(Sequence{'../resources/equal.png', '615', '100', '7', '5'}),
+												thisModule.createScaleElement(Sequence{'635', '105', 3, 1})
+									}
+				),
+				appSysStateScaleLegendObsoleteLabel : SVG!G (
+					groupContent <- Sequence{
+												thisModule.createRectElement(Sequence{'15', '12', '545', '128', '#ff0000', '#ff0000'}),
+												thisModule.createTextElement(Sequence{'565', '140', '#7f7f7f', '10', 'left', 'Obsolète', '1', '#7f7f7f', 0}),
+												thisModule.createImageElement(Sequence{'../resources/equal.png', '615', '135', '7', '5'}),--Modified via java subproject
+												thisModule.createScaleElement(Sequence{'635', '140', 4, 0})
+											}
+				),
+					
+			---------------------------------
+			--appSysUsersLegend
+			---------------------------------	
+			appSysUsersLegend : SVG!G (
+				groupContent <- Sequence{
+											thisModule.createTextElement(Sequence{'675', '35', '#000000', '13', 'left', 'Entités(4)', '1', '#000000', 0}),	
+											thisModule.createLineElement(Sequence{'665', '25', '665', '195', '#000000'}),	
+											thisModule.createTextElement(Sequence{'675', 	if (thisModule.yPosition + 55 >= 165)then
+																								(70 + thisModule.yPosition).toString()
+																							else
+																								'175'
+																							endif	
+																						, '#000000', '10', 'left', '4 : ', '1', '#000000', 0
+																					}
+																		),
+											thisModule.createTextElement(Sequence{'690', if (thisModule.yPosition + 55 >= 165)then
+																								(70 + thisModule.yPosition).toString()
+																							else
+																								'175'
+																							endif, '#7f7f7f', '10', 'left', 
+																					'Les entités utilisatrices de l\'application', '1', '#7f7f7f', 0}
+																		)
+										}
+			),
+			
+			---------------------------------
+			--processAppSysLabel
+			---------------------------------
+			processAppSysLabel : SVG!G (
+				groupContent <- Sequence{
+											thisModule.createProcessLabelHood(),
+											thisModule.createTextElement(Sequence{'870', '175', '#000000', '10', 'left', '* ', '1', '#000000', 0}),
+											thisModule.createTextElement(Sequence{'890', '175', '#7f7f7f', '10', 'left', 'applications présentes dans', '1',
+																					'#7f7f7f', 0
+																		}),
+											thisModule.createTextElement(Sequence{'875', '185', '#7f7f7f', '10', 'left', 'plusieurs processus', '1', '#7f7f7f', 0})						
+								}	
+			)
+	do{
+		hood.groupContent -> at(5).groupContent <- hood.groupContent -> at(5).groupContent.union(
+																	thisModule.siteUsingAppSys
+																		-> collect(sitUsingAppSys |	thisModule.createTextElement(
+																										Sequence{'675', '55', '#000000', 
+																											'10', 'left', sitUsingAppSys,
+																											'1', '#000000', 15}
+																									)
+																		)							
+																);	
+		thisModule.svgFile.tag.children <- thisModule.svgFile.tag.children -> append(hood);
+	}	
+}
+
+---------------------------------
+---Creation of the CSM pole 
+---('Pôle DSI') label
+---------------------------------	
+---@sourcePattern ACF!Actor
+---@targetPattern SVG!G
+unique lazy rule createCSMPoleLabel {
+	from
+		CSMPole : ACF!Actor
+	to
+		CSMPoleLabel : SVG!G (
+			groupContent <- Sequence{	
+										--CSMPoleAcronym
+										thisModule.createTextElement(Sequence{'', '', 'black', '12', 'left', CSMPole.name, '1', '', 0}),
+										--CSMPoleDescription
+										thisModule.createTextElement(Sequence{'', '', 'black', '12', 'left',	CSMPole.description, '1', '', 0})
+									}
+		)
+}
+
+---------------------------------
+---Creation of the process label
+---and app.sys. - function.dom
+---for the hood of the SVG 
+---document
+---------------------------------	
+---@sourcePattern IMPORT!Import
+---@targetPattern SVG!G
+---@targetPattern SVG!G
+---@targetPattern SVG!G
+---@targetPattern SVG!G
+---@targetPattern SVG!G
+---@targetPattern SVG!G
+unique lazy rule createProcessLabelHood {
+	from
+		import : IMPORT!Import
+	to
+		processLabelContainer : SVG!G (
+			groupContent <- Sequence {
+										thisModule.createRectElement(Sequence{'170', '135', '870', '14', '#e5e5e5', '#000000'}),
+										processLabel
+							}
+		),
+			processLabel : SVG!G (
+				groupContent <- Sequence{												
+											thisModule.createTextElement(Sequence{'975', '52', '#333333', '8', 'left', 'En production', '1', '#333333', 0}),
+											thisModule.createTextElement(Sequence{'975', '64', '#333333', '8', 'left', 'prochainement', '1', '#333333', 0}),
+											thisModule.createTextElement(Sequence{'975', '94', '#333333', '8', 'left', 'Importance &', '1', '#333333', 0}),
+											thisModule.createTextElement(Sequence{'975', '106', '#333333', '8', 'left', 'Etat', '1', '#333333', 0}),
+											processGroupSVG
+								}
+			),
+				processGroupSVG : SVG!G (
+					groupContent <- Sequence{	
+												thisModule.createRectElement(Sequence{'98', '25', '870', '15', '#000000', '#000000'}),
+												thisModule.createTextElement(Sequence{'920', '32', '#ffffff', '10', 'middle', 'Num. de processus', '1', '#ffffff', 0}),	
+												functionDomainGroupSVG
+									}
+				),			
+					functionDomainGroupSVG : SVG!G (
+						groupContent <- Sequence{	
+													thisModule.createRectElement(Sequence{'95', '88', '872', '43', '#7f7f7f', '#000000'}),
+													thisModule.createTextElement(Sequence{'920', '125', '#333333', '7', 'middle', 'DOMAINE FONCTIONNEL', '1',
+																							'#333333', 0}),
+													appSysGroup
+										}
+					),
+							appSysGroup : SVG!G (
+								groupContent <- Sequence{	
+															thisModule.createRectElement(Sequence{'88', '65', '875', '45', '#ffffff', '#ffffff'}),
+															appSysContent
+												}
+							),
+									appSysContent : SVG!G (
+										groupContent <- Sequence{
+																	thisModule.createRectElement(Sequence{'15', '10', '948', '45', '#000000', '#000000'}),
+																	thisModule.createTextElement(Sequence{'880', '57', '#000000', '8', 'left', 'APPLICATION *', '1', 
+																											'#000000', 0
+																								}),
+																	thisModule.createTextElement(Sequence{'880', '67', '#7f7f7f', '8', 'left', 'POLE DSI', '1', '#7f7f7f', 0}),
+																	thisModule.createTextElement(Sequence{'880', '106', '#000000', '8', 'left', 'ENTITES', '1', '#000000', 0})																	
+														}
+									)
+}
+
+---------------------------------------------------------------------------------------------------
+---Creation of the text and rectangle elements containing respectively the functionnal domain name 
+---and the set of application(s), user(s) and CSM pole ('Pole DSI') names and the scale (three 
+---colored rectangles) for the current process
+---------------------------------------------------------------------------------------------------
+---@param ACF!Process : process owning the application
+---@param ACF!BusinessService : functionnal domain of the current application
+---@targetPattern SVG!G
+rule createFunctionnalDomainSVG (process : ACF!Process, functionDomain : ACF!BusinessService) {
+	to
+		functionDomainGroupSVG : SVG!G (
+			groupContent <- Sequence{			
+										thisModule.createRectElement(Sequence{
+																				process.rectSizeCoordOfSVGElement(95, 
+																												functionDomain), '88', 
+																				thisModule.manageXWithoutGap(12, thisModule.mapX.
+																												get('FunctionDomainGroupX'))
+																												.toString(),
+																				thisModule.getXOrY(thisModule.mapY.get('FunctionDomainGroupY'),
+																											249).toString(),
+																				functionDomain.getFunctionnalDomainColor, '#000000'
+																	}
+										),		
+										thisModule.createTextElement(
+																	Sequence{	
+																				thisModule.manageXWithoutGap(20, thisModule.mapX.
+																													get('FunctionDomainNameX'))
+																													.toString(),
+																				thisModule.getXOrY(thisModule.mapY.get('FunctionDomainNameY'), 331).toString(),
+																				'#333333',
+																				if (functionDomain.isDomainNameBiggerOriginalRectDom
+																						(
+																							(process.
+																									rectSizeCoordOfSVGElement(95, 
+																										functionDomain)).toInteger()
+																						)
+																					) then
+																					'6'
+																				else
+																					'7'
+																				endif																				
+																				, 'left', 
+																				if (functionDomain.isDomainNameBiggerOriginalRectDom
+																						(
+																							(process.
+																									rectSizeCoordOfSVGElement(95, 
+																										functionDomain)).toInteger()
+																						)
+																					) then
+																					''
+																				else
+																					functionDomain.name
+																				endif,	
+																				'1', '#333333', 0			
+																	}			
+										),
+										if (functionDomain.isDomainNameBiggerOriginalRectDom
+															(
+																(process.rectSizeCoordOfSVGElement(95, functionDomain))
+																	.toInteger()
+															)
+											) then
+											let seqDomainName : Sequence(String) = 
+												functionDomain.manageDomainName((process.rectSizeCoordOfSVGElement(95,
+													functionDomain)).toInteger())
+											in seqDomainName
+												-> collect(domainXPartName | 	let textElement : SVG!Text =  
+																					thisModule.lastSVGTextElement
+																				in textElement.refSetValue('tspans', 
+																					textElement.tspans
+																					-> append(
+																							thisModule.createTSpanElement(
+																								Sequence{
+																									domainXPartName, 
+																									textElement.position.x,
+																									(textElement.position.y-(
+																											seqDomainName.size()*5)) + 
+																									seqDomainName.indexOf(domainXPartName)*6
+																								}
+																						    )
+																					)	
+																				)
+												)
+										else OclUndefined endif										
+										,
+										process.getAllAppSystemsForOneProcessAndOneFunctionnalDomain(functionDomain)
+														-> collect(appSys | thisModule.createAppSysGroup(process,
+															functionDomain, appSys))
+									}
+		)
+	do{		
+		--Set the max 'y' (user name ordinate) for the last set of users constituing an application
+		--(To know where put the next user name)
+		thisModule.mapY <- thisModule.mapY -> union(Map{('UserNameY', thisModule.lastUserMaxY)});	
+		
+		--Reinit. of the number of applications for a domain ('Business service')
+		thisModule.nbAppSysDisplayedDomain <- 0;
+		
+		functionDomainGroupSVG;
+	}
+}
+
+---------------------------------------------------------------------------------------------------
+---Creation of the text and rectangle elements containing the application, users and CSM pole 
+---('Pole DSI') names and the scale (three colored rectangles)
+---------------------------------------------------------------------------------------------------
+---@param ACF!Process : process owning the application
+---@param ACF!BusinessService : functionnal domain of the current application
+---@param ACF!PhysicalApplicationComponent
+---@targetPattern SVG!G : current application
+rule createAppSysGroup (process : ACF!Process, functionDomain : ACF!BusinessService, appSys : ACF!PhysicalApplicationComponent) {
+	to
+			appSysGroup : SVG!G (
+				groupContent <- Sequence{
+											thisModule.createRectElement(
+																			Sequence{
+																						'88', '65', 
+																						thisModule.getXOrY(thisModule.mapX.get('AppSysGroupX'), 15).toString(),
+																						thisModule.getXOrY(thisModule.mapY.get('AppSysGroupY'), 251).toString(),
+																						'#ffffff', '#ffffff'
+																			}
+											),
+											if (appSys.isInProductionShortly) then
+												thisModule.createRectElement(Sequence{	'15', '10', 
+																						thisModule.getXOrY(thisModule.mapX.get('nextApplicationX'), 88).toString(),
+																						thisModule.getXOrY(thisModule.mapY.get('nextApplicationY'), 251).toString(),
+																						'#000000', '#000000'
+																			}
+												)
+											else OclUndefined endif,
+											thisModule.createTextElement(
+																			Sequence{	
+																						thisModule.getXOrY(thisModule.mapX.get('AppSysNameX'), 20).toString(),
+																						thisModule.getXOrY(thisModule.mapY.get('AppSysNameY'), 263).toString(),
+																						'#000000', '8', 'left',  
+																						appSys.name																		 			
+																						, '1', '#000000', 0
+																			}
+											),
+											thisModule.createTextElement(
+																			Sequence{	
+																						thisModule.getXOrY(thisModule.mapX.get('CSMPoleNameX'), 20).toString(),
+																						thisModule.getXOrY(thisModule.mapY.get('CSMPoleNameY'), 273).toString(),
+																						'#7f7f7f', '8', 'left',  
+																						process.getCSMPoleTitle(functionDomain, thisModule.nbAppSysDisplayedDomain), 
+																						'1', '#7f7f7f', 0
+																			}
+											),
+											appSys.getAppSysUsersTitle
+														-> collect(user | thisModule.createAppSysUser(user, appSys.getAppSysUsersTitle.size())),
+											thisModule.createScaleElement(Sequence{
+																			thisModule.getXOrY(thisModule.mapX.get('ScaleX'), 87).toString(),
+																			thisModule.getXOrY(thisModule.mapY.get('ScaleY'), 311).toString(),
+																			appSys.lifeCycleStatus.toString().lifeCycleStatusValue, appSys.manageabilityCharacteristics.toReal()
+																	}
+											)	
+										}
+			)
+	do{	
+		--Reinitialization (default values) of the different elements constituting a process section
+		--Only abscissas (Always on the same 'x' for an application ('Applicative system'))
+		thisModule.mapX <- thisModule.mapX -> union(Map{
+															('FunctionDomainGroupX', thisModule.manageXWithoutGap(12, thisModule.mapX.get('FunctionDomainGroupX'))),
+															('FunctionDomainNameX', thisModule.manageXWithoutGap(20, thisModule.mapX.get('FunctionDomainNameX'))),
+															('AppSysGroupX', thisModule.manageXWithoutGap(125, thisModule.mapX.get('AppSysGroupX'))),
+															('AppSysNameX', thisModule.manageXWithoutGap(130, thisModule.mapX.get('AppSysNameX'))),
+															('CSMPoleNameX', thisModule.manageXWithoutGap(130, thisModule.mapX.get('CSMPoleNameX'))),
+															('ScaleX', thisModule.manageXWithoutGap(197, thisModule.mapX.get('ScaleX'))),
+															('nextApplicationX', thisModule.manageXWithoutGap(198, thisModule.mapX.get('nextApplicationX')))
+														}
+													);
+		
+		
+		--Incrementation of the application number for a process
+		thisModule.nbAppSysDisplayedProcess <- thisModule.nbAppSysDisplayedProcess + 1;
+		
+		--Incrementation of the application number for a domain
+		thisModule.nbAppSysDisplayedDomain <- thisModule.nbAppSysDisplayedDomain + 1;
+		
+		--Put new abscissa for the next user name
+		--Consideration of the application number (For each application)
+		thisModule.mapX <- thisModule.mapX -> union(Map{('UserNameX', if (thisModule.nbAppSysDisplayedProcess > 1) then 110*(thisModule.nbAppSysDisplayedProcess) + 20  else 130 endif)});	
+				
+		--Reinitialization of the number of users displayed and last value of the ordinate of the user name
+		--because ordinates of user names depends of it
+		thisModule.nbUserDisplayed <- 0;	
+		thisModule.mapY <- thisModule.mapY -> union(Map{('UserNameY', 0)});
+		appSysGroup;
+	}
+}
+
+------------------------------------------------------------------
+---Creation / management of the text element containing the user 
+---name
+------------------------------------------------------------------
+---@param String : user name
+---@param Integer : number of current users of the application
+---@targetPattern SVG!G
+rule createAppSysUser(user : String, nbUser : Integer){
+	to
+		appSysUser : SVG!G (
+				groupContent <- Sequence{
+											thisModule.createTextElement(
+																			Sequence{
+																						--To manage odd user names and their placement
+																						if ( (thisModule.nbUserDisplayed/2).toString().isEndZero and thisModule.nbUserDisplayed > 1) then
+																							(20+(110*thisModule.nbAppSysDisplayedProcess)).toString()
+																						else	
+																							thisModule.getXOrY(thisModule.mapX.get('UserNameX'), 20).toString()
+																						endif,
+																						thisModule.getXOrY(thisModule.mapY.get('UserNameY'), 311).toString(),
+																						'#7f7f7f', '8', 'left', user,'1', '#7f7f7f', 0
+																					}
+											)
+										}
+		)
+	--Management of the user name element ordinate	
+	do {
+		thisModule.nbUserDisplayed <- thisModule.nbUserDisplayed + 1;
+		thisModule.mapX <- thisModule.mapX -> union(Map{('UserNameX',	if ( (thisModule.nbUserDisplayed/2).toString().isEndZero and thisModule.nbUserDisplayed > 1) then
+																			(20+(110*thisModule.nbAppSysDisplayedProcess))
+																		else
+																			thisModule.manageXYAndGap(	user.size() + 25 , user.size() + 45, thisModule.mapX.get('UserNameX'))	
+																		endif	
+														)}
+		);
+		
+		--'lastUserMaxY' contains the max last ordinate of the users names
+		thisModule.lastUserMaxY <- 	if ( (thisModule.nbUserDisplayed/2).toString().isEndZero and thisModule.nbUserDisplayed > 1 and thisModule.lastUserMaxY = 0) then
+										if (not thisModule.mapY.get('UserNameY').oclIsUndefined()) then
+											thisModule.mapY.get('UserNameY')
+										else
+											thisModule.lastUserMaxY
+										endif	
+									else
+										if (not thisModule.mapY.get('UserNameY').oclIsUndefined()) then
+											if (thisModule.mapY.get('UserNameY') > thisModule.lastUserMaxY) then
+												thisModule.mapY.get('UserNameY')
+											else
+												thisModule.lastUserMaxY
+											endif	
+										else
+											thisModule.lastUserMaxY
+										endif	
+									endif;	
+		
+		--'mapY' contains all the ordinates of the users names
+		thisModule.mapY <- thisModule.mapY -> union(Map{('UserNameY', if ( (thisModule.nbUserDisplayed/2).toString().isEndZero and thisModule.nbUserDisplayed > 1) then
+																			if (not thisModule.mapY.get('UserNameY').oclIsUndefined()) then
+																				thisModule.mapY.get('UserNameY')-10
+																			else
+																				thisModule.getXOrY(thisModule.mapY.get('UserNameY'), 301)
+																			endif	
+																		else	
+																			if (not thisModule.mapY.get('UserNameY').oclIsUndefined()) then
+																				if (thisModule.nbUserDisplayed = 1) then
+																					thisModule.getXOrY(thisModule.mapY.get('UserNameY'), 311)
+																				else
+																					thisModule.mapY.get('UserNameY')
+																				endif
+																			else
+																				thisModule.getXOrY(thisModule.mapY.get('UserNameY'), 311)
+																			endif	
+																		endif	
+													)}
+		);
+		thisModule.siteUsingAppSys <- thisModule.siteUsingAppSys.append(user);
+		appSysUser;
+	}
+}

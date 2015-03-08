@@ -1,0 +1,104 @@
+\documentclass{llncs}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{rotating}
+\usepackage{array}
+\usepackage[usenames,dvipsnames]{xcolor}
+%\usepackage{flushend}
+
+\usepackage{ifthen}
+\usepackage{amssymb}
+\newboolean{showcomments}
+\setboolean{showcomments}{true} % toggle to show or hide comments
+
+\ifthenelse{\boolean{showcomments}}
+  {\newcommand{\nb}[2]{
+    \fcolorbox{gray}{yellow}{\bfseries\sffamily\scriptsize#1}
+    {\sf\small$\blacktriangleright$\textit{#2}$\blacktriangleleft$}
+   }
+   \newcommand{\version}{\emph{\scriptsize$-$working$-$}}
+  }
+  {\newcommand{\nb}[2]{}
+   \newcommand{\version}{}
+  }
+
+\ifthenelse{\boolean{showcomments}}
+  {\newcommand{\rev}[1]{\textcolor{red}{#1}}}
+  {\newcommand{\rev}[1]{#1}}
+
+\newcommand\jordi[1]{\nb{Jordi}{#1}}
+\newcommand\javier[1]{\nb{Javier}{#1}}
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+%\usepackage[nospace]{cite}
+
+\setlength{\textfloatsep}{2mm}
+%\setlength{\intextsep}{3mm}
+%\setlength{\belowcaptionskip}{-0mm}
+
+%\clubpenalty = 10000
+%\widowpenalty = 10000
+%\displaywidowpenalty = 10000
+
+\begin{document}
+\title{Specification and Application of Governance Rules in Software Development\thanks{This work has been supported by the European Commission under the ICT Policy Support Programme, grant no. 317859.}}
+\author{Javier Luis C\'anovas Izquierdo, Jordi Cabot}
+
+\institute{AtlanMod, \'Ecole des Mines de Nantes -- INRIA -- LINA, Nantes, France\\ \email{\{javier.canovas,jordi.cabot\}@inria.fr}}
+
+\maketitle
+
+%\vspace{-0.5cm}
+
+\begin{abstract}
+Any software development project is decomposed into a series of tasks that must be properly prioritized and managed for the success of the project. Unfortunately, the rules governing the development process (e.g., describing who can implement a task or deciding which tasks should be completed first) are usually implicit or appear scattered in the project documentation or tools (e.g., tracking-systems, forums, etc.). In this paper we propose to enable the explicit definition of governance rules for development tasks along with complementary support for their application. Making explicit governance rules will provide several important benefits, including improvements in the transparency and sustainability of the project. Furthermore, the support for the rule application will promote traceability (why a decision was made) and the automation of the governance process (i.e., liberating developers from applying the rules manually and avoiding potential inconsistencies). We created a domain-specific language to easily define governance rules, which is illustrated with real open source projects, whereas their application is supported by a tool implemented on top of Mylyn, a project management plug-in for Eclipse, which supports most tracking-systems, thus allowing the use of our approach in most development projects.
+\keywords{Decision making, Governance, Collaborative Software Development}
+\end{abstract}
+
+%\vspace{-1cm}
+
+\section{Introduction}
+\label{sec:introduction}
+\input{caise2014-governance-introduction}
+
+\section{How Software Projects are Governed} 
+\label{sec:motivation}
+\input{caise2014-governance-motivation.tex}
+
+\section{Overview of Our Approach}
+\label{sec:approach}
+\input{caise2014-governance-approach.tex}
+
+\subsection{A DSL to Define Governance Rules}
+\label{sec:dsl}
+\input{caise2014-governance-dsl.tex}
+
+\subsection{Applying Governance Rules} 
+\label{sec:collaboration}
+\input{caise2014-governance-collaboration.tex}
+
+\section{Case Study: Apache}
+\label{sec:example}
+\input{caise2014-governance-example.tex}
+
+\section{Implementation}  
+\label{sec:implementation}
+\input{caise2014-governance-implementation.tex}
+
+\section{Related Work} 
+\label{sec:relatedWork}
+\input{caise2014-governance-relatedWork.tex}
+
+\section{Conclusion} 
+\label{sec:conclusion}
+\input{caise2014-governance-conclusion.tex}
+
+\bibliographystyle{splncs}
+\bibliography{caise2014-governance}
+
+\end{document}
+
+

@@ -1,0 +1,48 @@
+-- @atlcompiler atl2006
+
+-- ******************************************************************************
+-- Copyright (c) 2006-2013 INRIA. 
+-- All rights reserved. This program and the accompanying materials 
+-- are made available under the terms of the Eclipse Public License v1.0 
+-- which accompanies this distribution, and is available at
+-- http://www.eclipse.org/legal/epl-v10.html
+-- 
+-- Contributors: 
+-- 	INRIA - Initial implementation
+--  
+-- ******************************************************************************
+
+--@name SVG2XMLHelpers
+--@author Matthieu Allon (matthieu.allon <at> gmail.com)
+
+--@description SVG to XML helpers library
+
+library SVG2XMLHelpers;
+
+---Returns the string value for a scale transformation attribute
+---@context SVG!Scale
+---@return : String
+helper context SVG!Scale def : scale() : String =
+	'scale(' + self.sx.toString() +
+	if self.sy = self.sx
+		then ''
+		else ',' + self.sy.toString()
+	endif + ')';
+
+---Returns the string value for a translate transformation attribute
+---@context SVG!Translate
+---@return : String
+helper context SVG!Translate def : translate() : String =
+	'translate(' + self.tx.toString() + ',' + self.ty.toString() + ')';
+
+---Returns the string value for a rotate transformation attribute
+---@context SVG!Rotate
+---@return : String
+helper context SVG!Rotate def : rotate() : String =
+	'rotate(' + self.angle.toString() +
+	if not self.cx.oclIsUndefined() and not self.cy.oclIsUndefined() then
+		',' + self.cx.toString() + ',' + self.cy.toString()
+	else
+		''
+	endif
+	+ ')';

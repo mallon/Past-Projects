@@ -1,0 +1,171 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.inria.wordpress.WdpConfModel2JSON</groupId>
+  <artifactId>WdpConfModel2JSON</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>WdpConfModel2JSON</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+  
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+		<groupId>org.eclipse.emf</groupId>
+		<artifactId>org.eclipse.emf.common</artifactId>
+		<version>2.9.2-v20131212-0545</version>
+	</dependency>
+             
+    <dependency>
+		<groupId>org.eclipse.emf</groupId>
+		<artifactId>org.eclipse.emf.ecore</artifactId>
+		<version>2.9.2-v20131212-0545</version>
+	</dependency>
+          
+    <dependency>
+		<groupId>org.eclipse.emf</groupId>
+		<artifactId>org.eclipse.emf.ecore.xmi</artifactId>
+		<version>2.9.1-v20131212-0545</version>
+	</dependency>
+    
+    <dependency>
+		<groupId>commons-cli-1.2</groupId>
+		<artifactId>commons-cli-1.2</artifactId>
+		<version>1.2</version>
+		<scope>system</scope>
+    	<systemPath>${project.build.directory}/dependencyJars/commons-cli-1.2.jar</systemPath>
+	</dependency>
+    
+    <dependency>
+		<groupId>commons-codec-1.6</groupId>
+		<artifactId>ccommons-codec-1.6</artifactId>
+		<version>1.6</version>
+		<scope>system</scope>
+    	<systemPath>${project.build.directory}/dependencyJars/commons-codec-1.6.jar</systemPath>
+	</dependency>
+    
+    <dependency>
+		<groupId>commons-lang3-3.1</groupId>
+		<artifactId>commons-lang3-3.1</artifactId>
+		<version>3.3.1</version>
+		<scope>system</scope>
+    	<systemPath>${project.build.directory}/dependencyJars/commons-lang3-3.1.jar</systemPath>
+	</dependency>
+    
+     <dependency>
+		<groupId>commons-logging-1.1.3</groupId>
+		<artifactId>commons-logging-1.1.3</artifactId>
+		<version>1.1.3</version>
+		<scope>system</scope>
+    	<systemPath>${project.build.directory}/dependencyJars/commons-logging-1.1.3.jar</systemPath>
+	</dependency>    
+    
+     <dependency>
+		<groupId>fluent-hc-4.3.1</groupId>
+		<artifactId>fluent-hc-4.3.1</artifactId>
+		<version>4.3.1</version>
+		<scope>system</scope>
+    	<systemPath>${project.build.directory}/dependencyJars/fluent-hc-4.3.1.jar</systemPath>
+	</dependency>
+    
+    <dependency>
+		<groupId>httpclient-4.3.1</groupId>
+		<artifactId>httpclient-4.3.1</artifactId>
+		<version>4.3.1</version>
+		<scope>system</scope>
+    	<systemPath>${project.build.directory}/dependencyJars/httpclient-4.3.1.jar</systemPath>
+	</dependency>
+    
+     <dependency>
+		<groupId>httpclient-cache-4.3.1</groupId>
+		<artifactId>httpclient-cache-4.3.1</artifactId>
+		<version>4.3.1</version>
+		<scope>system</scope>
+    	<systemPath>${project.build.directory}/dependencyJars/httpclient-cache-4.3.1.jar</systemPath>
+	</dependency>
+	
+	 <dependency>
+		<groupId>httpcore-4.3</groupId>
+		<artifactId>httpcore-4.3</artifactId>
+		<version>4.3</version>
+		<scope>system</scope>
+    	<systemPath>${project.build.directory}/dependencyJars/httpcore-4.3.jar</systemPath>
+	</dependency>
+	
+	<dependency>
+		<groupId>httpcore-ab-4.3</groupId>
+		<artifactId>httpcore-ab-4.3</artifactId>
+		<version>4.3</version>
+		<scope>system</scope>
+    	<systemPath>${project.build.directory}/dependencyJars/httpcore-ab-4.3.jar</systemPath>
+	</dependency>
+    
+    <dependency>
+		<groupId>httpcore-nio-4.3</groupId>
+		<artifactId>httpcore-nio-4.3</artifactId>
+		<version>4.3</version>
+		<scope>system</scope>
+    	<systemPath>${project.build.directory}/dependencyJars/httpcore-nio-4.3.jar</systemPath>
+	</dependency>
+	
+	<dependency>
+		<groupId>httpmime-4.3.1</groupId>
+		<artifactId>httpmime-4.3.1</artifactId>
+		<version>4.3.1</version>
+		<scope>system</scope>
+    	<systemPath>${project.build.directory}/dependencyJars/httpmime-4.3.1.jar</systemPath>
+	</dependency>
+	
+	<dependency>
+		<groupId>json-simple-1.1.1</groupId>
+		<artifactId>json-simple-1.1.1</artifactId>
+		<version>1.1.1</version>
+		<scope>system</scope>
+    	<systemPath>${project.build.directory}/dependencyJars/json-simple-1.1.1.jar</systemPath>
+	</dependency>
+    
+    <dependency>
+		<groupId>org.inria.wordpress.wdpdsl</groupId>
+		<artifactId>wdpdsl-0.0.1-SNAPSHOT</artifactId>
+		<version>0.0.1</version>
+		<scope>system</scope>
+    	<systemPath>${project.build.directory}/dependencyJars/wdpdsl-0.0.1-SNAPSHOT.jar</systemPath>
+	</dependency>
+    
+  </dependencies>
+  
+  <build>
+  	<plugins>
+  	
+  		 <plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-jar-plugin</artifactId>
+			<version>2.4</version>
+			<configuration>
+				<archive>
+				  <manifest>
+					<addClasspath>true</addClasspath>
+					<mainClass>org.inria.wordpress.WdpConfModel2JSON.WdpConfModel2JSON</mainClass>
+					<classpathPrefix>dependencyJars/</classpathPrefix>
+				  </manifest>
+				</archive>
+			</configuration>
+	  	 </plugin>		
+		
+  	</plugins>
+  </build>
+  
+</project>

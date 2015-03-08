@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+	<bundle bundleID="1532" localization="OSGI-INF/l10n/bundle" name="org.inria.wordpress.wdpdsl" project="org.inria.wordpress.wdpdsl" provider="My Company"/>
+	<bundle bundleID="1535" class="org.inria.wordpress.wdpdsl.ui.internal.WdpDslActivator" localization="OSGI-INF/l10n/bundle" name="org.inria.wordpress.wdpdsl.ui" project="org.inria.wordpress.wdpdsl.ui" provider="My Company"/>
+	<bundle bundleID="1534" localization="OSGI-INF/l10n/bundle" name="org.inria.wordpress.wdpdsl.tests" project="org.inria.wordpress.wdpdsl.tests" provider="My Company"/>
+	<bundle bundleID="1533" localization="OSGI-INF/l10n/bundle" name="Product" project="org.inria.wordpress.wdpdsl.product"/>
+	<bundle bundleID="1531" localization="OSGI-INF/l10n/bundle" name="WdpConfModel2JSON" project="org.inria.wordpress.WdpConfModel2JSON" provider="INRIA">
+		<library name="libs/commons-cli-1.2.jar"/>
+		<library name="libs/commons-codec-1.6.jar"/>
+		<library name="libs/commons-lang3-3.1-javadoc.jar"/>
+		<library name="libs/commons-lang3-3.1-sources.jar"/>
+		<library name="libs/commons-lang3-3.1-tests.jar"/>
+		<library name="libs/commons-lang3-3.1.jar"/>
+		<library name="libs/commons-logging-1.1.3.jar"/>
+		<library name="libs/fluent-hc-4.3.1.jar"/>
+		<library name="libs/httpclient-4.3.1.jar"/>
+		<library name="libs/httpclient-cache-4.3.1.jar"/>
+		<library name="libs/httpcore-4.3.jar"/>
+		<library name="libs/httpcore-ab-4.3.jar"/>
+		<library name="libs/httpcore-nio-4.3.jar"/>
+		<library name="libs/httpmime-4.3.1.jar"/>
+		<library name="libs/json-simple-1.1.1.jar"/>
+		<library name="."/>
+	</bundle>
+	<bundle bundleID="1536" class="org.inria.wordpress.xText2Model.Activator" localization="OSGI-INF/l10n/bundle" name="Test" project="org.inria.wordpress.xText2Model">
+		<library name="."/>
+		<library name="libs/commons-cli-1.2.jar"/>
+		<library name="libs/commons-codec-1.6.jar"/>
+		<library name="libs/commons-lang3-3.1-javadoc.jar"/>
+		<library name="libs/commons-lang3-3.1-sources.jar"/>
+		<library name="libs/commons-lang3-3.1-tests.jar"/>
+		<library name="libs/commons-lang3-3.1.jar"/>
+		<library name="libs/commons-logging-1.1.3.jar"/>
+		<library name="libs/fluent-hc-4.3.1.jar"/>
+		<library name="libs/httpclient-4.3.1.jar"/>
+		<library name="libs/httpclient-cache-4.3.1.jar"/>
+		<library name="libs/httpcore-4.3.jar"/>
+		<library name="libs/httpcore-ab-4.3.jar"/>
+		<library name="libs/httpcore-nio-4.3.jar"/>
+		<library name="libs/httpmime-4.3.1.jar"/>
+		<library name="libs/json-simple-1.1.1.jar"/>
+	</bundle>
+</map>

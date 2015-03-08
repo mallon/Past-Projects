@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="fr.inria.teap.dcnsSVGGeneration"
+         name="dcnsSVGGenerationCoreDiscoverer"
+         point="org.eclipse.modisco.infra.discovery.core.discoverer">
+      <discoverer
+            class="fr.inria.teap.dcnssvggeneration.main.Xl2TogafSvg"
+            id="fr.inria.teap.dcnsSVGGeneration">
+      </discoverer>
+   </extension>
+   <extension
+         id="fr.inria.teap.dcnsSVGGeneration"
+         name="dcnsSVGGenerationUiDiscoverer"
+         point="org.eclipse.modisco.infra.discovery.ui.discoverer">
+      <discoverer
+            discovererID="fr.inria.teap.dcnsSVGGeneration"
+            label="EXCELToTOGAF">
+      </discoverer>
+   </extension>
+
+</plugin>

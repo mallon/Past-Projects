@@ -1,0 +1,174 @@
+\begin{thebibliography}{10}
+
+\bibitem{Aranda2009}
+Aranda, J., Venolia, G.:
+\newblock {The secret life of bugs: Going past the errors and omissions in
+  software repositories}.
+\newblock In: International Conference on Software Engineering (ICSE), {IEEE}
+  (2009)  298--308
+
+\bibitem{Conway1968}
+Conway, M.E.:
+\newblock {How Do Committess Invent?}
+\newblock Datamation \textbf{14}(4) (1968)  28--31
+
+\bibitem{Herbsleb1999}
+Herbsleb, J.D., Grinter, R.E.:
+\newblock {Splitting the organization and integrating the code: Conway's law
+  revisited}, {IEEE} (1999)  85--95
+
+\bibitem{osswatch}
+{OSS Watch}:
+\newblock {Governance Models} (2013)
+
+\bibitem{McConnell1999}
+McConnell, S.:
+\newblock {Open-source methodology: Ready for prime time}.
+\newblock {IEEE software} (August) (1999)  6--11
+
+\bibitem{Mockus}
+Mockus, A., Fielding, R.T., Herbsleb, J.D.:
+\newblock Two case studies of open source software development: Apache and
+  mozilla.
+\newblock ACM Transactions on Software Engineering and Methodology (TOSEM)
+  \textbf{11}(3) (2002)  309--346
+
+\bibitem{Shibuya2009}
+Shibuya, B., Tamai, T.:
+\newblock {Understanding the process of participating in open source
+  communities}.
+\newblock In: ICSE Workshop on Emerging Trends in Free/Libre/Open Source
+  Software Research and Development (FLOSS), {I}{E}{E}{E} (2009)  1--6
+
+\bibitem{Mockus2000}
+Mockus, A.:
+\newblock {A case study of open source software development: the Apache
+  server}.
+\newblock International Conference on Software Engineering (ICSE) (2000)
+  263--272
+
+\bibitem{Crowston2012}
+Crowston, K., Wei, K., Howison, J., Wiggins, A.:
+\newblock {Free/Libre open-source software development}.
+\newblock ACM Computing Surveys \textbf{44}(2) (2012)  1--35
+
+\bibitem{bib:kleppe}
+Kleppe, A.:
+\newblock Software Language Engineering: Creating Domain-Specific Languages
+  Using Metamodels.
+\newblock Addison Wesley (2008)
+
+\bibitem{bib:Brambilla}
+Brambilla, M., Cabot, J., Wimmer, M.:
+\newblock Model-Driven Software Engineering in Practice.
+\newblock Synthesis Lectures on Software Engineering. Morgan {\&} Claypool
+  Publishers (2012)
+
+\bibitem{Kraut1995}
+Kraut, R., Streeter, L.:
+\newblock {Coordination in Software Development}.
+\newblock Communications of the ACM \textbf{28}(3) (1995)  69--81
+
+\bibitem{Parnas1972}
+Parnas, D.L.:
+\newblock {On the Criteria to be Used in Decomposing Systems into Modules}.
+\newblock Communications of the ACM \textbf{15}(12) (1972)  1053--1058
+
+\bibitem{Crowston2005}
+Crowston, K., Wei, K., Li, Q., Eseryel, U.Y., Howison, J.:
+\newblock { Coordination of free/libre open source software development}.
+\newblock In: International Conference on Information Systems (ICIS). (2005)
+
+\bibitem{Markus2007}
+Markus, M.L.:
+\newblock {The governance of free/open source software projects: monolithic,
+  multidimensional, or configurational?}
+\newblock Journal of Management \& Governance \textbf{11}(2) (2007)  151--163
+
+\bibitem{Chulani2008}
+Chulani, S., Williams, C., Yaeli, A.:
+\newblock {Software Development Governance and Its Concerns}.
+\newblock In: International Workshop on Software Development Governance (SDG),
+  {ACM} (2008)  3--6
+
+\bibitem{Ramasubbu2008}
+Ramasubbu, N., Balan, R.K.:
+\newblock Towards governance schemes for distributed software development
+  projects.
+\newblock In: International Workshop on Software Development Governance (SDG),
+  {ACM} (2008)  11--14
+
+\bibitem{sg}
+Van~Grembergen, W.:
+\newblock Strategies for information technology governance.
+\newblock IGI Publishing (2003)
+
+\bibitem{Webb2006}
+Webb, P., Pollard, C., Ridley, G.:
+\newblock Attempting to define it governance: Wisdom or folly?
+\newblock In: Hawaii International Conference on System Sciences (HICSS),
+  {IEEE} (2006)  194.1--
+
+\bibitem{Laat2007}
+Laat, P.B.:
+\newblock {Governance of open source software: state of the art}.
+\newblock Journal of Management \& Governance \textbf{11}(2) (2007)  165--177
+
+\bibitem{DeNoni2013}
+{De Noni}, I., Ganzaroli, A., Orsi, L.:
+\newblock {The evolution of OSS governance: a dimensional comparative
+  analysis}.
+\newblock Scandinavian Journal of Management \textbf{29}(3) (2013)  247--263
+
+\bibitem{Guzzi2013}
+Guzzi, A., Bacchelli, A., Lanza, M., Pinzger, M., Deursen, A.V.:
+\newblock {Communication in Open Source Software Development Mailing Lists}.
+\newblock In: Working Conference on Mining Software Repositories (MSR). (2013)
+  277--286
+
+\bibitem{Bird2008}
+Bird, C., Pattison, D., Souza, R.D., Filkov, V., Devanbu, P.:
+\newblock {Latent Social Structure in Open Source Projects Categories and
+  Subject Descriptors}.
+\newblock In: ACM SIGSOFT Symposium on the Foundations of Software Engineering
+  (FSE). (2008)  24--35
+
+\bibitem{Heller2011}
+Heller, B., Marschner, E.:
+\newblock {Visualizing collaboration and influence in the open-source software
+  community}.
+\newblock In: Working Conference on Mining Software Repositories (MSR), ACM
+  Press (2011)  223--226
+
+\bibitem{Kittur2012}
+Kittur, A., Khamkar, S., Andr\'{e}, P., Kraut, R.:
+\newblock {CrowdWeaver: visually managing complex crowd work}.
+\newblock In: Computer Supported Cooperative Work and Social Computing (CSCW).
+  (2012)  1033--1036
+
+\bibitem{Duque2012}
+Duque, R., Rodr\'{\i}guez, M.L., Hurtado, M.V., Bravo, C.,
+  Rodr\'{\i}guez-Dom\'{\i}nguez, C.:
+\newblock {Integration of collaboration and interaction analysis mechanisms in
+  a concern-based architecture for groupware systems}.
+\newblock Science of Computer Programming \textbf{77}(1) (2012)  29--45
+
+\bibitem{Luther2013}
+Luther, K., Fiesler, C., Bruckman, A.:
+\newblock {Redistributing leadership in online creative collaboration}.
+\newblock In: Computer Supported Cooperative Work and Social Computing (CSCW).
+  (2013)  1007
+
+\bibitem{Gallardo2012}
+Gallardo, J., Bravo, C., Redondo, M.a., de~Lara, J.:
+\newblock {Modeling collaboration protocols for collaborative modeling tools:
+  Experiences and applications}.
+\newblock Journal of Visual Languages \& Computing (2012)  1--14
+
+\bibitem{bib:collaboro}
+C\'anovas~Izquierdo, J.L., Cabot, J.:
+\newblock Enabling the collaborative definition of {DSMLs}.
+\newblock In: International Conference on Advanced Information Systems
+  Engineering (CAiSE), To appear (2013)
+
+\end{thebibliography}

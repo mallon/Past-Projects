@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="http://localhost/" href="wordpressConstruct.jnlp">
+	<information>
+		<title>WordPressConstruct</title>
+		<vendor>INRIA</vendor>
+		<offline-allowed/>
+	</information>
+	<security>
+		<all-permissions/>
+	</security>
+	<application-desc main-class="org.eclipse.core.launcher.WebStartMain">
+		<argument>-nosplash </argument>
+	</application-desc>
+	<resources>
+		<j2se version="1.6+"/>
+		<jar href="org.eclipse.equinox.launcher_1.3.0.v20130327-1440.jar"/>
+		<extension name="the feature" href="features/org.inria.wordpress.wdpdsl.jnlp"/>
+		<property name="eclipse.product" value="org.inria.wordpress.wdpdsl.product"/>
+	</resources>
+
+	<resources os="Windows">
+		<property name="osgi.instance.area" value="@user.home/Application Data/wordpressConstruct"/>
+		<property name="osgi.configuration.area" value="@user.home/Application Data/wordpressConstruct"/>
+	</resources>
+</jnlp>

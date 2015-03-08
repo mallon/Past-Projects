@@ -1,0 +1,46 @@
+<Website>
+	<adminUser elementContent={userOne}/>
+	<users listContent=[
+							<User>
+								<idUser content=userOne/>
+								<userName content="nameUserOne"/>						
+								<password content="password"/>						
+								<userRole elementContent={administrator}/>
+							</User>
+					   ]
+	/>
+	<settings elementContent={
+								<Settings>
+									<general elementContent={
+																<GeneralSettings>
+																				<wordPressAdress elementContent={
+																													<Url>
+																														<path content="http://localhost/wordpressSecond/"/>
+																													</Url>
+																								 				 }
+																				/>		
+																</GeneralSettings>												
+															}
+									/>	
+								</Settings>						
+							 }
+	/>
+	<Deletion>
+		<pagesByTitle listContent=["PAGE_ONE"]/>
+		<usersByLogin listContent=["nameUserOne"]/>
+		<mediasByTitle listContent=["facebook-sign.jpg"]/>
+		<functionalitiesByName listContent=[seo]/>
+		<pluginsByFileName listContent=["mlr-timeline/mlr-timeline.php"]/>		
+		<categoriesByName listContent=["cat_One_Name"]/>
+		<tagsByName listContent=["tag_One_Name","tag_Two_Name"]/>
+		<menusByName listContent=["nameMenuTwo"]/>
+		<commentsByPostDateAuthor listContent=[
+												<PostDateAuthor>
+													<postTitle elementContent={postOne}/>
+													<commentAuthorName elementContent={"nameUserOne"}/>
+													<commentDate elementContent={03-12-2013 09:46:00}/>
+												</PostDateAuthor>
+											  ]
+		/>									  
+	</Deletion>						 
+</Website>

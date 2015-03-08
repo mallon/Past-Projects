@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/WordPress_M_M/src" modelPluginID="WordPress_M_M"
+    modelName="WordPressConfiguration" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>WordPressConfiguration.ecore</foreignModel>
+  <genPackages prefix="WordPressConfiguration" disposableProviderFactory="true" ecorePackage="WordPressConfiguration.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WordPressConfiguration.ecore#//defaultImageHeader">
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//defaultImageHeader/firstImageHeader"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//defaultImageHeader/secondImageHeader"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//defaultImageHeader/thirdImageHeader"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//defaultImageHeader/randomImageHeader"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WordPressConfiguration.ecore#//functionnalities">
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//functionnalities/eCommerce"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//functionnalities/forms"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//functionnalities/hamSpam"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//functionnalities/indexing"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//functionnalities/multiLanguage"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//functionnalities/pictures"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//functionnalities/SEO"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//functionnalities/socialNetwork"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WordPressConfiguration.ecore#//role">
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//role/suscriber"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//role/administrator"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//role/editor"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//role/author"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//role/contributor"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WordPressConfiguration.ecore#//widgetType">
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//widgetType/lateralWidget"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//widgetType/footerWidget"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WordPressConfiguration.ecore#//pagesSorter">
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//pagesSorter/pageTitle"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//pagesSorter/pageOrder"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//pagesSorter/pageId"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WordPressConfiguration.ecore#//postFormat">
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//postFormat/standard"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//postFormat/aside"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//postFormat/audio"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//postFormat/chat"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//postFormat/gallery"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//postFormat/image"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//postFormat/link"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//postFormat/quote"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//postFormat/status"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//postFormat/video"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WordPressConfiguration.ecore#//pageStatus">
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//pageStatus/published"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//pageStatus/pendingReview"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//pageStatus/draft"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WordPressConfiguration.ecore#//pageVisibility">
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//pageVisibility/public"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//pageVisibility/passwordProtected"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//pageVisibility/private"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WordPressConfiguration.ecore#//avatarRating">
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//avatarRating/G"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//avatarRating/PG"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//avatarRating/R"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//avatarRating/X"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WordPressConfiguration.ecore#//defaultAvatar">
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//defaultAvatar/mysteryMan"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//defaultAvatar/Blank"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//defaultAvatar/GravatarLogo"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//defaultAvatar/identicon"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//defaultAvatar/wavatar"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//defaultAvatar/monsterId"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//defaultAvatar/retro"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WordPressConfiguration.ecore#//urlForm">
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//urlForm/default"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//urlForm/dayAndName"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//urlForm/monthAndName"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//urlForm/numeric"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//urlForm/postName"/>
+      <genEnumLiterals ecoreEnumLiteral="WordPressConfiguration.ecore#//urlForm/customStructure"/>
+    </genEnums>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Website">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Website/posts"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Website/adress"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Website/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Website/tagLine"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Website/pages"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Website/settings"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Website/appearance"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Website/mediaLibrary"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Website/functionnalities"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Website/users"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Website/comments"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Apperance">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Apperance/widgets"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Apperance/menus"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Apperance/header"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Apperance/theme"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Avatar">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Avatar/contentPicture"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Category"/>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Comment">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Comment/author"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Comment/content"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Comment/postPage"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//CurrentMenuSetting">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//CurrentMenuSetting/isAddingNewTopLevelPages"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//CurrentMenuSetting/isNavigationMenuLocated"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Feed">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Feed/title"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Functionnality">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Functionnality/functionnalityType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Functionnality/defaultPlugin"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Header">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Header/defaultImage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Header/textColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Header/isShowingHeaderText"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Link">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Link/url"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Link/text"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Media">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Media/author"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Media/uploadedTo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Media/date"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Menu">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Menu/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Menu/pages"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Menu/categories"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Menu/links"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Menu/currentMenuSetting"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Meta">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Meta/title"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//PostPage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//PostPage/title"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//PostPage/author"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//PostPage/comments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//PostPage/publicationDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//PostPage/status"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//PostPage/visibility"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//PostPage/timeOfPublication"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//PostPage/featuredImage"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//PostPage/relatedMedia"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//PostPage/content"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//PostPage/numberOfRevisions"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Page">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Page/parent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Page/order"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Post">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Post/categorie"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Post/tag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Post/format"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Plugin">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Plugin/name"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Search">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Search/title"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Settings">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Settings/generalSettings"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Settings/writingSettings"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Settings/readingSettings"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Settings/discussionSettings"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Settings/mediaSettings"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Settings/permalinkSettings"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//GeneralSettings">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//GeneralSettings/wordPressAdress"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//GeneralSettings/adminMail"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//GeneralSettings/isPublic"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//GeneralSettings/userDefaultRole"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//GeneralSettings/timeZone"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//GeneralSettings/dateFormat"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//GeneralSettings/timeFormat"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//GeneralSettings/weekStartsOn"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//WritingSettigns">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//WritingSettigns/isConvertingEmoticons"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//WritingSettigns/isCorrectingInvalidXHTML"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//WritingSettigns/defaultPostCategory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//WritingSettigns/defaultPostFormat"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//WritingSettigns/mailServer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//WritingSettigns/port"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//WritingSettigns/loginName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//WritingSettigns/password"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//ReadingSettings">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//ReadingSettings/isDisplayingLastPostInFront"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//ReadingSettings/staticFrontPage"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//ReadingSettings/staticPostPage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//ReadingSettings/maxNumberPostsForBlogPages"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//ReadingSettings/numberRecentItemForFeeds"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//ReadingSettings/isIndexed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//ReadingSettings/isShowingFullTextForFeed"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//DiscussionSettings">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//DiscussionSettings/isNotifyingLinkedBlogs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//DiscussionSettings/isAllowingLinkNotificationsFromBlogs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//DiscussionSettings/isAllowingPublicComments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//DiscussionSettings/isAskingNameAndMailCommentAuthor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//DiscussionSettings/isAllowingAnonymousComments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//DiscussionSettings/numberArticleDaysForAutoCloseComments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//DiscussionSettings/nestedCommentsLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//DiscussionSettings/isBreakingCommentsIntoPages"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//DiscussionSettings/numberCommentsPerPageForBreakedComments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//DiscussionSettings/isdisplayingLastPageForBreakedComments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//DiscussionSettings/isDisplayingOlderCommentForEachPage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//DiscussionSettings/isMailingAdminForEachComments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//DiscussionSettings/isHeldingCommentForModeration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//DiscussionSettings/isAskingAdminApprovement"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//DiscussionSettings/isAskingPreviousAdminApprovement"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//DiscussionSettings/numberOfLinksInCommentForModeration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//DiscussionSettings/moderatedWords"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//DiscussionSettings/forbiddenWords"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//DiscussionSettings/isShowingAvatar"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//DiscussionSettings/maxAvatarRating"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//DiscussionSettings/defaultAvatar"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//MediaSettings">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//MediaSettings/thumbnailWidth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//MediaSettings/thumbnailHeight"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//MediaSettings/isCroppingThumbnailToExactDims"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//MediaSettings/mediumWidth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//MediaSettings/mediumHeight"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//MediaSettings/largeWidth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//MediaSettings/largeHeight"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//MediaSettings/isOrganizeUploadsIntoFolders"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//PermalinksSettings">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//PermalinksSettings/urlForm"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//PermalinksSettings/urlCategoryBase"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//PermalinksSettings/urlTagBase"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Image">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Image/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Image/caption"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Image/altText"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Image/Description"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Tag"/>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Taxonomy">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Taxonomy/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Taxonomy/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Taxonomy/slug"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Taxonomy/posts"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Text">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Text/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Text/content"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Text/isAutoParagraphs"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//User">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//User/userName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//User/firstName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//User/lastName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//User/nickName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//User/publicName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//User/email"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//User/posts"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//User/role"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//User/avatar"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//User/webSite"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//User/biography"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//User/password"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Widget">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Widget/archives"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Widget/calendars"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Widget/categories"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Widget/customMenus"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Widget/metas"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Widget/pages"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Widget/recentComments"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Widget/recentPosts"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Widget/feeds"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Widget/searchs"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Widget/tagClouds"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//Widget/texts"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Widget/type"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Calendars">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Calendars/title"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Archives">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Archives/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Archives/isDisplayingAsDropDown"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Archives/isShowingPostsCount"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//WidgetCategories">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//WidgetCategories/title"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//WidgetMenus">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//WidgetMenus/title"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//WidgetMenus/selectedMenu"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//WidgetPages">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//WidgetPages/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//WidgetPages/pagesSorter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//WidgetPages/idPageExcluded"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//WidgetComments">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//WidgetComments/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//WidgetComments/numberOfDisplayedComments"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//WidgetPosts">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//WidgetPosts/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//WidgetPosts/numberOfDisplayedPosts"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//WidgetPosts/isDisplayingPostDate"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//WidgetFeed">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//WidgetFeed/isDisplayingItemContent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//WidgetFeed/isDisplayingItemAuthor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//WidgetFeed/isDisplayingItemDate"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//TagCloud">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//TagCloud/title"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WordPressConfiguration.ecore#//TagCloud/taxonomies"/>
+    </genClasses>
+    <genClasses ecoreClass="WordPressConfiguration.ecore#//Url">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WordPressConfiguration.ecore#//Url/path"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

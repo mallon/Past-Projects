@@ -1,0 +1,25 @@
+<Website>		 
+<adminUser elementContent={userOne}/> 			
+<users listContent=[
+					<User>
+						<idUser content=userOne/>
+						<userName content="admin"/>						
+						<password content="password"/>						
+						<userRole elementContent={administrator}/>
+						<email content="admnin@mail.com"/>
+					</User>
+				 ]
+/>
+<posts listContent=[
+					<Post>
+							<idPost content=postOne/> 			
+							<format elementContent={standard}/>							
+							<title content="'God Is An Astronaut' - Happy new year !"/>							
+							<content content="We would like to wish ..."/>					
+							<author elementContent={userOne}/>
+					</Post>,
+					<Post>...</Post>,
+					<Post>...</Post>
+				   ]
+/>
+</Website>

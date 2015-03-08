@@ -1,0 +1,587 @@
+grammar org.inria.wordpress.wdpdsl.WdpDsl with org.eclipse.xtext.common.Terminals
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+generate wdpDsl "http://www.inria.org/wordpress/wdpdsl/WdpDsl"
+
+Website :
+	{Website}
+	'<Website>'
+		('<adminUser elementContent=' '{' adminUser=[User] '}' '/>')+
+		('<users listContent=' '[' users+=User ( "," users+=User)* ']' '/>')?		
+		('<posts listContent=' '[' posts+=Post ( "," posts+=Post)* ']' '/>' )?
+		('<pages listContent=' '[' pages+=Page ( "," pages+=Page)* ']' '/>')?		
+		('<appearance elementContent=' '{'  appearance=Appearance '}' '/>')?
+		('<mediaLibrary listContent=' '[' mediaLibrary+=Media ( "," mediaLibrary+=Media)* ']' '/>')?
+		('<functionalities listContent=' '[' functionalities+=Functionality ( "," functionalities+=Functionality)* ']' '/>')?		
+		('<comments listContent=' '[' comments+=Comment ( "," comments+=Comment)* ']' '/>')?	
+		('<categories listContent=' '[' categories+=Category ( "," categories+=Category)* ']' '/>')?
+		('<tags listContent=' '[' tags+=Tag ( "," tags+=Tag)* ']' '/>')?
+		('<settings elementContent=' '{' settings=Settings '}' '/>')+
+		deletion=Deletion?
+	'</Website>';
+
+Deletion :
+	{Deletion}
+	'<Deletion>'
+		('<pagesByTitle listContent=' '[' pagesByTitle+=EString ( "," pagesByTitle+=EString)* ']' '/>')?
+		('<usersByLogin listContent=' '[' usersByLogin+=EString ( "," usersByLogin+=EString)* ']' '/>')?
+		('<mediasByTitle listContent=' '[' mediasByTitle+=EString ( "," mediasByTitle+=EString)* ']' '/>')?
+		('<functionalitiesByName listContent=' '[' functionalitiesByName+=functionalities ( "," functionalitiesByName+=functionalities)* ']' '/>')?
+		('<themesByName listContent=' '[' themesByName+=themes ( "," themesByName+=themes)* ']' '/>')?
+		('<categoriesByName listContent=' '[' categoriesByName+=EString ( "," categoriesByName+=EString)* ']' '/>')?
+		('<tagsByName listContent=' '[' tagsByName+=EString ( "," tagsByName+=EString)* ']' '/>')?
+		('<menusByName listContent=' '[' menusByName+=EString ( "," menusByName+=EString)* ']' '/>')?
+		('<commentsByPostDateAuthor listContent=' '[' commentsByPostDateAuthor+=PostDateAuthor ( "," commentsByPostDateAuthor+=PostDateAuthor)* ']' '/>')?
+	'</Deletion>'
+;
+
+PostDateAuthor :
+	{PostDateAuthor}
+	'<PostDateAuthor>'
+		('<postTitle elementContent=' '{' postTitle=EString '}' '/>')+
+		('<commentAuthorName elementContent=' '{' commentAuthorName=EString '}' '/>')+
+		('<commentDate elementContent=' '{' commentDate=Date '}' '/>')+
+	'</PostDateAuthor>'
+;
+
+User :
+	{User}
+	'<User>'
+		('<idUser content=' name=ID '/>')+
+		('<userName content=' userName=EString '/>')+
+		('<password content=' password=EString '/>')+
+		('<userRole elementContent=' '{'  userRole=role '}' '/>')+
+		('<firstName content=' firstName=EString '/>')?
+		('<lastName content=' lastName=EString '/>')?
+		('<nickName content=' nickName=EString '/>')?
+		('<publicName content=' publicName=EString '/>')?
+		('<email content=' email=EString '/>')?		
+		('<webSite content=' webSite=EString '/>')?
+		('<biography content=' biography=EString '/>')?	
+	'</User>';
+
+PostPage_Impl :
+	{PostPage_Impl}
+	('<title content=' title=EString '/>')?	
+	('<status elementContent=' '{'  status=pageStatus '}' '/>')?	
+	('<content content=' content=EString '/>')?	
+	('<author elementContent=' '{'  author=[User] '}' '/>')?
+	('<featuredImage elementContent=' '{'  featuredImage=Image '}' '/>')?
+;
+
+PostPage:
+	Post | Page
+;
+
+Post :
+	{Post}
+	'<Post>'
+		('<idPost content=' name=ID '/>')+
+		('<categories listContent=' '[' categories+=[Category] ( "," categories+=[Category])* ']' '/>')?		
+		('<tags listContent=' '[' tags+=[Tag] ( "," tags+=[Tag])* ']' '/>')?	
+		('<format elementContent=' '{'  format=postFormat '}' '/>')?	
+		commonAttributes=PostPage_Impl
+	'</Post>'
+;
+
+Page :
+	{Page}
+	'<Page>'
+		('<idPage content=' name=ID '/>')+
+		('<parent elementContent=' '{'  parent=[Page] '}' '/>')?
+		('<order intContent=' order=EInt '/>')?	
+		('<publicationDateGMT elementContent=' '{'  publicationDateGMT=Date '}' '/>')?
+		('<publicationDate elementContent=' '{'  publicationDate=Date '}' '/>')?
+		commonAttributes=PostPage_Impl	
+	'</Page>'
+;
+
+Appearance :
+	{Appearance}
+	'<Appearance>'
+		('<widgets listContent=' '[' widgets+=Widget( "," widgets+=Widget)* ']' '/>')?
+		('<appearanceMenus listContent=' '['  appearanceMenus+=Menu( "," appearanceMenus+=Menu)* ']' '/>')?
+		('<appearanceHeader elementContent=' '{'  appearanceHeader=Header '}' '/>')?
+		('<theme listContent=' '['  theme+=Theme( "," theme+=Theme)* ']' '/>')?
+	'</Appearance>';
+
+Theme :
+	{Theme}
+	'<Theme>'
+		('<idTheme content=' name=ID '/>')+
+		('<themeType elementContent=' '{'  themeType=themes '}' '/>')?
+		('<plugin elementContent=' '{'  defaultPlugin=Plugin '}' '/>')?
+	 '</Theme>'
+;
+
+Functionality :
+	{Functionality}
+	'<Functionality>'
+		('<idFunctionality content=' name=ID '/>')+
+		('<functionalityType elementContent=' '{'  functionalityType=functionalities '}' '/>')?
+		('<socialNetworks elementContent=' '{'  socialNetworks=EString '}' '/>')?		
+		('<plugin elementContent=' '{'  defaultPlugin=Plugin '}' '/>')?
+	'</Functionality>';
+
+Comment :
+	{Comment}
+	'<Comment>'
+		('<idComment content=' name=ID '/>')+
+		('<content content=' content=EString '/>')?
+		('<authorName elementContent=' '{'  authorName=EString '}' '/>')?
+		('<commentPostPage elementContent=' '{'  commentPostPage=([PostPage])+ '}' '/>')?
+	'</Comment>';
+
+Url :
+	{Url}
+	'<Url>'
+		('<path content=' pathUrl=EString '/>')?
+	'</Url>';
+
+WidgetFeed :
+	{WidgetFeed}	
+	'<WidgetFeed>'
+		('<title content=' title=EString '/>')?
+		('<displayItemContent  booleanContent=' isDisplayingItemContent=EBoolean '/>')?
+		('<displayItemAuthor booleanContent=' isDisplayingItemAuthor=EBoolean '/>')?
+		('<displayItemDate booleanContent=' isDisplayingItemDate=EBoolean '/>')?
+		('<numberOfItems content=' numberOfItems=INT '/>')?
+		(url=Url)?
+	'</WidgetFeed>';
+	
+Plugin :
+	{Plugin}
+	'<Plugin>'
+		('<name content=' pluginName=EString '/>')?
+		(url=Url)?
+	'</Plugin>';
+
+Media :
+	{Media}
+	'<Media>'
+		('<idMedia content=' name=ID '/>')+
+		(url=Url)?
+		('<date elementContent=' '{'  date=Date '}' '/>')?
+		('<uploadedTo elementContent=' '{'  uploadedTo=([PostPage])+ '}' '/>')?		
+	'</Media>';
+		
+Image :
+	{Image}
+	'<Image>'
+		('<title content=' title=EString '/>')?
+		('<caption content=' caption=EString '/>')?
+		('<altText content=' altText=EString '/>')?
+		('<description content=' description=EString '/>')?
+		(url=Url)?
+	'</Image>';
+
+Link :
+	{Link}
+	'<Link>'	
+		('<idLink content=' name=ID '/>')+
+		url = Url
+		('<text content=' text=EString'/>')?
+	'</Link>'
+	;
+
+Header :
+	{Header}
+	'<Header>'	
+		('<isRandomImage booleanContent=' randomImage=EBoolean '/>')?
+		('<uploadImage elementContent=' '{'uploadImage=Url'}' '/>')?		
+		('<textColor content=' textColor=HEXA'/>')?
+		('<isShowingHeaderText booleanContent=' isShowingHeaderText=EBoolean '/>')?
+	'</Header>'
+	;
+	
+terminal HEXA:
+	'#'STRING	
+;	
+
+Taxonomy:
+	Category | Tag
+;	
+	
+Category :
+	{Category}
+	'<Category>'
+		('<idCategory content=' name=ID '/>')+
+		('<name content=' categoryName=EString '/>')?
+		('<description content=' description=EString '/>')?
+		('<slug content=' slug=EString '/>')?
+	'</Category>';
+	
+Tag :
+	{Tag}
+	'<Tag>'
+		('<idTag content=' name=ID '/>')+
+		('<name content=' tagName=EString '/>')?
+		('<description content=' description=EString '/>')?
+		('<slug content=' slug=EString '/>')?
+	'</Tag>';
+
+EString returns ecore::EString:
+	STRING | ID;
+
+Settings :
+	{Settings}
+	'<Settings>'
+		('<general elementContent=' '{'  general=GeneralSettings '}' '/>')+
+		('<writing elementContent=' '{'  writing=WritingSettings '}' '/>')?
+		('<reading elementContent=' '{'  reading=ReadingSettings '}' '/>')?
+		('<discussion elementContent=' '{'  discussion=DiscussionSettings '}' '/>')?
+		('<media elementContent=' '{'  media=MediaSettings'}' '/>')?
+		('<permalinks elementContent=' '{' permalinks=PermalinksSettings'}' '/>')?
+	'</Settings>';
+
+Date returns ecore::EString:
+	INT + '-' INT + '-' + INT + ' ' + INT + ':' + INT + ':' + INT
+;
+
+EInt returns ecore::EInt:
+	'-'? INT;
+
+enum postFormat :
+	standard = 'standard' |
+	aside = 'aside' |
+	audio = 'audio' |
+	chat = 'chat' |
+	gallery = 'gallery' |
+	image = 'image' |
+	link = 'link' |
+	quote = 'quote' |
+	status = 'status' |
+	video = 'video'
+;
+
+GeneralSettings :
+	{GeneralSettings}
+	'<GeneralSettings>'
+		('<websiteTitle content='websiteTitle=EString '/>')?
+		('<websiteTagline content='websiteTagline=EString '/>')?
+		('<websiteAdress content='websiteAdress=EString '/>')?
+		('<adminMail content='adminMail= MAIL '/>')?
+		('<userDefaultRole elementContent=' '{' userDefaultRole=role '}' '/>')?
+		('<timeZone content=' timeZone=INT '/>')?
+		('<dateFormat elementContent=' '{' gsDateFormat=dateformat '}' '/>')?
+		('<timeFormat elementContent=' '{' gsTimeFormat=timeFormat '}' '/>')?
+		('<weekStartsOn elementContent=' '{' weekStartsOn=weeks '}' '/>')?
+		('<wordPressAdress elementContent=' '{' wordPressAdress=Url '}' '/>')+
+		('<isPublic booleanContent=' isPublic=EBoolean '/>')?
+	'</GeneralSettings>';
+
+terminal MAIL:
+	(STRING '@' STRING '.' STRING)
+;
+
+WritingSettings :
+	{WritingSettings}
+	'<WritingSettings>'
+		('<mailServer content=' mailServer=MAIL '/>')?
+		('<port intContent=' port=EInt '/>')?
+		('<loginName content=' loginName=EString '/>')?
+		('<password content=' password=EString '/>')?
+		('<defaultPostCategory elementContent=' '{' defaultPostCategory=[Category]'}' '/>')?
+		('<defaultMailCategory elementContent=' '{' defaultMailCategory=[Category]'}' '/>')?
+		('<isConvertingEmoticons booleanContent=' isConvertingEmoticons=EBoolean '/>')?
+		('<isCorrectingInvalidXHTML booleanContent=' isCorrectingInvalidXHTML=EBoolean '/>')?
+	'</WritingSettings>';
+
+ReadingSettings :
+	{ReadingSettings}
+	'<ReadingSettings>'
+		('<maxNumberPostsForBlogPages intContent=' maxNumberPostsForBlogPages=EInt '/>')?
+		('<numberRecentItemForFeeds intContent=' numberRecentItemForFeeds=EInt '/>')?
+		('<staticFrontPage elementContent=' '{' staticFrontPage=[Page]'}' '/>')?
+		('<staticPostPage elementContent=' '{' staticPostPage=[Page]'}' '/>')?
+		('<isDisplayingLastPostInFront booleanContent=' isDisplayingLastPostInFront=EBoolean '/>')?
+		('<isIndexed booleanContent=' isIndexed=EBoolean '/>')?
+		('<isShowingFullTextForFeed booleanContent=' isShowingFullTextForFeed=EBoolean '/>')?
+	'</ReadingSettings>';
+
+DiscussionSettings :
+	{DiscussionSettings}
+	'<DiscussionSettings>'
+		('<numberArticleDaysForAutoCloseComments intContent=' numberArticleDaysForAutoCloseComments=EInt '/>')?
+		('<nestedCommentsLevel intContent=' nestedCommentsLevel=EInt '/>')?
+		('<numberCommentsPerPageForBreakedComments intContent=' numberCommentsPerPageForBreakedComments=EInt '/>')?
+		('<numberOfLinksInCommentForModeration intContent=' numberOfLinksInCommentForModeration=EInt '/>')?
+		('<moderatedWord content=' moderatedWords=EString '/>')?
+		('<forbiddenWords content=' forbiddenWords=EString '/>')?
+		('<maxAvatarRating elementContent=' '{' maxAvatarRating=avatarRating'}' '/>')?
+		('<userDefaultAvatar elementContent=' '{'userDefaultAvatar=defaultAvatar'}' '/>')?	
+		('<isNotifyingLinkedBlogs booleanContent=' isNotifyingLinkedBlogs=EBoolean '/>')?
+		('<isAllowingLinkNotificationsFromBlogs booleanContent=' isAllowingLinkNotificationsFromBlogs=EBoolean '/>')?
+		('<isAllowingPublicComments booleanContent=' isAllowingPublicComments=EBoolean '/>')?
+		('<isAskingNameAndMailCommentAuthor booleanContent=' isAskingNameAndMailCommentAuthor=EBoolean '/>')?
+		('<isAllowingAnonymousComments booleanContent=' isAllowingAnonymousComments=EBoolean '/>')?
+		('<isBreakingCommentsIntoPages booleanContent=' isBreakingCommentsIntoPages=EBoolean '/>')?
+		('<isDisplayingLastPageForBreakedComments booleanContent=' isdisplayingLastPageForBreakedComments=EBoolean '/>')?
+		('<isDisplayingOlderCommentForEachPage booleanContent=' isDisplayingOlderCommentForEachPage=EBoolean '/>')?
+		('<isMailingAdminForEachComments booleanContent=' isMailingAdminForEachComments=EBoolean '/>')?
+		('<isHeldingCommentForModeration booleanContent=' isHeldingCommentForModeration=EBoolean '/>')?
+		('<isAskingAdminApprovement booleanContent=' isAskingAdminApprovement=EBoolean '/>')?
+		('<isAskingPreviousAdminApprovement booleanContent=' isAskingPreviousAdminApprovement=EBoolean '/>')?
+		('<isShowingAvatar booleanContent=' isShowingAvatar=EBoolean '/>')?
+	'</DiscussionSettings>';
+
+MediaSettings :
+	{MediaSettings}
+	'<MediaSettings>'
+		('<thumbnailWidth intContent=' thumbnailWidth=EInt '/>')?
+		('<thumbnailHeight intContent=' thumbnailHeight=EInt '/>')?
+		('<mediumWidth intContent=' mediumWidth=EInt '/>')?
+		('<mediumHeight intContent=' mediumHeight=EInt '/>')?
+		('<largeWidth intContent=' largeWidth=EInt '/>')?
+		('<largeHeight intContent=' largeHeight=EInt '/>')?
+		('<isCroppingThumbnailToExactDims booleanContent=' isCroppingThumbnailToExactDims=EBoolean '/>')?
+		('<isOrganizeUploadsIntoFolders booleanContent=' isOrganizeUploadsIntoFolders=EBoolean '/>')?
+	'</MediaSettings>';
+
+PermalinksSettings :
+	{PermalinksSettings}
+	'<PermalinksSettings>'
+		('<urlForm elementContent=' '{'permaUrlForm=urlForm'}' '/>')?
+		('<urlCategoryBase content=' urlCategoryBase=EString '/>')?
+		('<urlTagBase content=' urlTagBase=EString '/>')?
+	'</PermalinksSettings>';
+
+EBoolean returns ecore::EBoolean:
+	'true' | 'false';
+
+Widget :
+	{Widget}
+	'<Widget>'
+		('<type content=' type=widgetType '/>')?
+		('<widgetArchives listContent=' '[' widgetArchives+=Archive ( "," widgetArchives+=Archive)* ']' '/>')?
+		('<calendars listContent=' '[' calendars+=Calendar ( "," calendars+=Calendar)* ']' '/>')?
+		('<categories listContent=' '[' categories+=WidgetCategorie ( "," categories+=WidgetCategorie)* ']' '/>')?
+		('<customMenus listContent=' '[' customMenus+=WidgetMenu ( "," customMenus+=WidgetMenu)* ']' '/>')?
+		('<metas listContent=' '[' metas+=Meta ( "," metas+=Meta)* ']' '/>')?
+		('<pages listContent=' '[' pages+=WidgetPage ( "," pages+=WidgetPage)* ']' '/>')?
+		('<recentComments listContent=' '[' recentComments+=WidgetComment ( "," recentComments+=WidgetComment)* ']' '/>')?
+		('<recentPosts listContent=' '[' recentPosts+=WidgetPost ( "," recentPosts+=WidgetPost)* ']' '/>')?
+		('<feeds listContent=' '[' feeds+=WidgetFeed ( "," feeds+=WidgetFeed)* ']' '/>')?
+		('<searchs listContent=' '[' searchs+=Search ( "," searchs+=Search)* ']' '/>')?
+		('<tagClouds listContent=' '[' tagClouds+=TagCloud ( "," tagClouds+=TagCloud)* ']' '/>')?
+		('<texts listContent=' '[' texts+=Text ( "," texts+=Text)* ']' '/>')?
+	'</Widget>';
+
+Menu :
+	{Menu}
+	'<Menu>'
+		('<idMenu content=' name=ID '/>')+
+		('<name content=' menuName=EString '/>')?
+		('<pages listContent=' '[' pages+=[Page] ( "," pages+=[Page])* ']' '/>')?
+		('<categories listContent=' '[' categories+=[Category] ( "," categories+=[Category])* ']' '/>')?
+		('<links listContent=' '[' links+=Link ( "," links+=Link)* ']' '/>')?
+		('<currentMenuSetting elementContent=' '{'currentMenuSetting=CurrentMenuSetting'}' '/>')?
+	'</Menu>';
+
+Archive :
+	{Archive}
+	'<Archives>'		
+		('<title content=' title=EString'/>')?
+		('<isDisplayingAsDropDown booleanContent=' isDisplayingAsDropDown=EBoolean '/>')?
+		('<isShowingPostsCount booleanContent=' isShowingPostsCount=EBoolean'/>')?
+	'</Archives>'
+	;
+
+Calendar :
+	{Calendar}
+	'<Calendars>'	
+		('<title content=' title=EString'/>')?
+	'</Calendars>'	
+	;
+
+WidgetCategorie :
+	{WidgetCategorie}
+	'<WidgetCategories>'
+		('<title content=' title=EString'/>')?
+		('<numberOfDisplayedPosts intContent=' numberOfDisplayedPosts=EInt'/>')?
+		('<isDisplayingSubCat booleanContent=' isDisplayingSubCat=EBoolean'/>')?
+		('<isDropDownList booleanContent=' isDropDownList=EBoolean'/>')?
+	'</WidgetCategories>'
+	;
+
+WidgetMenu :
+	{WidgetMenu}
+	'<WidgetMenus>'	
+		('<title content=' title=EString'/>')?
+		('<selectedMenu elementContent=' '{'selectedMenu=[Menu]'}' '/>')?
+	'</WidgetMenus>'		
+	;
+
+Meta :
+	{Meta}
+	'<Meta>'
+		('<title content=' title=EString'/>')?
+	'</Meta>'
+	;
+
+WidgetPage :
+	{WidgetPage}
+	'<WidgetPages>'	
+		('<title content=' title=EString'/>')?
+		('<pagesSorter elementContent=' '{'widgetPagesSorter=pagesSorter'}' '/>')?
+		('<idPageExcluded elementContent=' '{'idPageExcluded=[Page]'}' '/>')?
+	'</WidgetPages>'
+	;
+
+WidgetComment :
+	{WidgetComment}
+	'<WidgetComments>'	
+		('<title content=' title=EString'/>')?
+		('<numberOfDisplayedComments intContent=' numberOfDisplayedComments=EInt'/>')?
+	'</WidgetComments>'	
+	;
+
+WidgetPost :
+	{WidgetPost}
+	'<WidgetPosts>'	
+		('<title content=' title=EString'/>')?
+		('<numberOfDisplayedPosts intContent=' numberOfDisplayedPosts=EInt'/>')?
+		('<isDisplayingPostDate booleanContent=' isDisplayingPostDate=EBoolean'/>')?
+	'</WidgetPosts>'
+	;
+
+Search :
+	{Search}
+	'<Search>'
+		('<idSearch content=' name=ID '/>')+
+		('<title content=' title=EString'/>')?
+	'</Search>'	
+	;
+
+TagCloud :
+	{TagCloud}
+	'<TagCloud>'	
+		('<title content=' title=EString'/>')?
+		('<taxonomy content=' taxonomy=taxonomyType'/>')?
+	'</TagCloud>'
+	;
+
+Text :
+	{Text}
+	'<Text>'	
+		('<title content=' title=EString'/>')?
+		('<content content=' content=EString'/>')?
+		('<isAutoParagraphs booleanContent=' isAutoParagraphs=EBoolean'/>')?
+	'</Text>'
+	;
+
+CurrentMenuSetting :
+	{CurrentMenuSetting}
+	'<CurrentMenuSetting>'
+		('<isAddingNewTopLevelPages booleanContent=' isAddingNewTopLevelPages=EBoolean'/>')?
+		('<isNavigationMenuLocated booleanContent=' isNavigationMenuLocated=EBoolean'/>')?
+	'</CurrentMenuSetting>'
+	;
+
+enum avatarRating :
+	G = 'G' |
+	PG = 'PG' |
+	R = 'R' |
+	X = 'X'
+;
+
+enum dateformat :
+	jnY = 'j/n/Y' |
+	FjY = 'F j, Y' | 
+	Ynj = 'Y/n/j' |
+	njY = 'n/j/Y' |	
+	custom = 'custom'
+;
+
+enum defaultAvatar :
+	mysteryMan = 'mystery' |
+	blank = 'blank' |
+	GravatarLogo = 'gravatar_default' |
+	identicon = 'identicon' |
+	wavatar = 'wavatar' |
+	monsterId = 'monsterid' |
+	retro = 'retro'
+;
+
+enum functionalities :
+	eCommerce = 'eCommerce' |
+	forms = 'forms' |
+	hamSpam = 'hamSpam' |
+	indexing = 'indexing' |
+	multiLanguage = 'multiLanguage' |
+	pictures = 'pictures' |
+	SEO = 'seo' |
+	socialNetwork = 'socialNetwork'
+;
+
+enum themes :
+	responsive = 'responsive' |
+	SEO = 'seo' |
+	headerParallaxEffect = 'headerParallaxEffect' |
+	business = 'business' |
+	magazine = 'magazine' |
+	galleries = 'galleries'
+;
+
+enum pagesSorter :
+	pageTitle = 'page_title' |
+	pageOrder = 'menu_order' |
+	pageId = 'page_id' 
+;
+
+enum pageStatus :
+	published = 'publish' |
+	pendingreview = 'pending' |
+	draft = 'draft' |
+	autoDraft = 'auto-draft' |
+	trash = 'trash' |
+	private = 'private' |
+	new = 'new' |
+	inherit = 'inherit' |
+	future = 'future'
+;
+
+enum role :
+	author = 'author' |
+	administrator = 'administrator' | 	
+	suscriber = 'subscriber' |
+	editor = 'editor' |
+	contributor = 'contributor'
+;
+
+enum timeFormat :
+	g_i_aLower = 'g:i a' | 
+	g_i_AUpper = 'g:i A' |
+	Gg = 'G:g' |
+	custom = 'custom'
+;
+
+enum taxonomyType :
+	categories = 'category' | 
+	tags = 'post_tag'
+;
+
+enum urlForm :
+	default = 'defaultForm' |
+	dayAndName = 'dayAndName' |
+	monthAndName = 'monthAndName' |
+	numeric = 'numeric' |
+	postName = 'postName' |
+	customStructure = 'customStructure'
+;
+
+enum weeks :
+	monday = 'Monday' |
+	tuesday = 'Tuesday' |
+	wednesday = 'Wednesday' |
+	thirsday = 'Thursday' |
+	friday = 'Friday' |
+	saturday = 'Saturday' |
+	sunday = 'Sunday'
+;
+
+enum widgetType :
+	mainArea = 'mainArea' |
+	secondaryArea = 'secondaryArea' 
+;

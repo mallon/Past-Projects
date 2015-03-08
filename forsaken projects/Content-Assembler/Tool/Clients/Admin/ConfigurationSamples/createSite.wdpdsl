@@ -1,0 +1,168 @@
+<Website>		 
+<adminUser elementContent={userOne}/> 			
+<users listContent=[
+					<User>
+						<idUser content=userOne/>
+						<userName content="admin"/>						
+						<password content="password"/>						
+						<userRole elementContent={administrator}/>
+						<firstName content="firstNameUserOne"/>
+						<lastName content="lastNameUserOne"/>
+						<nickName content="nickNameUserOne"/>
+						<publicName content="publicNameUserOne"/>
+						<email content="adminDefault@otherMail.com"/>
+						<webSite content="websiteUserOne"/>						
+						<biography content="bioUserOne"/> 
+					</User>,
+					<User>
+						<idUser content=userTwo/> 
+						<userName content="nameUserTwo"/> 
+						<password content="password"/> 
+						<userRole elementContent={author}/>
+					</User> 
+				 ]
+/>
+
+<posts listContent=[
+					<Post>
+							<idPost content=postOne/> 		
+							<categories listContent=[categoryOne]/>		
+							<tags listContent=[tagOne]/>			
+							<format elementContent={aside}/>							
+							<title content="I'm postOne !"/>							
+							<content content="postOne content"/>																												
+							<author elementContent={userOne}/>																												
+							<featuredImage elementContent={<Image><Url><path content=""/></Url></Image>}/>								
+					</Post>,
+					<Post>
+							<idPost content=postTwo/>
+							<format elementContent={standard}/>	
+							<title content="I'm postTwo !"/>
+							<content content="my content"/>													
+							<author elementContent={userTwo}/>						
+							<featuredImage elementContent={<Image><Url><path content=""/></Url></Image>}/>		
+					</Post>
+				   ]
+/>	
+<pages listContent=[
+			<Page>							
+				<idPage content=pageOne/>			
+				<parent elementContent={pageTwo}/>							
+				<order intContent=0/>														
+				<title content="PAGE_ONE"/>							 	
+				<status elementContent={publish}/> 						
+				<content content="contentPageOne"/>					
+				<author elementContent={userOne}/>
+				<featuredImage elementContent={
+						<Image>
+							<Url>
+								<path content="http://www.laventureux.com/blog/wp-content/images/parler-twitter1.jpg"/>
+							</Url>
+						</Image>
+				}/> 
+			</Page>,	
+			<Page>							
+				<idPage content=pageTwo/>									
+				<order intContent=1/>														
+				<title content="PAGE_TWO"/>				
+				<status elementContent={pending}/>							
+				<content content="contentPageTwo"/>						
+				<author elementContent={userTwo}/>							
+				<featuredImage elementContent={
+						<Image>
+							<Url>
+								<path content="http://www.socialblabla.com/wp-content/uploads/2012/07/twitter.jpeg"/>
+							</Url>
+						</Image>
+				}/>
+			</Page>
+					] 
+/>
+<appearance elementContent={
+	<Appearance>	
+				<theme elementContent={		
+										<Plugin>
+											<name content="ridizain"/>
+											<Url>
+												<path content="http://wordpress.org/themes/download/ridizain.1.0.09.zip"/>
+											</Url>
+										</Plugin>
+									  } 	
+				/>					  																
+	</Appearance>			
+							}	
+/>	 
+<mediaLibrary listContent=[
+	<Media> 
+		<idMedia content=mediaOne/>
+		<Url>
+			<path content="http://www.gridam.com/wp-content/uploads/2013/03/facebook-sign.jpg"/>
+		</Url>
+		<date elementContent={02-11-2013 09:15:00}/>
+	</Media>,
+	<Media>
+		<idMedia content=mediaTwo/>
+		<Url>
+			<path content="http://www.myjobcompany.com/blog/wp-content/uploads/2013/07/facebook_security.jpg"/>
+		</Url>
+		<date elementContent={02-11-2013 09:15:35}/>
+		<uploadedTo elementContent={postTwo}/>
+	</Media>
+						  ]
+/>
+<functionalities listContent=[
+			<Functionality>
+				<idFunctionality content=funcOne/>
+				<plugin elementContent={
+					<Plugin>
+						<name content="skype-master"/>
+						<Url>
+							<path content="http://downloads.wordpress.org/plugin/skype-master.4.3.zip"/>
+						</Url>
+					</Plugin>
+				}/>
+			</Functionality>,
+			<Functionality>
+				<idFunctionality content=funcTwo/>
+				<functionalityType elementContent={seo}/>
+			</Functionality>							
+							 ]
+/>
+<categories listContent=[
+							<Category>
+								<idCategory content=categoryOne/>
+								<name content="cat_One_Name"/>
+								<description content="I'm cat_One !"/>
+								<slug content="slugCat_One"/>
+							</Category>
+						]
+/>
+
+<tags listContent=[
+					<Tag>
+						<idTag content=tagOne/>
+						<name content="tag_One_Name"/>
+						<description content="I'm tag_One !"/>
+						<slug content="slugTag_One"/>
+					</Tag>
+				  ]
+/>
+
+<settings elementContent={
+	<Settings> 
+		<general elementContent={
+									<GeneralSettings>
+										<websiteTitle content="OneNewSecondTitle"/>
+		 								<websiteTagline content="OneNewSecondSubTitle"/>																
+										<wordPressAdress elementContent={
+											<Url>
+												<path content="http://localhost/wordpress/"/>
+											</Url>
+										}/>
+									</GeneralSettings>															
+								}
+		/>
+	</Settings>
+						}
+/>	
+</Website>
