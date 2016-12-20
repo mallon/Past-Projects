@@ -1,0 +1,129 @@
+-- @nsURI ATL=http://www.eclipse.org/gmt/2005/ATL
+-- @nsURI OCL=http://www.eclipse.org/gmt/2005/OCL
+
+module ATL2ATLCommented;
+create OUT : ATL, SECOUT : OCL refining IN : ATL, SECIN : OCL ;
+
+uses ATL2ATLCommentedHelpers;
+
+rule commentsBeforeOfActionBlock{--Because there is a bug which make dupplicates (Eclipse Bugzilla : MMT ATL / ID : 400015)
+	from
+		expression : OCL!NavigationOrAttributeCallExp(
+			expression.oclIsKindOf(OCL!OclExpression)
+			and
+			expression.refImmediateComposite().oclIsTypeOf(ATL!BindingStat)	
+		)
+	to
+		expresWithoutDupplicComments : OCL!NavigationOrAttributeCallExp(
+			commentsBefore <:= OclUndefined
+		)
+}
+
+rule commentsBeforeOfVarExp{--Because there is a bug which make dupplicates (Eclipse Bugzilla : MMT ATL / ID : 400015)
+	from
+		varExpression : OCL!VariableExp(
+			varExpression.oclIsKindOf(OCL!OclExpression)
+			and
+			varExpression.refImmediateComposite().oclIsKindOf(OCL!PropertyCallExp)
+--			(varExpression.refImmediateComposite().oclIsTypeOf(OCL!NavigationOrAttributeCallExp)
+--				or
+--				varExpression.refImmediateComposite().oclIsTypeOf(OCL!OperationCallExp)
+--			)	
+		)
+	to
+		varExpresWithoutDupplicComments : OCL!VariableExp(
+			commentsBefore <:= OclUndefined
+		)
+}
+
+rule commentsAfterLocatedElement{
+	from
+		locatedElement : ATL!LocatedElement(
+			not locatedElement.oclIsKindOf(OCL!OclExpression)
+			and
+			not locatedElement.oclIsKindOf(ATL!Rule)
+			and
+			not locatedElement.oclIsTypeOf(ATL!Helper)
+		)
+	to
+		locElemWithoutComAfter : ATL!LocatedElement(
+			commentsAfter <:= OclUndefined --Because there is a bug which make dupplicates (Eclipse Bugzilla : MMT ATL / ID : 400015)
+		)
+}
+
+rule commentMatchedRule{
+	from
+		oneRule : ATL!LocatedElement(
+			oneRule.oclIsKindOf(ATL!Rule)
+		)
+	to 
+		commentedRule : ATL!Rule(
+			commentsBefore <- Sequence{}
+								-> union(
+										if (not oneRule.oclIsTypeOf(ATL!CalledRule)) then
+											oneRule.inPattern.elements
+												-> collect(element | '--@sourcePattern ' + thisModule.getType(element.type))
+										else Sequence{} endif		
+								)
+								-> union(
+										if (oneRule.oclIsTypeOf(ATL!CalledRule)) then
+											if (oneRule.ruleHasParameters) then
+												oneRule.parameters
+													-> collect(param | thisModule.getType(param.type))
+													-> flatten()
+											else Sequence{} endif		
+										else Sequence{} endif		
+								)
+								-> union(
+										oneRule.outPattern.elements
+											-> collect(element | '--@targetPattern ' + thisModule.getType(element.type))
+								),
+			commentsAfter <:= OclUndefined --Because there is a bug which make dupplicates (Eclipse Bugzilla : MMT ATL / ID : 400015)					
+		)
+}
+
+--rule commentLazyMatchedRule{
+--	from
+--		lazyMatchedRule : ATL!LazyMatchedRule
+--	to 
+--		commentedLazyMatchedRule : ATL!LazyMatchedRule(
+--			commentsBefore <- lazyMatchedRule.commentsBefore
+--								-> union(
+--										lazyMatchedRule.inPattern.elements
+--											-> collect(element | '--@sourcePattern ' + element.type.name)
+--								)
+--								-> union(
+--										lazyMatchedRule.outPattern.elements
+--											-> collect(element | '--@targetPattern ' + element.type.name)
+--								)
+--		)
+--}
+
+--rule commentCalledRule{
+--	from
+--		calledRule : ATL!CalledRule
+--	to 
+--		commentedCalledRule : ATL!CalledRule(
+--			commentsBefore <- calledRule.commentsBefore
+--								-> union(
+--										calledRule.outPattern.elements
+--											-> collect(element | '--@targetPattern ' + element.type.name)	
+--								)
+--								-> union(
+--										calledRule.parameters
+--											-> collect(parameter | '--@param' + parameter.type.name)
+--								)
+--		)
+--}
+
+rule commentHelper{
+	from
+		oneHelper : ATL!LocatedElement(
+			oneHelper.oclIsTypeOf(ATL!Helper)
+		)
+	to 
+		oneCommentedHelper : ATL!Helper(
+			commentsBefore <- oneHelper.getHelperCommentsAdded,
+			commentsAfter <:= OclUndefined --Because there is a bug which make dupplicates (Eclipse Bugzilla : MMT ATL / ID : 400015)
+		)
+}

@@ -1,0 +1,115 @@
+-- @nsURI ATL=http://www.eclipse.org/gmt/2005/ATL
+-- @nsURI OCL=http://www.eclipse.org/gmt/2005/OCL
+
+-- ******************************************************************************
+-- Copyright (c) 2013 INRIA. 
+-- All rights reserved. This program and the accompanying materials 
+-- are made available under the terms of the Eclipse Public License v1.0 
+-- which accompanies this distribution, and is available at
+-- http://www.eclipse.org/legal/epl-v10.html
+-- 
+-- Contributors: 
+-- 	INRIA - Initial implementation
+--  
+-- ******************************************************************************
+
+--@name ATL2ATLCommented
+--@author Matthieu Allon (matthieu.allon <at> gmail.com)
+
+--@description Addition of comments to an ATL file
+
+library ATL2ATLCommentedHelpers;
+
+helper context ATL!Helper def: hasContext : Boolean = 
+	if (not self.definition.context_.oclIsUndefined()) then
+		not self.definition.context_.context_.oclIsUndefined()
+	else
+		false
+	endif	
+;
+
+helper context ATL!Helper def: helperHasParameters : Boolean = 
+	if (self.definition.feature.oclIsTypeOf(OCL!Operation)) then
+		not self.definition.feature.parameters.oclIsUndefined()
+	else
+		false
+	endif	
+;
+
+helper context ATL!CalledRule def: ruleHasParameters : Boolean = 
+	self.parameters -> notEmpty()
+;
+
+helper context ATL!Helper def: getHelperReturn : String = 
+	if (self.helperHasParameters) then
+		thisModule.getType(self.definition.feature.returnType)
+	else
+		thisModule.getType(self.definition.feature.type)
+	endif	
+;
+
+helper def: getType(oclType : OclAny) : String = 
+	--Collections
+	if (oclType.oclIsKindOf(OCL!CollectionType)) then
+			--oclType.oclType().toString().split('!') -> at(2).split('Type') -> at(1) + '(' +
+			thisModule.getSimpleType(oclType) + '(' +		
+			thisModule.getType(oclType.elementType) + ')'
+		else
+			--Map
+			if (oclType.oclIsTypeOf(OCL!MapType)) then
+				--oclType.oclType().toString().split('!') -> at(2).split('Type') -> at(1) + '(' +
+				thisModule.getSimpleType(oclType) + '(' +		
+				thisModule.getType(oclType.keyType) + ', ' +
+				thisModule.getType(oclType.valueType) + 
+				')'	
+			else
+				--Tuple
+				if (oclType.oclType().name.toString() = 'TupleType') then
+					--oclType.oclType().toString().split('!') -> at(2).split('Type') -> at(1) + '(' +
+					thisModule.getSimpleType(oclType) + '(' +		
+						oclType.attributes
+							-> collect(attrib | thisModule.getType(attrib.type))					
+							-> flatten()
+							.toString().regexReplaceAll('\\{', '').regexReplaceAll('\\}', '')
+							.regexReplaceAll('Sequence', '').regexReplaceAll('\'', '')
+							.regexReplaceAll(' ', '')
+					+ ')'	
+				else
+					--Model type
+					if (oclType.oclIsTypeOf(OCL!OclModelElement)) then
+						 oclType.model.name + '!' + oclType.name				 
+					else
+						--Simple type (Not specific to a model)
+						--oclType.oclType().toString().split('!') -> at(2).split('Type') -> at(1)
+						thisModule.getSimpleType(oclType)
+					endif
+				endif
+			endif	
+		endif	
+;
+	
+helper def: getSimpleType(oclType : OclAny) : String = 
+	oclType.oclType().toString().split('!') -> at(2).split('Type') -> at(1)
+;	
+				
+helper context ATL!Helper def: getHelperCommentsAdded : Sequence(String) = 
+	Sequence{}
+		-> union(
+				if (self.hasContext)then
+					Sequence{'--@context ' + thisModule.getType(self.definition.context_.context_)}
+				else Sequence{} endif											
+		)														
+		-> union(
+				if (self.helperHasParameters)then
+					self.definition.feature.parameters
+							-> collect(parameter | '--@param ' + thisModule.getType(parameter.type)
+							)
+							-> flatten()
+							-> append(
+									'--@return ' + self.getHelperReturn
+							)
+				else 
+					Sequence{'--@return ' + self.getHelperReturn}
+				endif											
+		)	
+;				

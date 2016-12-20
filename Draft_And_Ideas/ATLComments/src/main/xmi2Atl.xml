@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<project name="test" default="run" >
+	
+    <target name="run">
+        <atl.loadModel modelHandler="EMF" name="ATL" metamodel="MOF" path="../metamodels/atl/ATL.ecore" />
+        <atl.loadModel name="atl1" metamodel="ATL" path="../../resources/Test_Rule_Commented.xmi"/>
+
+        <atl.saveModel model="atl1" path="../../resources/Test_Rule_Commented.atl">
+             <extractor name="ATL"/>
+        </atl.saveModel>
+    </target>
+	
+</project>
